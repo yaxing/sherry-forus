@@ -1,5 +1,0 @@
-E:\课程\软件项目实践\bookShanZhai\DbConnect\bin\Debug\DbConnect.dll
-E:\课程\软件项目实践\bookShanZhai\DbConnect\bin\Debug\DbConnect.pdb
-E:\课程\软件项目实践\bookShanZhai\DbConnect\obj\Debug\ResolveAssemblyReference.cache
-E:\课程\软件项目实践\bookShanZhai\DbConnect\obj\Debug\DbConnect.dll
-E:\课程\软件项目实践\bookShanZhai\DbConnect\obj\Debug\DbConnect.pdb
