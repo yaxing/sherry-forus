@@ -6,12 +6,44 @@ using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web.Caching;
+using System.Xml;
 
 namespace DbCtrl
 {
-    public class DataProvider
+    public class DataProvider : IDisposable
     {
         private SqlConnection conn;
+
+        #region
+
+        /// <summary>
+        /// 获取数据库连接字符串
+        /// </summary>
+        /// <returns></returns>
+
+        public string GetConnectionString()
+        {
+            string connectionString = null;
+            string xmlFile = System.Web.HttpContext.Current.Server.MapPath("~/web.config");
+            XmlDocument xml = new XmlDocument();
+            xml.Load(xmlFile);
+
+            foreach (XmlNode Node in xml["configuration"]["connectionStrings"])
+            {
+                if (Node.Name == "add")
+                {
+                    if (Node.Attributes.GetNamedItem("name").Value == "SherryDBConnection")
+                    {
+                        connectionString = Node.Attributes.GetNamedItem("connectionString").Value;
+                        
+                    }
+                }
+            } 
+
+            return connectionString;
+        }
+        #endregion
 
         #region 构造函数
 
@@ -23,7 +55,7 @@ namespace DbCtrl
         {
             try
             {
-                string connString = ConfigurationManager.ConnectionStrings["SherryConnectionString"].ToString();
+                string connString = GetConnectionString();
                 conn = new SqlConnection(connString);
                 conn.Open();
             }
@@ -131,6 +163,45 @@ namespace DbCtrl
                     command.Parameters.Add(parameter);
                 }
                 return command.ExecuteNonQuery();
+            }
+        }
+        #endregion
+
+        #region 不带参数的数据流读取
+
+        /// <summary>
+        /// 利用数据流读取数据
+        /// </summary>
+        /// <param name="sqlString">sql语句</param>
+        /// <returns>数据流读取器</returns>
+
+        public SqlDataReader ExecuteReader(string sqlString)
+        {
+            using (SqlCommand command = new SqlCommand(sqlString , conn))
+            {
+                return command.ExecuteReader();
+            }
+        }
+        #endregion
+
+        #region 带参数的数据流读取
+
+        /// <summary>
+        /// 利用数据流读取数据
+        /// </summary>
+        /// <param name="sqlString">sql语句</param>
+        /// <param name="pt">参数集合</param>
+        /// <returns>数据流读取器</returns>
+
+        public SqlDataReader ExecuteReader(string sqlString , SqlParameter[] pt)
+        {
+            using (SqlCommand command = new SqlCommand(sqlString , conn))
+            {
+                foreach (SqlParameter parameter in pt)
+                {
+                    command.Parameters.Add(parameter);
+                }
+                return command.ExecuteReader();
             }
         }
         #endregion
