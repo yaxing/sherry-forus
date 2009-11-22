@@ -1,0 +1,27 @@
+
+.SlideMainRoll {
+	FILTER: progid:DXImageTransform.Microsoft.Slide(slidestyle=SWAP,Bands=1);
+	CURSOR: pointer;
+	border:0px;
+}
+#SlideMain {
+	OVERFLOW: hidden; WIDTH: 410px; HEIGHT: 328px
+}
+#SlideMenu {
+	MARGIN: -60px 0px 0px 20px; WIDTH: 410px; POSITION: absolute; HEIGHT: 60px
+}
+#SlideMenu UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+#SlideMenu UL LI {
+	BACKGROUND: none transparent scroll repeat 0% 0%; FLOAT: left; MARGIN: 5px; OVERFLOW: hidden; WIDTH: 50px; HEIGHT: 50px
+}
+#SlideMenu UL LI IMG {
+	BORDER-RIGHT: #171717 1px solid; BORDER-TOP: #c2c2c2 1px solid; OVERFLOW: hidden; BORDER-LEFT: #c2c2c2 1px solid; WIDTH: 50px; BORDER-BOTTOM: #171717 1px solid; HEIGHT: 50px
+}
+.SlideMenuOver {
+	FILTER: alpha(opacity=100); -moz-opacity: 1
+}
+.SlideMenuOut {
+	FILTER: alpha(opacity=30); -moz-opacity: 0.3
+}
