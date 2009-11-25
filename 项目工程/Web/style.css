@@ -12,11 +12,11 @@ body {
 }
 a {
 	text-decoration:none;
-		color:#fff
+		color:#FF99FF
 }
 a:hover {
 	text-decoration: underline;
-		color:#FF7F00
+		color:#FF99FF
 }
 #wrap {
 	width:1000px;
@@ -35,7 +35,7 @@ a:hover {
 #logo {position:absolute; top:30px; right:130px; font-family:Î¢ÈíÑÅºÚ;}
 #logo h1 {
 	font-size:34px;
-	color:#fff
+	color:#fff;
 }
 #logo div {
 	padding-left:100px;
