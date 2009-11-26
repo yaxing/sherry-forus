@@ -1,13 +1,13 @@
 /* CSS RESET */
 html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym {border:0;font-variant:normal;}sup {vertical-align:text-top;}sub {vertical-align:text-bottom;}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}legend{color:#000;}
 
-body {font:13px/1.231 arial,helvetica,clean,sans-serif;}table{font-size:inherit;font-size:100%;}pre,code,kbd,samp,tt{font-family:monospace;line-height:100%;}
+body {font:13px/1.231 arial,helvetica,clean,sans-serif;background:#ac00a0;}table{font-size:inherit;font-size:100%;}pre,code,kbd,samp,tt{font-family:monospace;line-height:100%;}
 /* CSS RESET */
 
 
 body {
 	text-align:center;
-	background:#fff;
+	background:#bbb;
 	color:#fff
 }
 a {
@@ -55,7 +55,7 @@ a:hover {
 
 .side {width:230px; font-family:Î¢ÈíÑÅºÚ }
 .side h2 {font-size:22px}
-.side li {line-height:20px; list-style:inside disc; color:#FFFFFF; }
+.side li {line-height:20px; list-style:inside disc; color:#FFFFFF;}
 .side ul {margin:30px  0 30px 20px}
 /* footer */
 #footer { background:url(images/ft.jpg); height:133px; position:relative}

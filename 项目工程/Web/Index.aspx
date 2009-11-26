@@ -70,20 +70,20 @@
         <div id="col" style="left: 30px; top: -31px">
             <div class=" first float-l">
                 <ul>
-                    <li><a href="#">Latin literature </a></li>
-                    <li><a href="#">making over years </a></li>
-                    <li><a href="#">Richard Clintock </a></li>
-                    <li><a href="#">Latin professor </a></li>
-                    <li><a href="#">Hampden Sydney </a></li>
+                    <li><a href="#">　　　　　　最新产品 </a></li>
+                    <li><a href="#">　　　　　　热点推荐 </a></li>
+                    <li><a href="#">　　　　　　优惠促销 </a></li>
+                    <li><a href="#">　　　　　　快乐抽奖 </a></li>
+                    <li><a href="#">　　　　　　用户调查 </a></li>
                 </ul>
             </div>
             <div class=" folat-r ">
                 <ul>
-                    <li><a href="#">Latin literature </a></li>
-                    <li><a href="#">making over years </a></li>
-                    <li><a href="#">Richard Clintock </a></li>
-                    <li><a href="#">Latin professor </a></li>
-                    <li><a href="#">Hampden Sydney </a></li>
+                    <li><a href="#">最新产品 </a></li>
+                    <li><a href="#">热点推荐 </a></li>
+                    <li><a href="#">优惠促销 </a></li>
+                    <li><a href="#">快乐抽奖 </a></li>
+                    <li><a href="#">用户调查 </a></li>
                 </ul>
             </div>
         </div>
@@ -172,12 +172,12 @@
         </div>
         <div id="bm">
             <h2>
-                Other sevices</h2>
+                畅销分类</h2>
             <ul class="meun">
-                <li><a href="#">Vestibm bibendum tellus</a></li>
-                <li><a href="#">Maecenas egestas sapien</a></li>
-                <li><a href="#">Nam volutpat ante.</a></li>
-                <li><a href="#">Curabitur rhoncus leo in</a></li>
+                <li><a href="#">炫彩眼影</a></li>
+                <li><a href="#">唇膏</a></li>
+                <li><a href="#">面膜</a></li>
+                <li><a href="#">粉饼</a></li>
                 <!--                            <li><a href="#">Nulla fringilla asem</a></li>
                             <li><a href="#">Integer euismod idest</a></li>-->
             </ul>
