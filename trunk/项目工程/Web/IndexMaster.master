@@ -92,20 +92,7 @@
     <form id="form1" runat="server">
         <%--<asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
         </asp:contentplaceholder>--%>
-        <div class="menu" style="font-family: 微软雅黑">
-            <ul>
-                <li><a href="#">登录</a>
-                    <ul>
-                        <li><a href="#">
-                            <asp:Login ID="Login1" runat="server">
-                            </asp:Login>
-                        </a></li>
-                        <li></li>
-                    </ul>
-                </li>
-                <li><a href="#">注册</a></li>
-            </ul>
-        </div>
+        
         
         <div id="wrap">
             <div id="bg" style="height: 710px">
@@ -121,17 +108,89 @@
                         <li><a href="#">公司产品</a></li>
                         <li><a href="#">联系我们</a></li>
                     </ul>--%>
-                    <div class="menu" style="top: 120px; left: 190px; font-family: 微软雅黑">
+                    
+                    <div class="menu" style="font-family: 微软雅黑; top: 10px; left: 700px;">
+                        <ul>
+                            <li><a href="#">登录</a>
+                                <ul>
+                                    <li>
+                                    <asp:LoginView ID="LoginView1" runat="server">
+            <LoggedInTemplate>
+                <asp:LoginName ID="LoginName1" runat="server" />
+                ，欢迎回来！<asp:LoginStatus ID="LoginStatus1" runat="server" />
+            </LoggedInTemplate>
+            <AnonymousTemplate>
+                <asp:Login ID="Login1" runat="server">
+                    <LayoutTemplate>
+                        <table border="0" cellpadding="1" cellspacing="0" 
+                            style="border-collapse:collapse;" width="200px">
+                            <tr>
+                                <td>
+                                    <table border="0" cellpadding="0">
+                                        <tr>
+                                            <td align="center" colspan="2">
+                                                登录</td>
+                                        </tr>
+                                        <tr style="height:30px">
+                                            <td align="right">
+                                                <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">用户名:</asp:Label>
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="UserName" runat="server"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" 
+                                                    ControlToValidate="UserName" ErrorMessage="必须填写“用户名”。" ToolTip="必须填写“用户名”。" 
+                                                    ValidationGroup="ctl00$Login1">*</asp:RequiredFieldValidator>
+                                            </td>
+                                        </tr>
+                                        <tr style="height:30px">
+                                            <td align="right">
+                                                <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">密　码:</asp:Label>
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="Password" runat="server" TextMode="Password"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" 
+                                                    ControlToValidate="Password" ErrorMessage="必须填写“密码”。" ToolTip="必须填写“密码”。" 
+                                                    ValidationGroup="ctl00$Login1">*</asp:RequiredFieldValidator>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" align="right">
+                                                <asp:CheckBox ID="RememberMe" runat="server" Text="下次记住我。" />
+                                                <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="登录" 
+                                                    ValidationGroup="ctl00$Login1" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" style="color:Red;">
+                                                <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </LayoutTemplate>
+                </asp:Login>
+            </AnonymousTemplate>
+        </asp:LoginView>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="Register.aspx">注册</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="menu" style="top: 120px; left: 18px; font-family: 微软雅黑">
                         <ul>
                             <li><a href="Index.aspx">主页 </a></li>
                             <li><a href="AboutUs.aspx">关于我们 </a></li>
                             <li><a href="Products.aspx">公司产品 </a>
                                 <ul>
-                                    <li><a href="">产品分类1</a></li>
-                                    <li><a href="">产品分类2</a></li>
-                                    <li><a href="">产品分类3</a></li>
-                                    <li><a href="">产品分类4</a></li>
-                                    <li><a href="">产品分类5</a></li>
+                                    <li><a href="">面部护理</a></li>
+                                    <li><a href="">唇　　彩</a></li>
+                                    <li><a href="">眼　　影</a></li>
+                                    <li><a href="">粉　　底</a></li>
+                                    <li><a href="">皮肤护理</a></li>
                                 </ul>
                             </li>
                             <li><a href="ContactUs.aspx">联系我们</a></li>
@@ -154,8 +213,7 @@
                         <p id="copyright">
                             2009. All Rights Reserved.
                             <br />
-                            Designed by <a href="http://www.free-css-templates.com/">Free CSS Templates</a>,
-                            Thanks to <a href="http://www.legalhelpers.com/bankruptcy-information.html">Bankruptcy
+                            Designed by <a href="#">ForUs</a>,Bankruptcy
                                 Information</a></p>
                     </div>
                     <div class="valid folat-r">
