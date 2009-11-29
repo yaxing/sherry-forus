@@ -110,81 +110,105 @@
                     </ul>--%>
                     
                     <div class="menu" style="font-family: 微软雅黑; top: 10px; left: 700px;">
-                        <ul>
-                            <li><a href="#">登录</a>
-                                <ul>
+                        <asp:LoginView ID="LoginView1" runat="server">
+                        <LoggedInTemplate>
+                          <ul>
+                            <li>
+                              <a href="#"><asp:LoginName ID="LoginName1" runat="server" />，欢迎回来！</a>
+                              <ul>
+                                <li>
+                                  <div style="background-color:#990000;">
+                                    <table style="width:200px; background-color:#990000;">
+                                      <tr>
+                                        <td>
+                                            <asp:Label ID="userScore" runat="server" Text="积分:"></asp:Label>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                            <asp:Label ID="userLv" runat="server" Text="普通会员"></asp:Label>
+                                        </td>
+                                      </tr>
+                                    </table>
+                                  </div>
+                                </li>
+                              </ul>
+                            </li>
+                            <li>
+                              <asp:LoginStatus ID="LoginStatus1" runat="server" />
+                            </li>
+                          </ul>  
+                        </LoggedInTemplate>
+                        <AnonymousTemplate>
+                          <asp:Login ID="Login1" runat="server">
+                            <LayoutTemplate>
+                              <ul>
+                                <li><a href="#">登录</a>
+                                  <ul>
                                     <li>
-                                    <asp:LoginView ID="LoginView1" runat="server">
-            <LoggedInTemplate>
-                <asp:LoginName ID="LoginName1" runat="server" />
-                ，欢迎回来！<asp:LoginStatus ID="LoginStatus1" runat="server" />
-            </LoggedInTemplate>
-            <AnonymousTemplate>
-                <asp:Login ID="Login1" runat="server">
-                    <LayoutTemplate>
-                        <table border="0" cellpadding="1" cellspacing="0" 
-                            style="border-collapse:collapse;" width="200px">
-                            <tr>
-                                <td>
-                                    <table border="0" cellpadding="0">
+                                      <table border="0" cellpadding="1" cellspacing="0" style="background-color:#990000; border-collapse:collapse;" width="200px">
                                         <tr>
-                                            <td align="center" colspan="2">
-                                                登录</td>
-                                        </tr>
-                                        <tr style="height:30px">
-                                            <td align="right">
+                                          <td>
+                                            <table border="0" cellpadding="0">
+                                              <tr>
+                                                <td align="center" colspan="2">登录</td>
+                                              </tr>
+                                              <tr style="height:30px">
+                                                <td align="right">
                                                 <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">用户名:</asp:Label>
-                                            </td>
-                                            <td>
+                                                </td>
+                                                <td>
                                                 <asp:TextBox ID="UserName" runat="server"></asp:TextBox>
                                                 <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" 
                                                     ControlToValidate="UserName" ErrorMessage="必须填写“用户名”。" ToolTip="必须填写“用户名”。" 
                                                     ValidationGroup="ctl00$Login1">*</asp:RequiredFieldValidator>
-                                            </td>
-                                        </tr>
-                                        <tr style="height:30px">
-                                            <td align="right">
+                                                </td>
+                                              </tr>
+                                              <tr style="height:30px">
+                                                <td align="right">
                                                 <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">密　码:</asp:Label>
-                                            </td>
-                                            <td>
+                                                </td>
+                                                <td>
                                                 <asp:TextBox ID="Password" runat="server" TextMode="Password"></asp:TextBox>
                                                 <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" 
                                                     ControlToValidate="Password" ErrorMessage="必须填写“密码”。" ToolTip="必须填写“密码”。" 
                                                     ValidationGroup="ctl00$Login1">*</asp:RequiredFieldValidator>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" align="right">
+                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td colspan="2" align="right">
                                                 <asp:CheckBox ID="RememberMe" runat="server" Text="下次记住我。" />
                                                 <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="登录" 
                                                     ValidationGroup="ctl00$Login1" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="left" style="color:Red;">
+                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td align="left" colspan="2" style="color:White;">
                                                 <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
-                                            </td>
+                                                </td>
+                                              </tr>
+                                            </table>
+                                          </td>
                                         </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                        </table>
-                    </LayoutTemplate>
-                </asp:Login>
-            </AnonymousTemplate>
-        </asp:LoginView>
+                                      </table>
                                     </li>
-                                </ul>
-                            </li>
-                            <li><a href="Register.aspx">注册</a></li>
-                        </ul>
+                                  </ul>
+                                </li>
+                                <li><a href="Register.aspx">注册</a></li>
+                              </ul>
+                            </LayoutTemplate>
+                          </asp:Login>
+                        </AnonymousTemplate>
+                      </asp:LoginView>
+                                    
                     </div>
                     
                     <div class="menu" style="top: 120px; left: 18px; font-family: 微软雅黑">
                         <ul>
                             <li><a href="Index.aspx">主页 </a></li>
-                            <li><a href="AboutUs.aspx">关于我们 </a></li>
-                            <li><a href="Products.aspx">公司产品 </a>
+                            <li><a href="#">关于我们 </a><!--AboutUs.aspx-->
+                            </li>
+                            <li><a href="#">公司产品 </a><!--Products.aspx-->
                                 <ul>
                                     <li><a href="">面部护理</a></li>
                                     <li><a href="">唇　　彩</a></li>
@@ -193,7 +217,8 @@
                                     <li><a href="">皮肤护理</a></li>
                                 </ul>
                             </li>
-                            <li><a href="ContactUs.aspx">联系我们</a></li>
+                            <li><a href="#">联系我们</a><!--ContactUs.aspx-->
+                        </li>
                         </ul>
                     </div>
                     <!--menu-->
@@ -214,7 +239,7 @@
                             2009. All Rights Reserved.
                             <br />
                             Designed by <a href="#">ForUs</a>,Bankruptcy
-                                Information</a></p>
+                                Information</p>
                     </div>
                     <div class="valid folat-r">
                         <!-- <img src="images/xhtml.gif" alt="xhtml valid" />
