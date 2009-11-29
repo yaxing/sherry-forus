@@ -1,185 +1,218 @@
-Ôªø<%@ Page Language="C#" AutoEventWireup="true"  CodeFile="Register.aspx.cs" Inherits="_Default" %>
+<%@ Page Language="C#" MasterPageFile="~/IndexMaster.master" AutoEventWireup="true" CodeFile="Register.aspx.cs" Inherits="Default2" Title="◊¢≤·–¬”√ªß" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="contentHolder" Runat="Server">
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>Êó†Ê†áÈ¢òÈ°µ</title>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-    
+<div class="main float-l">
+    <div style="margin-left:10%">
         <asp:CreateUserWizard ID="CreateUserWizard" runat="server" 
             oncreateduser="CreateUserWizard_CreatedUser" 
             ContinueDestinationPageUrl="~/Index.aspx">
             <WizardSteps>
-                <asp:CreateUserWizardStep runat="server">
+                <asp:CreateUserWizardStep ID="CreateUserWizardStep1" runat="server">
                     <ContentTemplate>
-                        <table border="0">
-                            <tr>
-                                <td align="center" colspan="2">
-                                    Ê≥®ÂÜåÊñ∞Â∏êÊà∑</td>
+                        <table border="0" width="500">
+                            <tr style="width:250px">
+                                <td align="center" colspan="3">
+                                    ◊¢≤·–¬’ ªß</td>
                             </tr>
                             <tr>
-                                <td align="right">
-                                    <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Áî®Êà∑Âêç:</asp:Label>
+                                <td colspan="2">
+                                   <div class="menu" style="font-family: Œ¢»Ì—≈∫⁄;">
+                                     <ul>
+                                       <li>
+                                         <a href="#">±ÿ“™–≈œ¢</a>
+                                       </li>
+                                     </ul>
+                                   </div>
                                 </td>
-                                <td>
+                                <td rowspan="11" style="width: 250px" valign="top">
+                                <div class="menu" style="font-family: Œ¢»Ì—≈∫⁄;">
+                                    <ul>
+                                      <li><a href="#">—°ÃÓ–≈œ¢</a>
+                                        <ul>
+                                          <li>
+                                            <table border="0">
+                                              <tr>
+                                                <td align="left" style="width:60px; height: 26px;">
+                                                  <asp:Label ID="lblUserGender" runat="server" Text="–‘±:" Width="60px"></asp:Label>
+                                                </td>
+                                                <td style="height: 26px">
+                                                        <asp:RadioButtonList ID="rdlUserGender" runat="server" RepeatDirection="Horizontal" style="left: 60px; top: 5px">
+                                                        <asp:ListItem Selected="True" Value="0">±£√‹</asp:ListItem>
+                                                        <asp:ListItem Value="1">ƒ–</asp:ListItem>
+                                                        <asp:ListItem Value="2">≈Æ</asp:ListItem>
+                                                        <asp:ListItem Value="3">¥∫∏Á</asp:ListItem>
+                                                        </asp:RadioButtonList>
+                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td align="left" style="width:60px; height: 26px;">
+                                                  <asp:Label ID="lblUserBirth" runat="server" Text="≥ˆ…˙»’∆⁄:" Width="60px"></asp:Label>
+                                                </td>
+                                                <td style="height: 26px">
+                                                  <asp:TextBox ID="txtUserBirth" runat="server"></asp:TextBox>
+                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td align="left" style="width:60px; height: 26px;">
+                                                  <asp:Label ID="lblIDCardNum" runat="server" Text="…Ì∑›÷§∫≈:" Width="60px"></asp:Label>
+                                                </td>
+                                                <td style="height: 26px">
+                                                  <asp:TextBox ID="txtIDCardNum" runat="server"></asp:TextBox>
+                                                </td>
+                                              </tr>
+                                            </table>
+                                          </li>
+                                        </ul>
+                                      </li>
+                                    </ul>
+                                </div>
+                                <div style="position:relative; top:80px">
+                                    <asp:Literal ID="ltlUserPort" runat="server">
+                                      <br />
+                                      <br />
+                                      <span style="font-family: Œ¢»Ì—≈∫⁄; font-size: medium">SerryªØ◊±∆∑Õ¯¬Áœ˙ €∑˛ŒÒ–≠“È</span>
+                                      <br />
+                                      <span style="font-family: Œ¢»Ì—≈∫⁄; font-size: small">1.±æµÍœ˙ €µƒªØ◊±∆∑»Á∑«Ãÿ ‚‘≠“Ú≤ª”ËÕÀªª°£</span>
+                                      <br />
+                                      <span style="font-family: Œ¢»Ì—≈∫⁄; font-size: small">2.”√ªß ’ªı ±«Îµ±√Ê»∑»œ£¨”√ªß»∑»œ ’ªı∫Û»ÙªıŒÔ≥ˆœ÷Œ Ã‚±æπ´Àæ∏≈≤ª∏∫‘°£</span>
+                                      <br />
+                                    </asp:Literal>
+                                    <br />
+                                    <asp:CheckBox ID="cbPortRead" runat="server" ValidationGroup="CreateUserWizard1" />Œ““—‘ƒ∂¡≤¢Õ¨“‚”√ªß–≠“È
+                                </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="width:60px; height: 26px">
+                                    <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName" Width="60px">”√ªß√˚:</asp:Label>
+                                </td>
+                                <td style="width: 196px; height: 26px;">
                                     <asp:TextBox ID="UserName" runat="server"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" 
-                                        ControlToValidate="UserName" ErrorMessage="ÂøÖÈ°ªÂ°´ÂÜô‚ÄúÁî®Êà∑Âêç‚Äù„ÄÇ" ToolTip="ÂøÖÈ°ªÂ°´ÂÜô‚ÄúÁî®Êà∑Âêç‚Äù„ÄÇ" 
-                                        ValidationGroup="CreateUserWizard1">*</asp:RequiredFieldValidator>
-                                </td>
+                                        ControlToValidate="UserName" ErrorMessage="±ÿ–ÎÃÓ–¥°∞”√ªß√˚°±°£" ToolTip="±ÿ–ÎÃÓ–¥°∞”√ªß√˚°±°£" 
+                                        ValidationGroup="CreateUserWizard1" ForeColor="White">*</asp:RequiredFieldValidator>
+                                </td>                                
                             </tr>
                             <tr>
-                                <td align="right">
-                                    <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">ÂØÜÁ†Å:</asp:Label>
+                                <td align="left" style="width:60px; height: 26px">
+                                    <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">√‹¬Î:</asp:Label>
                                 </td>
-                                <td>
+                                <td style="width: 196px; height: 26px;">
                                     <asp:TextBox ID="Password" runat="server" TextMode="Password"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" 
-                                        ControlToValidate="Password" ErrorMessage="ÂøÖÈ°ªÂ°´ÂÜô‚ÄúÂØÜÁ†Å‚Äù„ÄÇ" ToolTip="ÂøÖÈ°ªÂ°´ÂÜô‚ÄúÂØÜÁ†Å‚Äù„ÄÇ" 
-                                        ValidationGroup="CreateUserWizard1">*</asp:RequiredFieldValidator>
+                                        ControlToValidate="Password" ErrorMessage="±ÿ–ÎÃÓ–¥°∞√‹¬Î°±°£" ToolTip="±ÿ–ÎÃÓ–¥°∞√‹¬Î°±°£" 
+                                        ValidationGroup="CreateUserWizard1" ForeColor="White">*</asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="right">
+                                <td align="left" style="width:60px; height: 26px">
                                     <asp:Label ID="ConfirmPasswordLabel" runat="server" 
-                                        AssociatedControlID="ConfirmPassword">Á°ÆËÆ§ÂØÜÁ†Å:</asp:Label>
+                                        AssociatedControlID="ConfirmPassword">»∑»œ√‹¬Î:</asp:Label>
                                 </td>
-                                <td>
+                                <td style="width: 196px; height: 26px;">
                                     <asp:TextBox ID="ConfirmPassword" runat="server" TextMode="Password"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="ConfirmPasswordRequired" runat="server" 
-                                        ControlToValidate="ConfirmPassword" ErrorMessage="ÂøÖÈ°ªÂ°´ÂÜô‚ÄúÁ°ÆËÆ§ÂØÜÁ†Å‚Äù„ÄÇ" 
-                                        ToolTip="ÂøÖÈ°ªÂ°´ÂÜô‚ÄúÁ°ÆËÆ§ÂØÜÁ†Å‚Äù„ÄÇ" ValidationGroup="CreateUserWizard1">*</asp:RequiredFieldValidator>
+                                        ControlToValidate="ConfirmPassword" ErrorMessage="±ÿ–ÎÃÓ–¥°∞»∑»œ√‹¬Î°±°£" 
+                                        ToolTip="±ÿ–ÎÃÓ–¥°∞»∑»œ√‹¬Î°±°£" ValidationGroup="CreateUserWizard1" ForeColor="White">*</asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="right">
-                                    <asp:Label ID="lblRealName" runat="server" Text="ÁúüÂÆûÂßìÂêç:"></asp:Label>
+                                <td align="left" style="width:60px; height: 26px">
+                                    <asp:Label ID="lblRealName" runat="server" Text="’Ê µ–’√˚:"></asp:Label>
                                 </td>
-                                <td>
+                                <td style="width: 196px; height: 26px;">
                                     <asp:TextBox ID="txtRealName" runat="server"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="right">
-                                    <asp:Label ID="EmailLabel" runat="server" AssociatedControlID="Email">ÁîµÂ≠êÈÇÆ‰ª∂:</asp:Label>
+                                <td align="left" style="width:60px; height: 26px">
+                                    <asp:Label ID="EmailLabel" runat="server" AssociatedControlID="Email">µÁ◊”” º˛:</asp:Label>
                                 </td>
-                                <td>
+                                <td style="width: 196px; height: 26px;">
                                     <asp:TextBox ID="Email" runat="server"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="EmailRequired" runat="server" 
-                                        ControlToValidate="Email" ErrorMessage="ÂøÖÈ°ªÂ°´ÂÜô‚ÄúÁîµÂ≠êÈÇÆ‰ª∂‚Äù„ÄÇ" ToolTip="ÂøÖÈ°ªÂ°´ÂÜô‚ÄúÁîµÂ≠êÈÇÆ‰ª∂‚Äù„ÄÇ" 
-                                        ValidationGroup="CreateUserWizard1">*</asp:RequiredFieldValidator>
+                                        ControlToValidate="Email" ErrorMessage="±ÿ–ÎÃÓ–¥°∞µÁ◊”” º˛°±°£" ToolTip="±ÿ–ÎÃÓ–¥°∞µÁ◊”” º˛°±°£" 
+                                        ValidationGroup="CreateUserWizard1" ForeColor="White">*</asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="right">
-                                    <asp:Label ID="lblPostAdd" runat="server" Text="ÈÇÆÂØÑÂú∞ÂùÄ:"></asp:Label>
+                                <td align="left" style="width:60px; height: 26px">
+                                    <asp:Label ID="lblPostAdd" runat="server" Text="” ºƒµÿ÷∑:"></asp:Label>
                                 </td>
-                                <td>
+                                <td style="width: 196px; height: 26px;">
                                     <asp:TextBox ID="txtPostAdd" runat="server"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="right">
-                                    <asp:Label ID="lblPostNum" runat="server" Text="ÈÇÆÊîøÁºñÁ†Å:"></asp:Label>
+                                <td align="left" style="width:60px; height: 26px">
+                                    <asp:Label ID="lblPostNum" runat="server" Text="” ’˛±‡¬Î:"></asp:Label>
                                 </td>
-                                <td>
+                                <td style="width: 196px; height: 26px;">
                                     <asp:TextBox ID="txtPostNum" runat="server"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="right">
-                                    <asp:Label ID="lblPhoneNum" runat="server" Text="ÁîµËØùÂè∑Á†Å:"></asp:Label>
+                                <td align="left" style="width:60px; height: 26px">
+                                    <asp:Label ID="lblPhoneNum" runat="server" Text="µÁª∞∫≈¬Î:"></asp:Label>
                                 </td>
-                                <td>
+                                <td style="width: 196px; height: 26px;">
                                     <asp:TextBox ID="txtPhoneNum" runat="server"></asp:TextBox>
                                 </td>
                             </tr>
+                            
                             <tr>
-                                <td align="right">
-                                    <asp:Label ID="lblUserBirth" runat="server" Text="Âá∫ÁîüÊó•Êúü:"></asp:Label>
+                                <td align="left" style="width:60px; height: 26px">
+                                    <asp:Label ID="QuestionLabel" runat="server" AssociatedControlID="Question">∞≤»´Œ Ã‚:</asp:Label>
                                 </td>
-                                <td>
-                                    <asp:TextBox ID="txtUserBirth" runat="server"></asp:TextBox>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="right">
-                                    <asp:Label ID="lblUserGender" runat="server" Text="ÊÄßÂà´:"></asp:Label>
-                                </td>
-                                <td>
-                                    <asp:DropDownList ID="ddlUserGender" runat="server">
-                                        <asp:ListItem Value="0">‰øùÂØÜ</asp:ListItem>
-                                        <asp:ListItem Value="1">Áî∑</asp:ListItem>
-                                        <asp:ListItem Value="2">Â•≥</asp:ListItem>
-                                        <asp:ListItem Value="3">Êò•Âì•</asp:ListItem>
-                                    </asp:DropDownList>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="right">
-                                    <asp:Label ID="lblIDCardNum" runat="server" Text="Ë∫´‰ªΩËØÅÂè∑:"></asp:Label>
-                                </td>
-                                <td>
-                                    <asp:TextBox ID="txtIDCardNum" runat="server"></asp:TextBox>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="right">
-                                    <asp:Label ID="QuestionLabel" runat="server" AssociatedControlID="Question">ÂÆâÂÖ®ÊèêÁ§∫ÈóÆÈ¢ò:</asp:Label>
-                                </td>
-                                <td>
+                                <td style="width: 196px; height: 26px;">
                                     <asp:TextBox ID="Question" runat="server"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="QuestionRequired" runat="server" 
-                                        ControlToValidate="Question" ErrorMessage="ÂøÖÈ°ªÂ°´ÂÜô‚ÄúÂÆâÂÖ®ÊèêÁ§∫ÈóÆÈ¢ò‚Äù„ÄÇ" 
-                                        ToolTip="ÂøÖÈ°ªÂ°´ÂÜô‚ÄúÂÆâÂÖ®ÊèêÁ§∫ÈóÆÈ¢ò‚Äù„ÄÇ" ValidationGroup="CreateUserWizard1">*</asp:RequiredFieldValidator>
+                                        ControlToValidate="Question" ErrorMessage="±ÿ–ÎÃÓ–¥°∞∞≤»´Ã· æŒ Ã‚°±°£" 
+                                        ToolTip="±ÿ–ÎÃÓ–¥°∞∞≤»´Ã· æŒ Ã‚°±°£" ValidationGroup="CreateUserWizard1" ForeColor="White">*</asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="right">
-                                    <asp:Label ID="AnswerLabel" runat="server" AssociatedControlID="Answer">ÂÆâÂÖ®Á≠îÊ°à:</asp:Label>
+                                <td align="left" style="width:60px; height: 26px">
+                                    <asp:Label ID="AnswerLabel" runat="server" AssociatedControlID="Answer">∞≤»´¥∞∏:</asp:Label>
                                 </td>
-                                <td>
+                                <td style="width: 196px; height: 26px;">
                                     <asp:TextBox ID="Answer" runat="server"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="AnswerRequired" runat="server" 
-                                        ControlToValidate="Answer" ErrorMessage="ÂøÖÈ°ªÂ°´ÂÜô‚ÄúÂÆâÂÖ®Á≠îÊ°à‚Äù„ÄÇ" ToolTip="ÂøÖÈ°ªÂ°´ÂÜô‚ÄúÂÆâÂÖ®Á≠îÊ°à‚Äù„ÄÇ" 
-                                        ValidationGroup="CreateUserWizard1">*</asp:RequiredFieldValidator>
+                                        ControlToValidate="Answer" ErrorMessage="±ÿ–ÎÃÓ–¥°∞∞≤»´¥∞∏°±°£" ToolTip="±ÿ–ÎÃÓ–¥°∞∞≤»´¥∞∏°±°£" 
+                                        ValidationGroup="CreateUserWizard1" ForeColor="White">*</asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="center" colspan="2">
+                                <td align="center" colspan="3">
                                     <asp:CompareValidator ID="PasswordCompare" runat="server" 
                                         ControlToCompare="Password" ControlToValidate="ConfirmPassword" 
-                                        Display="Dynamic" ErrorMessage="‚ÄúÂØÜÁ†Å‚ÄùÂíå‚ÄúÁ°ÆËÆ§ÂØÜÁ†Å‚ÄùÂøÖÈ°ªÂåπÈÖç„ÄÇ" 
-                                        ValidationGroup="CreateUserWizard1"></asp:CompareValidator>
+                                        Display="Dynamic" ErrorMessage="°∞√‹¬Î°±∫Õ°∞»∑»œ√‹¬Î°±±ÿ–Î∆•≈‰°£" 
+                                        ValidationGroup="CreateUserWizard1" ForeColor="White"></asp:CompareValidator>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="center" colspan="2" style="color: Red;">
+                                <td align="center" colspan="3" style="color:White">
                                     <asp:Literal ID="ErrorMessage" runat="server" EnableViewState="False"></asp:Literal>
                                 </td>
                             </tr>
                         </table>
                     </ContentTemplate>
                 </asp:CreateUserWizardStep>
-                <asp:CompleteWizardStep runat="server">
+                <asp:CompleteWizardStep ID="CompleteWizardStep1" runat="server">
                     <ContentTemplate>
                         <table border="0">
                             <tr>
                                 <td align="center" colspan="2">
-                                    ÂÆåÊàê</td>
+                                    ÕÍ≥…</td>
                             </tr>
                             <tr>
                                 <td>
-                                    Â∑≤ÊàêÂäüÂàõÂª∫ÊÇ®ÁöÑÂ∏êÊà∑„ÄÇ</td>
+                                    “—≥…π¶¥¥Ω®ƒ˙µƒ’ ªß°£</td>
                             </tr>
                             <tr>
                                 <td align="right" colspan="2">
                                     <asp:Button ID="ContinueButton" runat="server" CausesValidation="False" 
-                                        CommandName="Continue" Text="ÁªßÁª≠" ValidationGroup="CreateUserWizard1" />
+                                        CommandName="Continue" Text="ºÃ–¯" ValidationGroup="CreateUserWizard1" />
                                 </td>
                             </tr>
                         </table>
@@ -187,8 +220,10 @@
                 </asp:CompleteWizardStep>
             </WizardSteps>
         </asp:CreateUserWizard>
+                
+      </div>
     
     </div>
-    </form>
-</body>
-</html>
+
+</asp:Content>
+
