@@ -203,7 +203,7 @@
                                     
                     </div>
                     
-                    <div class="menu" style="top: 120px; left: 18px; font-family: 微软雅黑">
+                    <div class="menu" style="top: 120px; left: 220px; font-family: 微软雅黑">
                         <ul>
                             <li><a href="Index.aspx">主页 </a></li>
                             <li><a href="#">关于我们 </a><!--AboutUs.aspx-->
