@@ -90,3 +90,78 @@ a:hover {
 .SlideMenuOut {
 	FILTER: alpha(opacity=30); -moz-opacity: 0.3
 }
+
+
+*{
+	margin: 0;
+	padding: 0;
+}
+.menu{
+	font-size: 12px;
+	position: relative;
+	z-index: 100;
+}
+
+.menu ul{
+	list-style: none;
+}
+
+.menu li {
+	float: left;
+	position: relative;
+}
+
+.menu ul ul {
+	visibility: hidden;
+	position: absolute;
+	left: 2px;
+	top: 23px;
+}
+
+.menu table {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.menu ul li:hover ul,
+.menu ul a:hover ul{
+	visibility: visible;
+}
+
+.menu a{
+	display: block;
+	/*border: 1px solid #aaa;*/
+	background: #990000;
+	padding: 2px 30px;
+	margin: 3px 1px;
+	color: #fff;
+	text-decoration: none;
+}
+
+.menu a:hover{
+	background: #fcf;
+	color: #990000;
+	/*border: 1px solid #BFCAE6;*/
+}
+
+.menu ul ul li {
+	clear: both;
+	text-align: left;
+	font-size: 12px;
+}
+
+.menu ul ul li a{
+	display: block;
+	width: 100px;
+	height: 13px;
+	margin: 0;
+	border: 0;
+	/*border-bottom: 1px solid #fff;*/
+}
+
+.menu ul ul li a:hover{
+	border: 0;
+	background: #fcf;
+	/*border-bottom: 1px solid #fff;*/
+}
