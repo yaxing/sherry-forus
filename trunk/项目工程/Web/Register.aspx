@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/IndexMaster.master" AutoEventWireup="true" CodeFile="Register.aspx.cs" Inherits="Default2" Title="注册新用户" %>
+<%@ Page Language="C#" MasterPageFile="~/IndexMaster.master" AutoEventWireup="true" CodeFile="Register.aspx.cs" Inherits="Register" Title="注册新用户" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="contentHolder" Runat="Server">
 
 <div class="main float-l">
@@ -49,7 +49,7 @@
                                                   <asp:Label ID="lblUserBirth" runat="server" Text="出生日期:" Width="60px"></asp:Label>
                                                 </td>
                                                 <td style="height: 26px">
-                                                  <asp:TextBox ID="txtUserBirth" runat="server"></asp:TextBox>
+                                                  <asp:TextBox ID="txtUserBirth" runat="server" Width="156px"></asp:TextBox>
                                                 </td>
                                               </tr>
                                               <tr>
@@ -57,7 +57,7 @@
                                                   <asp:Label ID="lblIDCardNum" runat="server" Text="身份证号:" Width="60px"></asp:Label>
                                                 </td>
                                                 <td style="height: 26px">
-                                                  <asp:TextBox ID="txtIDCardNum" runat="server"></asp:TextBox>
+                                                  <asp:TextBox ID="txtIDCardNum" runat="server" Width="156px"></asp:TextBox>
                                                 </td>
                                               </tr>
                                             </table>
@@ -87,7 +87,7 @@
                                     <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName" Width="60px">用户名:</asp:Label>
                                 </td>
                                 <td style="width: 196px; height: 26px;">
-                                    <asp:TextBox ID="UserName" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="UserName" runat="server" Width="156px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" 
                                         ControlToValidate="UserName" ErrorMessage="必须填写“用户名”。" ToolTip="必须填写“用户名”。" 
                                         ValidationGroup="CreateUserWizard1" ForeColor="White">*</asp:RequiredFieldValidator>
@@ -98,7 +98,7 @@
                                     <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">密码:</asp:Label>
                                 </td>
                                 <td style="width: 196px; height: 26px;">
-                                    <asp:TextBox ID="Password" runat="server" TextMode="Password"></asp:TextBox>
+                                    <asp:TextBox ID="Password" runat="server" TextMode="Password" Width="156px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" 
                                         ControlToValidate="Password" ErrorMessage="必须填写“密码”。" ToolTip="必须填写“密码”。" 
                                         ValidationGroup="CreateUserWizard1" ForeColor="White">*</asp:RequiredFieldValidator>
@@ -110,7 +110,7 @@
                                         AssociatedControlID="ConfirmPassword">确认密码:</asp:Label>
                                 </td>
                                 <td style="width: 196px; height: 26px;">
-                                    <asp:TextBox ID="ConfirmPassword" runat="server" TextMode="Password"></asp:TextBox>
+                                    <asp:TextBox ID="ConfirmPassword" runat="server" TextMode="Password" Width="156px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="ConfirmPasswordRequired" runat="server" 
                                         ControlToValidate="ConfirmPassword" ErrorMessage="必须填写“确认密码”。" 
                                         ToolTip="必须填写“确认密码”。" ValidationGroup="CreateUserWizard1" ForeColor="White">*</asp:RequiredFieldValidator>
@@ -121,7 +121,7 @@
                                     <asp:Label ID="lblRealName" runat="server" Text="真实姓名:"></asp:Label>
                                 </td>
                                 <td style="width: 196px; height: 26px;">
-                                    <asp:TextBox ID="txtRealName" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtRealName" runat="server" Width="156px"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
@@ -129,7 +129,7 @@
                                     <asp:Label ID="EmailLabel" runat="server" AssociatedControlID="Email">电子邮件:</asp:Label>
                                 </td>
                                 <td style="width: 196px; height: 26px;">
-                                    <asp:TextBox ID="Email" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="Email" runat="server" Width="156px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="EmailRequired" runat="server" 
                                         ControlToValidate="Email" ErrorMessage="必须填写“电子邮件”。" ToolTip="必须填写“电子邮件”。" 
                                         ValidationGroup="CreateUserWizard1" ForeColor="White">*</asp:RequiredFieldValidator>
@@ -140,7 +140,7 @@
                                     <asp:Label ID="lblPostAdd" runat="server" Text="邮寄地址:"></asp:Label>
                                 </td>
                                 <td style="width: 196px; height: 26px;">
-                                    <asp:TextBox ID="txtPostAdd" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtPostAdd" runat="server" Width="156px"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
@@ -148,7 +148,7 @@
                                     <asp:Label ID="lblPostNum" runat="server" Text="邮政编码:"></asp:Label>
                                 </td>
                                 <td style="width: 196px; height: 26px;">
-                                    <asp:TextBox ID="txtPostNum" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtPostNum" runat="server" Width="156px"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
@@ -156,7 +156,7 @@
                                     <asp:Label ID="lblPhoneNum" runat="server" Text="电话号码:"></asp:Label>
                                 </td>
                                 <td style="width: 196px; height: 26px;">
-                                    <asp:TextBox ID="txtPhoneNum" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtPhoneNum" runat="server" Width="156px"></asp:TextBox>
                                 </td>
                             </tr>
                             
@@ -165,7 +165,7 @@
                                     <asp:Label ID="QuestionLabel" runat="server" AssociatedControlID="Question">安全问题:</asp:Label>
                                 </td>
                                 <td style="width: 196px; height: 26px;">
-                                    <asp:TextBox ID="Question" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="Question" runat="server" Width="156px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="QuestionRequired" runat="server" 
                                         ControlToValidate="Question" ErrorMessage="必须填写“安全提示问题”。" 
                                         ToolTip="必须填写“安全提示问题”。" ValidationGroup="CreateUserWizard1" ForeColor="White">*</asp:RequiredFieldValidator>
@@ -176,7 +176,7 @@
                                     <asp:Label ID="AnswerLabel" runat="server" AssociatedControlID="Answer">安全答案:</asp:Label>
                                 </td>
                                 <td style="width: 196px; height: 26px;">
-                                    <asp:TextBox ID="Answer" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="Answer" runat="server" Width="156px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="AnswerRequired" runat="server" 
                                         ControlToValidate="Answer" ErrorMessage="必须填写“安全答案”。" ToolTip="必须填写“安全答案”。" 
                                         ValidationGroup="CreateUserWizard1" ForeColor="White">*</asp:RequiredFieldValidator>
