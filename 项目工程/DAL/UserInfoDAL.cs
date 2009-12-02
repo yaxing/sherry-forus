@@ -26,13 +26,12 @@ namespace DAL
 
         public bool AddUserInfo(UserInfo newuser)
         {
-            sqlString = "Insert Into userInfo (userID,userRealName,emailAdd,postAdd,postNum,userScore,userLv,userBirth,userGender,userAge,IDCardNum)"
-                        + " Values (@userID,@userRealName,@emailAdd,@postAdd,@postNum,@userScore,@userLv,@userBirth,@userGender,@userAge,@IDCardNum)";
+            sqlString = "Insert Into userInfo (userID,userRealName,postAdd,postNum,phoneNum,userScore,userLv,userBirth,userGender,userAge,IDCardNum)"
+                        + " Values (@userID,@userRealName,@postAdd,@postNum,@phoneNum,@userScore,@userLv,@userBirth,@userGender,@userAge,@IDCardNum)";
 
             SqlParameter[] pt = new SqlParameter[] { 
                                 new SqlParameter("@userID", SqlDbType.UniqueIdentifier),
                                 new SqlParameter("@userRealName",SqlDbType.VarChar),
-                                new SqlParameter("@emailAdd",SqlDbType.VarChar),
                                 new SqlParameter("@postAdd",SqlDbType.VarChar),
                                 new SqlParameter("@postNum",SqlDbType.VarChar),
                                 new SqlParameter("@phoneNum",SqlDbType.VarChar),
@@ -45,16 +44,16 @@ namespace DAL
                                 };
             pt[0].Value = newuser.UserID;
             pt[1].Value = newuser.UserRealName;
-            pt[2].Value = newuser.EmailAdd;
-            pt[3].Value = newuser.PostAdd;
-            pt[4].Value = newuser.PostNum;
-            pt[5].Value = newuser.PhoneNum;
-            pt[6].Value = newuser.UserScore;
-            pt[7].Value = newuser.UserLv;
-            pt[8].Value = newuser.UserBirth;
-            pt[9].Value = newuser.UserGender;
-            pt[10].Value = newuser.UserAge;
-            pt[11].Value = newuser.IDCardNum;
+            pt[2].Value = newuser.PostAdd;
+            pt[3].Value = newuser.PostNum;
+            pt[4].Value = newuser.PhoneNum;
+            pt[5].Value = 0;
+            pt[6].Value = 1;
+            pt[7].Value = newuser.UserBirth;
+            pt[8].Value = newuser.UserGender;
+            pt[9].Value = newuser.UserAge;
+            pt[9].Value = newuser.UserAge;
+            pt[10].Value = newuser.IDCardNum;
 
             try
             {
@@ -116,13 +115,12 @@ namespace DAL
 
         public bool ModiUserInfo(UserInfo user)
         {
-            string preSqlString = "Update userInfo Set userRealName = @userRealName , emailAdd = @emailAdd , postAdd = @postAdd , postNum = @postNum , phoneNum = @phoneNum , "
+            string preSqlString = "Update userInfo Set userRealName = @userRealName , postAdd = @postAdd , postNum = @postNum , phoneNum = @phoneNum , "
                                   + "userScore = @userScore , userLv = @userLv , userBirth = @userBirth , userGender = @userGender , userAge = @userAge , IDCardNum = @IDCardNum "
                                   + "where userID = @userID";
             SqlParameter[] pt = new SqlParameter[] { 
                                 new SqlParameter("@userID", SqlDbType.UniqueIdentifier),
                                 new SqlParameter("@userRealName",SqlDbType.VarChar),
-                                new SqlParameter("@emailAdd",SqlDbType.VarChar),
                                 new SqlParameter("@postAdd",SqlDbType.VarChar),
                                 new SqlParameter("@postNum",SqlDbType.VarChar),
                                 new SqlParameter("@phoneNum",SqlDbType.VarChar),
@@ -134,6 +132,16 @@ namespace DAL
                                 new SqlParameter("@IDCardNum",SqlDbType.VarChar)
                                 };
             pt[0].Value = user.UserRealName;
+            pt[1].Value = user.UserRealName;
+            pt[2].Value = user.PostAdd;
+            pt[3].Value = user.PostNum;
+            pt[4].Value = user.PhoneNum;
+            pt[5].Value = user.UserScore;
+            pt[6].Value = user.UserLv;
+            pt[7].Value = user.UserBirth;
+            pt[8].Value = user.UserGender;
+            pt[9].Value = user.UserAge;
+            pt[10].Value = user.IDCardNum;
 
             try
             {
@@ -177,16 +185,15 @@ namespace DAL
 
                             user.UserID = reader.GetGuid(0);
                             user.UserRealName = reader.GetString(1);
-                            user.EmailAdd = reader.GetString(2);
-                            user.PostAdd = reader.GetString(3);
-                            user.PostNum = reader.GetString(4);
-                            user.PhoneNum = reader.GetString(5);
-                            user.UserScore = reader.GetInt32(6);
-                            user.UserLv = reader.GetInt32(7);
-                            user.UserBirth = reader.GetDateTime(8);
-                            user.UserGender = reader.GetInt32(9);
-                            user.UserAge = reader.GetInt32(10);
-                            user.IDCardNum = reader.GetString(11);
+                            user.PostAdd = reader.GetString(2);
+                            user.PostNum = reader.GetString(3);
+                            user.PhoneNum = reader.GetString(4);
+                            user.UserScore = reader.GetInt32(5);
+                            user.UserLv = reader.GetInt32(6);
+                            user.UserBirth = reader.GetDateTime(7);
+                            user.UserGender = reader.GetInt32(8);
+                            user.UserAge = reader.GetInt32(9);
+                            user.IDCardNum = reader.GetString(10);
 
                             userList.Add(user);
                         }
@@ -229,16 +236,15 @@ namespace DAL
                         {
                             user.UserID = reader.GetGuid(0);
                             user.UserRealName = reader.GetString(1);
-                            user.EmailAdd = reader.GetString(2);
-                            user.PostAdd = reader.GetString(3);
-                            user.PostNum = reader.GetString(4);
-                            user.PhoneNum = reader.GetString(5);
-                            user.UserScore = reader.GetInt32(6);
-                            user.UserLv = reader.GetInt32(7);
-                            user.UserBirth = reader.GetDateTime(8);
-                            user.UserGender = reader.GetInt32(9);
-                            user.UserAge = reader.GetInt32(10);
-                            user.IDCardNum = reader.GetString(11);
+                            user.PostAdd = reader.GetString(2);
+                            user.PostNum = reader.GetString(3);
+                            user.PhoneNum = reader.GetString(4);
+                            user.UserScore = reader.GetInt32(5);
+                            user.UserLv = reader.GetInt32(6);
+                            user.UserBirth = reader.GetDateTime(7);
+                            user.UserGender = reader.GetInt32(8);
+                            user.UserAge = reader.GetInt32(9);
+                            user.IDCardNum = reader.GetString(10);
                         }
                     }
                 }
