@@ -11,7 +11,7 @@ using System.Web.UI.HtmlControls;
 using BLL;
 using Entity;
 
-public partial class Default2 : System.Web.UI.Page
+public partial class Register : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -33,5 +33,9 @@ public partial class Default2 : System.Web.UI.Page
 
         UserInfoBLL userInfoBLL = new UserInfoBLL();
         userInfoBLL.AddUserInfo(newuser);
+
+        FormsAuthentication.RedirectFromLoginPage(CreateUserWizard.UserName,true);
+        System.Threading.Thread.Sleep(5000);
+        Response.Redirect("~/Index.aspx");
     }
 }
