@@ -31,63 +31,18 @@ public partial class ProductInfo : System.Web.UI.Page
     #region 加入购物车
     protected void addToCart_Click(object sender, EventArgs e)
     {
-        bool cartExsisted;
-        String cartValue = String.Empty;
-
-        #region 构造或选择购物车
-        if (System.Web.HttpContext.Current.Request.Cookies["Cart"] != null)
-        {
-            cartExsisted = true;
-            cartValue = System.Web.HttpContext.Current.Request.Cookies["Cart"].Value;
-        }
-        else 
-        {
-            cartExsisted = false;
-        }
-        shopCart = new Cart(cartExsisted, cartValue);
+        #region 构造购物车
+        shopCart = new Cart();
         #endregion
 
         #region 加入购物车
-        ItemEntity info = new ItemEntity(proId, "纪梵希感光皙颜粉底液",1,300);
-        Hashtable curCart = shopCart.Add(info);
-        SaveCookie(curCart);
-
+        shopCart.Add(proId);
         #endregion
     }
     #endregion
-
-    #region 保存购物车
-    private void SaveCookie(Hashtable dic)
-    {
-
-        string s = string.Empty;
-        ItemEntity Info;
-        HttpCookie cookie;
-        foreach (ItemEntity item in dic.Values)
-        {
-            Info = item;
-            s += Info.id.ToString() + "|" + Info.name + "|" + Info.number.ToString() +"|"+Info.price.ToString()+ "@";
-        }
-        if (System.Web.HttpContext.Current.Request.Cookies["Cart"] != null)
-        {
-            cookie = System.Web.HttpContext.Current.Request.Cookies["Cart"];
-        }
-        else
-        {
-            cookie = new HttpCookie("Cart");
-        }
-        cookie.Value = s;
-        cookie.Expires.AddDays(30);
-        System.Web.HttpContext.Current.Response.Cookies.Add(cookie);
-
-    }
-    #endregion
-
 
     protected void showCart_Click(object sender, EventArgs e)
     {
         Response.Redirect("CartView.aspx");
     }
-
-    
 }

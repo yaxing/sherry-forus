@@ -3,22 +3,15 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="contentHolder" runat="Server">
     <div class="main float-l">
-        <!--<div id="text">
-          <h2>Free CSS Templates</h2>
-          <p> Safflower is a CSS template that is free and fully standards compliant. <a href="http://www.free-css-templates.com/">Free CSS Templates</a> designed this template. <br/>
-            This template is allowed for all uses, including commercial use, as it is released under the Creative Commons Attributions 2.5 license. The only stipulation to the use of this free template is that the links appearing in the footer remain intact. Beyond that, simply enjoy and have fun with it!</p>
-        </div>-->
         <div id="slide" style="border: #b4b4b4 1px solid; padding: 4px; width: 412px; height: 330px">
             <!-- slide start -->
 
             <script language="JavaScript" type="text/javascript">
 			var m_nPageInitTime = new Date();
 			var MainTopRoll = new xwzRollingImageTrans("img_MAIN_TOP_ROLL_DETAIL", "imgS_MAIN_TOP_ROLL_THUMBNAIL");
-						MainTopRoll.addItem("http://www.23live.cn/article.asp?id=280","images/eg1.jpg");
-						MainTopRoll.addItem("http://www.23live.cn/article.asp?id=280","images/eg6.jpg");
-						MainTopRoll.addItem("http://www.23live.cn/article.asp?id=280","images/eg4.jpg");
-//						MainTopRoll.addItem("http://www.23live.cn/article.asp?id=280","img/img200810281320520.jpg");
-//						MainTopRoll.addItem("http://www.23live.cn/article.asp?id=280","img/img200810291037340.jpg");						
+						MainTopRoll.addItem("#","images/eg1.jpg");
+						MainTopRoll.addItem("#","images/eg6.jpg");
+						MainTopRoll.addItem("#","images/eg4.jpg");						
             </script>
 
             <div id="SlideMain">
@@ -47,14 +40,6 @@
                         <img onmouseover="MainTopRoll.alterImage(2)" style="cursor: pointer" height="50"
                             src="images/eg4.jpg" width="50" border="0" />
                     </li>
-                    <!--            <li class="SlideMenuOut" id="3-l" onmouseover="document.getElementById('3-l').className='SlideMenuOver'"onmouseout="document.getElementById('3-l').className='SlideMenuOut'">
-            	<img name="imgS_MAIN_TOP_ROLL_THUMBNAIL" id="imgS_MAIN_TOP_ROLL_THUMBNAIL" style="display: none" />
-                <img onmouseover="MainTopRoll.alterImage(3)" style="CURSOR: pointer" height="50" src="img/img200810281321010.jpg" width="50" border="0" />
-            </li>
-            <li class="SlideMenuOut" id="4-l" onmouseover="document.getElementById('4-l').className='SlideMenuOver'"onmouseout="document.getElementById('4-l').className='SlideMenuOut'">
-            	<img name="imgS_MAIN_TOP_ROLL_THUMBNAIL" id="imgS_MAIN_TOP_ROLL_THUMBNAIL" style="display: none" />
-                <img onmouseover="MainTopRoll.alterImage(4)" style="CURSOR: pointer" height="50" src="img/img200810291037440.jpg" width="50" border="0" />
-            </li>-->
                 </ul>
             </div>
             <div style="clear: both">
@@ -162,13 +147,6 @@
                     </td>
                 </tr>
             </table>
-            <!--<ul class="meun">
-          <img src="" />  <li><a href="#">Latin literature </a></li>
-            <li><a href="#">making over years </a></li>
-            <li><a href="#">Richard Clintock </a></li>
-            <li><a href="#">Latin professor </a></li>
-            <li><a href="#"> Sydney </a></li>
-          </ul>-->
         </div>
         <div id="bm">
             <h2>
@@ -178,8 +156,6 @@
                 <li><a href="#">唇膏</a></li>
                 <li><a href="#">面膜</a></li>
                 <li><a href="#">粉饼</a></li>
-                <!--                            <li><a href="#">Nulla fringilla asem</a></li>
-                            <li><a href="#">Integer euismod idest</a></li>-->
             </ul>
         </div>
     </div>
