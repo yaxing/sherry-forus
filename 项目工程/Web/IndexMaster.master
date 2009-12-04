@@ -20,7 +20,7 @@
             <div id="bg" style="height: 710px">
                 <div id="header">
                     <div id="logo" style="left: 30px">
-                        <h1 style="font-family:微软雅黑">
+                        <h1 style="font-family: 微软雅黑">
                             Sherry化妆品</h1>
                         <!--<div>short slogan here</div>-->
                     </div>
@@ -33,14 +33,14 @@
                     <div class="menu" style="font-family: 微软雅黑; top: 10px; left: 700px;">
                         <asp:LoginView ID="LoginView1" runat="server">
                             <LoggedInTemplate>
-                                <ul>
+                                <ul style="height: 0px">
                                     <li><a href="#">
                                         <asp:LoginName ID="LoginName1" runat="server" />
                                         ，欢迎回来！</a>
                                         <ul>
                                             <li>
                                                 <div style="background-color: #990000;">
-                                                    <table style="width: 200px; background-color: #990000;">
+                                                    <table style="width: 200px; height: 100px; background-color: #990000;">
                                                         <tr>
                                                             <td>
                                                                 <asp:Label ID="userScore" runat="server" Text="积分:"></asp:Label>
@@ -70,57 +70,60 @@
                                                     <li>
                                                         <div style="background-color: #990000;">
                                                             <table border="0" cellpadding="1" cellspacing="0" style="background-color: #990000;
-                                                                border-collapse: collapse;" width="200">
-                                                                <tr>
+                                                                border-collapse: collapse; width: 200px">
+                                                                <tr style="height: 10px">
+                                                                    <td style="width: 50px">
+                                                                    </td>
+                                                                    <td style="width: 100px">
+                                                                    </td>
+                                                                    <td style="width: 30px">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr style="height: 20px">
+                                                                    <td align="left">
+                                                                        <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">用户名:</asp:Label>
+                                                                    </td>
+                                                                    <td colspan="2" align="left">
+                                                                        <asp:TextBox ID="UserName" runat="server" Width="120px"></asp:TextBox>
+                                                                        <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName"
+                                                                            ErrorMessage="必须填写“用户名”。" ToolTip="必须填写“用户名”。" ValidationGroup="ctl00$Login1"
+                                                                            ForeColor="White">*</asp:RequiredFieldValidator>
+                                                                    </td>
                                                                     <td>
-                                                                        <table border="0" cellpadding="0">
-                                                                            <tr style="height: 10px">
-                                                                                <td style="width: 40px">
-                                                                                </td>
-                                                                                <td style="width: 100px">
-                                                                                </td>
-                                                                                <td style="width: 60px">
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr style="height: 20px">
-                                                                                <td align="left" style="width: 40px">
-                                                                                    <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName" Width="40px">用户名:</asp:Label>
-                                                                                </td>
-                                                                                <td colspan="2" align="left">
-                                                                                    <asp:TextBox ID="UserName" runat="server"></asp:TextBox>
-                                                                                    <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName"
-                                                                                        ErrorMessage="必须填写“用户名”。" ToolTip="必须填写“用户名”。" ValidationGroup="ctl00$Login1"
-                                                                                        ForeColor="White">*</asp:RequiredFieldValidator>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr style="height: 30px">
-                                                                                <td align="left" style="width: 40px">
-                                                                                    <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password" Width="40px">密　码:</asp:Label>
-                                                                                </td>
-                                                                                <td colspan="2" align="left">
-                                                                                    <asp:TextBox ID="Password" runat="server" TextMode="Password"></asp:TextBox>
-                                                                                    <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password"
-                                                                                        ErrorMessage="必须填写“密码”。" ToolTip="必须填写“密码”。" ValidationGroup="ctl00$Login1" ForeColor="White">*</asp:RequiredFieldValidator>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td colspan="3" align="left">
-                                                                                    <a href="GetPassword.aspx">忘记密码？</a></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td align="center" colspan="2">
-                                                                                    <asp:CheckBox ID="RememberMe" runat="server" Text="下次记住我。" />
-                                                                                </td>
-                                                                                <td align="left">
-                                                                                    <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="登录" ValidationGroup="ctl00$Login1"/>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td align="left" colspan="3" style="color: White;">
-                                                                                    <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr style="height: 30px">
+                                                                    <td align="left">
+                                                                        <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">密　码:</asp:Label>
+                                                                    </td>
+                                                                    <td colspan="2" align="left">
+                                                                        <asp:TextBox ID="Password" runat="server" TextMode="Password" Width="120px"></asp:TextBox>
+                                                                        <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password"
+                                                                            ErrorMessage="必须填写“密码”。" ToolTip="必须填写“密码”。" ValidationGroup="ctl00$Login1" ForeColor="White">*</asp:RequiredFieldValidator>
+                                                                    </td>
+                                                                    <td>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="3" align="left">
+                                                                        <a href="GetPassword.aspx">忘记密码？</a>
+                                                                    </td>
+                                                                    <td>
+                                                                    </td>
+                                                                    <td>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center" colspan="2">
+                                                                        <asp:CheckBox ID="RememberMe" runat="server" Text="下次记住我。" />
+                                                                    </td>
+                                                                    <td align="left">
+                                                                        <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="登录" ValidationGroup="ctl00$Login1" />
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left" colspan="3" style="color: White;">
+                                                                        <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
                                                                     </td>
                                                                 </tr>
                                                             </table>
@@ -134,7 +137,7 @@
                             </AnonymousTemplate>
                         </asp:LoginView>
                     </div>
-                    <div class="menu" style=" position:relative; top: 120px; left: 180px; font-family: 微软雅黑">
+                    <div class="menu" style="position: relative; top: 120px; left: 180px; font-family: 微软雅黑">
                         <ul>
                             <li><a href="Index.aspx">主页 </a></li>
                             <li><a href="#">关于我们 </a>
