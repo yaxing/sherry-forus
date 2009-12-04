@@ -66,7 +66,7 @@
                             <tr>
                                 <td align="center">
                                     <asp:LinkButton ForeColor="White" ID="itemInfo" Font-Underline="true" runat="server"
-                                        CommandName="" CommandArgument='<%# Eval("ID") %>'><%#Eval("Name") %></asp:LinkButton>
+                                        CommandName="ShowInfo" CommandArgument='<%# Eval("ID") %>'><%#Eval("Name") %></asp:LinkButton>
                                 </td>
                             </tr>
                             <tr style="height: 50px">

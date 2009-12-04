@@ -18,6 +18,7 @@ public partial class CartView : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        //Response.Redirect("CartView.aspx");
         if (!IsPostBack)
         {
             GvSourceBind();
@@ -29,21 +30,25 @@ public partial class CartView : System.Web.UI.Page
     {
         #region 构造购物车
         shopCart = new Cart();
+        /*获取用户登录名*/
         String userName = HttpContext.Current.User.Identity.Name;
-        if (userName!=null&&userName.Length>0) 
+        /*如果用户为登录状态并且COOKIE存在则将COOKIE购物车写入XML*/
+        if (userName != null && userName.Length > 0)
         {
-            String filePath = Server.MapPath("UserCart.xml");
-            shopCart.WriteToXML(filePath,userName);
+            if (HttpContext.Current.Request.Cookies["Cart"] != null)
+            {
+                //String filePath = Server.MapPath("UserCart.xml");
+                shopCart.WriteToXML(userName);
+            }
         }
         #endregion
+            gvItems.AllowPaging = true;
+            gvItems.PageSize = 3;
 
-        gvItems.AllowPaging = true;
-        gvItems.PageSize = 3;
-
-        gvItems.DataSource = shopCart.GetItems();
-        gvItems.DataBind();
-        lbTotalPrice.Text = shopCart.ShowTotalPrice();
-        lbTotalQuantity.Text = shopCart.GetItemQuantity().ToString();
+            gvItems.DataSource = shopCart.GetItems();
+            gvItems.DataBind();
+            lbTotalPrice.Text = shopCart.ShowTotalPrice();
+            lbTotalQuantity.Text = shopCart.GetItemQuantity().ToString();
     }
     #endregion
 
@@ -168,6 +173,10 @@ public partial class CartView : System.Web.UI.Page
         {
             shopCart.Remove(Convert.ToInt32(index));
         }
+        else if (e.CommandName == "ShowInfo")
+        {
+            Response.Redirect("ProductInfo.aspx?ID="+index);
+        }
         Response.Redirect("CartView.aspx");
     }
 
@@ -179,9 +188,10 @@ public partial class CartView : System.Web.UI.Page
         if (shopCart != null) 
         {
             shopCart.RemoveCart();
-            //Request.Cookies.Remove("Cart");
+            Request.Cookies.Remove("Cart");
             GvSourceBind();
         }
+        Response.Redirect("CartView.aspx");
     }
 
     protected void ibSaveCart_Click(object sender, ImageClickEventArgs e)
