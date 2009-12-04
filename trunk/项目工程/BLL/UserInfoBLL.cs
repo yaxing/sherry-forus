@@ -22,16 +22,27 @@ namespace BLL
 
         public bool AddUserInfo(UserInfo newuser)
         {
+
+            MembershipUser user = Membership.CreateUser(newuser.UserRealName, newuser.UserRealName, newuser.EmailAdd);
+
             //------------------------此处用于添加用户的roles------------------------------//
             Roles.AddUserToRole(newuser.UserRealName, "普通用户");
 
-            UserInfoDAL userDAL = new UserInfoDAL();
-            if (!userDAL.AddUserInfo(newuser))
-            {
-                ////////此处或者需要将membership中的数据删除
-                Membership.DeleteUser(newuser.UserRealName);
+
+            newuser.UserID = (Guid)user.ProviderUserKey;
+            if (user == null)
                 return false;
+            else
+            {
+                UserInfoDAL userDAL = new UserInfoDAL();
+                if (!userDAL.AddUserInfo(newuser))
+                {
+                    ////////此处或者需要将membership中的数据删除
+                    Membership.DeleteUser(newuser.UserRealName);
+                    return false;
+                }
             }
+
             return true;
         }
         #endregion
