@@ -112,7 +112,7 @@
                                                                                     <asp:CheckBox ID="RememberMe" runat="server" Text="下次记住我。" />
                                                                                 </td>
                                                                                 <td align="left">
-                                                                                    <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="登录" ValidationGroup="ctl00$Login1" />
+                                                                                    <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="登录" ValidationGroup="ctl00$Login1"/>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
@@ -134,7 +134,7 @@
                             </AnonymousTemplate>
                         </asp:LoginView>
                     </div>
-                    <div class="menu" style="top: 120px; left: 180px; font-family: 微软雅黑">
+                    <div class="menu" style=" position:relative; top: 120px; left: 180px; font-family: 微软雅黑">
                         <ul>
                             <li><a href="Index.aspx">主页 </a></li>
                             <li><a href="#">关于我们 </a>
