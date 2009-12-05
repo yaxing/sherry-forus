@@ -12,31 +12,78 @@ namespace BLL
     public class Cart
     {
         private Hashtable dic;
-        bool cartExsisted;
-        String cartValue;
-
+        private String userName;
+        
         #region 构造购物车
         public Cart()
         {
-            cartExsisted = false;
-            cartValue = String.Empty;
-            dic = new Hashtable();
+            String cartValue = String.Empty;
+            dic = new Hashtable();//构造哈希表，作为购物车暂存空间
+            userName = HttpContext.Current.User.Identity.Name;
+            
+            /*如果cookie购物车存在，读取cookie购物车至哈希表*/
             if (HttpContext.Current.Request.Cookies["Cart"] != null)
             {
-                cartExsisted = true;
+                //cartExsisted = true;
                 cartValue = HttpContext.Current.Request.Cookies["Cart"].Value;
-            }
-
-            if(cartExsisted)
-            {
-                String val = cartValue;
                 ItemEntity Info;
-                String[] temp = val.Split(new char[] { '@' }, StringSplitOptions.RemoveEmptyEntries);
+                String[] temp = cartValue.Split(new char[] { '@' }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (String item in temp)
                 {
                     String[] temp2 = item.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
                     Info = new ItemEntity(Convert.ToInt32(temp2[0]), temp2[1].ToString(), Convert.ToInt32(temp2[2]), Convert.ToInt32(temp2[3]));
                     dic.Add(Info.id, Info);
+                }
+            }
+
+            /*如果用户已登录，将相应XML购物车读取至哈希表*/
+            if (userName != null && userName.Length > 0)
+            {
+                String itemId = String.Empty;
+                String itemName = String.Empty;
+                String itemNumber = String.Empty;
+                String itemPrice = String.Empty;
+
+                XmlDocument xmlD = new XmlDocument();
+
+                /*获取当前登录用户节点及其所有ITEM节点list*/
+                XmlElement xmlEle = GetUserNode(xmlD,userName);
+
+                if (xmlEle == null) 
+                {
+                    return;
+                }
+
+                XmlNodeList xmlLst = xmlEle.ChildNodes;
+
+                foreach (XmlNode xmlN in xmlLst)
+                {
+                    #region 从XML读取item
+                    XmlElement curItem = (XmlElement)xmlN;
+                    itemId = curItem.GetAttribute("id").ToString();
+                    itemName = curItem.GetAttribute("itemName").ToString();
+                    itemNumber = curItem.GetAttribute("itemNumber").ToString();
+                    itemPrice = curItem.GetAttribute("itemPrice").ToString();
+                    #endregion
+
+                    #region 将读取的ITEM至哈希表
+                    int id = Convert.ToInt32(itemId);
+                    int number = Convert.ToInt32(itemNumber);
+                    double price = Convert.ToDouble(itemPrice);
+
+                    ItemEntity Info = new ItemEntity(id,itemName,number,price);
+                    if (dic.ContainsKey(Info.id))
+                    {
+                        ItemEntity curNum = (ItemEntity)dic[Info.id];
+                        dic.Remove(Info.id);
+                        Info.number = curNum.number + 1;
+                        dic.Add(Info.id, Info);
+                    }
+                    else
+                    {
+                        dic.Add(Info.id, Info);
+                    }
+                    #endregion
                 }
             }
         }
@@ -52,13 +99,18 @@ namespace BLL
                 dic.Remove(Info.id);
                 Info.number = curNum.number + 1;
                 dic.Add(Info.id, Info);
-                SaveCookie();
             }
             else
             {
                 dic.Add(Info.id, Info);
-                SaveCookie();
             }
+
+            if (userName != null && userName.Length > 0) 
+            {
+                WriteToXML(userName);
+                return;
+            }
+            SaveCookie();
         }
         #endregion
 
@@ -144,15 +196,40 @@ namespace BLL
             {
                 dic.Remove(ID);
             }
+
+            if (userName != null && userName.Length > 0)
+            {
+                WriteToXML(userName);
+                return;
+            }
             SaveCookie();
         }
         #endregion
 
-        #region 清空COOKIE购物车
+        #region 清空购物车
         public void RemoveCart()
         {
+            String user = String.Empty;
             dic.Clear();
             SaveCookie();
+            
+            if (userName!=null&&userName.Length>0) 
+            {
+                XmlDocument xmlD = new XmlDocument();
+                XmlElement e = GetUserNode(xmlD,userName);
+                e.ParentNode.RemoveChild((XmlNode)e);
+                try
+                {
+                    String FilePath = HttpContext.Current.Server.MapPath("UserCart.xml");
+                    XmlTextWriter xmlTW = new XmlTextWriter(FilePath, Encoding.UTF8);
+                    xmlD.WriteTo(xmlTW);
+                    xmlTW.Close();
+                }
+                catch (System.Exception ex)
+                {
+                    HttpContext.Current.Response.Write("<script>alert('存储购物车失败！请重新操作！');history.go(-1);</script>");
+                }
+            }
         }
         #endregion
 
@@ -165,12 +242,18 @@ namespace BLL
                 dic.Remove(ID);
                 Info.number = Number;
                 dic.Add(ID, Info);
+
+                if (userName != null && userName.Length > 0)
+                {
+                    WriteToXML(userName);
+                    return;
+                }
                 SaveCookie();
             }
         }
         #endregion
 
-        #region 保存COOKIE购物车
+        #region 保存COOKIE购物车(未登录用户)
         public void SaveCookie()
         {
 
@@ -204,48 +287,32 @@ namespace BLL
         }
         #endregion
 
-        #region 将COOKIE购物车写入XML
-        public Boolean WriteToXML(String FilePath,String userId)
+        #region 将购物车写入XML
+        public Boolean WriteToXML(String userName)
         {
             string s = string.Empty;
             ItemEntity Info;
-            HttpCookie cookie;
             String proId;
             String name;
             String number;
             String price;
             XmlDocument xmlD = new XmlDocument();
             
-            try
-            {
-                xmlD.Load(FilePath);
-            }
-            catch (System.Exception e)
-            {
-                return false;
-            }
-
-            XmlNodeList xmlNL = xmlD.SelectNodes("//users[@id="+userId+"]");
-            XmlElement xmlEle = null;
-
-            foreach (XmlNode xmlN in xmlNL)
-            {
-                //if (xmlN.Name == "User"&&xmlN.Attributes["id"].Value == userId)
-                //{
-                //    xmlEle = (XmlElement)xmlN;
-                //    xmlEle.RemoveAll();
-                //    break;
-                //}
-                xmlEle = (XmlElement)xmlN;
-                xmlEle.RemoveAll();
-                break;
-            }
-
+            XmlElement xmlEle = GetUserNode(xmlD,userName);
             if (xmlEle == null)
             {
+
                 xmlEle = xmlD.CreateElement("User");
-                xmlEle.SetAttribute("id",userId);
             }
+
+            else 
+            {
+                xmlEle.RemoveAll();
+            }
+
+            xmlEle.SetAttribute("id", userName);
+            xmlEle.SetAttribute("TotalPrice", this.GetTotalPrice().ToString());
+            xmlEle.SetAttribute("TotalNumber", this.GetItemQuantity().ToString());
 
             foreach (ItemEntity item in dic.Values)
             {
@@ -253,33 +320,59 @@ namespace BLL
                 proId = Info.id.ToString();
                 name = Info.name;
                 number = Info.number.ToString();
-                price = String.Format("{0:C}",Info.price);
+                price = Info.price.ToString();
 
                 XmlElement xmlEle2 = xmlD.CreateElement("Item");
-                xmlEle2.InnerXml = "<ItemId></ItemId><ItemName></ItemName><ItemNumber></ItemNumber><ItemPrice></ItemPrice>";
 
-                xmlEle2["ItemId"].InnerText = proId;
-                xmlEle2["ItemName"].InnerText = name;
-                xmlEle2["ItemNumber"].InnerText = number;
-                xmlEle2["ItemPrice"].InnerText = String.Format("{0:C}", price);
+                xmlEle2.SetAttribute("id", proId);
+                xmlEle2.SetAttribute("itemName", name);
+                xmlEle2.SetAttribute("itemNumber", number);
+                xmlEle2.SetAttribute("itemPrice", price);
                 xmlEle.AppendChild(xmlEle2);
             }
+
 
             xmlD.DocumentElement.AppendChild(xmlEle);
             xmlD.PreserveWhitespace = false;
             try
             {
+                String FilePath = HttpContext.Current.Server.MapPath("UserCart.xml");
                 XmlTextWriter xmlTW = new XmlTextWriter(FilePath, Encoding.UTF8);
                 xmlD.WriteTo(xmlTW);
                 xmlTW.Close();
             }
             catch (System.Exception e)
             {
-                return false;
+                HttpContext.Current.Response.Write("<script>alert('存储购物车失败！请重新操作！');history.go(-1);</script>");
             }
+
+            /*购物车转存完毕后清除COOKIE购物车*/
+            dic.Clear();
+            SaveCookie();
 
             return true;
         }
+        #endregion
+
+        #region 从XML中读取相应用户结点
+
+        public XmlElement GetUserNode(XmlDocument xmlD, String userName) 
+        {
+            String FilePath = HttpContext.Current.Server.MapPath("UserCart.xml");
+
+            try
+            {
+                xmlD.Load(FilePath);
+            }
+            catch (System.Exception e)
+            {
+                HttpContext.Current.Response.Write("<script>alert('读取购物车失败！请重新操作！');history.go(-1);</script>");
+            }
+
+            XmlElement xmlEle = (XmlElement)xmlD.SelectSingleNode("Users/User[@id='" + userName + "']");
+            return xmlEle;
+        }
+
         #endregion
     }
     #endregion
