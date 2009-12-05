@@ -114,8 +114,18 @@ namespace BLL
 
         public int ShowUserInfo(ref IList<AdminInfo> adminList)
         {
+            string[] usernames = Roles.GetUsersInRole("π‹¿Ì‘±");
             AdminInfoDAL adminDAL = new AdminInfoDAL();
-            return adminDAL.ShowAdminInfo(ref adminList);
+            AdminInfo adminInfo = null;
+            foreach (string username in usernames)
+            {
+                MembershipUser user = Membership.GetUser(username);
+                adminInfo.UserID = (Guid)user.ProviderUserKey;
+                adminDAL.SrchAdminInfo(ref adminInfo);
+                adminList.Add(adminInfo);
+            }
+
+            return adminList.Count;
         }
         # endregion
 

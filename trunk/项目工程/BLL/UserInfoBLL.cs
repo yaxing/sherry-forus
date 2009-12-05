@@ -100,8 +100,18 @@ namespace BLL
 
         public int ShowUserInfo(ref IList<UserInfo> userList)
         {
+            string[] usernames = Roles.GetUsersInRole("∆’Õ®”√ªß");
             UserInfoDAL userDAL = new UserInfoDAL();
-            return userDAL.ShowUserInfo(ref userList);
+            UserInfo userInfo = null;
+            foreach(string username in usernames)
+            {
+                MembershipUser user = Membership.GetUser(username);
+                userInfo.UserID = (Guid)user.ProviderUserKey;
+                userDAL.SrchUserInfo(ref userInfo);
+                userList.Add(userInfo);
+            }
+
+            return userList.Count;
         }
         # endregion
     }
