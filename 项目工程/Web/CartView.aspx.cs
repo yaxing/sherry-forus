@@ -14,11 +14,10 @@ using BLL;
 
 public partial class CartView : System.Web.UI.Page
 {
-    Cart shopCart;
+    CartCtrl shopCart;
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        //Response.Redirect("CartView.aspx");
         if (!IsPostBack)
         {
             GvSourceBind();
@@ -29,7 +28,7 @@ public partial class CartView : System.Web.UI.Page
     protected void GvSourceBind() 
     {
         #region 构造购物车
-        shopCart = new Cart();
+        shopCart = new CartCtrl();
         /*获取用户登录名*/
         String userName = HttpContext.Current.User.Identity.Name;
         /*如果用户为登录状态并且COOKIE存在则将COOKIE购物车写入XML*/
@@ -37,14 +36,12 @@ public partial class CartView : System.Web.UI.Page
         {
             if (HttpContext.Current.Request.Cookies["Cart"] != null)
             {
-                //String filePath = Server.MapPath("UserCart.xml");
                 shopCart.WriteToXML(userName);
             }
         }
         #endregion
             gvItems.AllowPaging = true;
             gvItems.PageSize = 3;
-
             gvItems.DataSource = shopCart.GetItems();
             gvItems.DataBind();
             lbTotalPrice.Text = shopCart.ShowTotalPrice();
@@ -154,7 +151,7 @@ public partial class CartView : System.Web.UI.Page
     protected void gvItems_RowCommand(object sender, GridViewCommandEventArgs e)
     {
         String index = Convert.ToString(e.CommandArgument);
-        shopCart = new Cart();
+        shopCart = new CartCtrl();
 
         if (e.CommandName == "AddItemOne")
         {
@@ -182,9 +179,10 @@ public partial class CartView : System.Web.UI.Page
 
     #endregion
 
+    #region 清空购物车
     protected void ibClearCart_Click(object sender, ImageClickEventArgs e)
     {
-        shopCart = new Cart();
+        shopCart = new CartCtrl();
         if (shopCart != null) 
         {
             shopCart.RemoveCart();
@@ -193,10 +191,12 @@ public partial class CartView : System.Web.UI.Page
         }
         Response.Redirect("CartView.aspx");
     }
+    #endregion
 
+    #region 保存购物车
     protected void ibSaveCart_Click(object sender, ImageClickEventArgs e)
     {
-        shopCart = new Cart();
+        shopCart = new CartCtrl();
         Boolean validation = true;
         foreach (GridViewRow row in gvItems.Rows)
         {
@@ -228,4 +228,5 @@ public partial class CartView : System.Web.UI.Page
         }
         GvSourceBind();
     }
+    #endregion
 }
