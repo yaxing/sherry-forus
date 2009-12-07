@@ -7,40 +7,44 @@ using System.Collections.Generic;
 using System.Text;
 using System.Web;
 using System.Xml;
+using Entity;
 
 namespace BLL
 {
 
-    #region 购物车类
-    public class Cart
+    #region 购物车控制类
+    public class CartCtrl
     {
-        private Hashtable dic;
-        private String userName;
-        
+        //curCart:购物车实体
+        //Info: 购物车项实体
+        ShopCart curCart;
+        ItemEntity Info;
+
         #region 构造购物车
-        public Cart()
+        public CartCtrl()
         {
             String cartValue = String.Empty;
-            dic = new Hashtable();//构造哈希表，作为购物车暂存空间
-            userName = HttpContext.Current.User.Identity.Name;
+            curCart = new ShopCart();
+            curCart.curDic = new Hashtable();//构造哈希表，作为购物车暂存空间
+            curCart.curUser = HttpContext.Current.User.Identity.Name;
             
+            //每次构造购物车将重新合并COOKIE与XML中ITEMS，构造一个新的HASHTABLE
+
             /*如果cookie购物车存在，读取cookie购物车至哈希表*/
             if (HttpContext.Current.Request.Cookies["Cart"] != null)
             {
-                //cartExsisted = true;
                 cartValue = HttpContext.Current.Request.Cookies["Cart"].Value;
-                ItemEntity Info;
                 String[] temp = cartValue.Split(new char[] { '@' }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (String item in temp)
                 {
                     String[] temp2 = item.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
                     Info = new ItemEntity(Convert.ToInt32(temp2[0]), temp2[1].ToString(), Convert.ToInt32(temp2[2]), Convert.ToInt32(temp2[3]));
-                    dic.Add(Info.id, Info);
+                    curCart.curDic.Add(Info.id, Info);
                 }
             }
 
             /*如果用户已登录，将相应XML购物车读取至哈希表*/
-            if (userName != null && userName.Length > 0)
+            if (curCart.curUser != null && curCart.curUser.Length > 0)
             {
                 String itemId = String.Empty;
                 String itemName = String.Empty;
@@ -50,7 +54,7 @@ namespace BLL
                 XmlDocument xmlD = new XmlDocument();
 
                 /*获取当前登录用户节点及其所有ITEM节点list*/
-                XmlElement xmlEle = GetUserNode(xmlD,userName);
+                XmlElement xmlEle = GetUserNode(xmlD,curCart.curUser);
 
                 if (xmlEle == null) 
                 {
@@ -69,22 +73,22 @@ namespace BLL
                     itemPrice = curItem.GetAttribute("itemPrice").ToString();
                     #endregion
 
-                    #region 将读取的ITEM至哈希表
+                    #region 将读取的ITEM写进哈希表
                     int id = Convert.ToInt32(itemId);
                     int number = Convert.ToInt32(itemNumber);
                     double price = Convert.ToDouble(itemPrice);
 
                     ItemEntity Info = new ItemEntity(id,itemName,number,price);
-                    if (dic.ContainsKey(Info.id))
+                    if (curCart.curDic.ContainsKey(Info.id))
                     {
-                        ItemEntity curNum = (ItemEntity)dic[Info.id];
-                        dic.Remove(Info.id);
+                        ItemEntity curNum = (ItemEntity)curCart.curDic[Info.id];
+                        curCart.curDic.Remove(Info.id);
                         Info.number = curNum.number + 1;
-                        dic.Add(Info.id, Info);
+                        curCart.curDic.Add(Info.id, Info);
                     }
                     else
                     {
-                        dic.Add(Info.id, Info);
+                        curCart.curDic.Add(Info.id, Info);
                     }
                     #endregion
                 }
@@ -96,21 +100,21 @@ namespace BLL
         public void Add(int proId)
         {
             ItemEntity Info = new ItemEntity(proId, "纪梵希感光皙颜粉底液", 1, 300);
-            if (dic.ContainsKey(Info.id))
+            if (curCart.curDic.ContainsKey(Info.id))
             {
-                ItemEntity curNum = (ItemEntity)dic[Info.id];
-                dic.Remove(Info.id);
+                ItemEntity curNum = (ItemEntity)curCart.curDic[Info.id];
+                curCart.curDic.Remove(Info.id);
                 Info.number = curNum.number + 1;
-                dic.Add(Info.id, Info);
+                curCart.curDic.Add(Info.id, Info);
             }
             else
             {
-                dic.Add(Info.id, Info);
+                curCart.curDic.Add(Info.id, Info);
             }
 
-            if (userName != null && userName.Length > 0) 
+            if (curCart.curUser != null && curCart.curUser.Length > 0) 
             {
-                WriteToXML(userName);
+                WriteToXML(curCart.curUser);
                 return;
             }
             SaveCookie();
@@ -120,9 +124,9 @@ namespace BLL
         #region 获取指定商品实体
         public ItemEntity GetItem(int ID)
         {
-            if (dic.ContainsKey(ID))
+            if (curCart.curDic.ContainsKey(ID))
             {
-                return (ItemEntity)dic[ID];
+                return (ItemEntity)curCart.curDic[ID];
             }
             return null;
         }
@@ -132,7 +136,7 @@ namespace BLL
         public IList<ItemEntity> GetList()
         {
             IList<ItemEntity> List = new List<ItemEntity>();
-            foreach (ItemEntity ie in dic.Values)
+            foreach (ItemEntity ie in curCart.curDic.Values)
             {
                 List.Add(ie);
             }
@@ -144,7 +148,7 @@ namespace BLL
         public int GetItemQuantity() 
         {
             int total = 0;
-            foreach (ItemEntity ie in dic.Values) 
+            foreach (ItemEntity ie in curCart.curDic.Values) 
             {
                 total += ie.number;
             }
@@ -155,14 +159,14 @@ namespace BLL
         #region 获取购物车内商品列表(ICollection)
         public ICollection GetItems() 
         {
-            return dic.Values;
+            return curCart.curDic.Values;
         }
         #endregion
 
         #region 获取商品总价格
         public double GetTotalPrice() {
             double total = 0.0;
-            foreach(ItemEntity e in dic.Values){
+            foreach(ItemEntity e in curCart.curDic.Values){
                 total += e.Number * e.Price;
             }
 
@@ -174,7 +178,7 @@ namespace BLL
         public String ShowTotalPrice()
         {
             double total = 0.0;
-            foreach (ItemEntity e in dic.Values)
+            foreach (ItemEntity e in curCart.curDic.Values)
             {
                 total += e.Number * e.Price;
             }
@@ -186,7 +190,7 @@ namespace BLL
         #region 获取当前商品项价格总计
         public double GetItemPrice(int ID) {
             double itemPrice = 0.0;
-            ItemEntity item = (ItemEntity)dic[ID];
+            ItemEntity item = (ItemEntity)curCart.curDic[ID];
             itemPrice = item.Number * item.Price;
             return itemPrice;
         }
@@ -195,14 +199,14 @@ namespace BLL
         #region 移除商品
         public void Remove(int ID)
         {
-            if (dic.ContainsKey(ID))
+            if (curCart.curDic.ContainsKey(ID))
             {
-                dic.Remove(ID);
+                curCart.curDic.Remove(ID);
             }
 
-            if (userName != null && userName.Length > 0)
+            if (curCart.curUser != null && curCart.curUser.Length > 0)
             {
-                WriteToXML(userName);
+                WriteToXML(curCart.curUser);
                 return;
             }
             SaveCookie();
@@ -213,13 +217,13 @@ namespace BLL
         public void RemoveCart()
         {
             String user = String.Empty;
-            dic.Clear();
+            curCart.curDic.Clear();
             SaveCookie();
             
-            if (userName!=null&&userName.Length>0) 
+            if (curCart.curUser!=null&&curCart.curUser.Length>0) 
             {
                 XmlDocument xmlD = new XmlDocument();
-                XmlElement e = GetUserNode(xmlD,userName);
+                XmlElement e = GetUserNode(xmlD,curCart.curUser);
                 e.ParentNode.RemoveChild((XmlNode)e);
                 try
                 {
@@ -239,16 +243,16 @@ namespace BLL
         #region 修改商品数量
         public void Edit(int ID, int Number)
         {
-            if (dic.ContainsKey(ID))
+            if (curCart.curDic.ContainsKey(ID))
             {
-                ItemEntity Info = (ItemEntity)dic[ID];
-                dic.Remove(ID);
+                ItemEntity Info = (ItemEntity)curCart.curDic[ID];
+                curCart.curDic.Remove(ID);
                 Info.number = Number;
-                dic.Add(ID, Info);
+                curCart.curDic.Add(ID, Info);
 
-                if (userName != null && userName.Length > 0)
+                if (curCart.curUser != null && curCart.curUser.Length > 0)
                 {
-                    WriteToXML(userName);
+                    WriteToXML(curCart.curUser);
                     return;
                 }
                 SaveCookie();
@@ -263,7 +267,7 @@ namespace BLL
             string s = string.Empty;
             ItemEntity Info;
             HttpCookie cookie;
-            foreach (ItemEntity item in dic.Values)
+            foreach (ItemEntity item in curCart.curDic.Values)
             {
                 Info = item;
                 s += Info.id.ToString() + "|" + Info.name + "|" + Info.number.ToString() + "|" + Info.price.ToString() + "@";
@@ -317,7 +321,7 @@ namespace BLL
             xmlEle.SetAttribute("TotalPrice", this.GetTotalPrice().ToString());
             xmlEle.SetAttribute("TotalNumber", this.GetItemQuantity().ToString());
 
-            foreach (ItemEntity item in dic.Values)
+            foreach (ItemEntity item in curCart.curDic.Values)
             {
                 Info = item;
                 proId = Info.id.ToString();
@@ -350,7 +354,7 @@ namespace BLL
             }
 
             /*购物车转存完毕后清除COOKIE购物车*/
-            dic.Clear();
+            curCart.curDic.Clear();
             SaveCookie();
 
             return true;
@@ -372,63 +376,11 @@ namespace BLL
                 HttpContext.Current.Response.Write("<script>alert('读取购物车失败！请重新操作！');history.go(-1);</script>");
             }
 
-            XmlElement xmlEle = (XmlElement)xmlD.SelectSingleNode("Users/User[@id='" + userName + "']");
+            XmlElement xmlEle = (XmlElement)xmlD.SelectSingleNode("Users/User[@id='" + curCart.curUser + "']");
             return xmlEle;
         }
 
         #endregion
-    }
-    #endregion
-
-    #region 商品信息类
-    public class ItemEntity
-    {
-        public int id;
-        public String name;
-        public int number;
-        public double price;
-
-        public ItemEntity(int id, String name, int number, double price) 
-        {
-            this.id = id;
-            this.name = name;
-            this.number = number;
-            this.price = price;
-        }
-
-        public int ID
-        {
-            get { return id; }
-            set { id = value; }
-        }
-
-        public String Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
-        public int Number
-        {
-            get { return number; }
-            set { number = value; }
-        }
-
-        public String ShowPrice
-        {
-            get { return String.Format("{0:C}",price); }
-        }
-
-        public double Price 
-        {
-            get { return price; }
-            set { price = value; }
-        }
-
-        public String CurItemTotalPrice 
-        {
-            get { return String.Format("{0:C}", price * number); }
-        }
     }
     #endregion
 
