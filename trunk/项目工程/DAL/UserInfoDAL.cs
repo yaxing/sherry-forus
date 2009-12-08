@@ -115,33 +115,33 @@ namespace DAL
 
         public bool ModiUserInfo(UserInfo user)
         {
-            string preSqlString = "Update userInfo Set userRealName = @userRealName , postAdd = @postAdd , postNum = @postNum , phoneNum = @phoneNum , "
-                                  + "userScore = @userScore , userLv = @userLv , userBirth = @userBirth , userGender = @userGender , userAge = @userAge , IDCardNum = @IDCardNum "
-                                  + "where userID = @userID";
+            string sqlString = "Update userInfo Set userRealName = @userRealName , postAdd = @postAdd , postNum = @postNum , phoneNum = @phoneNum , "
+                                  + "userBirth = @userBirth , userGender = @userGender , userAge = @userAge , IDCardNum = @IDCardNum "
+                                  + "where userID = @userID";//userScore = @userScore , userLv = @userLv , 
             SqlParameter[] pt = new SqlParameter[] { 
-                                new SqlParameter("@userID", SqlDbType.UniqueIdentifier),
                                 new SqlParameter("@userRealName",SqlDbType.VarChar),
                                 new SqlParameter("@postAdd",SqlDbType.VarChar),
                                 new SqlParameter("@postNum",SqlDbType.VarChar),
                                 new SqlParameter("@phoneNum",SqlDbType.VarChar),
-                                new SqlParameter("@userScore",SqlDbType.Int),
-                                new SqlParameter("@userLv",SqlDbType.Int),
+                                //new SqlParameter("@userScore",SqlDbType.Int),
+                                //new SqlParameter("@userLv",SqlDbType.Int),
                                 new SqlParameter("@userBirth",SqlDbType.DateTime),
                                 new SqlParameter("@userGender",SqlDbType.Int),
                                 new SqlParameter("@userAge",SqlDbType.Int),
-                                new SqlParameter("@IDCardNum",SqlDbType.VarChar)
+                                new SqlParameter("@IDCardNum",SqlDbType.VarChar),
+                                new SqlParameter("@userID", SqlDbType.UniqueIdentifier)
                                 };
+            pt[8].Value = user.UserID;
             pt[0].Value = user.UserRealName;
-            pt[1].Value = user.UserRealName;
-            pt[2].Value = user.PostAdd;
-            pt[3].Value = user.PostNum;
-            pt[4].Value = user.PhoneNum;
-            pt[5].Value = user.UserScore;
-            pt[6].Value = user.UserLv;
-            pt[7].Value = user.UserBirth;
-            pt[8].Value = user.UserGender;
-            pt[9].Value = user.UserAge;
-            pt[10].Value = user.IDCardNum;
+            pt[1].Value = user.PostAdd;
+            pt[2].Value = user.PostNum;
+            pt[3].Value = user.PhoneNum;
+            //pt[5].Value = user.UserScore;
+            //pt[6].Value = user.UserLv;
+            pt[4].Value = user.UserBirth;
+            pt[5].Value = user.UserGender;
+            pt[6].Value = user.UserAge;
+            pt[7].Value = user.IDCardNum;
 
             try
             {
@@ -220,7 +220,7 @@ namespace DAL
 
         public bool SrchUserInfo(ref UserInfo user)
         {
-            sqlString = "select * from userInfo where id = @userID";
+            sqlString = "select * from userInfo where userID = @userID";
             SqlParameter[] pt = new SqlParameter[]{
                                 new SqlParameter("@userID", SqlDbType.UniqueIdentifier),
                                 };

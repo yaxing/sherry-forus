@@ -25,11 +25,9 @@
         </tr>
         <tr>
             <td align="right">
-                <asp:Label ID="EmailLabel" runat="server" AssociatedControlID="Email">电子邮件:</asp:Label>
-            </td>
+                <asp:Label ID="lblIDCardNum" runat="server" Text="身份证号:"></asp:Label>&nbsp;</td>
             <td>
-                <asp:TextBox ID="Email" runat="server"></asp:TextBox>                
-            </td>
+                <asp:TextBox ID="txtIDCardNum" runat="server"></asp:TextBox></td>
         </tr>
         <tr>
             <td align="right">
@@ -78,11 +76,9 @@
         </tr>
         <tr>
             <td align="right">
-                <asp:Label ID="lblIDCardNum" runat="server" Text="身份证号:"></asp:Label>
-            </td>
+                <asp:Label ID="EmailLabel" runat="server" AssociatedControlID="Email">电子邮件:</asp:Label>&nbsp;</td>
             <td>
-                <asp:TextBox ID="txtIDCardNum" runat="server"></asp:TextBox>
-            </td>
+                <asp:TextBox ID="Email" runat="server"></asp:TextBox></td>
         </tr>   
         <tr>
             <td colspan="2">
