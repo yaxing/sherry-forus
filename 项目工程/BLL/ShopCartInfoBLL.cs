@@ -8,6 +8,7 @@ using System.Text;
 using System.Web;
 using System.Xml;
 using Entity;
+using DAL;
 
 namespace BLL
 {
@@ -17,10 +18,23 @@ namespace BLL
     {
         //curCart:购物车实体
         //Info: 购物车项实体
-        ShopCart curCart;
-        ItemEntity Info;
+        private ShopCart curCart;
+        private ItemEntity Info;
+        private int curID;
 
-        #region 构造购物车
+        #region 构造函数-查询库存
+        public CartCtrl(int id) 
+        {
+            curID = id;
+        }
+        #endregion
+
+        #region 构造函数-购物车
+        /// <summary>
+        /// 构造购物车
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
         public CartCtrl()
         {
             String cartValue = String.Empty;
@@ -38,7 +52,7 @@ namespace BLL
                 foreach (String item in temp)
                 {
                     String[] temp2 = item.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
-                    Info = new ItemEntity(Convert.ToInt32(temp2[0]), temp2[1].ToString(), Convert.ToInt32(temp2[2]), Convert.ToInt32(temp2[3]));
+                    Info = new ItemEntity(Convert.ToInt32(temp2[0]), temp2[1].ToString(), Convert.ToInt32(temp2[2]), Convert.ToInt32(temp2[3]),temp2[4]);
                     curCart.curDic.Add(Info.id, Info);
                 }
             }
@@ -50,6 +64,7 @@ namespace BLL
                 String itemName = String.Empty;
                 String itemNumber = String.Empty;
                 String itemPrice = String.Empty;
+                String itemImgPath = String.Empty;
 
                 XmlDocument xmlD = new XmlDocument();
 
@@ -71,6 +86,7 @@ namespace BLL
                     itemName = curItem.GetAttribute("itemName").ToString();
                     itemNumber = curItem.GetAttribute("itemNumber").ToString();
                     itemPrice = curItem.GetAttribute("itemPrice").ToString();
+                    itemImgPath = curItem.GetAttribute("itemImgPath").ToString();
                     #endregion
 
                     #region 将读取的ITEM写进哈希表
@@ -78,7 +94,7 @@ namespace BLL
                     int number = Convert.ToInt32(itemNumber);
                     double price = Convert.ToDouble(itemPrice);
 
-                    ItemEntity Info = new ItemEntity(id,itemName,number,price);
+                    ItemEntity Info = new ItemEntity(id,itemName,number,price,itemImgPath);
                     if (curCart.curDic.ContainsKey(Info.id))
                     {
                         ItemEntity curNum = (ItemEntity)curCart.curDic[Info.id];
@@ -96,10 +112,26 @@ namespace BLL
         }
         #endregion
 
-        #region 添加商品
-        public void Add(int proId)
+        #region 查询库存
+        public bool curStorage(ref int curS)
         {
-            ItemEntity Info = new ItemEntity(proId, "纪梵希感光皙颜粉底液", 1, 300);
+            ShopCartInfoDAL sc = new ShopCartInfoDAL();
+            return sc.GetStorage(ref curS, curID);
+        }
+        #endregion
+
+        #region 添加商品
+        /// <summary>
+        /// 添加商品至hashtable
+        /// </summary>
+        /// <param name="proId">需要添加的商品ID</param>
+        /// <returns>bool值</returns>
+        public bool Add(int proId)
+        {
+            ShopCartInfoDAL shopData = new ShopCartInfoDAL();
+            ItemEntity Info = new ItemEntity(proId);
+            shopData.SetItemEntity(ref Info);
+
             if (curCart.curDic.ContainsKey(Info.id))
             {
                 ItemEntity curNum = (ItemEntity)curCart.curDic[Info.id];
@@ -112,16 +144,24 @@ namespace BLL
                 curCart.curDic.Add(Info.id, Info);
             }
 
-            if (curCart.curUser != null && curCart.curUser.Length > 0) 
+            if (curCart.curUser != null && curCart.curUser.Length > 0)
             {
-                WriteToXML(curCart.curUser);
-                return;
+                if (!WriteToXML(curCart.curUser))
+                {
+                    return false;
+                }
             }
             SaveCookie();
+            return true;
         }
         #endregion
 
         #region 获取指定商品实体
+        /// <summary>
+        /// 从hashtable中获取指定商品实体
+        /// </summary>
+        /// <param name="ID">商品ID</param>
+        /// <returns>商品实体对象</returns>
         public ItemEntity GetItem(int ID)
         {
             if (curCart.curDic.ContainsKey(ID))
@@ -261,7 +301,12 @@ namespace BLL
         #endregion
 
         #region 保存COOKIE购物车(未登录用户)
-        public void SaveCookie()
+        /// <summary>
+        /// 将HASHTABLE保存至cookie
+        /// </summary>
+        /// <param></param>
+        /// <returns>bool值</returns>
+        public Boolean SaveCookie()
         {
 
             string s = string.Empty;
@@ -270,7 +315,7 @@ namespace BLL
             foreach (ItemEntity item in curCart.curDic.Values)
             {
                 Info = item;
-                s += Info.id.ToString() + "|" + Info.name + "|" + Info.number.ToString() + "|" + Info.price.ToString() + "@";
+                s += Info.id.ToString() + "|" + Info.name + "|" + Info.number.ToString() + "|" + Info.price.ToString() + "|" + Info.ImgPath + "@";
             }
             if (HttpContext.Current.Request.Cookies["Cart"] != null)
             {
@@ -285,12 +330,17 @@ namespace BLL
             {
                 cookie.Expires = DateTime.Now.AddDays(30);
             }
-            else 
+            else
             {
                 cookie.Expires = DateTime.Now.AddDays(-1);
                 HttpContext.Current.Request.Cookies.Remove("Cart");
             }
-            HttpContext.Current.Response.Cookies.Add(cookie);
+            try
+            {
+                HttpContext.Current.Response.Cookies.Add(cookie);
+            }
+            catch (Exception e) { return false; }
+            return true;
         }
         #endregion
 
@@ -303,6 +353,7 @@ namespace BLL
             String name;
             String number;
             String price;
+            String imgPath;
             XmlDocument xmlD = new XmlDocument();
             
             XmlElement xmlEle = GetUserNode(xmlD,userName);
@@ -328,6 +379,7 @@ namespace BLL
                 name = Info.name;
                 number = Info.number.ToString();
                 price = Info.price.ToString();
+                imgPath = Info.ImgPath;
 
                 XmlElement xmlEle2 = xmlD.CreateElement("Item");
 
@@ -335,6 +387,7 @@ namespace BLL
                 xmlEle2.SetAttribute("itemName", name);
                 xmlEle2.SetAttribute("itemNumber", number);
                 xmlEle2.SetAttribute("itemPrice", price);
+                xmlEle2.SetAttribute("itemImgPath",imgPath);
                 xmlEle.AppendChild(xmlEle2);
             }
 
@@ -350,12 +403,8 @@ namespace BLL
             }
             catch (System.Exception e)
             {
-                HttpContext.Current.Response.Write("<script>alert('存储购物车失败！请重新操作！');history.go(-1);</script>");
+                return false;
             }
-
-            /*购物车转存完毕后清除COOKIE购物车*/
-            curCart.curDic.Clear();
-            SaveCookie();
 
             return true;
         }
