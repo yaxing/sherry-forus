@@ -10,10 +10,12 @@
     <form id="form1" runat="server">
     <div>
     
-        <asp:DataList ID="UserList" runat="server">
-        </asp:DataList>
-    
     </div>
+    <asp:GridView ID="UserList" runat="server" AutoGenerateColumns="False">
+        <Columns>
+            <asp:BoundField DataField="UserRealName" HeaderText="用户名" />
+        </Columns>
+    </asp:GridView>
     </form>
 </body>
 </html>
