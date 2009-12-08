@@ -98,17 +98,45 @@ namespace BLL
         /// <param name="userList"></param>
         /// <returns>用户个数</returns>
 
-        public int ShowUserInfo(ref IList<UserInfo> userList)
+        public int ShowUserInfo(ref IList<UserListInfo> userList)
         {
             string[] usernames = Roles.GetUsersInRole("普通用户");
             UserInfoDAL userDAL = new UserInfoDAL();
             UserInfo userInfo = null;
+            UserListInfo userListInfo = null;
             foreach(string username in usernames)
             {
                 MembershipUser user = Membership.GetUser(username);
+                userInfo = new UserInfo();
                 userInfo.UserID = (Guid)user.ProviderUserKey;
                 userDAL.SrchUserInfo(ref userInfo);
-                userList.Add(userInfo);
+                
+                userListInfo = new UserListInfo();
+                userListInfo.UserID = (Guid)user.ProviderUserKey;
+                userListInfo.UserName = username;
+                userListInfo.Score = userInfo.UserScore;
+                userListInfo.RegTime = user.CreationDate;
+                switch(userInfo.UserLv)
+                {
+                    case 0:
+                        userListInfo.Level = "普通会员";
+                        break;
+                    case 1:
+                        userListInfo.Level = "黄金会员";
+                        break;
+                }
+                switch(user.IsApproved)
+                {
+                    case true:
+                        userListInfo.State = "启用";
+                        break;
+                    case false:
+                        userListInfo.State = "冻结";
+                        break;
+                }
+                
+
+                userList.Add(userListInfo);
             }
 
             return userList.Count;

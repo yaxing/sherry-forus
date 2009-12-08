@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Reflection;
-using DAL;
+using BLL;
 using Entity;
 
 public partial class ListUser : System.Web.UI.Page
@@ -18,31 +18,27 @@ public partial class ListUser : System.Web.UI.Page
 
     private void BindSource()
     {
-        IList <UserInfo> userList = new List<UserInfo>();
-        UserInfoDAL userInfoDAL = new UserInfoDAL();
-        userInfoDAL.ShowUserInfo(ref userList);
+        IList <UserListInfo> userList = new List<UserListInfo>();
+        UserInfoBLL userInfoBLL = new UserInfoBLL();
+        userInfoBLL.ShowUserInfo(ref userList);
 
         DataTable dt = new DataTable("UserList");
-        DataColumn dc = new DataColumn("userID", System.Type.GetType("System.Int32"));
+        DataColumn dc = new DataColumn("UserID", System.Type.GetType("System.Guid"));
         dt.Columns.Add(dc);
-        dc = new DataColumn("UserRealName", System.Type.GetType("System.String"));
+        dc = new DataColumn("UserName", System.Type.GetType("System.String"));
         dt.Columns.Add(dc);
-        //dc = new DataColumn("userName", System.Type.GetType("System.String"));
-        //dt.Columns.Add(dc);
-        //dc = new DataColumn("userName", System.Type.GetType("System.String"));
-        //dt.Columns.Add(dc);
-        //dc = new DataColumn("userName", System.Type.GetType("System.String"));
-        //dt.Columns.Add(dc);
-        //dc = new DataColumn("userName", System.Type.GetType("System.String"));
-        //dt.Columns.Add(dc);
-        //dc = new DataColumn("userName", System.Type.GetType("System.String"));
-        //dt.Columns.Add(dc);
-        //dc = new DataColumn("userName", System.Type.GetType("System.String"));
-        //dt.Columns.Add(dc);
+        dc = new DataColumn("Score", System.Type.GetType("System.Int32"));
+        dt.Columns.Add(dc);
+        dc = new DataColumn("Level", System.Type.GetType("System.String"));
+        dt.Columns.Add(dc);
+        dc = new DataColumn("State", System.Type.GetType("System.String"));
+        dt.Columns.Add(dc);
+        dc = new DataColumn("RegTime", System.Type.GetType("System.DateTime"));
+        dt.Columns.Add(dc);
 
         DataRow dr = null;
         DataColumnCollection dcc = dt.Columns;
-        foreach (UserInfo userInfo in userList)
+        foreach (UserListInfo userInfo in userList)
         {
             Type type = userInfo.GetType();
             dr = dt.NewRow();
