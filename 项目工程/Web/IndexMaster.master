@@ -1,5 +1,7 @@
 <%@ Master Language="C#" AutoEventWireup="true" CodeFile="IndexMaster.master.cs"
     Inherits="IndexMaster" %>
+<%@ Register Assembly="System.Web.Extensions, Version=1.0.61025.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    Namespace="System.Web.UI" TagPrefix="asp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -14,8 +16,6 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <%--<asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
-        </asp:contentplaceholder>--%>
         <div id="wrap">
             <div id="bg" style="height: 710px">
                 <div id="header">
@@ -118,7 +118,7 @@
                                                                         <asp:CheckBox ID="RememberMe" runat="server" Text="下次记住我。" />
                                                                     </td>
                                                                     <td align="left">
-                                                                        <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="登录" ValidationGroup="ctl00$Login1" />
+                                                                        <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="登录" ValidationGroup="ctl00$Login1" OnClick="LoginButton_Click" />
                                                                     </td>
                                                                 </tr>
                                                                 <tr>

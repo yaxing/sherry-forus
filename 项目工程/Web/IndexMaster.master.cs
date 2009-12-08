@@ -15,4 +15,8 @@ public partial class IndexMaster : System.Web.UI.MasterPage
     {
         this.Page.Title = "Sherry化妆品有限公司";
     }
+    protected void LoginButton_Click(object sender, EventArgs e)
+    {
+        
+    }
 }

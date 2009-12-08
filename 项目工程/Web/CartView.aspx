@@ -10,13 +10,12 @@
                 <td>
                     您的购物车
                 </td>
-                <%--<td style="width:20px"></td>
-                <td style="width:90px">
-                    <asp:ImageButton ID="ibClearCart" runat="server" ImageUrl="images/clear.jpg" Width="70px" />
-                </td>
+            </tr>
+            <tr>
                 <td>
-                    <asp:ImageButton ID="ibSaveCart" runat="server" ImageUrl="images/save.jpg" Width="70px" />
-                </td>--%>
+                    <asp:Label ID="lbCookieWarning" runat="server" Font-Size="10px" Font-Names="微软雅黑"
+                        Text="！为了您能够方便的使用购物车功能，请将您的浏览器设置为允许cookie！"></asp:Label>
+                </td>
             </tr>
         </table>
     </div>
@@ -25,16 +24,16 @@
             OnRowCommand="gvItems_RowCommand" GridLines="None" AllowPaging="true" OnPageIndexChanging="gvItems_PageIndexChanging"
             OnRowCreated="gvItems_RowCreated">
             <EmptyDataTemplate>
-                <table width="100%" style="font-family:微软雅黑; font-size:12px">
+                <table width="100%" style="font-family: 微软雅黑; font-size: 12px">
                     <tr>
                         <td align="center" style="height: 80px">
-                           您还没有选购商品。<a href="index.aspx">浏览商品>></a>
+                            您还没有选购商品。<a href="index.aspx">浏览商品>></a>
                         </td>
                     </tr>
                 </table>
             </EmptyDataTemplate>
             <Columns>
-            <asp:TemplateField Visible="false">
+                <asp:TemplateField Visible="false">
                     <ItemTemplate>
                         <asp:Label ID="lbId" runat="server" Text='<%#Eval("ID") %>'></asp:Label>
                     </ItemTemplate>
@@ -51,7 +50,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:Image ID="itemImg" runat="server" Width="70px" ImageUrl="images/eg2.jpg" />
+                                    <asp:Image ID="itemImg" runat="server" Width="70px" ImageUrl='<%#Eval("ImgPath") %>' />
                                 </td>
                             </tr>
                         </table>
@@ -61,8 +60,6 @@
                     <ItemStyle Font-Names="微软雅黑" />
                     <ItemTemplate>
                         <table>
-                            <tr style="height: 10px">
-                            </tr>
                             <tr>
                                 <td align="center">
                                     <asp:LinkButton ForeColor="White" ID="itemInfo" Font-Underline="true" runat="server"
@@ -76,6 +73,8 @@
                                     <asp:LinkButton ForeColor="White" Font-Underline="true" ID="LinkButton1" runat="server"
                                         CommandName="DelFromCart" OnClientClick="return confirm('真的要从购物车中删除该商品吗？')" CommandArgument='<%# Eval("ID") %>'>移除此项</asp:LinkButton>
                                 </td>
+                            </tr>
+                            <tr style="height: 10px">
                             </tr>
                         </table>
                     </ItemTemplate>
@@ -123,10 +122,12 @@
         <table>
             <tr>
                 <td style="width: 90px">
-                    <asp:ImageButton ID="ibClearCart" runat="server" ImageUrl="images/clear.jpg" Width="70px" OnClick="ibClearCart_Click" />
+                    <asp:ImageButton ID="ibClearCart" runat="server" ImageUrl="images/clear.jpg" Width="70px"
+                        OnClick="ibClearCart_Click" />
                 </td>
                 <td>
-                    <asp:ImageButton ID="ibSaveCart" runat="server" ImageUrl="images/save.jpg" Width="70px" OnClick="ibSaveCart_Click" />
+                    <asp:ImageButton ID="ibSaveCart" runat="server" ImageUrl="images/save.jpg" Width="70px"
+                        OnClick="ibSaveCart_Click" />
                 </td>
             </tr>
         </table>
@@ -178,12 +179,14 @@
                 <td style="width: 20px">
                 </td>
                 <td>
-                    <asp:ImageButton ID="ibReturn" runat="server" Width="110px" ImageUrl="images/cartReturn.jpg" />
+                    <asp:ImageButton ID="ibReturn" runat="server" Width="110px" ImageUrl="images/cartReturn.jpg"
+                        OnClick="ibReturn_Click" />
                 </td>
                 <td style="width: 15px">
                 </td>
                 <td>
-                    <asp:ImageButton ID="ibPay" runat="server" Width="110px" ImageUrl="images/cart.jpg" />
+                    <asp:ImageButton ID="ibPay" runat="server" Width="110px" ImageUrl="images/cart.jpg"
+                        OnClick="ibPay_Click" />
                 </td>
             </tr>
         </table>
