@@ -53,7 +53,7 @@ namespace BLL
                 {
                     String[] temp2 = item.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
                     Info = new ItemEntity(Convert.ToInt32(temp2[0]), temp2[1].ToString(), Convert.ToInt32(temp2[2]), Convert.ToInt32(temp2[3]),temp2[4]);
-                    curCart.curDic.Add(Info.id, Info);
+                    curCart.curDic.Add(Info.ID, Info);
                 }
             }
 
@@ -95,16 +95,16 @@ namespace BLL
                     double price = Convert.ToDouble(itemPrice);
 
                     ItemEntity Info = new ItemEntity(id,itemName,number,price,itemImgPath);
-                    if (curCart.curDic.ContainsKey(Info.id))
+                    if (curCart.curDic.ContainsKey(Info.ID))
                     {
-                        ItemEntity curNum = (ItemEntity)curCart.curDic[Info.id];
-                        curCart.curDic.Remove(Info.id);
-                        Info.number = curNum.number + 1;
-                        curCart.curDic.Add(Info.id, Info);
+                        ItemEntity curNum = (ItemEntity)curCart.curDic[Info.ID];
+                        curCart.curDic.Remove(Info.ID);
+                        Info.Number = curNum.Number + 1;
+                        curCart.curDic.Add(Info.ID, Info);
                     }
                     else
                     {
-                        curCart.curDic.Add(Info.id, Info);
+                        curCart.curDic.Add(Info.ID, Info);
                     }
                     #endregion
                 }
@@ -132,16 +132,16 @@ namespace BLL
             ItemEntity Info = new ItemEntity(proId);
             shopData.SetItemEntity(ref Info);
 
-            if (curCart.curDic.ContainsKey(Info.id))
+            if (curCart.curDic.ContainsKey(Info.ID))
             {
-                ItemEntity curNum = (ItemEntity)curCart.curDic[Info.id];
-                curCart.curDic.Remove(Info.id);
-                Info.number = curNum.number + 1;
-                curCart.curDic.Add(Info.id, Info);
+                ItemEntity curNum = (ItemEntity)curCart.curDic[Info.ID];
+                curCart.curDic.Remove(Info.ID);
+                Info.Number = curNum.Number + 1;
+                curCart.curDic.Add(Info.ID, Info);
             }
             else
             {
-                curCart.curDic.Add(Info.id, Info);
+                curCart.curDic.Add(Info.ID, Info);
             }
 
             if (curCart.curUser != null && curCart.curUser.Length > 0)
@@ -190,7 +190,7 @@ namespace BLL
             int total = 0;
             foreach (ItemEntity ie in curCart.curDic.Values) 
             {
-                total += ie.number;
+                total += ie.Number;
             }
             return total;
         }
@@ -287,7 +287,7 @@ namespace BLL
             {
                 ItemEntity Info = (ItemEntity)curCart.curDic[ID];
                 curCart.curDic.Remove(ID);
-                Info.number = Number;
+                Info.Number = Number;
                 curCart.curDic.Add(ID, Info);
 
                 if (curCart.curUser != null && curCart.curUser.Length > 0)
@@ -315,7 +315,7 @@ namespace BLL
             foreach (ItemEntity item in curCart.curDic.Values)
             {
                 Info = item;
-                s += Info.id.ToString() + "|" + Info.name + "|" + Info.number.ToString() + "|" + Info.price.ToString() + "|" + Info.ImgPath + "@";
+                s += Info.ID.ToString() + "|" + Info.Name + "|" + Info.Number.ToString() + "|" + Info.Price.ToString() + "|" + Info.ImgPath + "@";
             }
             if (HttpContext.Current.Request.Cookies["Cart"] != null)
             {
@@ -375,10 +375,10 @@ namespace BLL
             foreach (ItemEntity item in curCart.curDic.Values)
             {
                 Info = item;
-                proId = Info.id.ToString();
-                name = Info.name;
-                number = Info.number.ToString();
-                price = Info.price.ToString();
+                proId = Info.ID.ToString();
+                name = Info.Name;
+                number = Info.Number.ToString();
+                price = Info.Price.ToString();
                 imgPath = Info.ImgPath;
 
                 XmlElement xmlEle2 = xmlD.CreateElement("Item");
