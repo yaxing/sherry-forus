@@ -146,10 +146,12 @@ namespace BLL
 
             if (curCart.curUser != null && curCart.curUser.Length > 0)
             {
-                if (!WriteToXML(curCart.curUser))
+                if (WriteToXML(curCart.curUser))
                 {
-                    return false;
+                    return true;
                 }
+                else
+                    return false;
             }
             SaveCookie();
             return true;
