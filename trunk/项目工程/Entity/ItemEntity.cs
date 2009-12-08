@@ -10,18 +10,31 @@ namespace Entity
     #region 商品信息实体
     public class ItemEntity
     {
-        public int id;
-        public String name;
-        public int number;
-        public double price;
+        private int id;
+        private String name = String.Empty;
+        private int number;
+        private double price;
+        private String imgPath = String.Empty;
 
-        public ItemEntity(int id, String name, int number, double price)
+        public ItemEntity(int id) 
+        {
+            this.id = id;
+        }
+
+        public ItemEntity(int id, String name, int number, double price, String imgPath)
         {
             this.id = id;
             this.name = name;
             this.number = number;
             this.price = price;
+            this.imgPath = imgPath;
         }
+
+        public String ImgPath 
+        {
+            get { return imgPath;}
+            set { imgPath = value;}
+        } 
 
         public int ID
         {
