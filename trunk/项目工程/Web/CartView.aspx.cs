@@ -18,11 +18,45 @@ public partial class CartView : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
+        
+       if (!IsPostBack)
         {
+            lbCookieWarning.Visible = false;
+            if (!TestCookie())
+            {
+                lbCookieWarning.Visible = true;
+            }
             GvSourceBind();
         }
     }
+
+    #region 检测浏览器是否允许cookie
+    /// <summary>
+    /// 构造一个测试cookie，检测是否能够正确写入
+    /// </summary>
+    /// <param></param>
+    /// <returns>bool值</returns>
+    private bool TestCookie() 
+    {
+        HttpCookie testCookie = new HttpCookie("test");
+        testCookie.Value = "Web is testing the brower's cookie setting!";
+        try
+        {
+            testCookie.Expires = DateTime.Now.AddDays(1);
+            HttpContext.Current.Response.Cookies.Add(testCookie);
+        }
+        catch (Exception e) 
+        {
+            return false;
+        }
+        if (Request.Cookies["test"]!=null) 
+        {
+            Response.Cookies["test"].Expires = DateTime.Now.AddDays(-1);
+            return true;
+        }
+        return false;
+    }
+    #endregion
 
     #region 绑定数据
     protected void GvSourceBind() 
@@ -37,9 +71,12 @@ public partial class CartView : System.Web.UI.Page
             if (HttpContext.Current.Request.Cookies["Cart"] != null)
             {
                 shopCart.WriteToXML(userName);
+                /*购物车转存完毕后清除COOKIE购物车*/
+                Response.Cookies["Cart"].Expires = DateTime.Now.AddDays(-1);
             }
         }
         #endregion
+
             gvItems.AllowPaging = true;
             gvItems.PageSize = 3;
             gvItems.DataSource = shopCart.GetItems();
@@ -197,6 +234,7 @@ public partial class CartView : System.Web.UI.Page
     protected void ibSaveCart_Click(object sender, ImageClickEventArgs e)
     {
         shopCart = new CartCtrl();
+       
         Boolean validation = true;
         foreach (GridViewRow row in gvItems.Rows)
         {
@@ -204,11 +242,27 @@ public partial class CartView : System.Web.UI.Page
             TextBox tbCtrl = (TextBox)row.FindControl("tbNumber");
             int id = Convert.ToInt32(lbCtrl.Text);
             int quantity = Convert.ToInt32(tbCtrl.Text);
+
+            int s = 0;
+            CartCtrl getStorage = new CartCtrl(id);
+            bool flagStorage = getStorage.curStorage(ref s);
+            
             if (quantity == 0)
             {
                 shopCart.Remove(id);
             }
             else if (quantity < 0)
+            {
+                validation = false;
+            }
+            else if (flagStorage) 
+            {
+                if (s < quantity) 
+                {
+                    validation = false;
+                }
+            }
+            else if (!flagStorage) 
             {
                 validation = false;
             }
@@ -224,9 +278,17 @@ public partial class CartView : System.Web.UI.Page
         }
         else 
         {
-            Response.Write("<script>alert('保存失败！商品数量输入错误！');</script>");
+            Response.Write("<script>alert('保存失败！商品数量输入错误！');location.href('CartView.aspx');</script>");
         }
         GvSourceBind();
     }
     #endregion
+    protected void ibReturn_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("Index.aspx");
+    }
+    protected void ibPay_Click(object sender, ImageClickEventArgs e)
+    {
+
+    }
 }

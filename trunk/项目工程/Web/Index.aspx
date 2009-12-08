@@ -82,57 +82,57 @@
                     <td style="width: 10px">
                     </td>
                     <td>
-                        <a href="ProductInfo.aspx?ID=1"><img style="width: 80px; height: 80px" src="images/eg2.jpg" /></a>
+                        <a href="ProductInfo.aspx?ID=6"><img style="width: 80px; height: 80px" src="images/eg2.jpg" /></a>
                     </td>
                     <td style="width: 10px">
                     </td>
                     <td>
-                        <a href="ProductInfo.aspx?ID=1">
+                        <a href="ProductInfo.aspx?ID=6">
                             <p>
                                 纪梵希感光皙颜粉底液</p>
                         </a>
                         <p>
                             &nbsp;</p>
                         <p style="font-size: 12px;">
-                            肌肤的“隐形修正液” 纪梵希感光皙颜粉底...<a href="#">>>查看详情</a></p>
+                            肌肤的“隐形修正液” 纪梵希感光皙颜粉底...<a href="ProductInfo.aspx?ID=6">>>查看详情</a></p>
                     </td>
                 </tr>
                 <tr>
                     <td style="width: 10px">
                     </td>
                     <td>
-                        <a href="#"><img style="width: 80px; height: 80px" src="images/eg1.jpg" /></a>
+                        <a href="ProductInfo.aspx?ID=5"><img style="width: 80px; height: 80px" src="images/eg1.jpg" /></a>
                     </td>
                     <td style="width: 10px">
                     </td>
                     <td>
-                        <a href="ProductInfo.aspx?ID=2">
+                        <a href="ProductInfo.aspx?ID=5">
                             <p>
                                 纪梵希感光皙颜粉底液1</p>
                         </a>
                         <p>
                             &nbsp;</p>
                         <p style="font-size: 12px;">
-                            肌肤的“隐形修正液” 纪梵希感光皙颜粉底...<a href="ProductInfo.aspx?ID=1">>>查看详情</a></p>
+                            肌肤的“隐形修正液” 纪梵希感光皙颜粉底...<a href="ProductInfo.aspx?ID=5">>>查看详情</a></p>
                     </td>
                 </tr>
                 <tr>
                     <td style="width: 10px">
                     </td>
                     <td>
-                        <a href="#"><img style="width: 80px; height: 80px" src="images/eg6.jpg" /></a>
+                        <a href="ProductInfo.aspx?ID=9"><img style="width: 80px; height: 80px" src="images/eg6.jpg" /></a>
                     </td>
                     <td style="width: 10px">
                     </td>
                     <td>
-                        <a href="ProductInfo.aspx?ID=3">
+                        <a href="ProductInfo.aspx?ID=9">
                             <p>
                                 纪梵希感光皙颜粉底液2</p>
                         </a>
                         <p>
                             &nbsp;</p>
                         <p style="font-size: 12px;">
-                            肌肤的“隐形修正液” 纪梵希感光皙颜粉底...<a href="#">>>查看详情</a></p>
+                            肌肤的“隐形修正液” 纪梵希感光皙颜粉底...<a href="ProductInfo.aspx?ID=9">>>查看详情</a></p>
                     </td>
                 </tr>
                 <tr>
