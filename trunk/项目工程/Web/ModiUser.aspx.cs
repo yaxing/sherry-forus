@@ -47,7 +47,6 @@ public partial class ModiUser : System.Web.UI.Page
     }
     protected void submit_Click(object sender, EventArgs e)
     {
-
         string userName = HttpContext.Current.User.Identity.Name;
         UserInfo userInfo = new UserInfo();
         MembershipUser user = Membership.GetUser(userName);
@@ -69,10 +68,12 @@ public partial class ModiUser : System.Web.UI.Page
         if(userInfoDAL.ModiUserInfo(userInfo))
         {
             //操作成功
+            Response.Write("<script language='javascript'>alert('用户"+userName+"信息已修改。');</script>");
         }
         else
         {
             //操作失败
+            Response.Write("<script language='javascript'>alert('数据操作问题，请重试。');</script>");
         }
     }
 }

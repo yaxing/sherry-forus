@@ -12,7 +12,7 @@
                         <table border="0" width="500">
                             <tr style="width:250px">
                                 <td align="center" colspan="3">
-                                    注册新帐户</td>
+                                    <font face="微软雅黑">注册新帐户</font></td>
                             </tr>
                             <tr>
                                 <td colspan="2">
