@@ -195,13 +195,13 @@ public partial class CartView : System.Web.UI.Page
 
             if (shopCart != null)
             {
-                shopCart.Edit(Convert.ToInt32(index), shopCart.GetItem(Convert.ToInt32(index)).number + 1);
+                shopCart.Edit(Convert.ToInt32(index), shopCart.GetItem(Convert.ToInt32(index)).Number + 1);
             }
         }
         else if (e.CommandName == "DelItemOne")
         {
 
-            shopCart.Edit(Convert.ToInt32(index), shopCart.GetItem(Convert.ToInt32(index)).number - 1);
+            shopCart.Edit(Convert.ToInt32(index), shopCart.GetItem(Convert.ToInt32(index)).Number - 1);
         }
         else if (e.CommandName == "DelFromCart")
         {
@@ -257,9 +257,13 @@ public partial class CartView : System.Web.UI.Page
             }
             else if (flagStorage) 
             {
-                if (s < quantity) 
+                if (s < quantity)
                 {
                     validation = false;
+                }
+                else 
+                {
+                    shopCart.Edit(id, quantity);
                 }
             }
             else if (!flagStorage) 
