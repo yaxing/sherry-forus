@@ -1,15 +1,8 @@
-Ôªø<%@ Page Language="C#" AutoEventWireup="true" CodeFile="GetPassword.aspx.cs" Inherits="GetPassword" %>
+<%@ Page Language="C#" MasterPageFile="~/IndexMaster.master" AutoEventWireup="true" CodeFile="GetPassword.aspx.cs" Inherits="GetPassword" Title="Untitled Page" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="contentHolder" Runat="Server">
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>Êó†Ê†áÈ¢òÈ°µ</title>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-    
+ <div class="main float-l" style="width:600px;">
+        <div style="margin-left: 30%">
         <asp:PasswordRecovery ID="PasswordRecovery1" runat="server">
             <QuestionTemplate>
                 <table border="0" cellpadding="1" cellspacing="0" 
@@ -23,41 +16,52 @@
                                 </tr>
                                 <tr>
                                     <td align="center" colspan="2">
-                                        ËØ∑ËæìÂÖ•ÂØÜÁ†ÅÊèêÁ§∫ÈóÆÈ¢òÁ≠îÊ°à</td>
-                                </tr>
-                                <tr>
-                                    <td align="right">
-                                        Áî®Êà∑Âêç:</td>
-                                    <td>
-                                        <asp:Literal ID="UserName" runat="server"></asp:Literal>
+                                        ’“ªÿƒ˙µƒ√‹¬Î£∫µ⁄∂˛≤Ω--> ‰»Îƒ˙<font color="blue">◊¢≤· ±</font> ‰»Îµƒ√‹¬ÎÃ· æŒ Ã‚<font color="blue">¥∞∏</font>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td align="right">
-                                        ÈóÆÈ¢ò:</td>
+                                    <td align="center" colspan="2">
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td align="center" colspan="2" style="height: 17px">
+                                       <font color="blue"><asp:Literal ID="UserName" runat="server"></asp:Literal></font>ƒ˙∫√£°
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" colspan="2">
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td align="left" style="width: 102px">
+                                        ƒ˙…Ë∂®µƒŒ Ã‚Œ™:</td>
                                     <td>
                                         <asp:Literal ID="Question" runat="server"></asp:Literal>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td align="right">
-                                        <asp:Label ID="AnswerLabel" runat="server" AssociatedControlID="Answer">Á≠îÊ°à:</asp:Label>
+                                    <td align="center" colspan="2">
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td align="left" style="width: 102px">
+                                        <asp:Label ID="AnswerLabel" runat="server" AssociatedControlID="Answer" Height="15px" Width="146px">«Î ‰»Îƒ˙µƒªÿ¥:</asp:Label>
                                     </td>
                                     <td>
                                         <asp:TextBox ID="Answer" runat="server"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="AnswerRequired" runat="server" 
-                                            ControlToValidate="Answer" ErrorMessage="ÈúÄË¶ÅÁ≠îÊ°à„ÄÇ" ToolTip="ÈúÄË¶ÅÁ≠îÊ°à„ÄÇ" 
+                                            ControlToValidate="Answer" ErrorMessage="–Ë“™¥∞∏°£" ToolTip="–Ë“™¥∞∏°£" 
                                             ValidationGroup="PasswordRecovery1">*</asp:RequiredFieldValidator>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td align="center" colspan="2" style="color:Red;">
-                                        <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
+                                        <font color="white"><asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal></font>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td align="right" colspan="2">
-                                        <asp:Button ID="SubmitButton" runat="server" CommandName="Submit" Text="Êèê‰∫§" 
+                                    <td align="center" colspan="2" style="height: 24px">
+                                        <asp:Button ID="SubmitButton" runat="server" CommandName="Submit" Text="Ã·Ωª" 
                                             ValidationGroup="PasswordRecovery1" />
                                     </td>
                                 </tr>
@@ -73,32 +77,46 @@
                         <td>
                             <table border="0" cellpadding="0">
                                 <tr>
+                                <td align="center" colspan="2">
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                <td align="center" colspan="2">
+                                        ’“ªÿƒ˙µƒ√‹¬Î£∫µ⁄“ª≤Ω--> ‰»Îƒ˙<font color="blue">◊¢≤· ±</font> ‰»Îµƒ<font color="blue">”√ªß√˚</font>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td align="center" colspan="2">
                                         &nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td align="center" colspan="2">
-                                        ËØ∑ËæìÂÖ•ÊÇ®ÁöÑÁî®Êà∑Âêç</td>
+                                <td align="center" colspan="2">
+                                        «Î ‰»Îƒ˙µƒ<font color="blue">”√ªß√˚</font>£¨“‘±„Œ“√«ªÒ»°ƒ˙µƒ◊¢≤·–≈œ¢°£
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td align="right">
-                                        <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Áî®Êà∑Âêç:</asp:Label>
+                                    <td align="center" colspan="2">
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td align="left" style="width: 66px">
+                                        <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">”√ªß√˚:</asp:Label>
                                     </td>
                                     <td>
                                         <asp:TextBox ID="UserName" runat="server"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" 
-                                            ControlToValidate="UserName" ErrorMessage="ÂøÖÈ°ªÂ°´ÂÜô‚ÄúÁî®Êà∑Âêç‚Äù„ÄÇ" ToolTip="ÂøÖÈ°ªÂ°´ÂÜô‚ÄúÁî®Êà∑Âêç‚Äù„ÄÇ" 
+                                            ControlToValidate="UserName" ErrorMessage="±ÿ–ÎÃÓ–¥°∞”√ªß√˚°±°£" ToolTip="±ÿ–ÎÃÓ–¥°∞”√ªß√˚°±°£" 
                                             ValidationGroup="PasswordRecovery1">*</asp:RequiredFieldValidator>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td align="center" colspan="2" style="color:Red;">
-                                        <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
+                                        <font color="white"><asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal></font>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td align="right" colspan="2">
-                                        <asp:Button ID="SubmitButton" runat="server" CommandName="Submit" Text="Êèê‰∫§" 
+                                    <td align="center" colspan="2">
+                                        <asp:Button ID="SubmitButton" runat="server" CommandName="Submit" Text="Ã·Ωª" 
                                             ValidationGroup="PasswordRecovery1" />
                                     </td>
                                 </tr>
@@ -111,11 +129,42 @@
                 <table border="0" cellpadding="1" cellspacing="0" 
                     style="border-collapse:collapse;">
                     <tr>
-                        <td>
+                        <td style="height: 32px">
                             <table border="0" cellpadding="0">
                                 <tr>
+                                <td align="center" colspan="2">
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        ’“ªÿƒ˙µƒ√‹¬Î£∫<font color="blue">Ω·π˚</font>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td>
-                                        ÊÇ®ÁöÑÂØÜÁ†ÅÂ∑≤ÂèëÈÄÅÂà∞ÊÇ®ÁöÑÊ≥®ÂÜåÈÇÆÁÆ±ÔºåËØ∑Ê≥®ÊÑèÊü•Êî∂„ÄÇ</td>
+                                    &nbsp;
+                                    </td>
+                                    <td>
+                                    &nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        ƒ˙µƒ<font color="blue">√‹¬Î</font>“—∑¢ÀÕµΩƒ˙µƒ<font color="blue">◊¢≤·” œ‰</font>£¨«Î◊¢“‚≤È ’°£
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    &nbsp;
+                                    </td>
+                                    <td>
+                                    &nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                    <a href="Index.aspx">ªÿµΩ÷˜“≥£¨ºÃ–¯‰Ø¿¿>></a>
+                                    </td>
                                 </tr>
                             </table>
                         </td>
@@ -123,8 +172,8 @@
                 </table>
             </SuccessTemplate>
         </asp:PasswordRecovery>
-    
+        </div>
     </div>
-    </form>
-</body>
-</html>
+
+</asp:Content>
+
