@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web.Security;
 using DbCtrl;
 using Entity;
 
@@ -48,7 +49,7 @@ namespace DAL
             pt[3].Value = newuser.PostNum;
             pt[4].Value = newuser.PhoneNum;
             pt[5].Value = 0;
-            pt[6].Value = 1;
+            pt[6].Value = 0;
             pt[7].Value = newuser.UserBirth;
             pt[8].Value = newuser.UserGender;
             pt[9].Value = newuser.UserAge;
@@ -82,7 +83,7 @@ namespace DAL
 
         public bool DeleteUserInfo(Guid userID)////////////////数据字段需要更改
         {
-            sqlString = "delete from userInfo where id = @userID";
+            sqlString = "delete from userInfo where userID = @userID";
             SqlParameter[] pt = new SqlParameter[] { 
                                 new SqlParameter("@userID", SqlDbType.UniqueIdentifier)
                                 };
@@ -95,6 +96,15 @@ namespace DAL
                     if (dp.ExecuteNonQuery(sqlString, pt) == 0)
                         return false;
                 }
+            }
+            catch
+            {
+                return false;
+            }
+            MembershipUser user = Membership.GetUser(userID);
+            try
+            {
+                Membership.DeleteUser(user.UserName,true);
             }
             catch
             {
