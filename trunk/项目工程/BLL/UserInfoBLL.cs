@@ -54,7 +54,7 @@ namespace BLL
         #endregion
 
 
-        #region 删除用户
+        #region 删除用户(用户名)
 
         /// <summary>
         /// 删除用户
@@ -66,6 +66,21 @@ namespace BLL
         {
             MembershipUser user = Membership.GetUser(userName);
             Guid userID = (Guid)user.ProviderUserKey;
+            UserInfoDAL userDAL = new UserInfoDAL();
+            return userDAL.DeleteUserInfo(userID);
+        }
+        #endregion
+
+        #region 删除用户(id)
+
+        /// <summary>
+        /// 删除用户
+        /// </summary>
+        /// <param name="userID">用户ID</param>
+        /// <returns>bool</returns>
+
+        public bool DeleteUserInfo(Guid userID)
+        {
             UserInfoDAL userDAL = new UserInfoDAL();
             return userDAL.DeleteUserInfo(userID);
         }
