@@ -23,13 +23,13 @@ namespace BLL
         public bool AddWorkerInfo(WorkerInfo newuser)
         {
 
-            MembershipUser user = Membership.CreateUser(newuser.Name, newuser.Name, newuser.Name);
+            MembershipUser user = Membership.CreateUser(newuser.WorkerRealName, newuser.WorkerRealName, newuser.WorkerRealName);
 
             //------------------------此处用于添加用户的roles------------------------------//
-            Roles.AddUserToRole(newuser.Name, "工作人员");
+            Roles.AddUserToRole(newuser.WorkerRealName, "工作人员");
 
 
-            newuser.Id = (Guid)user.ProviderUserKey;
+            newuser.WorkerNum = (Guid)user.ProviderUserKey;
             if (user == null)
                 return false;
             else
@@ -57,12 +57,11 @@ namespace BLL
         public bool ModiWorkerInfo(WorkerInfo user)
         {
             WorkerInfoDAL userDAL = new WorkerInfoDAL();
-            MembershipUser muser = Membership.GetUser(user.Name);
-            user.Id = (Guid)muser.ProviderUserKey;
+            MembershipUser muser = Membership.GetUser(user.WorkerRealName);
+            user.WorkerNum = (Guid)muser.ProviderUserKey;
             return userDAL.ModiWorkerInfo(user);
         }
         #endregion
-
 
         #region 删除用户
 
@@ -93,9 +92,56 @@ namespace BLL
         public bool SrchComNetUserByEmail(ref WorkerInfo userInfo, string userName)
         {
             MembershipUser user = Membership.GetUser(userName);
-            userInfo.Id = (Guid)user.ProviderUserKey;
+            userInfo.WorkerNum = (Guid)user.ProviderUserKey;
             WorkerInfoDAL userDAL = new WorkerInfoDAL();
             return userDAL.SrchWorkerInfo(ref userInfo);
+        }
+
+        #endregion
+        
+        #region 查询店面负责人员信息
+
+        /// <summary>
+        /// 查询店面负责人员信息
+        /// </summary>
+        /// <param name="shopManager">工作人员实体对象</param>
+        /// <returns>操作成功返回true，否则返回false</returns>
+
+        public bool SrchShopManager(ref WorkerInfo shopManager)
+        {
+            WorkerInfoDAL workerInfoDAL = new WorkerInfoDAL();
+            return workerInfoDAL.SrchShopManager(ref shopManager);
+        }
+        #endregion
+
+        #region 选择店面送货人员
+
+        /// <summary>
+        /// 选择店面送货人员
+        /// </summary>
+        /// <param name="workerInfo">工作人员实体对象</param>
+        /// <returns>操作成功返回true，否则返回false</returns>
+
+        public bool SelectWorkerByShop(ref WorkerInfo workerInfo)
+        {
+            WorkerInfoDAL workerInfoDAL = new WorkerInfoDAL();
+            return workerInfoDAL.SelectWorkerByShop(ref workerInfo);
+        }
+
+        #endregion
+
+        #region 分配订单给某送货人员
+
+        /// <summary>
+        /// 分配订单给某送货人员
+        /// </summary>
+        /// <param name="workerInfo">工作人员实体对象</param>
+        /// <returns>操作成功返回true，否则返回false</returns>
+
+        public bool AssignOrder(WorkerInfo workerInfo)
+        {
+            WorkerInfoDAL workerInfoDAL = new WorkerInfoDAL();
+            return workerInfoDAL.AssignOrder(workerInfo);
         }
 
         #endregion
