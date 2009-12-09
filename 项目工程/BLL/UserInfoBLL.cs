@@ -71,6 +71,33 @@ namespace BLL
         }
         #endregion
 
+        #region 冻结用户
+
+        /// <summary>
+        /// 冻结用户
+        /// </summary>
+        /// <param name="userID>用户ID</param>
+        /// <returns>bool</returns>
+
+        public bool ModiUserLv(Guid userID)
+        {
+            MembershipUser user = Membership.GetUser(userID);
+            if (user.IsApproved == true)
+                user.IsApproved = false;
+            else
+                user.IsApproved = true;
+            try
+            {
+                Membership.UpdateUser(user);
+            }
+            catch
+            {
+            	return false;
+            }
+            return true;
+        }
+        #endregion
+
         #region 按用户名查询用户
 
         /// <summary>

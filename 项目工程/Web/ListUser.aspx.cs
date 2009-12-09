@@ -1,10 +1,18 @@
-﻿////编写者：李开林
+﻿////编写者：李开林、张翼鹏
 ////日  期：2009-12-4
 ////功  能：用户列表显示
 
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Configuration;
+using System.Collections;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
 using System.Reflection;
 using BLL;
 using Entity;
@@ -60,5 +68,27 @@ public partial class ListUser : System.Web.UI.Page
 
         UserList.DataSource = dt;
         UserList.DataBind();
+    }
+    protected void UserList_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
+    {
+        DataKey key = this.UserList.DataKeys[e.RowIndex];
+        Guid userID = (Guid)key[0];
+        Response.Write(userID.ToString());
+    }
+    protected void UserList_RowEditing(object sender, GridViewEditEventArgs e)
+    {
+        DataKey key = this.UserList.DataKeys[e.NewEditIndex];
+        Guid userID = (Guid)key[0];
+        UserInfoBLL userLvChange = new UserInfoBLL();
+
+        if (userLvChange.ModiUserLv(userID))
+        {
+            Response.Write("<script language='javascript'>alert('用户" + this.UserList.Rows[e.NewEditIndex].Cells[0].Text + "帐号状态调整成功。');</script>");
+            BindSource();
+        }
+        else
+        {
+            Response.Write("<script language='javascript'>alert('帐号状态变更失败。');</script>");
+        }
     }
 }
