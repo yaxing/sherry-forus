@@ -19,4 +19,12 @@ public partial class IndexMaster : System.Web.UI.MasterPage
     {
         
     }
+    protected void imgbCart_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("CartView.aspx");
+    }
+    protected void lbtCart_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("CartView.aspx");
+    }
 }
