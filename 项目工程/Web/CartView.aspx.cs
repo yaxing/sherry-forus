@@ -83,6 +83,14 @@ public partial class CartView : System.Web.UI.Page
             gvItems.DataBind();
             lbTotalPrice.Text = shopCart.ShowTotalPrice();
             lbTotalQuantity.Text = shopCart.GetItemQuantity().ToString();
+            if (shopCart.GetItemQuantity() == 0)
+            {
+                ibPay.Visible = false;
+            }
+            else 
+            {
+                ibPay.Visible = true;
+            }
     }
     #endregion
 
@@ -293,6 +301,6 @@ public partial class CartView : System.Web.UI.Page
     }
     protected void ibPay_Click(object sender, ImageClickEventArgs e)
     {
-
+        Response.Redirect("CheckOut.aspx");
     }
 }

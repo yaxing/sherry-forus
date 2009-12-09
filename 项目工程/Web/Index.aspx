@@ -9,9 +9,9 @@
             <script language="JavaScript" type="text/javascript">
 			var m_nPageInitTime = new Date();
 			var MainTopRoll = new xwzRollingImageTrans("img_MAIN_TOP_ROLL_DETAIL", "imgS_MAIN_TOP_ROLL_THUMBNAIL");
-						MainTopRoll.addItem("#","images/eg1.jpg");
-						MainTopRoll.addItem("#","images/eg6.jpg");
-						MainTopRoll.addItem("#","images/eg4.jpg");						
+						MainTopRoll.addItem("ProductInfo.aspx?ID=5","images/eg1.jpg");
+						MainTopRoll.addItem("ProductInfo.aspx?ID=6","images/eg6.jpg");
+						MainTopRoll.addItem("ProductInfo.aspx?ID=7","images/eg4.jpg");						
             </script>
 
             <div id="SlideMain">
