@@ -73,7 +73,17 @@ public partial class ListUser : System.Web.UI.Page
     {
         DataKey key = this.UserList.DataKeys[e.RowIndex];
         Guid userID = (Guid)key[0];
-        Response.Write(userID.ToString());
+        UserInfoBLL userInfoBLL = new UserInfoBLL();
+
+        if (userInfoBLL.DeleteUserInfo(userID))
+        {
+            Response.Write("<script language='javascript'>alert('用户" + this.UserList.Rows[e.RowIndex].Cells[0].Text + "帐号状态调整成功。');</script>");
+            BindSource();
+        }
+        else
+        {
+            Response.Write("<script language='javascript'>alert('帐号状态变更失败。');</script>");
+        }
     }
     protected void UserList_RowEditing(object sender, GridViewEditEventArgs e)
     {
