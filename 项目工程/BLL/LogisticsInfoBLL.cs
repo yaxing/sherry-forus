@@ -1,7 +1,8 @@
 ﻿////编写者：李开林
-////日  期：2009-11-25
+////日  期：2009-12-8
 ////功  能：物流管理部分的逻辑处理
 
+using DAL;
 using Entity;
 using InterFace;
 
@@ -22,8 +23,53 @@ namespace BLL
 
             switch (shippingMode)
             {
-                case 1:         //店面方式送货   
-                    SelectShop();
+                case 1:         //店面方式送货 
+                    {
+                        ShopInfo shopInfo = new ShopInfo();
+                        if(SelectShop(ref shopInfo))   //操作成功
+                        {
+                            //查询店面负责人信息
+                            WorkerInfo shopManager = new WorkerInfo();
+                            shopManager.ShopID = shopInfo.ShopID;
+                            if (!SrchShopManager(ref shopManager))
+                                return false;
+
+                            //选择合适的店面送货人员
+                            WorkerInfo workerInfo = new WorkerInfo();
+                            workerInfo.ShopID = shopInfo.ShopID;
+                            if (!SelectWorkerByShop(ref workerInfo))
+                                return false;
+
+                            //分配订单
+                            LogisticsInfo logisticsInfo = new LogisticsInfo();
+                            logisticsInfo.LogisticsType = 0;
+                            logisticsInfo.MainOrderID = 123;
+                            logisticsInfo.WorkerID = workerInfo.WorkerNum;
+                            if (!AddShippingInfo(logisticsInfo , workerInfo))
+                                return false;
+
+                            //发送邮件给店面负责人
+                            MailBLL mailBLL = new MailBLL();
+                            string tomail = shopManager.EmailAdd;
+                            string mailTitle = "新订单分配";
+                            string mailBody = "订单号为****的订单已经分配给您所在店面的工作人员："+workerInfo.WorkerRealName;
+                            if (!mailBLL.SendEmail(tomail, mailTitle, mailBody))
+                                return false;
+
+                            //发送邮件给店面送货人员
+                            tomail = workerInfo.EmailAdd;
+                            mailTitle = "新订单分配";
+                            mailBody = "订单号为****的订单已经分配给您，请及时处理";
+                            if (!mailBLL.SendEmail(tomail, mailTitle, mailBody))
+                                return false;
+
+                            //修改订单状态为正在送货
+                        }
+                        else                           //操作失败
+                        {
+                            return false;
+                        }
+                    }
                     break;
                 case 2:         //邮寄方式送货
                     break;
@@ -42,7 +88,9 @@ namespace BLL
 
         private int JudgeMode()
         {
-            int mode = 0;
+            int mode = 1;
+
+            //判断邮寄地址是否包含在店面负责的范围之内
 
             return mode;
         }
@@ -55,25 +103,47 @@ namespace BLL
         /// </summary>
         /// <returns>返回店面信息</returns>
 
-        private int SelectShop()
+        private bool SelectShop(ref ShopInfo shopInfo)
         {
-            return 0;
+            shopInfo.ShopAdd = "山东省";
+            ShopInfoBLL shopInfoBLL = new ShopInfoBLL();
+            return shopInfoBLL.SrchShopInfoByAdd(ref shopInfo);
         }
 
         #endregion
 
-        #region 发送邮件
+        #region 查询店面负责人员信息
 
         /// <summary>
-        /// 发送邮件方法
+        /// 查询店面负责人员信息
         /// </summary>
+        /// <param name="shopManager">工作人员实体对象</param>
         /// <returns>操作成功返回true，否则返回false</returns>
 
-        private bool SendEmail()
+        private bool SrchShopManager(ref WorkerInfo shopManager)
         {
-            return true;
+            WorkerInfoBLL workerInfoBLL = new WorkerInfoBLL();
+            return workerInfoBLL.SrchShopManager(ref shopManager);
         }
+
         #endregion
+
+        #region 选择店面送货人员
+
+        /// <summary>
+        /// 选择店面送货人员
+        /// </summary>
+        /// <param name="workerInfo">工作人员实体对象</param>
+        /// <returns>操作成功返回true，否则返回false</returns>
+
+        private bool SelectWorkerByShop(ref WorkerInfo workerInfo)
+        {
+            WorkerInfoBLL workerInfoBLL = new WorkerInfoBLL();
+            return workerInfoBLL.SelectWorkerByShop(ref workerInfo);
+        }
+
+        #endregion
+
 
         #region 查询送货信息
 
@@ -97,10 +167,19 @@ namespace BLL
         /// 登记送货信息
         /// </summary>
         /// <param name="logisticsInfo">送货信息实体对象</param>
+        /// <param name="workerInfo">送货人员实体对象</param>
         /// <returns>成功返回true，否则返回false</returns>
 
-        public bool AddShippingInfo(LogisticsInfo logisticsInfo)
+        private bool AddShippingInfo(LogisticsInfo logisticsInfo , WorkerInfo workerInfo)
         {
+            LogisticsInfoDAL logisticsInfoDAL = new LogisticsInfoDAL();
+            if (!logisticsInfoDAL.AddShippingInfo(logisticsInfo))
+                return false;
+            
+            WorkerInfoBLL workerInfoBLL = new WorkerInfoBLL();
+            if (!workerInfoBLL.AssignOrder(workerInfo))
+                return false;
+
             return true;
         }
         #endregion
