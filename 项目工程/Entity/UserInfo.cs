@@ -96,7 +96,7 @@ namespace Entity
    
         public string Province
         {
-           get{ reurn province;}
+           get{ return province;}
            set{province = value;}
         }
     }
