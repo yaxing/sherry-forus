@@ -7,10 +7,8 @@
     <title>Sherry化妆品有限公司</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
 
-    <script src="common.js" type="text/javascript"></script>
+    <script src="common.js" language="javascript" type="text/javascript"></script>
 
-    <style type="text/css">
-</style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -142,9 +140,11 @@
                                 <td>
                                     <asp:ImageButton ID="imgbCart" runat="server" ImageUrl="images/cartLogo.jpg" OnClick="imgbCart_Click" />
                                 </td>
-                                <td style="width:5px"></td>
+                                <td style="width: 5px">
+                                </td>
                                 <td>
-                                    <asp:LinkButton ID="lbtCart" runat="server" ForeColor="white" Font-Names="微软雅黑" Text="购物车" OnClick="lbtCart_Click" />
+                                    <asp:LinkButton ID="lbtCart" runat="server" ForeColor="white" Font-Names="微软雅黑" Text="购物车"
+                                        OnClick="lbtCart_Click" />
                                 </td>
                             </tr>
                         </table>

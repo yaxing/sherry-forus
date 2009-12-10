@@ -3,11 +3,11 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="contentHolder" runat="Server">
     <div style="position: relative; left: 130px; font-family: 微软雅黑; font-size: 15px;
-        font-weight: bold; border-bottom-style: solid; border-bottom-color: White; border-bottom-width: 3px;
+        font-weight: bold; border-bottom-style: solid; border-bottom-color: white; border-bottom-width: 3px;
         width: 350px">
         <table>
             <tr>
-                <td>
+                <td style="color:white">
                     您的购物车
                 </td>
             </tr>
@@ -40,7 +40,7 @@
                 </asp:TemplateField>
                 <asp:TemplateField>
                     <ItemStyle Width="80px" Font-Names="微软雅黑" />
-                    <HeaderStyle ForeColor="White" Font-Size="15px" />
+                    <HeaderStyle ForeColor="white" Font-Size="15px" />
                     <HeaderTemplate>
                         <font style="font-family: 微软雅黑; font-weight: bold">商品</font>
                     </HeaderTemplate>
@@ -62,7 +62,7 @@
                         <table>
                             <tr>
                                 <td align="center">
-                                    <asp:LinkButton ForeColor="White" ID="itemInfo" Font-Underline="true" runat="server"
+                                    <asp:LinkButton ForeColor="white" ID="itemInfo" Font-Underline="true" runat="server"
                                         CommandName="ShowInfo" CommandArgument='<%# Eval("ID") %>'><%#Eval("Name") %></asp:LinkButton>
                                 </td>
                             </tr>
@@ -70,7 +70,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:LinkButton ForeColor="White" Font-Underline="true" ID="LinkButton1" runat="server"
+                                    <asp:LinkButton ForeColor="white" Font-Underline="true" ID="LinkButton1" runat="server"
                                         CommandName="DelFromCart" OnClientClick="return confirm('真的要从购物车中删除该商品吗？')" CommandArgument='<%# Eval("ID") %>'>移除此项</asp:LinkButton>
                                 </td>
                             </tr>
@@ -81,7 +81,7 @@
                     <ItemStyle Width="200px" />
                 </asp:TemplateField>
                 <asp:TemplateField>
-                    <HeaderStyle ForeColor="White" Font-Size="15px" />
+                    <HeaderStyle ForeColor="white" Font-Size="15px" />
                     <ItemStyle HorizontalAlign="Center" Width="40px" Font-Names="微软雅黑" />
                     <HeaderTemplate>
                         | <font style="font-family: 微软雅黑; font-weight: bold">单价</font>
@@ -94,17 +94,17 @@
                 </asp:TemplateField>
                 <asp:TemplateField>
                     <ItemStyle HorizontalAlign="Center" Width="40px" Font-Names="微软雅黑" />
-                    <HeaderStyle ForeColor="White" Font-Size="15px" />
+                    <HeaderStyle ForeColor="white" Font-Size="15px" />
                     <HeaderTemplate>
                         | <font style="font-family: 微软雅黑; font-weight: bold">数量</font>
                     </HeaderTemplate>
                     <ItemTemplate>
-                        <asp:TextBox ID="tbNumber" Width="30px" runat="server" ForeColor="Black" Text='<%#Eval("Number") %>'></asp:TextBox>
+                        <asp:TextBox ID="tbNumber" Width="30px" runat="server" ForeColor="black" Text='<%#Eval("Number") %>'></asp:TextBox>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField>
                     <ItemStyle HorizontalAlign="Center" Width="40px" Font-Names="微软雅黑" />
-                    <HeaderStyle ForeColor="White" Font-Size="15px" />
+                    <HeaderStyle ForeColor="white" Font-Size="15px" />
                     <FooterStyle />
                     <HeaderTemplate>
                         | <font style="font-family: 微软雅黑; font-weight: bold">合计</font>
@@ -133,14 +133,14 @@
         </table>
     </div>
     <div style="position: relative; left: 720px; bottom: 180px; width: 270px; height: 200px;
-        border-style: solid; border-width: 1px; border-color: White; font-family: 微软雅黑">
+        border-style: solid; border-width: 1px; border-color: white; font-family: 微软雅黑">
         <table>
             <tr style="height: 30px">
             </tr>
             <tr>
                 <td style="width: 15px">
                 </td>
-                <td style="width: 180px; font-size: 15px">
+                <td style="width: 180px; font-size: 15px; color:white">
                     购物车小结：
                 </td>
                 <td style="width: 45px">
@@ -152,10 +152,10 @@
                 <td>
                 </td>
                 <td>
-                    <asp:Label ID="lbTotalQuantityTitle" runat="server" Text="商品总量："></asp:Label>
+                    <asp:Label ID="lbTotalQuantityTitle" ForeColor="white" runat="server" Text="商品总量："></asp:Label>
                 </td>
                 <td>
-                    <asp:Label ID="lbTotalQuantity" runat="server" Text=""></asp:Label>
+                    <asp:Label ID="lbTotalQuantity"  ForeColor="white" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr style="height: 10px">
@@ -164,10 +164,10 @@
                 <td>
                 </td>
                 <td>
-                    <asp:Label ID="lbTotalPriceTitle" runat="server" Text="价格总计："></asp:Label>
+                    <asp:Label ID="lbTotalPriceTitle"  ForeColor="white" runat="server" Text="价格总计："></asp:Label>
                 </td>
                 <td>
-                    <asp:Label ID="lbTotalPrice" runat="server" Text=""></asp:Label>
+                    <asp:Label ID="lbTotalPrice"  ForeColor="white" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr style="height: 50px">

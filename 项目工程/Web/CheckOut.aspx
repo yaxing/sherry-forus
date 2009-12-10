@@ -30,6 +30,14 @@
                             <asp:Label runat="server" ID="lbTitleNewAdd" Text="收货人地址：" />
                         </td>
                         <td>
+                            <asp:DropDownList ID="ddlUserProvince" runat="server">
+                                <asp:ListItem Text="[未选择]" Value="0" />
+                                <asp:ListItem Text="北京" Value="1"/>
+                                <asp:ListItem Text="上海" Value="2" />
+                                <asp:ListItem Text="山东"  Value="3"/>
+                                <asp:ListItem Text="云南" Value="4"/>
+                                <asp:ListItem Text="河北" Value="5"/>
+                            </asp:DropDownList>
                             <asp:TextBox runat="server" ID="tbNewAdd" Text="" />
                         </td>
                     </tr>
@@ -82,7 +90,7 @@
                         <td style="width: 200px">
                             <asp:Label Font-Bold="true" Text="请选择您的支付方式：" ID="lbChosePay" runat="server" Height="20px" />
                             <asp:RadioButtonList ID="rblPayMethods" runat="server" CellSpacing="10" RepeatLayout="Table">
-                                <asp:ListItem Value="1" Text="网上银行" Selected="True"/>
+                                <asp:ListItem Value="1" Text="网上银行" Selected="True" />
                                 <asp:ListItem Value="2" Text="银行/邮局汇款" />
                                 <asp:ListItem Value="3" Text="货到付款" />
                             </asp:RadioButtonList>
@@ -217,7 +225,7 @@
                             <asp:Label runat="server" ID="lbTitleAdd" Text="收货人地址：" />
                         </td>
                         <td>
-                            <asp:Label runat="server" ID="lbAdd" Text="" />
+                            <asp:Label runat="server" ID="lbProvince" Text=""/><asp:Label runat="server" ID="lbAdd" Text="" />
                         </td>
                     </tr>
                     <tr style="height: 10px">
@@ -306,17 +314,15 @@
                 </table>
                 <table>
                     <tr style="height: 15px;">
-                        <td style=" width:270px;  border-bottom-style: dotted; border-bottom-color: White;
-                        border-bottom-width: 1px">
+                        <td style="width: 270px; border-bottom-style: dotted; border-bottom-color: White;
+                            border-bottom-width: 1px">
                         </td>
-                        <td style=" border-bottom-style: dotted; border-bottom-color: White;
-                        border-bottom-width: 1px">
+                        <td style="border-bottom-style: dotted; border-bottom-color: White; border-bottom-width: 1px">
                         </td>
-                        <td style=" border-bottom-style: dotted; border-bottom-color: White;
-                        border-bottom-width: 1px">
-                        </td>                        
+                        <td style="border-bottom-style: dotted; border-bottom-color: White; border-bottom-width: 1px">
+                        </td>
                     </tr>
-                    <tr style="height:5px">
+                    <tr style="height: 5px">
                     </tr>
                     <tr>
                         <td align="right">
