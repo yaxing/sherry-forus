@@ -48,6 +48,7 @@ namespace DAL
             info.PostAdd = dt.Rows[0][2].ToString();
             info.PostNum = dt.Rows[0][3].ToString();
             info.PhoneNum = dt.Rows[0][4].ToString();
+            info.Province = dt.Rows[0][5].ToString();
 
             return true;
         }
@@ -57,19 +58,21 @@ namespace DAL
         public bool ChangeUserInfo(UserInfo info) 
         {
             DataTable dt = new DataTable();
-            sqlString = "update userInfo set userRealName=@userName, postAdd=@userAdd, postNum=@userZip, phoneNum=@userTel where userID=@userId";
+            sqlString = "update userInfo set userRealName=@userName, postAdd=@userAdd, postNum=@userZip, phoneNum=@userTel, province=@userProvince where userID=@userId";
             SqlParameter[] pt = new SqlParameter[] { 
                                 new SqlParameter("@userID",SqlDbType.UniqueIdentifier),
                                 new SqlParameter("@userName",SqlDbType.VarChar),
                                 new SqlParameter("@userAdd",SqlDbType.VarChar),
                                 new SqlParameter("@userZip",SqlDbType.VarChar),
                                 new SqlParameter("@userTel",SqlDbType.VarChar),
+                                new SqlParameter("@userProvince",SqlDbType.VarChar)
                                 };
             pt[0].Value = info.UserID;
             pt[1].Value = info.UserRealName;
             pt[2].Value = info.PostAdd;
             pt[3].Value = info.PostNum;
             pt[4].Value = info.PhoneNum;
+            pt[5].Value = info.Province;
             try
             {
                 using (dp = new DataProvider())
