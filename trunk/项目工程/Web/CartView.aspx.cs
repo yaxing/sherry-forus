@@ -1,4 +1,7 @@
-﻿using System;
+﻿////编写者：陈亚星
+////日  期：2009-12-03
+////功  能：购物车
+using System;
 using System.Data;
 using System.Configuration;
 using System.Collections;

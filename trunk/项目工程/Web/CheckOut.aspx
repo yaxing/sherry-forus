@@ -225,7 +225,7 @@
                             <asp:Label runat="server" ID="lbTitleAdd" Text="收货人地址：" />
                         </td>
                         <td>
-                            <asp:Label runat="server" ID="lbProvince" Text=""/><asp:Label runat="server" ID="lbAdd" Text="" />
+                            <asp:Label runat="server" Width="40px" ID="lbProvince" Text=""/><asp:Label runat="server" ID="lbAdd" Text="" />
                         </td>
                     </tr>
                     <tr style="height: 10px">
@@ -340,7 +340,7 @@
             </div>
         </asp:Panel>
         <div style="position: relative; left: 720px; bottom: 150px; width: 270px; height: 155px;
-            border-style: solid; border-width: 1px; border-color: White; font-family: 微软雅黑">
+            border-style: solid; border-width: 2px; border-color: White; font-family: 微软雅黑">
             <table>
                 <tr style="height: 30px">
                 </tr>

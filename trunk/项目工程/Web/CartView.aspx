@@ -133,7 +133,7 @@
         </table>
     </div>
     <div style="position: relative; left: 720px; bottom: 180px; width: 270px; height: 200px;
-        border-style: solid; border-width: 1px; border-color: white; font-family: 微软雅黑">
+        border-style:solid; border-width: 2px; border-color: white; font-family: 微软雅黑">
         <table>
             <tr style="height: 30px">
             </tr>

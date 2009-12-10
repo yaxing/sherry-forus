@@ -1,4 +1,7 @@
-﻿using System;
+﻿////编写者：陈亚星
+////日  期：2009-12-05
+////功  能：用户订单信息确认，订单生成
+using System;
 using System.Data;
 using System.Configuration;
 using System.Collections;
@@ -22,8 +25,7 @@ public partial class CheckOut : System.Web.UI.Page
         String userName = HttpContext.Current.User.Identity.Name.ToString();
         MembershipUser user = null;
         String userID = null;
-        String[] curUserInfo = new String[10];
-
+        UserInfo curUserInfo = new UserInfo();
         if (!IsPostBack)
         {
             if (userName != null && userName.Length > 0)
@@ -43,12 +45,12 @@ public partial class CheckOut : System.Web.UI.Page
                 checkOutCtrl = new CheckoutCtrl();
                 checkOutCtrl.StartCheckOut(ref curUserInfo);
 
-                lbName.Text = curUserInfo[0];
-                lbAdd.Text = curUserInfo[1];
-                lbZip.Text = curUserInfo[2];
-                lbTel.Text = curUserInfo[3];
-
+                lbName.Text = curUserInfo.UserRealName;
+                lbAdd.Text = curUserInfo.PostAdd;
+                lbZip.Text = curUserInfo.PostNum;
+                lbTel.Text = curUserInfo.PhoneNum;
                 lbPay.Text = rblPayMethods.SelectedItem.Text;
+                lbProvince.Text = curUserInfo.Province;
             }
             else
             {
@@ -65,15 +67,27 @@ public partial class CheckOut : System.Web.UI.Page
         pPayChange.Visible = false;
         pShippingConfirm.Visible = false;
 
-        String[] curUserInfo = new String[10];
+        UserInfo curUserInfo = new UserInfo();
 
         checkOutCtrl = new CheckoutCtrl();
         checkOutCtrl.StartCheckOut(ref curUserInfo);
 
-        tbNewName.Text = curUserInfo[0];
-        tbNewAdd.Text = curUserInfo[1];
-        tbNewZip.Text = curUserInfo[2];
-        tbNewTel.Text = curUserInfo[3];
+        tbNewName.Text = curUserInfo.UserRealName;
+        tbNewAdd.Text = curUserInfo.PostAdd;
+        tbNewZip.Text = curUserInfo.PostNum;
+        tbNewTel.Text = curUserInfo.PhoneNum;
+        //lbProvince.Text = curUserInfo.Province;
+
+        ddlUserProvince.SelectedItem.Selected = false;
+
+        foreach (ListItem lt in ddlUserProvince.Items)
+        {
+            if (lt.Text.Equals(curUserInfo.Province))
+            {
+                lt.Selected = true;
+                break;
+            }
+        } 
 
     }
     #endregion
@@ -94,31 +108,26 @@ public partial class CheckOut : System.Web.UI.Page
         //pAddChange.Visible = false;
         //pPayChange.Visible = false;
 
-        String[] curUserInfo = new String[10];
+        UserInfo userInfo = new UserInfo();
+        userInfo.UserRealName = tbNewName.Text;
+        userInfo.PostAdd = tbNewAdd.Text;
+        userInfo.PostNum = tbNewZip.Text;
+        userInfo.PhoneNum = tbNewTel.Text;
+        userInfo.Province = ddlUserProvince.SelectedItem.Text.ToString();
 
-        curUserInfo[0] = tbNewName.Text;
-        curUserInfo[1] = tbNewAdd.Text;
-        curUserInfo[2] = tbNewZip.Text;
-        curUserInfo[3] = tbNewTel.Text;
-
-        String province = String.Empty;
-
-        province = ddlUserProvince.SelectedValue.ToString();
-
-        if (province.Equals("0")) 
+        if (ddlUserProvince.SelectedValue.ToString().Equals("0")) 
         {
             Response.Write("<script>alert('请选择您所在省份！');history.go(-1);</script>");
             return;
         }
 
-        province = ddlUserProvince.SelectedItem.Text.ToString();
-
-        //lbProvince.Text = province; 
-
-        ddlUserProvince.Items[Convert.ToInt32(ddlUserProvince.SelectedValue.ToString())].Selected = true;
+        //ddlUserProvince.Items[Convert.ToInt32(ddlUserProvince.SelectedValue.ToString())].Selected = true;
 
         checkOutCtrl = new CheckoutCtrl();
-        checkOutCtrl.ChangeAdd(ref curUserInfo);
+        if (!checkOutCtrl.ChangeAdd(userInfo)) 
+        {
+            Response.Write("<script>alert('保存失败，请重新操作！');history.go(-1);</script>");
+        }
 
         Response.Redirect("CheckOut.aspx");
     }
