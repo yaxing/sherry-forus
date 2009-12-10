@@ -14,12 +14,13 @@ namespace BLL
 {
     public class CheckoutCtrl
     {
-        public CheckoutCtrl()
-        {
-
-        }
-
-        public bool StartCheckOut(ref String[] curUserInfo) 
+        #region 启动订单确认
+        /// <summary>
+        /// 启动订单确认流程，取出用户默认信息，操作成功返回true，失败返回false
+        /// </summary>
+        /// <param name="newInfo">用户实体</param>
+        /// <returns>bool值</returns>
+        public bool StartCheckOut(ref UserInfo curUserInfo) 
         {
             bool flag = true;
             CheckoutInfoDAL userData = new CheckoutInfoDAL();
@@ -31,25 +32,33 @@ namespace BLL
             {
                 return flag;
             }
-            curUserInfo[0] = userInfo.UserRealName.ToString();
-            curUserInfo[1] = userInfo.PostAdd.ToString();
-            curUserInfo[2] = userInfo.PostNum.ToString();
-            curUserInfo[3] = userInfo.PhoneNum.ToString();
+            curUserInfo.UserRealName = userInfo.UserRealName.ToString();
+            curUserInfo.PostAdd = userInfo.PostAdd.ToString();
+            curUserInfo.PostNum = userInfo.PostNum.ToString();
+            curUserInfo.PhoneNum = userInfo.PhoneNum.ToString();
+            curUserInfo.Province = userInfo.Province.ToString();
             return flag;
         }
+        #endregion
 
         #region 更新配送信息
-        public bool ChangeAdd(ref String[] newInfo) 
+        /// <summary>
+        /// 更新配送信息，操作成功返回true，失败返回false
+        /// </summary>
+        /// <param name="newInfo">用户实体</param>
+        /// <returns>bool值</returns>
+        public bool ChangeAdd(UserInfo newInfo) 
         {
             bool flag = true;
             CheckoutInfoDAL userData = new CheckoutInfoDAL();
             MembershipUser curUser = Membership.GetUser(HttpContext.Current.User.Identity.Name.ToString());
             UserInfo userInfo = new UserInfo();
             userInfo.UserID = (Guid)curUser.ProviderUserKey;
-            userInfo.UserRealName = newInfo[0];
-            userInfo.PostAdd = newInfo[1];
-            userInfo.PostNum = newInfo[2];
-            userInfo.PhoneNum = newInfo[3];
+            userInfo.UserRealName = newInfo.UserRealName;
+            userInfo.PostAdd = newInfo.PostAdd;
+            userInfo.PostNum = newInfo.PostNum;
+            userInfo.PhoneNum = newInfo.PhoneNum;
+            userInfo.Province = newInfo.Province;
             flag = userData.ChangeUserInfo(userInfo);
             if (!flag)
             {
