@@ -20,6 +20,7 @@ namespace Entity
         private int userGender;
         private int userAge;
         private string iDCardNum;
+        private string province;
 
         public Guid UserID
         {
@@ -91,6 +92,12 @@ namespace Entity
         {
             get { return iDCardNum; }
             set { iDCardNum = value; }
+        }
+   
+        public string Province
+        {
+           get{ reurn province;}
+           set{province = value;}
         }
     }
 }
