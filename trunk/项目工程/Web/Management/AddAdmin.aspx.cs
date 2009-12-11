@@ -11,7 +11,7 @@ using System.Web.UI.HtmlControls;
 using BLL;
 using Entity;
 
-public partial class Management_AdminCtrl : System.Web.UI.Page
+public partial class Management_AddAdmin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
