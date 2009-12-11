@@ -22,8 +22,9 @@ namespace BLL
 
         public bool AddUserInfo(UserInfo newuser)
         {
+            MembershipUser user = Membership.GetUser(newuser.UserID);
             //------------------------此处用于添加用户的roles------------------------------//
-            Roles.AddUserToRole(newuser.UserRealName, "普通用户");
+            Roles.AddUserToRole(user.UserName, "普通用户");
 
             UserInfoDAL userDAL = new UserInfoDAL();
             if (!userDAL.AddUserInfo(newuser))
