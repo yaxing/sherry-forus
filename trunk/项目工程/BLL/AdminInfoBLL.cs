@@ -13,7 +13,7 @@ using Entity;
 
 namespace BLL
 {
-    class AdminInfoBLL
+    public class AdminInfoBLL
     {
         #region 添加管理员
 
@@ -25,25 +25,16 @@ namespace BLL
 
         public bool AddAdmin(AdminInfo newadmin)
         {
-
-            MembershipUser admin = Membership.CreateUser(newadmin.AdminRealName, newadmin.AdminRealName, newadmin.AdminEmailAdd);
-
+            MembershipUser user = Membership.GetUser(newadmin.AdminID);
             //------------------------此处用于添加管理员的roles------------------------------//
-            Roles.AddUserToRole(newadmin.AdminRealName, "管理员");
+            Roles.AddUserToRole(user.UserName, "管理员");
 
-
-            newadmin.AdminID = (Guid)admin.ProviderUserKey;
-            if (admin == null)
-                return false;
-            else
+            AdminInfoDAL adminDAL = new AdminInfoDAL();
+            if (!adminDAL.AddAdmin(newadmin))
             {
-                AdminInfoDAL adminDAL = new AdminInfoDAL();
-                if (!adminDAL.AddAdmin(newadmin))
-                {
-                    ////////此处将membership中的数据删除
-                    Membership.DeleteUser(newadmin.AdminRealName);
-                    return false;
-                }
+                ////////此处将membership中的数据删除
+                Membership.DeleteUser(newadmin.AdminRealName);
+                return false;
             }
 
             return true;
