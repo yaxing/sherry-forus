@@ -13,7 +13,7 @@ using Entity;
 
 namespace BLL
 {
-    public class AdminInfoBLL
+    public class AdminInfoBLL:UserInfoBLL
     {
         #region 添加管理员
 
@@ -33,7 +33,7 @@ namespace BLL
             if (!adminDAL.AddAdmin(newadmin))
             {
                 ////////此处将membership中的数据删除
-                Membership.DeleteUser(newadmin.AdminRealName);
+                Membership.DeleteUser(user.UserName);
                 return false;
             }
 
@@ -58,8 +58,7 @@ namespace BLL
         }
         #endregion
 
-
-        #region 删除管理员
+        #region 删除管理员(用户名)
 
         /// <summary>
         /// 删除管理员
@@ -73,6 +72,34 @@ namespace BLL
             Guid adminID = (Guid)user.ProviderUserKey;
             AdminInfoDAL adminDAL = new AdminInfoDAL();
             return adminDAL.DeleteAdmin(adminID);
+        }
+        #endregion
+
+        #region 删除管理员(ID)
+
+        /// <summary>
+        /// 删除管理员
+        /// </summary>
+        /// <param name="adminID">管理员用户名</param>
+        /// <returns>bool</returns>
+
+        public bool DeleteAdmin(Guid adminID)
+        {
+            AdminInfoDAL adminDAL = new AdminInfoDAL();
+            try
+            {
+                if (!adminDAL.DeleteAdmin(adminID))
+                {
+                    return false;
+                }
+                MembershipUser user = Membership.GetUser(adminID);
+                Membership.DeleteUser(user.UserName,true);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
         }
         #endregion
 
@@ -103,17 +130,53 @@ namespace BLL
         /// <param name="adminList"></param>
         /// <returns>管理员个数</returns>
 
-        public int ShowUserInfo(ref IList<AdminInfo> adminList)
+        public int ShowAdminInfo(ref IList<AdminListInfo> adminList)
         {
-            string[] usernames = Roles.GetUsersInRole("管理员");
+            string[] adminNames = Roles.GetUsersInRole("管理员");
             AdminInfoDAL adminDAL = new AdminInfoDAL();
             AdminInfo adminInfo = null;
-            foreach (string username in usernames)
+            AdminListInfo adminListInfo = null;
+            foreach (string adminName in adminNames)
             {
-                MembershipUser user = Membership.GetUser(username);
-                adminInfo.UserID = (Guid)user.ProviderUserKey;
+                MembershipUser user = Membership.GetUser(adminName);
+                adminInfo = new AdminInfo();
+                adminInfo.AdminID = (Guid)user.ProviderUserKey;
                 adminDAL.SrchAdminInfo(ref adminInfo);
-                adminList.Add(adminInfo);
+
+                adminListInfo = new AdminListInfo();
+                adminListInfo.AdminID = (Guid)user.ProviderUserKey;
+                adminListInfo.AdminName = adminName;
+                adminListInfo.AddTime = user.CreationDate;
+                switch (adminInfo.AdminLv)
+                {
+                    case 0:
+                        adminListInfo.AdminType = "商品管理员";
+                        break;
+                    case 1:
+                        adminListInfo.AdminType = "市场管理员";
+                        break;
+                    case 2:
+                        adminListInfo.AdminType = "人事管理员";
+                        break;
+                    case 3:
+                        adminListInfo.AdminType = "管理经理";
+                        break;
+                    case 4:
+                        adminListInfo.AdminType = "顶级管理员";
+                        break;
+                }
+                switch (user.IsApproved)
+                {
+                    case true:
+                        adminListInfo.State = "启用";
+                        break;
+                    case false:
+                        adminListInfo.State = "冻结";
+                        break;
+                }
+
+
+                adminList.Add(adminListInfo);
             }
 
             return adminList.Count;
@@ -131,8 +194,6 @@ namespace BLL
         public bool ModiAdminLv(AdminInfo admin)
         {
             AdminInfoDAL adminDAL = new AdminInfoDAL();
-            MembershipUser muser = Membership.GetUser(admin.AdminRealName);
-            admin.AdminID = (Guid)muser.ProviderUserKey;
             return adminDAL.ModiAdminLv(admin);
         }
         # endregion

@@ -30,7 +30,7 @@ namespace BLL
             if (!userDAL.AddUserInfo(newuser))
             {
                 ////////此处或者需要将membership中的数据删除
-                Membership.DeleteUser(newuser.UserRealName);
+                Membership.DeleteUser(user.UserName);
                 return false;
             }
             return true;
