@@ -29,7 +29,7 @@ namespace DAL
 
         public bool AddAdmin(AdminInfo newadmin)
         {
-            sqlString = "Insert Into AdminInfo (adminID,adminRealName,emailAdd,phoneNum,adminLv)"
+            sqlString = "Insert Into adminInfo (adminID,adminRealName,emailAdd,phoneNum,adminLv)"
                         + " Values (@adminID,@adminRealName,@emailAdd,@phoneNum,@adminLv)";
 
             SqlParameter[] pt = new SqlParameter[] { 
