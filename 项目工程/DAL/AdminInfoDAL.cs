@@ -236,11 +236,11 @@ namespace DAL
         {
             sqlString = "Update adminInfo Set adminLv = @adminLv where adminID = @adminID";
             SqlParameter[] pt = new SqlParameter[]{
-                                new SqlParameter("@adminID", SqlDbType.UniqueIdentifier),
-                                new SqlParameter("@adminLv", SqlDbType.Int)
+                                new SqlParameter("@adminLv", SqlDbType.Int),
+                                new SqlParameter("@adminID", SqlDbType.UniqueIdentifier)
                                 };
-            pt[0].Value = admin.AdminID;
-            pt[1].Value = admin.AdminLv;
+            pt[1].Value = admin.AdminID;
+            pt[0].Value = admin.AdminLv;
 
             try
             {
