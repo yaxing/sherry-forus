@@ -14,9 +14,9 @@ namespace BLL
 {
     public class CheckoutCtrl
     {
-        #region 启动订单确认
+        #region 启动订单生成
         /// <summary>
-        /// 启动订单确认流程，取出用户默认信息，操作成功返回true，失败返回false
+        /// 启动订单生成流程，取出用户默认信息，操作成功返回true，失败返回false
         /// </summary>
         /// <param name="newInfo">用户实体</param>
         /// <returns>bool值</returns>
@@ -36,7 +36,6 @@ namespace BLL
             curUserInfo.PostAdd = userInfo.PostAdd.ToString();
             curUserInfo.PostNum = userInfo.PostNum.ToString();
             curUserInfo.PhoneNum = userInfo.PhoneNum.ToString();
-            curUserInfo.Province = userInfo.Province.ToString();
             return flag;
         }
         #endregion
@@ -53,18 +52,28 @@ namespace BLL
             CheckoutInfoDAL userData = new CheckoutInfoDAL();
             MembershipUser curUser = Membership.GetUser(HttpContext.Current.User.Identity.Name.ToString());
             UserInfo userInfo = new UserInfo();
-            userInfo.UserID = (Guid)curUser.ProviderUserKey;
-            userInfo.UserRealName = newInfo.UserRealName;
-            userInfo.PostAdd = newInfo.PostAdd;
-            userInfo.PostNum = newInfo.PostNum;
-            userInfo.PhoneNum = newInfo.PhoneNum;
-            userInfo.Province = newInfo.Province;
-            flag = userData.ChangeUserInfo(userInfo);
+            newInfo.UserID = (Guid)curUser.ProviderUserKey;
+            flag = userData.ChangeUserInfo(newInfo);
             if (!flag)
             {
                 return flag;
             }
             return flag;
+        }
+        #endregion
+
+        #region 用户确认订单，生成订单
+        /// <summary>
+        /// 生成订单，操作成功返回true，失败返回false
+        /// </summary>
+        /// <param name="newInfo">订单实体</param>
+        /// <returns>bool值</returns>
+        public bool GenerateOrder(OrderInfo orderInfo)
+        {
+            CheckoutInfoDAL newOrder = new CheckoutInfoDAL();
+            MembershipUser curUser = Membership.GetUser(HttpContext.Current.User.Identity.Name.ToString());
+            orderInfo.UserID = (Guid)curUser.ProviderUserKey;
+            return newOrder.InsertNewOrder(orderInfo);
         }
         #endregion
     }

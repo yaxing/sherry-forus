@@ -31,7 +31,7 @@
                         </td>
                         <td>
                             <asp:DropDownList ID="ddlUserProvince" runat="server">
-                                <asp:ListItem Text="[未选择]" Value="0" />
+                                <asp:ListItem Text="[未选择省]" Value="0" />
                                 <asp:ListItem Text="北京" Value="1"/>
                                 <asp:ListItem Text="上海" Value="2" />
                                 <asp:ListItem Text="山东"  Value="3"/>
