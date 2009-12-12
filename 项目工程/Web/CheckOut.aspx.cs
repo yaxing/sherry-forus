@@ -50,7 +50,7 @@ public partial class CheckOut : System.Web.UI.Page
                 lbZip.Text = curUserInfo.PostNum;
                 lbTel.Text = curUserInfo.PhoneNum;
                 lbPay.Text = rblPayMethods.SelectedItem.Text;
-                lbProvince.Text = curUserInfo.Province;
+                lbProvince.Text = "[省份]";
             }
             else
             {
@@ -76,18 +76,18 @@ public partial class CheckOut : System.Web.UI.Page
         tbNewAdd.Text = curUserInfo.PostAdd;
         tbNewZip.Text = curUserInfo.PostNum;
         tbNewTel.Text = curUserInfo.PhoneNum;
-        //lbProvince.Text = curUserInfo.Province;
+        
 
-        ddlUserProvince.SelectedItem.Selected = false;
+        //ddlUserProvince.SelectedItem.Selected = false;
 
-        foreach (ListItem lt in ddlUserProvince.Items)
-        {
-            if (lt.Text.Equals(curUserInfo.Province))
-            {
-                lt.Selected = true;
-                break;
-            }
-        } 
+        //foreach (ListItem lt in ddlUserProvince.Items)
+        //{
+        //    if (lt.Text.Equals(curUserInfo.Province))
+        //    {
+        //        lt.Selected = true;
+        //        break;
+        //    }
+        //} 
 
     }
     #endregion
@@ -104,9 +104,7 @@ public partial class CheckOut : System.Web.UI.Page
     #region 保存新配送地址
     protected void imgbSaveAddChange_Click(object sender, ImageClickEventArgs e)
     {
-        //pShippingConfirm.Visible = true;
-        //pAddChange.Visible = false;
-        //pPayChange.Visible = false;
+        
 
         UserInfo userInfo = new UserInfo();
         userInfo.UserRealName = tbNewName.Text;
@@ -128,8 +126,12 @@ public partial class CheckOut : System.Web.UI.Page
         {
             Response.Write("<script>alert('保存失败，请重新操作！');history.go(-1);</script>");
         }
+        lbProvince.Text = ddlUserProvince.SelectedItem.Text.ToString();
 
-        Response.Redirect("CheckOut.aspx");
+        pShippingConfirm.Visible = true;
+        pAddChange.Visible = false;
+        pPayChange.Visible = false;
+        //Response.Redirect("CheckOut.aspx");
     }
     #endregion
 
@@ -174,6 +176,45 @@ public partial class CheckOut : System.Web.UI.Page
             if (tbInvoiceHead.Text == null || tbInvoiceHead.Text.Length <= 0 || tbInvoiceContent.Text == null || tbInvoiceContent.Text.Length <= 0) 
             {
                 Response.Write("<script>alert('发票抬头和内容不能为空！');history.go(-1);</script>");
+                return;
+            }
+        }
+        if (ddlUserProvince.SelectedValue.ToString().Equals("0"))
+        {
+            Response.Write("<script>alert('请选择您的省份！');history.go(-1);</script>");
+            return; 
+        }
+        else 
+        {
+            CheckoutCtrl newOrder = new CheckoutCtrl();
+            CartCtrl userCart = new CartCtrl();
+            OrderInfo userOrderInfo = new OrderInfo();
+            userOrderInfo.UserRealName = lbName.Text;
+            userOrderInfo.UserAdd = lbAdd.Text;
+            userOrderInfo.UserProvince = lbProvince.Text;
+            userOrderInfo.UserZip = lbZip.Text;
+            userOrderInfo.UserTel = lbTel.Text;
+            userOrderInfo.UserOrderPrice = userCart.GetTotalPrice();
+            userOrderInfo.UserOrderItems = userCart.GetList();
+            
+            if (cbInvoice.Checked) 
+            {
+                userOrderInfo.InvoiceHead = tbInvoiceHead.Text.ToString();
+                userOrderInfo.InvoiceContent = tbInvoiceContent.Text.ToString();
+            }
+
+            if (newOrder.GenerateOrder(userOrderInfo)) 
+            {
+                CartCtrl removeCart = new CartCtrl();
+                if(!removeCart.RemoveCart())
+                {
+                    Response.Write("<script>alert('购物车清空失败，请手动清空购物车');location.href('CartView.aspx');</script>");
+                }
+                Response.Write("<script>alert('订单保存成功！');location.href('CartView.aspx');</script>");
+            }
+            else
+            {
+                Response.Write("<script>alert('订单保存失败！');history.go(-1);</script>");
             }
         }
     }

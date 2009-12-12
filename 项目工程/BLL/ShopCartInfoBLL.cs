@@ -256,7 +256,7 @@ namespace BLL
         #endregion
 
         #region 清空购物车
-        public void RemoveCart()
+        public bool RemoveCart()
         {
             String user = String.Empty;
             curCart.curDic.Clear();
@@ -276,9 +276,10 @@ namespace BLL
                 }
                 catch (System.Exception ex)
                 {
-                    HttpContext.Current.Response.Write("<script>alert('存储购物车失败！请重新操作！');history.go(-1);</script>");
+                    return false;
                 }
             }
+            return true;
         }
         #endregion
 
