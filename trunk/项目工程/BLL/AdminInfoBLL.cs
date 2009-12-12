@@ -52,8 +52,6 @@ namespace BLL
         public bool ModiAdminInfo(AdminInfo admin)
         {
             AdminInfoDAL adminDAL = new AdminInfoDAL();
-            MembershipUser muser = Membership.GetUser(admin.AdminRealName);
-            admin.AdminID = (Guid)muser.ProviderUserKey;
             return adminDAL.ModiAdminInfo(admin);
         }
         #endregion
