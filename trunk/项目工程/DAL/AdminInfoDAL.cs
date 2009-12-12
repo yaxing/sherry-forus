@@ -105,20 +105,20 @@ namespace DAL
 
         public bool ModiAdminInfo(AdminInfo admin)
         {
-            string preSqlString = "Update adminInfo Set adminRealName = @adminRealName , emailAdd = @emailAdd , phoneNum = @phoneNum , adminLv = @adminLv "
+            string sqlString = "Update adminInfo Set adminRealName = @adminRealName , emailAdd = @emailAdd , phoneNum = @phoneNum , adminLv = @adminLv "
                                   + "where adminID = @adminID";
             SqlParameter[] pt = new SqlParameter[] { 
-                                new SqlParameter("@adminID", SqlDbType.UniqueIdentifier),
                                 new SqlParameter("@adminRealName",SqlDbType.VarChar),
                                 new SqlParameter("@emailAdd",SqlDbType.VarChar),
                                 new SqlParameter("@phoneNum",SqlDbType.VarChar),
-                                new SqlParameter("@adminLv",SqlDbType.Int)
+                                new SqlParameter("@adminLv",SqlDbType.Int),
+                                new SqlParameter("@adminID", SqlDbType.UniqueIdentifier)
                                 };
-            pt[0].Value = admin.AdminID;
-            pt[1].Value = admin.AdminRealName;
-            pt[2].Value = admin.AdminEmailAdd;
-            pt[3].Value = admin.AdminPhoneNum;
-            pt[4].Value = admin.AdminLv;
+            pt[4].Value = admin.AdminID;
+            pt[0].Value = admin.AdminRealName;
+            pt[1].Value = admin.AdminEmailAdd;
+            pt[2].Value = admin.AdminPhoneNum;
+            pt[3].Value = admin.AdminLv;
 
             try
             {
