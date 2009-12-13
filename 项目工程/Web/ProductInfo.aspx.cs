@@ -20,7 +20,7 @@ using Entity;
 public partial class ProductInfo : System.Web.UI.Page
 {
     int proId;
-    Cart shopCart;
+    CartCtrl shopCart;
     //string CookieName = "ShopCart";
 
     protected void Page_Load(object sender, EventArgs e)
@@ -32,7 +32,7 @@ public partial class ProductInfo : System.Web.UI.Page
     protected void addToCart_Click(object sender, EventArgs e)
     {
         #region 构造购物车
-        shopCart = new Cart();
+        shopCart = new CartCtrl();
         #endregion
 
         #region 加入购物车

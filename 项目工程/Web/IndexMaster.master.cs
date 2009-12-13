@@ -1,4 +1,7 @@
-﻿using System;
+﻿////编写者：陈亚星，张翼鹏
+////日  期：2009-11-28
+////功  能：母版页
+using System;
 using System.Data;
 using System.Configuration;
 using System.Collections;
