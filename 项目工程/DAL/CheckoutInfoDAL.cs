@@ -105,7 +105,7 @@ namespace DAL
             //============================================插入主订单数据===================================//
             if (info.InvoiceHead != null && info.InvoiceHead.Length > 0 && info.InvoiceContent != null && info.InvoiceContent.Length > 0)
             {
-                sqlString = "insert into mainOrderInfo (userId, postAdd, postNum, userRealName, phoneNum, province, invoiceHead, invoiceContent, orderTime, orderPrice) values (@id,@add,@zip,@name,@tel,@prov,@head,@content,@time,@price)";
+                sqlString = "insert into mainOrderInfo (userId, postAdd, postNum, userRealName, phoneNum, province, invoiceHead, invoiceContent, orderTime, orderPrice, orderState) values (@id,@add,@zip,@name,@tel,@prov,@head,@content,@time,@price,0)";
                 pt = new SqlParameter[] { 
                                 new SqlParameter("@id",SqlDbType.UniqueIdentifier),
                                 new SqlParameter("@add",SqlDbType.VarChar),
@@ -131,7 +131,7 @@ namespace DAL
             }
             else 
             {
-                sqlString = "insert into mainOrderInfo (userId, postAdd, postNum, userRealName, phoneNum, province, orderTime, orderPrice) values (@id,@add,@zip,@name,@tel,@prov,@time,@price)";
+                sqlString = "insert into mainOrderInfo (userId, postAdd, postNum, userRealName, phoneNum, province, orderTime, orderPrice, orderState) values (@id,@add,@zip,@name,@tel,@prov,@time,@price,0)";
                 pt = new SqlParameter[] { 
                                 new SqlParameter("@id",SqlDbType.UniqueIdentifier),
                                 new SqlParameter("@add",SqlDbType.VarChar),
