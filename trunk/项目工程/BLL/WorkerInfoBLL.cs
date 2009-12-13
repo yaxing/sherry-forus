@@ -17,27 +17,24 @@ namespace BLL
         /// <summary>
         /// 添加新用户，操作成功返回true，失败返回false
         /// </summary>
-        /// <param name="newuser">用户实体对象</param>
+        /// <param name="newWorker">用户实体对象</param>
         /// <returns>bool值</returns>
 
-        public bool AddWorkerInfo(WorkerInfo newuser)
+        public bool AddWorkerInfo(WorkerInfo newWorker)
         {
-
-            MembershipUser user = Membership.CreateUser(newuser.WorkerRealName, newuser.WorkerRealName, newuser.WorkerRealName);
-
+            MembershipUser mWorker = Membership.GetUser(newWorker.WorkerID);
             //------------------------此处用于添加用户的roles------------------------------//
-            Roles.AddUserToRole(newuser.WorkerRealName, "工作人员");
+            Roles.AddUserToRole(mWorker.UserName, "工作人员");
 
-
-            newuser.WorkerNum = (Guid)user.ProviderUserKey;
-            if (user == null)
+            if (mWorker == null)
                 return false;
             else
             {
-                WorkerInfoDAL userDAL = new WorkerInfoDAL();
-                if (!userDAL.AddWorkerInfo(newuser))
+                WorkerInfoDAL workerDAL = new WorkerInfoDAL();
+                if (!workerDAL.AddWorkerInfo(newWorker))
                 {
                     ////////此处或者需要将membership中的数据删除
+                    Membership.DeleteUser(mWorker.UserName,true);
                     return false;
                 }
             }
@@ -56,10 +53,8 @@ namespace BLL
 
         public bool ModiWorkerInfo(WorkerInfo user)
         {
-            WorkerInfoDAL userDAL = new WorkerInfoDAL();
-            MembershipUser muser = Membership.GetUser(user.WorkerRealName);
-            user.WorkerNum = (Guid)muser.ProviderUserKey;
-            return userDAL.ModiWorkerInfo(user);
+            WorkerInfoDAL workerDAL = new WorkerInfoDAL();
+            return workerDAL.ModiWorkerInfo(user);
         }
         #endregion
 
@@ -92,7 +87,7 @@ namespace BLL
         public bool SrchComNetUserByEmail(ref WorkerInfo userInfo, string userName)
         {
             MembershipUser user = Membership.GetUser(userName);
-            userInfo.WorkerNum = (Guid)user.ProviderUserKey;
+            userInfo.WorkerID = (Guid)user.ProviderUserKey;
             WorkerInfoDAL userDAL = new WorkerInfoDAL();
             return userDAL.SrchWorkerInfo(ref userInfo);
         }

@@ -44,7 +44,7 @@ namespace BLL
                             LogisticsInfo logisticsInfo = new LogisticsInfo();
                             logisticsInfo.LogisticsType = 0;
                             logisticsInfo.MainOrderID = 123;
-                            logisticsInfo.WorkerID = workerInfo.WorkerNum;
+                            logisticsInfo.WorkerID = workerInfo.WorkerID;
                             if (!AddShippingInfo(logisticsInfo , workerInfo))
                                 return false;
 

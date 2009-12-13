@@ -16,22 +16,39 @@ namespace DAL
         private string sqlString;
         private DataProvider dp = new DataProvider();
 
-        #region 添加新用户
+        #region 添加新工作人员
 
         /// <summary>
         /// 添加新用户
         /// </summary>
-        /// <param name="newuser">新用户实体对象</param>
+        /// <param name="newWorker">新实体对象</param>
         /// <returns>bool值</returns>
 
-        public bool AddWorkerInfo(WorkerInfo newuser)
+        public bool AddWorkerInfo(WorkerInfo newWorker)
         {
-            sqlString = "Insert Into workerInfo (id) Values (@userID)";
+            sqlString = "Insert Into workerInfo (workerID,workerNum,shopID,workerRealName,manageID,emailAdd,phoneNum,workerLv,workerState)"
+                        + "Values (@workerID,@workerNum,@shopID,@workerRealName,@manageID,@emailAdd,@phoneNum,@workerLv,@workerState)";
 
             SqlParameter[] pt = new SqlParameter[] { 
-                                new SqlParameter("@userID", SqlDbType.UniqueIdentifier)
+                                new SqlParameter("@workerID", SqlDbType.UniqueIdentifier),
+                                new SqlParameter("@workerNum",SqlDbType.Int),
+                                new SqlParameter("@shopID",SqlDbType.Int),
+                                new SqlParameter("@workerRealName",SqlDbType.VarChar),
+                                new SqlParameter("@manageID",SqlDbType.UniqueIdentifier),
+                                new SqlParameter("@emailAdd",SqlDbType.VarChar),
+                                new SqlParameter("@phoneNum",SqlDbType.VarChar),
+                                new SqlParameter("@workerLv",SqlDbType.Int),
+                                new SqlParameter("@workerState",SqlDbType.Int),
                                 };
-            pt[0].Value = newuser.WorkerNum;
+            pt[0].Value = newWorker.WorkerID;
+            pt[1].Value = newWorker.WorkerNum;
+            pt[2].Value = newWorker.ShopID;
+            pt[3].Value = newWorker.WorkerRealName;
+            pt[4].Value = newWorker.ManageID;
+            pt[5].Value = newWorker.EmailAdd;
+            pt[6].Value = newWorker.PhoneNum;
+            pt[7].Value = newWorker.WorkerLv;
+            pt[8].Value = 0;
 
             try
             {
@@ -43,7 +60,7 @@ namespace DAL
             }
             catch
             {
-
+                return false;
             }
 
             return true;
@@ -139,7 +156,7 @@ namespace DAL
                         {
                             user = new WorkerInfo();
 
-                            user.WorkerNum = reader.GetGuid(0);
+                            user.WorkerID = reader.GetGuid(0);
                             user.WorkerRealName = reader.GetString(1);
 
                             userList.Add(user);
@@ -181,8 +198,8 @@ namespace DAL
                     {
                         while (reader.Read())
                         {
-                            user.WorkerNum = reader.GetGuid(0);
-                            user.WorkerRealName = reader.GetString(1);
+                            user.WorkerID = reader.GetGuid(0);
+                            user.WorkerRealName = reader.GetString(3);
                         }
                     }
                 }
@@ -220,17 +237,15 @@ namespace DAL
                     {
                         while (reader.Read())
                         {
-                            shopManager.WorkerNum = reader.GetGuid(0);
-                            shopManager.ShopID = reader.GetInt32(1);
-                            shopManager.WorkerRealName = reader.GetString(2);
-                            shopManager.ManageID = reader.GetGuid(3);
-                            shopManager.EmailAdd = reader.GetString(4);
-                            shopManager.PhoneNum = reader.GetString(5);
-                            shopManager.WorkerLv = reader.GetInt32(6);
-                            shopManager.UserBirth = reader.GetDateTime(7);
-                            shopManager.UserGender = reader.GetInt32(8);
-                            shopManager.UserAge = reader.GetInt32(9);
-                            shopManager.WorkerState = reader.GetInt32(10);
+                            shopManager.WorkerID = reader.GetGuid(0);
+                            shopManager.WorkerNum = reader.GetInt32(1);
+                            shopManager.ShopID = reader.GetInt32(2);
+                            shopManager.WorkerRealName = reader.GetString(3);
+                            shopManager.ManageID = reader.GetGuid(4);
+                            shopManager.EmailAdd = reader.GetString(5);
+                            shopManager.PhoneNum = reader.GetString(6);
+                            shopManager.WorkerLv = reader.GetInt32(7);
+                            shopManager.WorkerState = reader.GetInt32(8);
                         }
                     }
                 }
@@ -268,17 +283,15 @@ namespace DAL
                     {
                         while (reader.Read())
                         {
-                            workerInfo.WorkerNum = reader.GetGuid(0);
-                            workerInfo.ShopID = reader.GetInt32(1);
-                            workerInfo.WorkerRealName = reader.GetString(2);
-                            workerInfo.ManageID = reader.GetGuid(3);
-                            workerInfo.EmailAdd = reader.GetString(4);
-                            workerInfo.PhoneNum = reader.GetString(5);
-                            workerInfo.WorkerLv = reader.GetInt32(6);
-                            workerInfo.UserBirth = reader.GetDateTime(7);
-                            workerInfo.UserGender = reader.GetInt32(8);
-                            workerInfo.UserAge = reader.GetInt32(9);
-                            workerInfo.WorkerState = reader.GetInt32(10);
+                            workerInfo.WorkerID = reader.GetGuid(0);
+                            workerInfo.WorkerNum = reader.GetInt32(1);
+                            workerInfo.ShopID = reader.GetInt32(2);
+                            workerInfo.WorkerRealName = reader.GetString(3);
+                            workerInfo.ManageID = reader.GetGuid(4);
+                            workerInfo.EmailAdd = reader.GetString(5);
+                            workerInfo.PhoneNum = reader.GetString(6);
+                            workerInfo.WorkerLv = reader.GetInt32(7);
+                            workerInfo.WorkerState = reader.GetInt32(8);
                         }
                     }
                 }
