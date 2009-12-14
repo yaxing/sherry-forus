@@ -10,6 +10,7 @@ namespace Entity
 {
     public class OrderInfo
     {
+        private int orderID;
         private Guid userID;
         private string userRealName;
         private string userAdd;
@@ -20,7 +21,14 @@ namespace Entity
         private string userPay;
         private string invoiceHead = null;
         private string invoiceContent = null;
+        private int state = 0;
         private IList<ItemEntity> userOrderItems;
+
+        public int OrderID 
+        {
+            get { return orderID; }
+            set { orderID = value; }
+        }
 
         public Guid UserID 
         {
@@ -76,6 +84,11 @@ namespace Entity
         {
             get { return invoiceContent; }
             set { invoiceContent = value; }
+        }
+        public int State 
+        {
+            get { return state; }
+            set { state = value; }
         }
     }
 }
