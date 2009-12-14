@@ -101,6 +101,7 @@ namespace DAL
         public bool InsertNewOrder(OrderInfo info)
         {
             SqlParameter[] pt;
+            int orderID;//订单号
             //DataTable dt = new DataTable();
             //============================================插入主订单数据===================================//
             if (info.InvoiceHead != null && info.InvoiceHead.Length > 0 && info.InvoiceContent != null && info.InvoiceContent.Length > 0)
@@ -155,7 +156,7 @@ namespace DAL
             {
                 using (dp = new DataProvider())
                 {
-                    if (dp.ExecuteNonQuery(sqlString, pt) == 0)
+                    if ((orderID = dp.ExecuteInsert(sqlString, pt)) < 0)
                         return false;
                 }
             }
@@ -163,30 +164,6 @@ namespace DAL
             {
                 return false;
             }
-
-            //================================获取主订单号=================================//
-            sqlString = "select * from mainOrderInfo where userID=@id order by orderTime desc";
-
-            SqlParameter[] pt2 = new SqlParameter[] { 
-                                new SqlParameter("@id",SqlDbType.UniqueIdentifier)
-                                };
-            pt2[0].Value = info.UserID;
-            DataTable dt = new DataTable();
-
-            try
-            {
-                using (dp = new DataProvider())
-                {
-                    if ((dt = dp.ExecuteDataTable(sqlString, pt2)) == null)
-                        return false;
-                }
-            }
-            catch
-            {
-                return false;
-            }
-
-            int orderID = Convert.ToInt32(dt.Rows[0][0].ToString());
              
             //===============================================插入订单商品信息=========================================//
 
