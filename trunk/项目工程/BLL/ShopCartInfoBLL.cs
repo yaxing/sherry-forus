@@ -80,16 +80,16 @@ namespace BLL
 
                 foreach (XmlNode xmlN in xmlLst)
                 {
-                    #region 从XML读取item
+                    //从XML读取item
                     XmlElement curItem = (XmlElement)xmlN;
                     itemId = curItem.GetAttribute("id").ToString();
                     itemName = curItem.GetAttribute("itemName").ToString();
                     itemNumber = curItem.GetAttribute("itemNumber").ToString();
                     itemPrice = curItem.GetAttribute("itemPrice").ToString();
                     itemImgPath = curItem.GetAttribute("itemImgPath").ToString();
-                    #endregion
+                    
 
-                    #region 将读取的ITEM写进哈希表
+                    //将读取的ITEM写进哈希表
                     int id = Convert.ToInt32(itemId);
                     int number = Convert.ToInt32(itemNumber);
                     double price = Convert.ToDouble(itemPrice);
@@ -106,13 +106,17 @@ namespace BLL
                     {
                         curCart.curDic.Add(Info.ID, Info);
                     }
-                    #endregion
                 }
             }
         }
         #endregion
 
         #region 查询库存
+        /// <summary>
+        /// 查询指定商品库存,使用public CartCtrl(int id)构造函数构造购物车,
+        /// </summary>
+        /// <param name="curS">商品库存量</param>
+        /// <returns>bool值</returns>
         public bool curStorage(ref int curS)
         {
             ShopCartInfoDAL sc = new ShopCartInfoDAL();
@@ -175,6 +179,11 @@ namespace BLL
         #endregion
 
         #region 获取购物车内商品列表(IList)
+        /// <summary>
+        /// 获取购物车内全部商品列表
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns>商品列表(IList)</returns>
         public IList<ItemEntity> GetList()
         {
             IList<ItemEntity> List = new List<ItemEntity>();
@@ -187,6 +196,11 @@ namespace BLL
         #endregion
 
         #region 获取商品总数
+        /// <summary>
+        /// 获取购物车内商品总数
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns>int 商品数量</returns>
         public int GetItemQuantity() 
         {
             int total = 0;
@@ -199,6 +213,11 @@ namespace BLL
         #endregion
 
         #region 获取购物车内商品列表(ICollection)
+        /// <summary>
+        /// 获取购物车内全部商品列表
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns>商品列表(ICollection)</returns>
         public ICollection GetItems() 
         {
             return curCart.curDic.Values;
@@ -206,6 +225,11 @@ namespace BLL
         #endregion
 
         #region 获取商品总价格
+        /// <summary>
+        /// 获取购物车内全部商品总价
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns>double 商品价格</returns>
         public double GetTotalPrice() {
             double total = 0.0;
             foreach(ItemEntity e in curCart.curDic.Values){
@@ -217,6 +241,11 @@ namespace BLL
         #endregion
 
         #region 显示商品总价格
+        /// <summary>
+        /// 以人民币格式显示总价格
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns>String 价格</returns>
         public String ShowTotalPrice()
         {
             double total = 0.0;
@@ -230,6 +259,11 @@ namespace BLL
         #endregion
 
         #region 获取当前商品项价格总计
+        /// <summary>
+        /// 当前商品价格小计
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns>double 价格小计</returns>
         public double GetItemPrice(int ID) {
             double itemPrice = 0.0;
             ItemEntity item = (ItemEntity)curCart.curDic[ID];
@@ -239,7 +273,12 @@ namespace BLL
         #endregion
 
         #region 移除商品
-        public void Remove(int ID)
+        /// <summary>
+        /// 从购物车中移除当前商品
+        /// </summary>
+        /// <param name="ID">商品ID</param>
+        /// <returns>bool值</returns>
+        public bool Remove(int ID)
         {
             if (curCart.curDic.ContainsKey(ID))
             {
@@ -248,14 +287,18 @@ namespace BLL
 
             if (curCart.curUser != null && curCart.curUser.Length > 0)
             {
-                WriteToXML(curCart.curUser);
-                return;
+                return WriteToXML(curCart.curUser);
             }
-            SaveCookie();
+            return SaveCookie();
         }
         #endregion
 
         #region 清空购物车
+        /// <summary>
+        /// 清空购物车内全部商品
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns>bool</returns>
         public bool RemoveCart()
         {
             String user = String.Empty;
@@ -284,7 +327,13 @@ namespace BLL
         #endregion
 
         #region 修改商品数量
-        public void Edit(int ID, int Number)
+        /// <summary>
+        /// 修改指定商品数量
+        /// </summary>
+        /// <param name="ID">商品ID</param>
+        /// <param name="Number">目标数量</param>
+        /// <returns></returns>
+        public bool Edit(int ID, int Number)
         {
             if (curCart.curDic.ContainsKey(ID))
             {
@@ -295,10 +344,9 @@ namespace BLL
 
                 if (curCart.curUser != null && curCart.curUser.Length > 0)
                 {
-                    WriteToXML(curCart.curUser);
-                    return;
+                    return WriteToXML(curCart.curUser);
                 }
-                SaveCookie();
+                return SaveCookie();
             }
         }
         #endregion
@@ -348,6 +396,11 @@ namespace BLL
         #endregion
 
         #region 将购物车写入XML
+        /// <summary>
+        /// 将HASHTABLE内容保存至cookie
+        /// </summary>
+        /// <param name="userName">用户名</param>
+        /// <returns>bool值</returns>
         public Boolean WriteToXML(String userName)
         {
             string s = string.Empty;
@@ -414,7 +467,12 @@ namespace BLL
         #endregion
 
         #region 从XML中读取相应用户结点
-
+        /// <summary>
+        /// 根据用户名从XML中读取相应节点
+        /// </summary>
+        /// <param name="userName">用户名</param>
+        /// <param name="xmlD">xml文档引用</param>
+        /// <returns>XmlElement</returns>
         public XmlElement GetUserNode(XmlDocument xmlD, String userName) 
         {
             String FilePath = HttpContext.Current.Server.MapPath("UserCart.xml");
