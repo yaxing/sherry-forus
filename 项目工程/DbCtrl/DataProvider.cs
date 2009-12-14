@@ -205,5 +205,34 @@ namespace DbCtrl
             }
         }
         #endregion
+
+        #region 插入返回ID
+
+        /// <summary>
+        /// 插入数据并返回ID
+        /// </summary>
+        /// <param name="sqlString">sql语句</param>
+        /// <returns>插入数据的ID值</returns>
+
+        //执行单条插入语句，并返回id，不需要返回id的用ExceuteNonQuery执行。
+        public int ExecuteInsert(string sqlString, SqlParameter[] pt)
+        {
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                try
+                {
+                    if (pt != null) cmd.Parameters.AddRange(pt);
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = @"select @@identity";
+                    int value = Int32.Parse(cmd.ExecuteScalar().ToString());
+                    return value;
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
+            }
+        }
+        #endregion
     }
 }
