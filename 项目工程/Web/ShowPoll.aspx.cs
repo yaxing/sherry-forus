@@ -74,9 +74,9 @@ public partial class ShowPoll : System.Web.UI.Page
         int BarLeftSpace = (TotalBallots.ToString().Length) * 6 + 10;
         int PieChartWidth = Int32.Parse(ConfigurationSettings.AppSettings["PieWidth"]);
         int PieChartHeight = Int32.Parse(ConfigurationSettings.AppSettings["PieHeight"]);
-        int BMWidth = (mainPoll.ColMode.Equals("true")) ? (TotalOptions * BarSpace + BarLeftSpace + 20 + LegendLength) : (PieChartWidth + 80 + LegendLength);
+        int BMWidth = (mainPoll.ColMode.Equals("True")) ? (TotalOptions * BarSpace + BarLeftSpace + 20 + LegendLength) : (PieChartWidth + 80 + LegendLength);
         int LegendHeight = TotalOptions * 22 + 90;
-        int BMHeight = (mainPoll.ColMode.Equals("true")) ? LegendHeight : Math.Max(PieChartHeight + 110, LegendHeight);
+        int BMHeight = (mainPoll.ColMode.Equals("True")) ? LegendHeight : Math.Max(PieChartHeight + 110, LegendHeight);
         if (BMHeight < 250)
             BMHeight = 250;
         int BarChartHeight = BMHeight - 80;
@@ -95,7 +95,7 @@ public partial class ShowPoll : System.Web.UI.Page
         PointF DescPoint = new PointF(LegendPoint.X + 30, 90);
         g.DrawString("Í¼Àý", new Font("ËÎÌå", 12, FontStyle.Bold), new SolidBrush(Color.Red), new Rectangle((int)(LegendPoint.X), 60, LegendLength, 25), sf);
 
-        if (mainPoll.ColMode.Equals("true"))  //ÖùÐÎÍ¼
+        if (mainPoll.ColMode.Equals("True"))  //ÖùÐÎÍ¼
         {
             float LineSpace = BarChartHeight;
             float ScalePercent = 1.0f;

@@ -184,6 +184,7 @@ namespace DAL
                 {
                     using (SqlDataReader reader = dp.ExecuteReader(sqlString))
                     {
+                        reader.Read();
                         return reader.GetInt32(0);
                     }
                 }
