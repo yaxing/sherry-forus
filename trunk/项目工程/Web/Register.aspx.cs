@@ -26,10 +26,25 @@ public partial class Register : System.Web.UI.Page
         newuser.PostAdd = ((TextBox)CreateUserWizard.CreateUserStep.ContentTemplateContainer.FindControl("txtPostAdd")).Text;
         newuser.PostNum = ((TextBox)CreateUserWizard.CreateUserStep.ContentTemplateContainer.FindControl("txtPostNum")).Text;
         newuser.PhoneNum = ((TextBox)CreateUserWizard.CreateUserStep.ContentTemplateContainer.FindControl("txtPhoneNum")).Text;
-        newuser.UserBirth = new DateTime(1986, 10, 8);
+        String birthday = ((TextBox)CreateUserWizard.CreateUserStep.ContentTemplateContainer.FindControl("txtUserBirth")).Text;
+        if(birthday!=null&&birthday!="")
+        {
+            int year = Convert.ToInt32(birthday.Substring(0,4));
+            int month = Convert.ToInt32(birthday.Substring(5, 2));
+            int day = Convert.ToInt32(birthday.Substring(8,2));
+            newuser.UserBirth = new DateTime(year,month,day);
+        }
+        else
+        {
+            newuser.UserBirth = new DateTime(1970, 1, 1);
+        }
         newuser.UserGender = Convert.ToInt32(((RadioButtonList)CreateUserWizard.CreateUserStep.ContentTemplateContainer.FindControl("rdlUserGender")).SelectedValue);
-        newuser.UserAge = 23;
+        newuser.UserAge = DateTime.Now.Year - newuser.UserBirth.Year;
         newuser.IDCardNum = ((TextBox)CreateUserWizard.CreateUserStep.ContentTemplateContainer.FindControl("txtIDCardNum")).Text;
+        if (newuser.IDCardNum == "" || newuser.IDCardNum == null)
+        {
+            newuser.IDCardNum = "000000000000000000";
+        }
 
         UserInfoBLL userInfoBLL = new UserInfoBLL();
         userInfoBLL.AddUserInfo(newuser);
