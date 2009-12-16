@@ -99,7 +99,7 @@
                                     <td align="left" style="width: 85px; height: 26px">
                                         <asp:Label ID="lblShop" runat="server" Text="µêÃæ:"></asp:Label></td>
                                     <td style="width: 296px; height: 26px;">
-                                        <asp:DropDownList ID="ddlShop" runat="server">
+                                        <asp:DropDownList ID="DDLShop" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLShop_SelectedIndexChanged">
                                         </asp:DropDownList></td>
                                 </tr>
                                 <tr>
