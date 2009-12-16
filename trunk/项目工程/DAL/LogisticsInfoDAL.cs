@@ -54,5 +54,19 @@ namespace DAL
             return true;
         }
         #endregion
+
+        #region 查看送货信息
+
+        /// <summary>
+        /// 查询送货信息
+        /// </summary>
+        /// <param name="logisticsInfo">送货信息实体对象</param>
+        /// <returns>成功返回true，否则返回false</returns>
+
+        public bool SrchShippingInfo(ref LogisticsInfo logisticsInfo)
+        {
+            return true;
+        }
+        #endregion
     }
 }
