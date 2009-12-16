@@ -141,18 +141,33 @@ namespace BLL
 
         #endregion
 
-        # region 显示用户列表
+        # region 显示工作人员列表
 
         /// <summary>
-        /// 显示用户列表
+        /// 显示工作人员列表
         /// </summary>
-        /// <param name="userList"></param>
-        /// <returns>用户个数</returns>
+        /// <param name="workerList"></param>
+        /// <returns>工作人员个数</returns>
 
-        public int ShowComNetUser(ref IList<WorkerInfo> userList)
+        public int ShowComNetUser(ref IList<WorkerInfo> workerList)
         {
-            WorkerInfoDAL userDAL = new WorkerInfoDAL();
-            return userDAL.ShowWorkerInfo(ref userList);
+            WorkerInfoDAL workerDAL = new WorkerInfoDAL();
+            return workerDAL.ShowWorkerInfo(ref workerList);
+        }
+        # endregion
+
+        # region 显示指定店面负责人列表
+
+        /// <summary>
+        /// 显示指定店面负责人列表
+        /// </summary>
+        /// <param name="workerList"></param>
+        /// <returns>指定店面负责人个数</returns>
+
+        public int ShowComNetUser(ref IList<WorkerInfo> workerList,ShopInfo shopInfo)
+        {
+            WorkerInfoDAL workerDAL = new WorkerInfoDAL();
+            return workerDAL.ShowWorkerInfo(ref workerList,shopInfo);
         }
         # endregion
     }
