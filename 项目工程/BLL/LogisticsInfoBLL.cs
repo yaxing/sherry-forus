@@ -75,6 +75,45 @@ namespace BLL
                     }
                     break;
                 case 2:         //邮寄方式送货
+                    {
+                        //选择邮寄负责人
+                        WorkerInfo mailResponser = new WorkerInfo();
+                        if (!SelectMailResponser(ref mailResponser))
+                            return false;
+
+                        //确定市场部负责人
+                        WorkerInfo marketResponser = new WorkerInfo();
+                        if (!SrchMarketResponser(ref marketResponser))
+                            return false;
+
+                        //分配订单
+                        LogisticsInfo logisticsInfo = new LogisticsInfo();
+                        logisticsInfo.LogisticsType = 0;
+                        logisticsInfo.MainOrderID = 123;
+                        logisticsInfo.WorkerID = mailResponser.WorkerID;
+                        if (!AddShippingInfo(logisticsInfo, mailResponser))
+                            return false;
+
+                        //发送邮件给市场部负责人
+                        MailBLL mailBLL = new MailBLL();
+                        string tomail = marketResponser.EmailAdd;
+                        string mailTitle = "新订单分配";
+                        string mailBody = "订单号为****的订单已经分配给您的工作人员：" + mailResponser.WorkerRealName;
+                        if (!mailBLL.SendEmail(tomail, mailTitle, mailBody))
+                            return false;
+
+                        //发送邮件给邮寄负责人
+                        tomail = mailResponser.EmailAdd;
+                        mailTitle = "新订单分配";
+                        mailBody = "订单号为****的订单已经分配给您，请及时处理";
+                        if (!mailBLL.SendEmail(tomail, mailTitle, mailBody))
+                            return false;
+
+                        //修改订单状态为正在送货
+                        orderInfo.State = 1;
+                        IChangeOrderState changeOrderState = new OrderInfoBLL();
+                        changeOrderState.ChangeOrderState(orderInfo);
+                    }
                     break;
             }
 
@@ -147,7 +186,6 @@ namespace BLL
 
         #endregion
 
-
         #region 查询送货信息
 
         /// <summary>
@@ -158,8 +196,8 @@ namespace BLL
 
         public bool SrchShippingInfo(ref LogisticsInfo logisticsInfo)
         {
-
-            return true;
+            LogisticsInfoDAL logisticsInfoDAL = new LogisticsInfoDAL();
+            return logisticsInfoDAL.SrchShippingInfo(ref logisticsInfo);
         }
 
         #endregion
@@ -192,11 +230,14 @@ namespace BLL
         /// <summary>
         /// 取货确认处理
         /// </summary>
+        /// <param name="orderInfo">订单实体对象</param>
         /// <returns>成功返回true，否则返回false</returns>
 
-        public bool ConfirmPicking()
+        public bool ConfirmPicking(OrderInfo orderInfo)
         {
-            return true;
+            orderInfo.State = 2;
+            IChangeOrderState changeOrderState = new OrderInfoBLL();
+            return changeOrderState.ChangeOrderState(orderInfo);
         }
 
         #endregion
@@ -206,11 +247,14 @@ namespace BLL
         /// <summary>
         /// 收货确认处理
         /// </summary>
+        /// <param name="orderInfo">订单实体对象</param>
         /// <returns>成功返回true，否则返回false</returns>
 
-        public bool ConfirmReceiving()
+        public bool ConfirmReceiving(OrderInfo orderInfo)
         {
-            return true;
+            orderInfo.State = 3;
+            IChangeOrderState changeOrderState = new OrderInfoBLL();
+            return changeOrderState.ChangeOrderState(orderInfo);
         }
         #endregion
 
@@ -219,11 +263,14 @@ namespace BLL
         /// <summary>
         /// 申请退货处理
         /// </summary>
+        /// <param name="orderInfo">订单实体对象</param>
         /// <returns>成功返回true，否则返回false</returns>
 
-        public bool ApplyReturning()
+        public bool ApplyReturning(OrderInfo orderInfo)
         {
-            return true;
+            orderInfo.State = 3;
+            IChangeOrderState changeOrderState = new OrderInfoBLL();
+            return changeOrderState.ChangeOrderState(orderInfo);
         }
         #endregion
 
@@ -232,11 +279,14 @@ namespace BLL
         /// <summary>
         /// 退货确认处理
         /// </summary>
+        /// <param name="orderInfo">订单实体对象</param>
         /// <returns>成功返回true，否则返回false</returns>
 
-        public bool ConfirmReturning()
+        public bool ConfirmReturning(OrderInfo orderInfo)
         {
-            return true;
+            orderInfo.State = 4;
+            IChangeOrderState changeOrderState = new OrderInfoBLL();
+            return changeOrderState.ChangeOrderState(orderInfo);
         }
         #endregion
 
@@ -245,9 +295,38 @@ namespace BLL
         /// <summary>
         /// 退货驳回处理
         /// </summary>
+        /// <param name="orderInfo">订单实体对象</param>
         /// <returns>成功返回true，否则返回false</returns>
 
-        public bool RefuseReturning()
+        public bool RefuseReturning(OrderInfo orderInfo)
+        {
+            orderInfo.State = 5;
+            IChangeOrderState changeOrderState = new OrderInfoBLL();
+            return changeOrderState.ChangeOrderState(orderInfo);
+        }
+        #endregion
+
+        #region 选择邮寄负责人
+
+        /// <summary>
+        /// 选择邮寄负责人
+        /// </summary>
+        /// <returns>成功返回true，否则返回false</returns>
+
+        public bool SelectMailResponser(ref WorkerInfo mailResponser)
+        {
+            return true;
+        }
+        #endregion
+
+        #region 确定市场部负责人
+
+        /// <summary>
+        /// 确定市场部负责人
+        /// </summary>
+        /// <returns>成功返回true，否则返回false</returns>
+
+        public bool SrchMarketResponser(ref WorkerInfo marketResponser)
         {
             return true;
         }
