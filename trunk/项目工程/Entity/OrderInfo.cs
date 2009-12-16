@@ -21,6 +21,7 @@ namespace Entity
         private string userPay;
         private string invoiceHead = null;
         private string invoiceContent = null;
+        private string orderTime = string.Empty;
         private int state = 0;
         private IList<ItemEntity> userOrderItems;
 
@@ -89,6 +90,11 @@ namespace Entity
         {
             get { return state; }
             set { state = value; }
+        }
+        public string OrderTime 
+        {
+            get { return orderTime; }
+            set { orderTime = value; }
         }
     }
 }

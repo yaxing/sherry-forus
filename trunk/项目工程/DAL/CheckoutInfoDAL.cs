@@ -104,9 +104,11 @@ namespace DAL
             int orderID;//订单号
             //DataTable dt = new DataTable();
             //============================================插入主订单数据===================================//
+
+            //需要插入发票信息
             if (info.InvoiceHead != null && info.InvoiceHead.Length > 0 && info.InvoiceContent != null && info.InvoiceContent.Length > 0)
             {
-                sqlString = "insert into mainOrderInfo (userId, postAdd, postNum, userRealName, phoneNum, province, invoiceHead, invoiceContent, orderTime, orderPrice, orderState) values (@id,@add,@zip,@name,@tel,@prov,@head,@content,@time,@price,0)";
+                sqlString = "insert into mainOrderInfo (userId, postAdd, postNum, userRealName, phoneNum, province, invoiceHead, invoiceContent, orderTime, orderPrice, orderState) values (@id,@add,@zip,@name,@tel,@prov,@head,@content,@time,@price,@state)";
                 pt = new SqlParameter[] { 
                                 new SqlParameter("@id",SqlDbType.UniqueIdentifier),
                                 new SqlParameter("@add",SqlDbType.VarChar),
@@ -118,6 +120,7 @@ namespace DAL
                                 new SqlParameter("@content",SqlDbType.VarChar),
                                 new SqlParameter("@time",SqlDbType.DateTime),
                                 new SqlParameter("@price",SqlDbType.Money),
+                                new SqlParameter("@state",SqlDbType.Int)
                                 };
                 pt[0].Value = info.UserID;
                 pt[1].Value = info.UserAdd;
@@ -129,7 +132,9 @@ namespace DAL
                 pt[7].Value = info.InvoiceContent;
                 pt[8].Value = DateTime.Now;
                 pt[9].Value = info.UserOrderPrice;
+                pt[10].Value = info.State;
             }
+            //不需要插入发票信息
             else 
             {
                 sqlString = "insert into mainOrderInfo (userId, postAdd, postNum, userRealName, phoneNum, province, orderTime, orderPrice, orderState) values (@id,@add,@zip,@name,@tel,@prov,@time,@price,0)";
@@ -142,6 +147,7 @@ namespace DAL
                                 new SqlParameter("@prov",SqlDbType.VarChar),
                                 new SqlParameter("@time",SqlDbType.DateTime),
                                 new SqlParameter("@price",SqlDbType.Money),
+                                new SqlParameter("@state",SqlDbType.Int)
                                 };
                 pt[0].Value = info.UserID;
                 pt[1].Value = info.UserAdd;
@@ -151,6 +157,7 @@ namespace DAL
                 pt[5].Value = info.UserProvince;
                 pt[6].Value = DateTime.Now;
                 pt[7].Value = info.UserOrderPrice;
+                pt[8].Value = info.State;
             }
             try
             {
@@ -171,24 +178,24 @@ namespace DAL
 
             foreach (ItemEntity ie in info.UserOrderItems) 
             {
-                SqlParameter[] pt3 = new SqlParameter[] { 
+                pt = new SqlParameter[] { 
                                 new SqlParameter("@mainID",SqlDbType.Int),
                                 new SqlParameter("@gID",SqlDbType.Int),
                                 new SqlParameter("@name",SqlDbType.VarChar),
                                 new SqlParameter("@price",SqlDbType.Money),
                                 new SqlParameter("@num",SqlDbType.Int)
                                 };
-                pt3[0].Value = orderID;
-                pt3[1].Value = ie.ID;
-                pt3[2].Value = ie.Name;
-                pt3[3].Value = ie.Price;
-                pt3[4].Value = ie.Number;
+                pt[0].Value = orderID;
+                pt[1].Value = ie.ID;
+                pt[2].Value = ie.Name;
+                pt[3].Value = ie.Price;
+                pt[4].Value = ie.Number;
 
                 try
                 {
                     using (dp = new DataProvider())
                     {
-                        if (dp.ExecuteNonQuery(sqlString, pt3) == 0)
+                        if (dp.ExecuteNonQuery(sqlString, pt) == 0)
                             return false;
                     }
                 }
