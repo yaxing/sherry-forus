@@ -17,14 +17,18 @@ public partial class WorkerManage_AddWorker : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!DDLLoader())
+        if (!IsPostBack)
         {
-            Response.Write("<script language='javascript'>alert('数据载入失败，请重试或联系管理员。');location.href='bgIndex.aspx';</script>");
+            if (!DDLLoader())
+            {
+                Response.Write("<script language='javascript'>alert('数据载入失败，请重试或联系管理员。');location.href='bgIndex.aspx';</script>");
+            }
+            if (!DDLManagerLoad(1))
+            {
+                Response.Write("<script language='javascript'>alert('数据载入失败，请重试或联系管理员。');location.href='bgIndex.aspx';</script>");
+            }
         }
-        if (!DDLManagerLoad(1))
-        {
-            Response.Write("<script language='javascript'>alert('数据载入失败，请重试或联系管理员。');location.href='bgIndex.aspx';</script>");
-        }
+        
     }
 
     protected Boolean DDLManagerLoad(int shopIndex)
@@ -42,23 +46,23 @@ public partial class WorkerManage_AddWorker : System.Web.UI.Page
         DropDownList DDLManager = (DropDownList)CreateUserWizard.CreateUserStep.ContentTemplateContainer.FindControl("ddlManager");
 
         DataTable dt = new DataTable("workerList");
-        DataColumn dc = new DataColumn("workerID", System.Type.GetType("System.Guid"));
+        DataColumn dc = new DataColumn("WorkerID", System.Type.GetType("System.Guid"));
         dt.Columns.Add(dc);
-        dc = new DataColumn("workerNum", System.Type.GetType("System.Int32"));
+        dc = new DataColumn("WorkerNum", System.Type.GetType("System.Int32"));
         dt.Columns.Add(dc);
-        dc = new DataColumn("shopID", System.Type.GetType("System.Int32"));
+        dc = new DataColumn("ShopID", System.Type.GetType("System.Int32"));
         dt.Columns.Add(dc);
-        dc = new DataColumn("workerRealName", System.Type.GetType("System.String"));
+        dc = new DataColumn("WorkerRealName", System.Type.GetType("System.String"));
         dt.Columns.Add(dc);
-        dc = new DataColumn("managerID", System.Type.GetType("System.Guid"));
+        dc = new DataColumn("ManagerID", System.Type.GetType("System.Guid"));
         dt.Columns.Add(dc);
-        dc = new DataColumn("emailAdd", System.Type.GetType("System.String"));
+        dc = new DataColumn("EmailAdd", System.Type.GetType("System.String"));
         dt.Columns.Add(dc);
-        dc = new DataColumn("phoneNum", System.Type.GetType("System.String"));
+        dc = new DataColumn("PhoneNum", System.Type.GetType("System.String"));
         dt.Columns.Add(dc);
-        dc = new DataColumn("workerLv", System.Type.GetType("System.Int32"));
+        dc = new DataColumn("WorkerLv", System.Type.GetType("System.Int32"));
         dt.Columns.Add(dc);
-        dc = new DataColumn("workerState", System.Type.GetType("System.Int32"));
+        dc = new DataColumn("WorkerState", System.Type.GetType("System.Int32"));
         dt.Columns.Add(dc);
 
         DataRow dr = null;
@@ -80,6 +84,14 @@ public partial class WorkerManage_AddWorker : System.Web.UI.Page
                 }
 
             }
+            dt.Rows.Add(dr);
+        }
+
+        if (dt.Rows.Count <= 0)
+        {
+            dr = dt.NewRow();
+            dr[0] = "00000000-0000-0000-0000-000000000000";
+            dr[3] = "无";
             dt.Rows.Add(dr);
         }
         DDLManager.DataSource = dt;
@@ -134,7 +146,6 @@ public partial class WorkerManage_AddWorker : System.Web.UI.Page
         DDLShop.DataValueField = dt.Columns[0].ToString();
         DDLShop.DataTextField = dt.Columns[1].ToString();
         DDLShop.DataBind();
-        DDLShop.SelectedIndex = 1;
 
         return true;
     }
@@ -156,6 +167,12 @@ public partial class WorkerManage_AddWorker : System.Web.UI.Page
         }
         else
         {
+            if (((DropDownList)CreateUserWizard.CreateUserStep.ContentTemplateContainer.FindControl("ddlManager")).SelectedValue == "00000000-0000-0000-0000-000000000000")
+            {
+                Membership.DeleteUser(mWorker.UserName,true);
+                Response.Write("<script language='javascript'>alert('当前店铺无负责人，请先添加负责人。');location.href='AddWorker.aspx';</script>");
+                return;
+            }
             Object ID = (Object)((DropDownList)CreateUserWizard.CreateUserStep.ContentTemplateContainer.FindControl("ddlManager")).SelectedValue;
             newWorker.ManageID = (Guid)ID;
         }
@@ -166,7 +183,7 @@ public partial class WorkerManage_AddWorker : System.Web.UI.Page
     }
     protected void DDLShop_SelectedIndexChanged(object sender, EventArgs e)
     {
-        int shopID = Convert.ToInt32(((DropDownList)CreateUserWizard.CreateUserStep.ContentTemplateContainer.FindControl("ddlManager")).SelectedValue);
+        int shopID = Convert.ToInt32(((DropDownList)CreateUserWizard.CreateUserStep.ContentTemplateContainer.FindControl("DDLShop")).SelectedValue);
         DDLManagerLoad(shopID);
     }
 }

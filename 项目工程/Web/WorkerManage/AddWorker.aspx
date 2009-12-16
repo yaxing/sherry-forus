@@ -166,6 +166,7 @@
                     </asp:CompleteWizardStep>
                 </WizardSteps>
             </asp:CreateUserWizard>
+        &nbsp;
     </div>
     </form>
 </body>
