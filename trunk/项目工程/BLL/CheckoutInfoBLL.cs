@@ -18,7 +18,7 @@ namespace BLL
         /// <summary>
         /// 启动订单生成流程，取出用户默认信息，操作成功返回true，失败返回false
         /// </summary>
-        /// <param name="newInfo">用户实体</param>
+        /// <param name="curUserInfo">用户实体</param>
         /// <returns>bool值</returns>
         public bool StartCheckOut(ref UserInfo curUserInfo) 
         {
@@ -66,7 +66,7 @@ namespace BLL
         /// <summary>
         /// 生成订单，操作成功返回true，失败返回false
         /// </summary>
-        /// <param name="newInfo">订单实体</param>
+        /// <param name="orderInfo">订单实体</param>
         /// <returns>bool值</returns>
         public bool GenerateOrder(OrderInfo orderInfo)
         {

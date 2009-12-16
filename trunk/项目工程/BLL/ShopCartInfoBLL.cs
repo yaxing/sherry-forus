@@ -348,6 +348,7 @@ namespace BLL
                 }
                 return SaveCookie();
             }
+            return false;
         }
         #endregion
 
