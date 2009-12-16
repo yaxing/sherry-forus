@@ -4,6 +4,7 @@
 
 using System.Data;
 using System.Data.SqlClient;
+using System.Collections.Generic;
 using DbCtrl;
 using Entity;
 
@@ -52,6 +53,47 @@ namespace DAL
             }
 
             return true;
+        }
+
+        #endregion
+
+
+        #region 根据地址查询店面信息
+
+        /// <summary>
+        /// 根据地址查询店面信息
+        /// </summary>
+        /// <param name="allShop">店面信息实体对象</param>
+        /// <returns>店面数量,失败返回-1</returns>
+         
+        public int DisplayAllShop(ref IList<ShopInfo> allShop)
+        {
+            sqlString = "select shopID,shopName from shopInfo";
+            ShopInfo shopInfo = null;
+
+            try
+            {
+                using (dp = new DataProvider())
+                {
+                    using (SqlDataReader reader = dp.ExecuteReader(sqlString))
+                    {
+                        while (reader.Read())
+                        {
+                            shopInfo = new ShopInfo();
+                            shopInfo.ShopID = reader.GetInt32(0);
+                            shopInfo.ShopName = reader.GetString(1);
+                            allShop.Add(shopInfo);
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                ///////此处可以返回false
+                return -1;
+            }
+
+            return allShop.Count;
         }
 
         #endregion
