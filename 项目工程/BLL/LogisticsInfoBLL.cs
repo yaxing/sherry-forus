@@ -17,7 +17,7 @@ namespace BLL
         /// </summary>
         /// <returns>操作成功返回true，否则返回false</returns>
 
-        public bool StartShipping()
+        public bool StartShipping(OrderInfo orderInfo)
         {
             int shippingMode = JudgeMode();
 
@@ -64,6 +64,9 @@ namespace BLL
                                 return false;
 
                             //修改订单状态为正在送货
+                            orderInfo.State = 1;
+                            IChangeOrderState changeOrderState = new OrderInfoBLL();
+                            changeOrderState.ChangeOrderState(orderInfo);
                         }
                         else                           //操作失败
                         {
