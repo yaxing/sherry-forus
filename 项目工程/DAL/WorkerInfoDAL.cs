@@ -133,15 +133,15 @@ namespace DAL
         }
         #endregion
 
-        #region 显示所有用户
+        #region 显示所有工作人员
 
         /// <summary>
-        /// 显示用户列表
+        /// 显示工作人员列表
         /// </summary>
-        /// <param name="userList">用户实体对象集合</param>
+        /// <param name="workerList">工作人员实体对象集合</param>
         /// <returns>集合元素个数</returns>
        
-        public int ShowWorkerInfo (ref IList<WorkerInfo> userList)
+        public int ShowWorkerInfo (ref IList<WorkerInfo> workerList)
         {
             sqlString = "select * from workerInfo";
             
@@ -159,7 +159,7 @@ namespace DAL
                             user.WorkerID = reader.GetGuid(0);
                             user.WorkerRealName = reader.GetString(1);
 
-                            userList.Add(user);
+                            workerList.Add(user);
                         }
                     }
                 }
@@ -169,7 +169,7 @@ namespace DAL
 
             }
 
-            return userList.Count;
+            return workerList.Count;
         }
 
         #endregion
@@ -212,6 +212,51 @@ namespace DAL
             return true;
         }
         # endregion
+
+        #region 显示所有负责人
+
+        /// <summary>
+        /// 显示负责人列表
+        /// </summary>
+        /// <param name="workerList">负责人实体对象集合</param>
+        /// <returns>集合元素个数</returns>
+
+        public int ShowWorkerInfo(ref IList<WorkerInfo> workerList,ShopInfo shopInfo)
+        {
+            sqlString = "select * from workerInfo where workerLv = 1 and shopID = @shopID";
+            SqlParameter[] pt = new SqlParameter[]{
+                                new SqlParameter("@shopID", SqlDbType.Int)
+                                };
+            pt[0].Value = shopInfo.ShopID;
+
+            try
+            {
+                using (dp = new DataProvider())
+                {
+                    using (SqlDataReader reader = dp.ExecuteReader(sqlString,pt))
+                    {
+                        WorkerInfo user = null;
+                        while (reader.Read())
+                        {
+                            user = new WorkerInfo();
+
+                            user.WorkerID = reader.GetGuid(0);
+                            user.WorkerRealName = reader.GetString(3);
+
+                            workerList.Add(user);
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                return -1;
+            }
+
+            return workerList.Count;
+        }
+
+        #endregion
 
         #region 查询店面负责人员信息
 
