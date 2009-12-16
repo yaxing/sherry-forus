@@ -2,12 +2,16 @@
 ////日  期：2009-12-9
 ////功  能：店面信息管理的逻辑处理
 
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Web.Security;
 using DAL;
 using Entity;
 
 namespace BLL
 {
-    class ShopInfoBLL
+    public class ShopInfoBLL
     {
 
         #region 根据地址查询店面信息
@@ -22,6 +26,22 @@ namespace BLL
         {
             ShopInfoDAL shopInfoDAL = new ShopInfoDAL();
             return shopInfoDAL.SrchShopInfoByAdd(ref shopInfo);
+        }
+
+        #endregion
+
+        #region 显示所有店面名称
+
+        ///<summary>
+        ///显示所有店面名称
+        ///</summary>
+        ///<returns>店面数量,失败返回-1</returns>
+        
+        public int DisplayAllShop(ref IList<ShopInfo> allShop)
+        {
+            int count = 0;
+            ShopInfoDAL shopInfoDAL = new ShopInfoDAL();
+            return shopInfoDAL.DisplayAllShop(ref allShop);
         }
 
         #endregion
