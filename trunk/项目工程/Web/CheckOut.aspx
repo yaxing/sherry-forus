@@ -3,8 +3,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="contentHolder" runat="Server">
     <asp:Panel runat="server" ID="pAnonymous">
-        <div style="position: relative; left: 220px; top: 60px;">
-            <asp:Label runat="server" ID="lbAnonymous" Font-Names="微软雅黑" Font-Size="15px" Text="您还未登录，请使用页面右上角链接登录或注册>>"></asp:Label>
+        <div style="position: relative; left: 50px; top: 60px;">
+            <asp:Label runat="server" ID="lbAnonymous" Font-Names="微软雅黑" Font-Size="12px" Text="您还未登录，请先"><a href="Register.aspx?checkOut=1">登录</a></asp:Label>
         </div>
     </asp:Panel>
     <asp:Panel runat="server" ID="pLoggedIn">

@@ -131,25 +131,25 @@ public partial class CartView : System.Web.UI.Page
 
             Button_IndexFirst.Text = "第一页 ";
             Button_IndexFirst.CommandName = "first";
-            Button_IndexFirst.ForeColor = Color.White;
+            Button_IndexFirst.ForeColor = Color.Black;
             Button_IndexFirst.Font.Name = "微软雅黑";
             Button_IndexFirst.Click += new EventHandler(PageButtonClick);
 
             Button_IndexNext.Text = "   下一页 ";
             Button_IndexNext.CommandName = "next";
-            Button_IndexNext.ForeColor = Color.White;
+            Button_IndexNext.ForeColor = Color.Black;
             Button_IndexNext.Font.Name = "微软雅黑";
             Button_IndexNext.Click += new EventHandler(PageButtonClick);
 
             Button_IndexPrevious.Text = "前一页 ";
             Button_IndexPrevious.CommandName = "previous";
-            Button_IndexPrevious.ForeColor = Color.White;
+            Button_IndexPrevious.ForeColor = Color.Black;
             Button_IndexPrevious.Font.Name = "微软雅黑";
             Button_IndexPrevious.Click += new EventHandler(PageButtonClick);
 
             Button_IndexLast.Text = "最末页 ";
             Button_IndexLast.CommandName = "last";
-            Button_IndexLast.ForeColor = Color.White;
+            Button_IndexLast.ForeColor = Color.Black;
             Button_IndexLast.Font.Name = "微软雅黑";
             Button_IndexLast.Click += new EventHandler(PageButtonClick);
 
