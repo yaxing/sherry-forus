@@ -1,7 +1,4 @@
-﻿////编写者：陈亚星，张翼鹏
-////日  期：2009-11-28
-////功  能：母版页
-using System;
+﻿using System;
 using System.Data;
 using System.Configuration;
 using System.Collections;
@@ -11,23 +8,18 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
+using BLL;
+using Entity;
+using InterFace;
 
 public partial class IndexMaster : System.Web.UI.MasterPage
 {
+    CartCtrl curCart;
     protected void Page_Load(object sender, EventArgs e)
     {
+        curCart = new CartCtrl();
+        lbTotalPrice.Text = curCart.ShowTotalPrice();
+        lbTotalQuantity.Text = curCart.GetItemQuantity().ToString();
         this.Page.Title = "Sherry化妆品有限公司";
-    }
-    protected void LoginButton_Click(object sender, EventArgs e)
-    {
-        
-    }
-    protected void imgbCart_Click(object sender, ImageClickEventArgs e)
-    {
-        Response.Redirect("CartView.aspx");
-    }
-    protected void lbtCart_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("CartView.aspx");
     }
 }

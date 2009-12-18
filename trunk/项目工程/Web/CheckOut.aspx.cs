@@ -128,6 +128,12 @@ public partial class CheckOut : System.Web.UI.Page
         }
         lbProvince.Text = ddlUserProvince.SelectedItem.Text.ToString();
 
+        lbName.Text = userInfo.UserRealName;
+        lbAdd.Text = userInfo.PostAdd;
+        lbTel.Text = userInfo.PhoneNum;
+        lbZip.Text = userInfo.PostNum;
+        lbProvince.Text = userInfo.Province;
+
         pShippingConfirm.Visible = true;
         pAddChange.Visible = false;
         pPayChange.Visible = false;

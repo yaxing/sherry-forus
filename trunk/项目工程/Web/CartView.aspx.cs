@@ -89,10 +89,14 @@ public partial class CartView : System.Web.UI.Page
             if (shopCart.GetItemQuantity() == 0)
             {
                 ibPay.Visible = false;
+                ibClearCart.Visible = false;
+                ibSaveCart.Visible = false;
             }
             else 
             {
                 ibPay.Visible = true;
+                ibClearCart.Visible = true;
+                ibSaveCart.Visible = true;
             }
     }
     #endregion

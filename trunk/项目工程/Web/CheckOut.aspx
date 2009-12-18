@@ -8,12 +8,12 @@
         </div>
     </asp:Panel>
     <asp:Panel runat="server" ID="pLoggedIn">
-        <div style="position: relative; width: 280px; left: 150px; border-bottom-style: solid;
-            border-bottom-color: White; border-bottom-width: 2px;">
+        <%--<div style="position: relative; width: 280px; left: 150px; border-bottom-style: solid;
+            border-bottom-color: black; border-bottom-width: 2px;">
             <asp:Image runat="server" ID="imgCartPath" ImageUrl="images/cartPath2.jpg" />
-        </div>
+        </div>--%>
         <asp:Panel runat="server" ID="pAddChange">
-            <div style="position: relative; left: 300px; top: 30px; height: 320px">
+            <div style="position: relative; left: 50px; top: 30px; height: 320px;">
                 <table style="font-family: 微软雅黑">
                     <tr>
                         <td style="width: 150px">
@@ -32,12 +32,18 @@
                         <td>
                             <asp:DropDownList ID="ddlUserProvince" runat="server">
                                 <asp:ListItem Text="[未选择省]" Value="0" />
-                                <asp:ListItem Text="北京" Value="1"/>
+                                <asp:ListItem Text="北京" Value="1" />
                                 <asp:ListItem Text="上海" Value="2" />
-                                <asp:ListItem Text="山东"  Value="3"/>
-                                <asp:ListItem Text="云南" Value="4"/>
-                                <asp:ListItem Text="河北" Value="5"/>
+                                <asp:ListItem Text="山东" Value="3" />
+                                <asp:ListItem Text="云南" Value="4" />
+                                <asp:ListItem Text="河北" Value="5" />
                             </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
                             <asp:TextBox runat="server" ID="tbNewAdd" Text="" />
                         </td>
                     </tr>
@@ -66,14 +72,14 @@
                 </table>
                 <table>
                     <tr>
-                        <td align="right" style="width: 230px; border-bottom-style: dotted; border-bottom-color: White;
+                        <td align="right" style="width: 230px; border-bottom-style: dotted; border-bottom-color: black;
                             border-bottom-width: 1px">
                             <asp:ImageButton ID="imgbCancelChange" runat="server" Width="35px" ImageUrl="images/cancel.jpg"
                                 OnClick="imgbCancelChange_Click" />
                         </td>
-                        <td style="width: 5px; border-bottom-style: dotted; border-bottom-color: White; border-bottom-width: 1px">
+                        <td style="width: 5px; border-bottom-style: dotted; border-bottom-color: black; border-bottom-width: 1px">
                         </td>
-                        <td align="right" style="border-bottom-style: dotted; border-bottom-color: White;
+                        <td align="right" style="border-bottom-style: dotted; border-bottom-color: black;
                             border-bottom-width: 1px">
                             <asp:ImageButton ID="imgbSaveAddChange" runat="server" Width="70px" ImageUrl="images/saveChange.jpg"
                                 OnClick="imgbSaveAddChange_Click" />
@@ -83,11 +89,11 @@
             </div>
         </asp:Panel>
         <asp:Panel runat="server" ID="pPayChange" Font-Names="微软雅黑">
-            <div style="position: relative; left: 150px; top: 20px; width: 560px; border-bottom-style: dotted;
-                border-bottom-width: 1px; border-bottom-color: White">
+            <div style="position: relative; left: 50px; top: 20px; width: 440px; border-bottom-style: dotted;
+                border-bottom-width: 1px; border-bottom-color: black">
                 <table>
                     <tr>
-                        <td style="width: 200px">
+                        <td style="width: 150px">
                             <asp:Label Font-Bold="true" Text="请选择您的支付方式：" ID="lbChosePay" runat="server" Height="20px" />
                             <asp:RadioButtonList ID="rblPayMethods" runat="server" CellSpacing="10" RepeatLayout="Table">
                                 <asp:ListItem Value="1" Text="网上银行" Selected="True" />
@@ -95,7 +101,7 @@
                                 <asp:ListItem Value="3" Text="货到付款" />
                             </asp:RadioButtonList>
                         </td>
-                        <td style="width: 10px; border-left-style: dotted; border-left-color: White; border-left-width: 1px">
+                        <td style="width: 10px; border-left-style: dotted; border-left-color: black; border-left-width: 1px">
                         </td>
                         <td>
                             <p style="font-weight: bold">
@@ -110,8 +116,8 @@
                     </tr>
                 </table>
             </div>
-            <div style="position: relative; left: 150px; top: 30px">
-                <table style="width: 560px">
+            <div style="position: relative; left: 50px; top: 30px">
+                <table style="width: 440px">
                     <tr>
                         <td style="width: 150px; font-weight: bold">
                             SHERRY公司银行信息
@@ -181,10 +187,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td style="border-bottom-style: dotted; border-bottom-width: 1px; border-bottom-color: White">
+                        <td style="border-bottom-style: dotted; border-bottom-width: 1px; border-bottom-color: black">
                             公司地址：
                         </td>
-                        <td style="border-bottom-style: dotted; border-bottom-width: 1px; border-bottom-color: White">
+                        <td style="border-bottom-style: dotted; border-bottom-width: 1px; border-bottom-color: black">
                             北京市朝阳区建国门外大街12号永安东里华彬国际大厦19层，邮编：100022
                         </td>
                     </tr>
@@ -193,7 +199,7 @@
                     <tr style="height: 15px">
                     </tr>
                     <tr>
-                        <td style="width: 425px" align="right">
+                        <td style="width: 305px" align="right">
                             <asp:ImageButton ID="imgbCancelPayChange" Width="35px" runat="server" ImageUrl="images/cancel.jpg"
                                 OnClick="imgbCancelChange_Click" />
                         </td>
@@ -208,13 +214,65 @@
             </div>
         </asp:Panel>
         <asp:Panel runat="server" ID="pShippingConfirm">
-            <div style="position: relative; left: 300px; top: 30px; height: 320px">
+            <div style="position: relative; left: 0px; bottom: 0px; width: 200px; border-style: solid;
+                border-width: 2px; border-color: black; font-family: 微软雅黑">
+                <table style="width: 200px">
+                    <%--<tr style="">
+                    </tr>
+                    <tr>
+                        <td style="width: 15px">
+                        </td>
+                        <td style="width: 180px; font-size: 15px">
+                            订单小结：
+                        </td>
+                        <td style="width: 45px">
+                        </td>
+                    </tr>--%>
+                    <tr style="">
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <asp:Label ID="lbTotalQuantityTitle" runat="server" Text="商品总量："></asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label ID="lbTotalQuantity" runat="server" Text=""></asp:Label>
+                        </td>
+                    </tr>
+                    <tr style="">
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <asp:Label ID="lbTotalPriceTitle" runat="server" Text="价格总计："></asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label ID="lbTotalPrice" runat="server" Text=""></asp:Label>
+                        </td>
+                    </tr>
+                    <tr style="">
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <asp:ImageButton Width="70px" ImageUrl="images/changeItems.jpg" runat="server" ID="imgbChangeItems"
+                                OnClick="imgbChangeItems_Click" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="position: relative; left: 50px; top: 30px; height: 320px">
                 <table style="font-family: 微软雅黑">
                     <tr>
                         <td style="width: 100px">
                             <asp:Label runat="server" ID="lbTitleName" Text="收货人姓名：" />
                         </td>
-                        <td style="width: 230px">
+                        <td style="width: 205px">
                             <asp:Label runat="server" ID="lbName" Text="" />
                         </td>
                     </tr>
@@ -225,7 +283,14 @@
                             <asp:Label runat="server" ID="lbTitleAdd" Text="收货人地址：" />
                         </td>
                         <td>
-                            <asp:Label runat="server" Width="40px" ID="lbProvince" Text=""/><asp:Label runat="server" ID="lbAdd" Text="" />
+                            <asp:Label runat="server" Width="40px" ID="lbProvince" Text="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <asp:Label runat="server" ID="lbAdd" Text="" />
                         </td>
                     </tr>
                     <tr style="height: 10px">
@@ -251,10 +316,10 @@
                     <tr style="height: 20px">
                     </tr>
                     <tr>
-                        <td align="center" style="border-bottom-style: dotted; border-bottom-color: White;
+                        <td align="center" style="border-bottom-style: dotted; border-bottom-color: black;
                             border-bottom-width: 1px">
                         </td>
-                        <td align="right" style="border-bottom-style: dotted; border-bottom-color: White;
+                        <td align="right" style="border-bottom-style: dotted; border-bottom-color: black;
                             border-bottom-width: 1px">
                             <asp:ImageButton ID="imgbAddNew" runat="server" Width="35px" ImageUrl="images/change.jpg"
                                 OnClick="imgbAddNew_Click" />
@@ -273,10 +338,10 @@
                     <tr style="height: 20px">
                     </tr>
                     <tr>
-                        <td align="center" style="border-bottom-style: dotted; border-bottom-color: White;
+                        <td align="center" style="border-bottom-style: dotted; border-bottom-color: black;
                             border-bottom-width: 1px">
                         </td>
-                        <td align="right" style="border-bottom-style: dotted; border-bottom-color: White;
+                        <td align="right" style="border-bottom-style: dotted; border-bottom-color: black;
                             border-bottom-width: 1px">
                             <asp:ImageButton ID="imgbPayNew" runat="server" Width="35px" ImageUrl="images/change.jpg"
                                 OnClick="imgbPayNew_Click" />
@@ -286,7 +351,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:CheckBox ID="cbInvoice" runat="server" Text="是否需要发票？" />
+                            <asp:CheckBox ID="cbInvoice" runat="server" Width="150px" Text="是否需要发票？" />
                         </td>
                         <td>
                         </td>
@@ -314,12 +379,12 @@
                 </table>
                 <table>
                     <tr style="height: 15px;">
-                        <td style="width: 270px; border-bottom-style: dotted; border-bottom-color: White;
+                        <td style="width: 270px; border-bottom-style: dotted; border-bottom-color: black;
                             border-bottom-width: 1px">
                         </td>
-                        <td style="border-bottom-style: dotted; border-bottom-color: White; border-bottom-width: 1px">
+                        <td style="border-bottom-style: dotted; border-bottom-color: black; border-bottom-width: 1px">
                         </td>
-                        <td style="border-bottom-style: dotted; border-bottom-color: White; border-bottom-width: 1px">
+                        <td style="border-bottom-style: dotted; border-bottom-color: black; border-bottom-width: 1px">
                         </td>
                     </tr>
                     <tr style="height: 5px">
@@ -339,57 +404,5 @@
                 </table>
             </div>
         </asp:Panel>
-        <div style="position: relative; left: 720px; bottom: 150px; width: 270px; height: 155px;
-            border-style: solid; border-width: 2px; border-color: White; font-family: 微软雅黑">
-            <table>
-                <tr style="height: 30px">
-                </tr>
-                <tr>
-                    <td style="width: 15px">
-                    </td>
-                    <td style="width: 180px; font-size: 15px">
-                        订单小结：
-                    </td>
-                    <td style="width: 45px">
-                    </td>
-                </tr>
-                <tr style="height: 20px">
-                </tr>
-                <tr>
-                    <td>
-                    </td>
-                    <td>
-                        <asp:Label ID="lbTotalQuantityTitle" runat="server" Text="商品总量："></asp:Label>
-                    </td>
-                    <td>
-                        <asp:Label ID="lbTotalQuantity" runat="server" Text=""></asp:Label>
-                    </td>
-                </tr>
-                <tr style="height: 10px">
-                </tr>
-                <tr>
-                    <td>
-                    </td>
-                    <td>
-                        <asp:Label ID="lbTotalPriceTitle" runat="server" Text="价格总计："></asp:Label>
-                    </td>
-                    <td>
-                        <asp:Label ID="lbTotalPrice" runat="server" Text=""></asp:Label>
-                    </td>
-                </tr>
-                <tr style="height: 15px">
-                </tr>
-                <tr>
-                    <td>
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                        <asp:ImageButton Width="70px" ImageUrl="images/changeItems.jpg" runat="server" ID="imgbChangeItems"
-                            OnClick="imgbChangeItems_Click" />
-                    </td>
-                </tr>
-            </table>
-        </div>
     </asp:Panel>
 </asp:Content>
