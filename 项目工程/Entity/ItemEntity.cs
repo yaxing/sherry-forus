@@ -15,6 +15,10 @@ namespace Entity
         private int number;
         private double price;
         private String imgPath = String.Empty;
+        private string discribe = string.Empty;
+        private string goodsNum = string.Empty;
+        private int goodsStorage;
+        private int goodsCategory;
 
         public ItemEntity(int id) 
         {
@@ -68,6 +72,30 @@ namespace Entity
         public String CurItemTotalPrice
         {
             get { return String.Format("{0:C}", price * number); }
+        }
+
+        public string GoodsNum 
+        {
+            get {return  goodsNum; }
+            set { goodsNum = value; }
+        }
+
+        public string Describe
+        {
+            get { return discribe; }
+            set { discribe = value; }
+        }
+
+        public int GoodsStorage
+        {
+            get { return goodsStorage; }
+            set { goodsStorage = value; }
+        }
+
+        public int GoodsNCategory
+        {
+            get { return goodsCategory; }
+            set { goodsCategory = value; }
         }
     }
     #endregion
