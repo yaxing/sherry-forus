@@ -78,11 +78,13 @@ namespace BLL
                     {
                         //选择邮寄负责人
                         WorkerInfo mailResponser = new WorkerInfo();
+                        mailResponser.ShopID = 1;
                         if (!SelectMailResponser(ref mailResponser))
                             return false;
 
                         //确定市场部负责人
                         WorkerInfo marketResponser = new WorkerInfo();
+                        marketResponser.ShopID = 1;
                         if (!SrchMarketResponser(ref marketResponser))
                             return false;
 
@@ -315,7 +317,8 @@ namespace BLL
 
         public bool SelectMailResponser(ref WorkerInfo mailResponser)
         {
-            return true;
+            WorkerInfoBLL workerInfoBLL = new WorkerInfoBLL();
+            return workerInfoBLL.SelectWorkerByShop(ref mailResponser);
         }
         #endregion
 
@@ -328,7 +331,8 @@ namespace BLL
 
         public bool SrchMarketResponser(ref WorkerInfo marketResponser)
         {
-            return true;
+            WorkerInfoBLL workerInfoBLL = new WorkerInfoBLL();
+            return workerInfoBLL.SrchShopManager(ref marketResponser);
         }
         #endregion
     }
