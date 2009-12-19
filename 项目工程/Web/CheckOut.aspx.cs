@@ -202,6 +202,16 @@ public partial class CheckOut : System.Web.UI.Page
             userOrderInfo.UserTel = lbTel.Text;
             userOrderInfo.UserOrderPrice = userCart.GetTotalPrice();
             userOrderInfo.UserOrderItems = userCart.GetList();
+
+            if (rblPayMethods.SelectedValue.Equals("3")) 
+            {
+                userOrderInfo.State = 0;
+            }
+
+            else if (!rblPayMethods.SelectedValue.Equals("3")) 
+            {
+                userOrderInfo.State = 1;
+            }
             
             if (cbInvoice.Checked) 
             {
