@@ -3,8 +3,78 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="contentHolder" runat="Server">
     <asp:Panel runat="server" ID="pAnonymous">
-        <div style="position: relative; left: 50px; top: 60px;">
-            <asp:Label runat="server" ID="lbAnonymous" Font-Names="微软雅黑" Font-Size="12px" Text="您还未登录，请先"><a href="Register.aspx?checkOut=1">登录</a></asp:Label>
+        <div style="position: relative; left: 100px; top: 60px;">
+            您还未登录，请先登录或者<a href="Register.aspx?checkOut=1">注册</a>
+            <div style="position:relative; top:10px; border-bottom-color:Black; border-bottom-style:solid; border-bottom-width:1px; width:300px"></div>
+            <asp:LoginView ID="LoginView1" runat="server">
+                <AnonymousTemplate>
+                    <asp:Login ID="Login1" runat="server">
+                        <LayoutTemplate>
+                        <div>
+                            <table border="0" cellpadding="1" cellspacing="0">
+                            <tr style="height:30px"></tr>
+                                <tr style="height: 10px">
+                                    <td style="width: 100px">
+                                    </td>
+                                    <td style="width: 100px">
+                                    </td>
+                                    <td style="width: 30px">
+                                    </td>
+                                </tr>
+                                <tr style="height: 20px">
+                                    <td align="left">
+                                        <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">用户名:</asp:Label>
+                                    </td>
+                                    <td colspan="2" align="left">
+                                        <asp:TextBox ID="UserName" runat="server" Width="120px"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName"
+                                            ErrorMessage="必须填写“用户名”。" ToolTip="必须填写“用户名”。" ValidationGroup="ctl00$Login1"
+                                            ForeColor="White">*</asp:RequiredFieldValidator>
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr style="height: 30px">
+                                    <td align="left">
+                                        <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">密　码:</asp:Label>
+                                    </td>
+                                    <td colspan="2" align="left">
+                                        <asp:TextBox ID="Password" runat="server" TextMode="Password" Width="120px"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password"
+                                            ErrorMessage="必须填写“密码”。" ToolTip="必须填写“密码”。" ValidationGroup="ctl00$Login1" ForeColor="White">*</asp:RequiredFieldValidator>
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" align="left">
+                                        <a href="GetPassword.aspx">忘记密码？</a>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" colspan="2">
+                                        <asp:CheckBox ID="RememberMe" runat="server" Text="下次记住我。" />
+                                    </td>
+                                    <td align="left">
+                                        <asp:ImageButton ID="LoginButton" runat="server" CommandName="Login" ImageUrl="images/login.jpg" ValidationGroup="ctl00$Login1"  />
+                                        <%--<asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="登录" ValidationGroup="ctl00$Login1" />--%>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" colspan="3" style="color: White;">
+                                        <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
+                                    </td>
+                                </tr>
+                            </table>
+                            </div>
+                        </LayoutTemplate>
+                    </asp:Login>
+                </AnonymousTemplate>
+            </asp:LoginView>
         </div>
     </asp:Panel>
     <asp:Panel runat="server" ID="pLoggedIn">
@@ -74,14 +144,14 @@
                     <tr>
                         <td align="right" style="width: 230px; border-bottom-style: dotted; border-bottom-color: black;
                             border-bottom-width: 1px">
-                            <asp:ImageButton ID="imgbCancelChange" runat="server" Width="35px" ImageUrl="images/cancel.jpg"
+                            <asp:ImageButton ID="imgbCancelChange" runat="server" Width="85px" ImageUrl="images/cancel.jpg"
                                 OnClick="imgbCancelChange_Click" />
                         </td>
                         <td style="width: 5px; border-bottom-style: dotted; border-bottom-color: black; border-bottom-width: 1px">
                         </td>
                         <td align="right" style="border-bottom-style: dotted; border-bottom-color: black;
                             border-bottom-width: 1px">
-                            <asp:ImageButton ID="imgbSaveAddChange" runat="server" Width="70px" ImageUrl="images/saveChange.jpg"
+                            <asp:ImageButton ID="imgbSaveAddChange" runat="server" Width="85px" ImageUrl="images/saveChange.jpg"
                                 OnClick="imgbSaveAddChange_Click" />
                         </td>
                     </tr>
@@ -200,13 +270,13 @@
                     </tr>
                     <tr>
                         <td style="width: 305px" align="right">
-                            <asp:ImageButton ID="imgbCancelPayChange" Width="35px" runat="server" ImageUrl="images/cancel.jpg"
+                            <asp:ImageButton ID="imgbCancelPayChange" Width="85px" runat="server" ImageUrl="images/cancel.jpg"
                                 OnClick="imgbCancelChange_Click" />
                         </td>
                         <td style="width: 5px">
                         </td>
                         <td>
-                            <asp:ImageButton ID="imgbSavePay" Width="70px" runat="server" ImageUrl="images/saveChange.jpg"
+                            <asp:ImageButton ID="imgbSavePay" Width="85px" runat="server" ImageUrl="images/saveChange.jpg"
                                 OnClick="imgbSavePay_Click" />
                         </td>
                     </tr>
@@ -260,7 +330,7 @@
                         <td>
                         </td>
                         <td>
-                            <asp:ImageButton Width="70px" ImageUrl="images/changeItems.jpg" runat="server" ID="imgbChangeItems"
+                            <asp:ImageButton Width="85px" ImageUrl="images/changeItems.jpg" runat="server" ID="imgbChangeItems"
                                 OnClick="imgbChangeItems_Click" />
                         </td>
                     </tr>
@@ -269,10 +339,10 @@
             <div style="position: relative; left: 50px; top: 30px; height: 320px">
                 <table style="font-family: 微软雅黑">
                     <tr>
-                        <td style="width: 100px">
+                        <td style="width: 120px">
                             <asp:Label runat="server" ID="lbTitleName" Text="收货人姓名：" />
                         </td>
-                        <td style="width: 205px">
+                        <td style="width: 235px">
                             <asp:Label runat="server" ID="lbName" Text="" />
                         </td>
                     </tr>
@@ -321,7 +391,7 @@
                         </td>
                         <td align="right" style="border-bottom-style: dotted; border-bottom-color: black;
                             border-bottom-width: 1px">
-                            <asp:ImageButton ID="imgbAddNew" runat="server" Width="35px" ImageUrl="images/change.jpg"
+                            <asp:ImageButton ID="imgbAddNew" runat="server" Width="85px" ImageUrl="images/change.jpg"
                                 OnClick="imgbAddNew_Click" />
                         </td>
                     </tr>
@@ -343,7 +413,7 @@
                         </td>
                         <td align="right" style="border-bottom-style: dotted; border-bottom-color: black;
                             border-bottom-width: 1px">
-                            <asp:ImageButton ID="imgbPayNew" runat="server" Width="35px" ImageUrl="images/change.jpg"
+                            <asp:ImageButton ID="imgbPayNew" runat="server" Width="85px" ImageUrl="images/change.jpg"
                                 OnClick="imgbPayNew_Click" />
                         </td>
                     </tr>
@@ -351,7 +421,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:CheckBox ID="cbInvoice" runat="server" Width="150px" Text="是否需要发票？" />
+                            <asp:CheckBox ID="cbInvoice" runat="server" Text="是否需要发票？" />
                         </td>
                         <td>
                         </td>
@@ -379,7 +449,7 @@
                 </table>
                 <table>
                     <tr style="height: 15px;">
-                        <td style="width: 270px; border-bottom-style: dotted; border-bottom-color: black;
+                        <td style="width: 260px; border-bottom-style: dotted; border-bottom-color: black;
                             border-bottom-width: 1px">
                         </td>
                         <td style="border-bottom-style: dotted; border-bottom-color: black; border-bottom-width: 1px">
@@ -391,13 +461,13 @@
                     </tr>
                     <tr>
                         <td align="right">
-                            <asp:ImageButton ID="imgbBack" Width="35px" runat="server" ImageUrl="images/cancel.jpg"
+                            <asp:ImageButton ID="imgbBack" Width="85px" runat="server" ImageUrl="images/cancel.jpg"
                                 OnClick="imgbCancelShipping_Click" />
                         </td>
                         <td style="width: 5px">
                         </td>
                         <td style="height: 19px">
-                            <asp:ImageButton ID="imgbConfirm" Width="70px" runat="server" ImageUrl="images/confirm.jpg"
+                            <asp:ImageButton ID="imgbConfirm" Width="85px" runat="server" ImageUrl="images/confirm.jpg"
                                 OnClick="imgbConfirm_Click" />
                         </td>
                     </tr>
