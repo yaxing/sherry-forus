@@ -2,6 +2,8 @@
     CodeFile="CheckOut.aspx.cs" Inherits="CheckOut" Title="Untitled Page" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="contentHolder" runat="Server">
+<img src="images/bullet1.gif" width="20px" alt="" title="" /><font style="font-size: 19px;
+        color: #a81f22">结算中心</font>
     <asp:Panel runat="server" ID="pAnonymous">
         <div style="position: relative; left: 100px; top: 60px;">
             您还未登录，请先登录或者<a href="Register.aspx?checkOut=1">注册</a>
@@ -284,7 +286,7 @@
             </div>
         </asp:Panel>
         <asp:Panel runat="server" ID="pShippingConfirm">
-            <div style="position: relative; left: 0px; bottom: 0px; width: 200px; border-style: solid;
+            <div style="position: relative; left: 0px; top: 15px; width: 200px; border-style: solid;
                 border-width: 2px; border-color: black; font-family: 微软雅黑">
                 <table style="width: 200px">
                     <%--<tr style="">

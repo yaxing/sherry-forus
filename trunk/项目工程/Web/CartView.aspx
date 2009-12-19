@@ -2,20 +2,13 @@
     CodeFile="CartView.aspx.cs" Inherits="CartView" Title="Untitled Page" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="contentHolder" runat="Server">
-    <div style="position: relative; left: 0px; bottom: 0px; width: 270px; border-style: solid;
+    <img src="images/bullet1.gif" width="20px" alt="" title="" /><font style="font-size: 19px;
+        color: #a81f22">我的购物车</font>
+    <div style="position: relative; left: 0px; top: 15px; width: 270px; border-style: solid;
         border-width: 2px; border-color: black; font-family: 微软雅黑">
         <table>
             <tr style="">
             </tr>
-            <%--<tr>
-                <td style="">
-                </td>
-                <td style="font-size: 15px; color: black">
-                    购物车小结：
-                </td>
-                <td style="">
-                </td>
-            </tr>--%>
             <tr style="">
             </tr>
             <tr>
