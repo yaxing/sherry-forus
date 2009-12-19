@@ -49,13 +49,13 @@
                 <td style="width: 20px">
                 </td>
                 <td>
-                    <asp:ImageButton ID="ibReturn" runat="server" Width="110px" ImageUrl="images/cartReturn.jpg"
+                    <asp:ImageButton ID="ibReturn" runat="server" Width="85px" ImageUrl="images/goOnShopping.jpg"
                         OnClick="ibReturn_Click" />
                 </td>
                 <td style="width: 15px">
                 </td>
                 <td>
-                    <asp:ImageButton ID="ibPay" runat="server" Width="110px" ImageUrl="images/cart.jpg"
+                    <asp:ImageButton ID="ibPay" runat="server" Width="85px" ImageUrl="images/Pay.jpg"
                         OnClick="ibPay_Click" />
                 </td>
             </tr>
@@ -182,11 +182,11 @@
             <table>
                 <tr>
                     <td style="width: 90px">
-                        <asp:ImageButton ID="ibClearCart" runat="server" ImageUrl="images/clear.jpg" Width="70px"
+                        <asp:ImageButton ID="ibClearCart" runat="server" ImageUrl="images/clearAll.jpg" Width="85px"
                             OnClick="ibClearCart_Click" />
                     </td>
                     <td>
-                        <asp:ImageButton ID="ibSaveCart" runat="server" ImageUrl="images/save.jpg" Width="70px"
+                        <asp:ImageButton ID="ibSaveCart" runat="server" ImageUrl="images/saveCart.jpg" Width="85px"
                             OnClick="ibSaveCart_Click" />
                     </td>
                 </tr>
