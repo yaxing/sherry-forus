@@ -31,7 +31,9 @@
                         <li><a href="Special.aspx">特价活动</a></li>
                         <li><a href="MyAccount.aspx">我的帐户</a></li>
                         <li><a href="Register.aspx">注册</a></li>
-                        <li><a href="Contact.aspx">联系我们</a></li>
+                        <li><a href="Contact.aspx">联系我们</a>
+                            <asp:LoginStatus ID="lsLogOut" runat="server" LoginText="" LogoutText="注销登录" LogoutPageUrl="javascript:history.go(-1);" />
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -69,7 +71,7 @@
                     <div class="about">
                         <p>
                             <img src="images/about.gif" alt="" title="" class="right" />
-                            SHERRY化妆品公司分析并了解现代消费者需求，开发出一系列高品质产品，其中，佳雪芦荟保湿系列、佳雪冰点防晒系列连续多年位于市场前列，深受广大消费者喜爱。为了更好的服务消费者，雅倩建立完善的市场调研系统，开展消费者追踪、回访并与消费者建立更为紧密和持久的沟通关系。雅倩的市场部建立了庞大的数据库，把消费者的意见、要求及时分析、反馈给生产和技术部门，以生产出更适合消费者使用的产品。
+                            SHERRY化妆品公司分析并了解现代消费者需求，开发出一系列高品质产品，其中，佳雪芦荟保湿系列、佳雪冰点防晒系列连续多年位于市场前列，深受广大消费者喜爱。为了更好的服务消费者，SHERRY建立完善的市场调研系统，开展消费者追踪、回访并与消费者建立更为紧密和持久的沟通关系。SHERRY的市场部建立了庞大的数据库，把消费者的意见、要求及时分析、反馈给生产和技术部门，以生产出更适合消费者使用的产品。
                         </p>
                     </div>
                     <div class="right_box">

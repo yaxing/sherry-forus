@@ -25,6 +25,14 @@ public partial class IndexMaster : System.Web.UI.MasterPage
         lbTotalPrice.Text = curCart.ShowTotalPrice();
         lbTotalQuantity.Text = curCart.GetItemQuantity().ToString();
         this.Page.Title = "Sherry化妆品有限公司";
+        if (HttpContext.Current.User.Identity.Name == null||HttpContext.Current.User.Identity.Name.Length<=0)
+        {
+            lsLogOut.Visible = false;
+        }
+        else 
+        {
+            lsLogOut.Visible = true;
+        }
         if (!mpDatabind())
         {
             SOfferError.Visible = true;
