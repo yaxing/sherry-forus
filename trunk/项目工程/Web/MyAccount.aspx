@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/IndexMaster.master" AutoEventWireup="true" CodeFile="MyAccount.aspx.cs" Inherits="MyAccount" Title="Untitled Page" %>
+<%@ Page Language="C#" MasterPageFile="~/IndexMaster.master" AutoEventWireup="true" CodeFile="MyAccount.aspx.cs" Inherits="MyAccount" Title="我的帐户" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="contentHolder" Runat="Server">
     <asp:LoginView ID="LoginView" runat="server">
         <AnonymousTemplate>
@@ -33,7 +33,9 @@
 
                               <div class="form_row">
                                   <div class="terms">
-                                  <asp:CheckBox ID="RememberMe" runat="server" Text="记住我" />
+                                  <asp:CheckBox ID="RememberMe" runat="server" Text="记住我" />　　　
+                                  <a href="GetPassword.aspx">忘记密码？</a>
+                                  </div>
                               </div> 
 
                     
@@ -115,8 +117,8 @@
                     </div>
                     
                     <div class="form_row">
-                        <asp:Button ID="BtnModiPwd" runat="server" Text="修改密码" class="register"/>
-                        <asp:Button ID="BtnModiInfo" runat="server" Text="修改信息" class="register"/>
+                        <asp:Button ID="BtnModiPwd" runat="server" Text="修改密码" class="register" OnClick="BtnModiPwd_Click"/>
+                        <asp:Button ID="BtnModiInfo" runat="server" Text="修改信息" class="register" OnClick="BtnModiInfo_Click"/>
                     </div>
                 </div>
             </div>

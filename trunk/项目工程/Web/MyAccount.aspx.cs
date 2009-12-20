@@ -75,4 +75,12 @@ public partial class MyAccount : System.Web.UI.Page
             Response.Redirect("~/Management/Index.html");
         }
     }
+    protected void BtnModiInfo_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("ModiUser.aspx");
+    }
+    protected void BtnModiPwd_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("ChangePwd.aspx");
+    }
 }
