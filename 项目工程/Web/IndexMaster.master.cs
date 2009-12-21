@@ -41,7 +41,15 @@ public partial class IndexMaster : System.Web.UI.MasterPage
         {
             SOfferError.Visible = false;
         }
-        CategoryListDatabind();
+
+        if (!CategoryListDatabind())
+        {
+            CategoryError.Visible = true;
+        }
+        else
+        {
+            CategoryError.Visible = false;
+        }
     }
 
     public bool SpecialGoodsDatabind() 
