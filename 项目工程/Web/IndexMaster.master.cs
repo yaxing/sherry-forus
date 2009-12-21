@@ -33,7 +33,7 @@ public partial class IndexMaster : System.Web.UI.MasterPage
         {
             lsLogOut.Visible = true;
         }
-        if (!mpDatabind())
+        if (!SpecialGoodsDatabind())
         {
             SOfferError.Visible = true;
         }
@@ -41,9 +41,10 @@ public partial class IndexMaster : System.Web.UI.MasterPage
         {
             SOfferError.Visible = false;
         }
+        CategoryListDatabind();
     }
 
-    public bool mpDatabind() 
+    public bool SpecialGoodsDatabind() 
     {
         MasterPageBLL mpCtrl = new MasterPageBLL();
         IList<ItemEntity> itemList = new List<ItemEntity>();
@@ -52,7 +53,19 @@ public partial class IndexMaster : System.Web.UI.MasterPage
             return false;
         }
         RpSpecailOffer.DataSource = itemList;
-        RpSpecailOffer.DataBind();
+        RpSpecailOffer.DataBind();        
+        return true;
+    }
+    public bool CategoryListDatabind()
+    {
+        MasterPageBLL mpCtrl = new MasterPageBLL();
+        IList<ItemEntity> categoryList = new List<ItemEntity>();
+        if (!mpCtrl.GetCategoryList(ref categoryList))
+        {
+            return false;
+        }
+        dlCatagoryList.DataSource = categoryList;
+        dlCatagoryList.DataBind();
         return true;
     }
 }
