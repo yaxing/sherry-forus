@@ -13,9 +13,10 @@ using Entity;
 
 public partial class Register : System.Web.UI.Page
 {
+    string checkOut;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+         checkOut = Request.QueryString["checkOut"];
     }
     protected void CreateUserWizard_CreatedUser(object sender, EventArgs e)
     {
@@ -27,12 +28,12 @@ public partial class Register : System.Web.UI.Page
         newuser.PostNum = ((TextBox)CreateUserWizard.CreateUserStep.ContentTemplateContainer.FindControl("txtPostNum")).Text;
         newuser.PhoneNum = ((TextBox)CreateUserWizard.CreateUserStep.ContentTemplateContainer.FindControl("txtPhoneNum")).Text;
         String birthday = ((TextBox)CreateUserWizard.CreateUserStep.ContentTemplateContainer.FindControl("txtUserBirth")).Text;
-        if(birthday!=null&&birthday!="")
+        if (birthday != null && birthday != "")
         {
-            int year = Convert.ToInt32(birthday.Substring(0,4));
+            int year = Convert.ToInt32(birthday.Substring(0, 4));
             int month = Convert.ToInt32(birthday.Substring(5, 2));
-            int day = Convert.ToInt32(birthday.Substring(8,2));
-            newuser.UserBirth = new DateTime(year,month,day);
+            int day = Convert.ToInt32(birthday.Substring(8, 2));
+            newuser.UserBirth = new DateTime(year, month, day);
         }
         else
         {
@@ -49,8 +50,16 @@ public partial class Register : System.Web.UI.Page
         UserInfoBLL userInfoBLL = new UserInfoBLL();
         userInfoBLL.AddUserInfo(newuser);
 
-        FormsAuthentication.RedirectFromLoginPage(CreateUserWizard.UserName,true);
+        FormsAuthentication.RedirectFromLoginPage(CreateUserWizard.UserName, true);
         System.Threading.Thread.Sleep(5000);
-        Response.Redirect("~/Index.aspx");
+
+        if (checkOut != null && checkOut.Equals("1"))
+        {
+            Response.Redirect("CheckOut.aspx");
+        }
+        else
+        {
+            Response.Redirect("~/Index.aspx");
+        }
     }
 }
