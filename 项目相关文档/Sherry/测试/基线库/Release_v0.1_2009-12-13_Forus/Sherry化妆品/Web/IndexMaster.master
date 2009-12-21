@@ -1,0 +1,201 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="IndexMaster.master.cs"
+    Inherits="IndexMaster" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>Sherry化妆品有限公司</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <script src="common.js" language="javascript" type="text/javascript"></script>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="wrap">
+            <div id="bg" style="height: 710px">
+                <div id="header">
+                    <div id="logo" style="left: 30px">
+                        <h1 style="font-family: 微软雅黑">
+                            Sherry化妆品</h1>
+                        <!--<div>short slogan here</div>-->
+                    </div>
+                    <%--<ul id="nav" style="font-family: 微软雅黑">
+                        <li><a href="#">主页</a></li>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">公司产品</a></li>
+                        <li><a href="#">联系我们</a></li>
+                    </ul>--%>
+                    <div class="menu" style="font-family: 微软雅黑; top: 10px; left: 700px;">
+                        <asp:LoginView ID="LoginView1" runat="server">
+                            <LoggedInTemplate>
+                                <ul style="height: 0px">
+                                    <li><a href="#">
+                                        <asp:LoginName ID="LoginName1" runat="server" />
+                                        ，欢迎回来！</a>
+                                        <ul>
+                                            <li>
+                                                <div style="background-color: #990000;">
+                                                    <table style="width: 200px; height: 100px; background-color: #990000;">
+                                                        <tr>
+                                                            <td>
+                                                                <asp:Label ID="userScore" runat="server" Text="积分:"></asp:Label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <asp:Label ID="userLv" runat="server" Text="普通会员"></asp:Label>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <asp:LoginStatus ID="LoginStatus1" runat="server" />
+                                    </li>
+                                </ul>
+                            </LoggedInTemplate>
+                            <AnonymousTemplate>
+                                <asp:Login ID="Login1" runat="server">
+                                    <LayoutTemplate>
+                                        <ul>
+                                            <li><a href="#">登录</a>
+                                                <ul>
+                                                    <li>
+                                                        <div style="background-color: #990000;">
+                                                            <table border="0" cellpadding="1" cellspacing="0" style="background-color: #990000;
+                                                                border-collapse: collapse; width: 200px">
+                                                                <tr style="height: 10px">
+                                                                    <td style="width: 50px">
+                                                                    </td>
+                                                                    <td style="width: 100px">
+                                                                    </td>
+                                                                    <td style="width: 30px">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr style="height: 20px">
+                                                                    <td align="left">
+                                                                        <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">用户名:</asp:Label>
+                                                                    </td>
+                                                                    <td colspan="2" align="left">
+                                                                        <asp:TextBox ID="UserName" runat="server" Width="120px"></asp:TextBox>
+                                                                        <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName"
+                                                                            ErrorMessage="必须填写“用户名”。" ToolTip="必须填写“用户名”。" ValidationGroup="ctl00$Login1"
+                                                                            ForeColor="White">*</asp:RequiredFieldValidator>
+                                                                    </td>
+                                                                    <td>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr style="height: 30px">
+                                                                    <td align="left">
+                                                                        <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">密　码:</asp:Label>
+                                                                    </td>
+                                                                    <td colspan="2" align="left">
+                                                                        <asp:TextBox ID="Password" runat="server" TextMode="Password" Width="120px"></asp:TextBox>
+                                                                        <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password"
+                                                                            ErrorMessage="必须填写“密码”。" ToolTip="必须填写“密码”。" ValidationGroup="ctl00$Login1" ForeColor="White">*</asp:RequiredFieldValidator>
+                                                                    </td>
+                                                                    <td>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="3" align="left">
+                                                                        <a href="GetPassword.aspx">忘记密码？</a>
+                                                                    </td>
+                                                                    <td>
+                                                                    </td>
+                                                                    <td>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center" colspan="2">
+                                                                        <asp:CheckBox ID="RememberMe" runat="server" Text="下次记住我。" />
+                                                                    </td>
+                                                                    <td align="left">
+                                                                        <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="登录" ValidationGroup="ctl00$Login1"
+                                                                            OnClick="LoginButton_Click" />
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left" colspan="3" style="color: White;">
+                                                                        <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="Register.aspx">注册</a></li></ul>
+                                    </LayoutTemplate>
+                                </asp:Login>
+                            </AnonymousTemplate>
+                        </asp:LoginView>
+                    </div>
+                    <div style="position: relative; left: 600px; top: 12px">
+                        <table>
+                            <tr>
+                                <td>
+                                    <asp:ImageButton ID="imgbCart" runat="server" ImageUrl="images/cartLogo.jpg" OnClick="imgbCart_Click" />
+                                </td>
+                                <td style="width: 5px">
+                                </td>
+                                <td>
+                                    <asp:LinkButton ID="lbtCart" runat="server" ForeColor="white" Font-Names="微软雅黑" Text="购物车"
+                                        OnClick="lbtCart_Click" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="menu" style="position: relative; top: 100px; left: 180px; font-family: 微软雅黑">
+                        <ul>
+                            <li><a href="Index.aspx">主页 </a></li>
+                            <li><a href="#">关于我们 </a>
+                                <!--AboutUs.aspx-->
+                            </li>
+                            <li><a href="#">公司产品 </a>
+                                <!--Products.aspx-->
+                                <ul>
+                                    <li><a href="">面部护理</a></li>
+                                    <li><a href="">唇 彩</a></li>
+                                    <li><a href="">眼 影</a></li>
+                                    <li><a href="">粉 底</a></li>
+                                    <li><a href="">皮肤护理</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">联系我们</a><!--ContactUs.aspx-->
+                            </li>
+                        </ul>
+                    </div>
+                    <!--menu-->
+                </div>
+                <!-- /header -->
+                <div id="content">
+                    <asp:ContentPlaceHolder ID="contentHolder" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+                <!-- /content -->
+            </div>
+            <div id="footer">
+                <div id="ftinner">
+                    <div class="ftlink float-l">
+                        <a href="#">主页</a> | <a href="#">关于我们</a> | <a href="#">产品</a> | <a href="#">品牌故事</a>
+                        | <a href="#">联系我们</a>
+                        <p id="copyright">
+                            2009. All Rights Reserved.
+                            <br />
+                            Designed by <a href="#">ForUs</a></p>
+                    </div>
+                    <div class="valid folat-r">
+                        <!-- <images src="images/xhtml.gif" alt="xhtml valid" />
+                    <images src="images/css.gif" alt="css valid" /></div>-->
+                    </div>
+                </div>
+                <!-- /footer -->
+            </div>
+        </div>
+    </form>
+</body>
+</html>

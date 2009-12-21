@@ -1,0 +1,13 @@
+E:\课程\项目开发实习\Sherry项目文件\Sherry化妆品\BLL\obj\Debug\ResolveAssemblyReference.cache
+E:\课程\项目开发实习\Sherry项目文件\Sherry化妆品\BLL\bin\Debug\BLL.dll
+E:\课程\项目开发实习\Sherry项目文件\Sherry化妆品\BLL\bin\Debug\BLL.pdb
+E:\课程\项目开发实习\Sherry项目文件\Sherry化妆品\BLL\bin\Debug\DAL.dll
+E:\课程\项目开发实习\Sherry项目文件\Sherry化妆品\BLL\bin\Debug\Entity.dll
+E:\课程\项目开发实习\Sherry项目文件\Sherry化妆品\BLL\bin\Debug\InterFace.dll
+E:\课程\项目开发实习\Sherry项目文件\Sherry化妆品\BLL\bin\Debug\DbCtrl.dll
+E:\课程\项目开发实习\Sherry项目文件\Sherry化妆品\BLL\bin\Debug\InterFace.pdb
+E:\课程\项目开发实习\Sherry项目文件\Sherry化妆品\BLL\bin\Debug\Entity.pdb
+E:\课程\项目开发实习\Sherry项目文件\Sherry化妆品\BLL\bin\Debug\DAL.pdb
+E:\课程\项目开发实习\Sherry项目文件\Sherry化妆品\BLL\bin\Debug\DbCtrl.pdb
+E:\课程\项目开发实习\Sherry项目文件\Sherry化妆品\BLL\obj\Debug\BLL.dll
+E:\课程\项目开发实习\Sherry项目文件\Sherry化妆品\BLL\obj\Debug\BLL.pdb
