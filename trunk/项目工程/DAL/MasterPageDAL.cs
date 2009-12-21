@@ -56,5 +56,45 @@ namespace DAL
             return true;
         }
         #endregion
+
+        #region 构造商品分类列表
+        /// <summary>
+        /// 构造商品分类列表
+        /// </summary>
+        /// <param name="itemList">空列表IList</param>
+        /// <returns>bool值</returns>
+        public bool GetCategoryList(ref IList<ItemEntity> categoryList)
+        {
+            DataTable dt = new DataTable();
+            sqlString = "select * from category";
+            //SqlParameter sp = new SqlParameter("@id", SqlDbType.Int);
+            //sp.Value = info.ID;
+
+            try
+            {
+                using (dp = new DataProvider())
+                {
+                    if ((dt = dp.ExecuteQuery(sqlString)) == null)
+                        return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+            int i = 0;
+            ItemEntity ie = null;
+            //根据datatable构造商品分类列表
+            for (i = 0; i < dt.Rows.Count; i++)
+            {
+                ie = new ItemEntity();
+                ie.GoodsCategory = Convert.ToInt32(dt.Rows[i][0].ToString());
+                ie.CategoryName = dt.Rows[i][1].ToString();
+                categoryList.Add(ie);
+            }
+            return true;
+        }
+        #endregion
     }
 }

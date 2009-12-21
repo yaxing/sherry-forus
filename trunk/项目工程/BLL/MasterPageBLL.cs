@@ -33,5 +33,22 @@ namespace BLL
             return true;
         }
         #endregion
+
+        #region 获取商品分类列表
+        /// <summary>
+        /// 获取商品分类列表
+        /// </summary>
+        /// <param name="itemList">空列表IList</param>
+        /// <returns>bool值</returns>
+        public bool GetCategoryList(ref IList<ItemEntity> categoryList)
+        {
+            mpData = new MasterPageDAL();
+            if (!mpData.GetCategoryList(ref categoryList))
+            {
+                return false;
+            }
+            return true;
+        }
+        #endregion
     }
 }

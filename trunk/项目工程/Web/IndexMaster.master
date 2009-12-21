@@ -77,7 +77,9 @@
                     <div class="right_box">
                         <div class="title">
                             <span class="title_icon">
-                                <img src="images/bullet4.gif" alt="" title="" /></span>特价商品</div>
+                                <img src="images/bullet4.gif" alt="" title="" />
+                            </span>特价商品
+                        </div>
                         <asp:Label ID="SOfferError" runat="server" Text="读取特价商品错误..." ForeColor="red" />
                         <asp:Repeater ID="RpSpecailOffer" runat="server">
                             <ItemTemplate>
@@ -91,7 +93,7 @@
                                                 <img src='<%#Eval("ImgPath") %>' width="112px" height="100px" alt="" title="" class="thumb"
                                                     border="0" /></a>
                                     </div>
-                                    </div>
+                                </div>
                             </ItemTemplate>
                         </asp:Repeater>
                     </div>
@@ -100,31 +102,27 @@
                             <span class="title_icon">
                                 <img src="images/bullet5.gif" alt="" title="" /></span>产品分类</div>
                         <ul class="list">
-                            <li><a href="#">accesories</a></li>
-                            <li><a href="#">flower gifts</a></li>
-                            <li><a href="#">specials</a></li>
-                            <li><a href="#">hollidays gifts</a></li>
-                            <li><a href="#">accesories</a></li>
-                            <li><a href="#">flower gifts</a></li>
-                            <li><a href="#">specials</a></li>
-                            <li><a href="#">hollidays gifts</a></li>
-                            <li><a href="#">accesories</a></li>
-                            <li><a href="#">flower gifts</a></li>
-                            <li><a href="#">specials</a></li>
+                            <asp:DataList ID="dlCatagoryList" runat="server">
+                                <ItemTemplate>
+                                    <li><a href='Categories.aspx?ID=<%#Eval("GoodsCategory") %>'>
+                                        <%#Eval("CategoryName") %>
+                                    </a></li>
+                                </ItemTemplate>
+                            </asp:DataList>
                         </ul>
                         <div class="title">
                             <span class="title_icon">
                                 <img src="images/bullet6.gif" alt="" title="" /></span>友情链接</div>
                         <ul class="list">
-                            <li><a href="#">accesories</a></li>
-                            <li><a href="#">flower gifts</a></li>
-                            <li><a href="#">specials</a></li>
-                            <li><a href="#">hollidays gifts</a></li>
-                            <li><a href="#">accesories</a></li>
-                            <li><a href="#">flower gifts</a></li>
-                            <li><a href="#">specials</a></li>
-                            <li><a href="#">hollidays gifts</a></li>
-                            <li><a href="#">accesories</a></li>
+                            <li><a href="http://www.shiseidochina.com" target="_blank">资生堂(中国)</a></li>
+                            <li><a href="http://www.maybellinechina.com/" target="_blank">美宝莲(中国)</a></li>
+                            <li><a href="http://www.benefitcosmetics.com" target="_blank">贝玲妃(Benefit)</a></li>
+                            <li><a href="http://www.arche.com.cn" target="_blank">雅倩化妆品有限公司</a></li>
+                            <li><a href="http://www.lorealchina.com" target="_blank">欧莱雅(中国)</a></li>
+                            <li><a href="http://www.EsteeLauder.com.cn" target="_blank">雅诗兰黛(中国)</a></li>
+                            <li><a href="http://www.yuesai.com" target="_blank">羽西化妆品</a></li>
+                            <li><a href="http://www.lancome.com.cn" target="_blank">兰蔻(中国)</a></li>
+                            <li><a href="http://www.avon.com.cn" target="_blank">雅芳化妆品</a></li>
                         </ul>
                     </div>
                 </div>

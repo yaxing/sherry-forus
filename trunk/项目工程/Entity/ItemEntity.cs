@@ -19,6 +19,9 @@ namespace Entity
         private string goodsNum = string.Empty;
         private int goodsStorage;
         private int goodsCategory;
+        private string categoryName;
+
+        public ItemEntity() { }
 
         public ItemEntity(int id) 
         {
@@ -92,10 +95,16 @@ namespace Entity
             set { goodsStorage = value; }
         }
 
-        public int GoodsNCategory
+        public int GoodsCategory
         {
             get { return goodsCategory; }
             set { goodsCategory = value; }
+        }
+
+        public string CategoryName
+        {
+            get { return categoryName; }
+            set { categoryName = value; }
         }
     }
     #endregion
