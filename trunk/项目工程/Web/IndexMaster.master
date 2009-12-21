@@ -84,7 +84,7 @@
                         <asp:Repeater ID="RpSpecailOffer" runat="server">
                             <ItemTemplate>
                                 <div class="new_prod_box">
-                                    <a href='Details.aspx?ID=<%#Eval("ID") %>'>
+                                    <a href='Products.aspx?ID=<%#Eval("ID") %>'>
                                         <%#Eval("Name") %>
                                     </a>
                                     <div class="new_prod_bg">
@@ -110,6 +110,7 @@
                                 </ItemTemplate>
                             </asp:DataList>
                         </ul>
+                        <asp:Label ID="CategoryError" runat="server" Text="读取商品列表错误..." ForeColor="red" />
                         <div class="title">
                             <span class="title_icon">
                                 <img src="images/bullet6.gif" alt="" title="" /></span>友情链接</div>
