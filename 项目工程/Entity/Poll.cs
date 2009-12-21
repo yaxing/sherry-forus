@@ -17,6 +17,7 @@ namespace BLL
         [Category("Appearance")]
         [DefaultValue("1")]
         [Localizable(true)]
+
         public int OptionIndex
         {
             get
@@ -31,6 +32,20 @@ namespace BLL
                 ViewState["OptionIndex"] = i;
                 this.EnsureChildControls();
                 ((HtmlSelect)Controls[5]).SelectedIndex = i - 1;
+            }
+        }
+
+        public int OptionID
+        {
+            get
+            {
+                this.EnsureChildControls();
+                return Int32.Parse(((HiddenField)Controls[7]).Value.ToString());
+            }
+            set
+            {
+                this.EnsureChildControls();
+                ((HiddenField)Controls[7]).Value = value.ToString();
             }
         }
 
@@ -129,6 +144,9 @@ namespace BLL
             this.Controls.Add(colors);
             //----------------6------------------
             this.Controls.Add(new LiteralControl("<br />"));
+            //----------------7------------------
+            HiddenField optionID = new HiddenField();
+            this.Controls.Add(optionID);
         }
     }
 }

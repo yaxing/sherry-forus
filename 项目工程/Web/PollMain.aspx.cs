@@ -79,25 +79,7 @@ public partial class PollMain : System.Web.UI.Page
         Repeater1.DataBind();
     }
 
-    ///// <summary>
-    ///// 获取sql语句，因为第一页和其余页的sql语句是不同的
-    ///// </summary>
-    ///// <param name="currentPage">当前页</param>
-    ///// <returns></returns>
-    //private string getSql(int currentPage)
-    //{
-    //    if (currentPage == 0)
-    //    {
-    //        return "select top " + PAGE_SIZE + " * from [voteTitle]";
-    //    }
-    //    else
-    //    {
-    //        return "select top " + PAGE_SIZE + " * from [voteTitle] where [id] not in (select top " +
-    //            PAGE_SIZE * currentPage + " [id] from [voteTitle])";
-    //    }
-    //}
-
-    #region repeater的一些事件
+    #region repeater的事件
     protected void Repeater1_ItemDataBound(object sender, RepeaterItemEventArgs e)
     {
         PlaceHolder ph = e.Item.FindControl("phOptions") as PlaceHolder;
