@@ -8,11 +8,13 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
+using BLL;
 
 public partial class Index : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        NewGoods.DataSource = GoodsInfoBLL.LatestGoods(3);
+        NewGoods.DataBind();
     }
 }
