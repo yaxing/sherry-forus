@@ -14,6 +14,8 @@ namespace DAL
     public class CheckoutInfoDAL
     {
         private string sqlString = string.Empty;
+        private string sqlStringGetStorage = string.Empty;
+        private string sqlStringChangeStorage = string.Empty;
         private DataProvider dp;
 
         #region 构造用户实体
@@ -25,7 +27,7 @@ namespace DAL
         public bool SetUserInfo(ref UserInfo info)
         {
             DataTable dt = new DataTable();
-            sqlString = "select * from userInfo where userID=@userID";
+            sqlString = "select userRealName, postAdd, postNum, phoneNum from userInfo where userID=@userID";
             SqlParameter[] pt = new SqlParameter[] { 
                                 new SqlParameter("@userID", SqlDbType.UniqueIdentifier)
                                 };
@@ -44,10 +46,10 @@ namespace DAL
                 return false;
             }
 
-            info.UserRealName = dt.Rows[0][1].ToString();
-            info.PostAdd = dt.Rows[0][2].ToString();
-            info.PostNum = dt.Rows[0][3].ToString();
-            info.PhoneNum = dt.Rows[0][4].ToString();
+            info.UserRealName = dt.Rows[0][0].ToString();
+            info.PostAdd = dt.Rows[0][1].ToString();
+            info.PostNum = dt.Rows[0][2].ToString();
+            info.PhoneNum = dt.Rows[0][3].ToString();
 
             return true;
         }
@@ -102,7 +104,8 @@ namespace DAL
         {
             SqlParameter[] pt;
             int orderID;//订单号
-            //DataTable dt = new DataTable();
+            int goodsStorage;
+            DataTable dt = new DataTable();
             //============================================插入主订单数据===================================//
 
             //需要插入发票信息
@@ -175,6 +178,8 @@ namespace DAL
             //===============================================插入订单商品信息=========================================//
 
             sqlString = "insert into subOrderInfo(mainOrderID, goodsID, goodsName, goodsPrice, goodsNum) values(@mainID,@gID,@name,@price,@num)";
+            sqlStringGetStorage = "select goodsStorage from goodsInfo where goodsID=@id";
+            sqlStringChangeStorage = "update goodsInfo set goodsStorage=@curS where goodsID=@id";
 
             foreach (ItemEntity ie in info.UserOrderItems) 
             {
@@ -196,6 +201,47 @@ namespace DAL
                     using (dp = new DataProvider())
                     {
                         if (dp.ExecuteNonQuery(sqlString, pt) == 0)
+                            return false;
+                    }
+                }
+                catch
+                {
+                    return false;
+                }
+
+                //=========================获取商品库存====================//
+                
+                pt = new SqlParameter[] { 
+                                new SqlParameter("@id",SqlDbType.Int)
+                                };
+                pt[0].Value = ie.ID;
+                try
+                {
+                    using (dp = new DataProvider())
+                    {
+                        if ((dt=dp.ExecuteDataTable(sqlStringGetStorage, pt)) == null)
+                            return false;
+                    }
+                }
+                catch
+                {
+                    return false;
+                }
+                goodsStorage = Convert.ToInt32(dt.Rows[0][0].ToString())-ie.Number;
+                
+                //======================修改商品库存========================//
+
+                pt = new SqlParameter[] { 
+                                new SqlParameter("@curS",SqlDbType.Int),
+                                new SqlParameter("@id",SqlDbType.Int)
+                                };
+                pt[0].Value = goodsStorage;
+                pt[1].Value = ie.ID;
+                try
+                {
+                    using (dp = new DataProvider())
+                    {
+                        if (dp.ExecuteNonQuery(sqlStringChangeStorage, pt) == 0)
                             return false;
                     }
                 }
