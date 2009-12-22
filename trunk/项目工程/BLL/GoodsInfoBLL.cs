@@ -51,6 +51,11 @@ namespace BLL
         /// <param name="timeFrom">以此时间结束查找产品</param>
         /// <returns>DataTable型的查找结果</returns>
 
+        public static DataTable FindGoods(int goodsCategory)
+        {
+            return (FindGoods("", "", goodsCategory, DateTime.MinValue, DateTime.MaxValue));
+        }
+
         public static DataTable FindGoods(string goodsName, string goodsNum)
         {
             return (FindGoods(goodsName, goodsNum, 0, DateTime.MinValue, DateTime.MaxValue));
