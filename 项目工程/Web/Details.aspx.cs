@@ -19,13 +19,21 @@ using Entity;
 
 public partial class Details : System.Web.UI.Page
 {
-    int proId;
+    int goodsID;
     CartCtrl shopCart;
     //string CookieName = "ShopCart";
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        proId = Convert.ToInt32(Request.QueryString["ID"]);
+        goodsID = Convert.ToInt32(Request.QueryString["GoodsID"]);
+        GoodsInfo goodsInfo = GoodsInfoBLL.GoodsDetail(goodsID);
+        GoodsImg.ImageUrl = goodsInfo.goodsImg;
+        GoodsName.Text = goodsInfo.goodsName;
+        GoodsPrice.Text = goodsInfo.goodsPrice.ToString();
+        GoodsDescribe.Text = goodsInfo.goodsDescribe;
+
+        SameCategory.DataSource = GoodsInfoBLL.FindGoods(goodsInfo.goodsCategory);
+        SameCategory.DataBind();
     }
 
     #region 加入购物车
@@ -36,8 +44,9 @@ public partial class Details : System.Web.UI.Page
         #endregion
 
         #region 加入购物车
-        shopCart.Add(proId);
+        shopCart.Add(goodsID);
         #endregion
+        Response.Redirect("Details.aspx?goodsID=" + goodsID);
     }
     #endregion
 
