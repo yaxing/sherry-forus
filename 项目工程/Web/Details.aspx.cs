@@ -25,8 +25,16 @@ public partial class Details : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        goodsID = Convert.ToInt32(Request.QueryString["GoodsID"]);
-        GoodsInfo goodsInfo = GoodsInfoBLL.GoodsDetail(goodsID);
+        GoodsInfo goodsInfo = new GoodsInfo();
+        try
+        {
+            goodsID = Convert.ToInt32(Request.QueryString["GoodsID"]);
+            goodsInfo = GoodsInfoBLL.GoodsDetail(goodsID);
+        }
+        catch
+        {
+            Response.Redirect("Index.aspx");
+        }
         GoodsImg.ImageUrl = goodsInfo.goodsImg;
         GoodsName.Text = goodsInfo.goodsName;
         GoodsPrice.Text = goodsInfo.goodsPrice.ToString();
@@ -39,19 +47,10 @@ public partial class Details : System.Web.UI.Page
     #region 加入购物车
     protected void addToCart_Click(object sender, EventArgs e)
     {
-        #region 构造购物车
         shopCart = new CartCtrl();
-        #endregion
 
-        #region 加入购物车
         shopCart.Add(goodsID);
-        #endregion
-        Response.Redirect("Details.aspx?goodsID=" + goodsID);
+        Response.Redirect("Details.aspx?GoodsID=" + goodsID);
     }
     #endregion
-
-    protected void showCart_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("CartView.aspx");
-    }
 }
