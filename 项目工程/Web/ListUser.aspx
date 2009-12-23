@@ -12,7 +12,7 @@
     
     </div>
     <asp:GridView ID="UserList" runat="server" AutoGenerateColumns="False" 
-        DataKeyNames="UserID" OnRowDeleting="UserList_RowDeleting" OnRowEditing="UserList_RowEditing">
+        DataKeyNames="UserID" OnRowDeleting="UserList_RowDeleting" OnRowEditing="UserList_RowEditing" AllowPaging="True" OnPageIndexChanging="UserList_PageIndexChanging">
         <Columns>
             <asp:BoundField DataField="UserName" HeaderText="用户名" />
             <asp:BoundField DataField="Score" HeaderText="用户积分" />

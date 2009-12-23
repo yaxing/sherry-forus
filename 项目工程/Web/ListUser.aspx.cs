@@ -101,4 +101,9 @@ public partial class ListUser : System.Web.UI.Page
             Response.Write("<script language='javascript'>alert('帐号状态变更失败。');</script>");
         }
     }
+    protected void UserList_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        this.UserList.PageIndex = e.NewPageIndex;
+        BindSource();
+    }
 }
