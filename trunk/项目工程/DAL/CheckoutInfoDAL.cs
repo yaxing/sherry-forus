@@ -100,7 +100,7 @@ namespace DAL
         /// </summary>
         /// <param name="info">新订单实体对象</param>
         /// <returns>bool值</returns>
-        public bool InsertNewOrder(OrderInfo info)
+        public bool InsertNewOrder(OrderInfo info, ref int mainOrderID)
         {
             SqlParameter[] pt;
             int orderID;//订单号
@@ -174,6 +174,7 @@ namespace DAL
             {
                 return false;
             }
+            mainOrderID = orderID;
              
             //===============================================插入订单商品信息=========================================//
 

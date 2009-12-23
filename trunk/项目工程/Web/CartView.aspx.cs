@@ -18,6 +18,7 @@ using BLL;
 public partial class CartView : System.Web.UI.Page
 {
     CartCtrl shopCart;
+    //bool validated;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -29,6 +30,7 @@ public partial class CartView : System.Web.UI.Page
             {
                 lbCookieWarning.Visible = true;
             }
+            //validated = true;
             GvSourceBind();
         }
     }
@@ -98,6 +100,14 @@ public partial class CartView : System.Web.UI.Page
                 ibClearCart.Visible = true;
                 ibSaveCart.Visible = true;
             }
+            //if (validated)
+            //{
+            //    foreach (GridViewRow row in gvItems.Rows)
+            //    {
+            //        Panel p = (Panel)row.FindControl("pError");
+            //        p.Visible = false;
+            //    }
+            //}
     }
     #endregion
 
@@ -275,9 +285,13 @@ public partial class CartView : System.Web.UI.Page
                 if (s < quantity)
                 {
                     validation = false;
+                    //Panel panel = (Panel)row.FindControl("pError");
+                    //panel.Visible = true;
                 }
                 else 
                 {
+                    //Panel panel = (Panel)row.FindControl("pError");
+                    //panel.Visible = false;
                     shopCart.Edit(id, quantity);
                 }
             }
@@ -298,6 +312,7 @@ public partial class CartView : System.Web.UI.Page
         else 
         {
             Response.Write("<script>alert('保存失败！商品数量输入错误！');location.href('CartView.aspx');</script>");
+            //validated = false;
         }
         GvSourceBind();
     }
