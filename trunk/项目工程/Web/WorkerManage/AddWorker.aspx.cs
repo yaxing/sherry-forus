@@ -173,8 +173,8 @@ public partial class WorkerManage_AddWorker : System.Web.UI.Page
                 Response.Write("<script language='javascript'>alert('当前店铺无负责人，请先添加负责人。');location.href='AddWorker.aspx';</script>");
                 return;
             }
-            Object ID = (Object)((DropDownList)CreateUserWizard.CreateUserStep.ContentTemplateContainer.FindControl("ddlManager")).SelectedValue;
-            newWorker.ManageID = (Guid)ID;
+            String manID = ((DropDownList)CreateUserWizard.CreateUserStep.ContentTemplateContainer.FindControl("ddlManager")).SelectedValue;
+            newWorker.ManageID = new Guid(manID);
         }
         newWorker.WorkerState = 0;
 
