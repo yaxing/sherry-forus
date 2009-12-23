@@ -9,7 +9,6 @@ namespace DAL
 {
     public static class GoodsInfoDAL
     {
-        private static string sqlString = string.Empty;
         private static DataProvider dataProvider;
 
         #region 添加产品
@@ -22,7 +21,7 @@ namespace DAL
 
         public static bool AddGoods(GoodsInfo newGoods)
         {
-            sqlString = "Insert Into goodsInfo (goodsCategory, goodsAddTime, goodsValidity, goodsPrice, goodsAvailable, goodsStorage, goodsNum, goodsName, goodsImg, goodsDescribe, goodsSpecialOffer)"
+            string sqlString = "Insert Into goodsInfo (goodsCategory, goodsAddTime, goodsValidity, goodsPrice, goodsAvailable, goodsStorage, goodsNum, goodsName, goodsImg, goodsDescribe, goodsSpecialOffer)"
                         + " Values (@goodsCategory, @goodsAddTime, @goodsValidity, @goodsPrice, @goodsAvailable, @goodsStorage, @goodsNum, @goodsName, @goodsImg, @goodsDescribe, @goodsSpecialOffer)";
 
             SqlParameter[] pt = new SqlParameter[] { 
@@ -74,7 +73,7 @@ namespace DAL
 
         public static bool DeleteGoods(int goodsID)
         {
-            sqlString = "delete from goodsInfo where goodsID = @goodsID";
+            string sqlString = "delete from goodsInfo where goodsID = @goodsID";
             SqlParameter[] pt = new SqlParameter[] { 
                                 new SqlParameter("@goodsID", SqlDbType.Int)
                                 };
@@ -104,7 +103,7 @@ namespace DAL
         public static DataTable FindGoods(string goodsName, string goodsNum, int goodsCategory, DateTime timeFrom, DateTime timeTo)
         {
             DataTable findResult;
-            sqlString = "select goodsID, goodsName, goodsNum, goodsCategory, goodsAddTime, goodsImg from goodsInfo";
+            string sqlString = "select goodsID, goodsName, goodsNum, goodsCategory, goodsAddTime, goodsImg from goodsInfo";
             string sqlStringVary = "";
 
             SqlParameter[] pt = new SqlParameter[] { 
@@ -168,7 +167,7 @@ namespace DAL
         {
             GoodsInfo goodsInfo = new GoodsInfo();
             DataTable theGoods;
-            sqlString = "select * from goodsInfo where goodsID = " + goodsID.ToString();
+            string sqlString = "select * from goodsInfo where goodsID = " + goodsID.ToString();
 
             using (dataProvider = new DataProvider())
             {
@@ -189,6 +188,11 @@ namespace DAL
                 goodsInfo.goodsImg = theGoods.Rows[0]["goodsImg"].ToString();
                 goodsInfo.goodsDescribe = theGoods.Rows[0]["goodsDescribe"].ToString();
             }
+            else
+            {
+                Exception e = new Exception("没有这个goodsID的产品。");
+                throw e;
+            }
 
             return (goodsInfo);
         }
@@ -205,7 +209,7 @@ namespace DAL
 
         public static bool ChangeGoods(int goodsID, GoodsInfo goodsInfo)
         {
-            sqlString = "update goodsInfo set goodsCategory = @goodsCategory, goodsAddTime = @goodsAddTime, "
+            string sqlString = "update goodsInfo set goodsCategory = @goodsCategory, goodsAddTime = @goodsAddTime, "
                 + "goodsValidity = @goodsValidity, goodsPrice = @goodsPrice, goodsAvailable = @goodsAvailable, "
                 + "goodsStorage = @goodsStorage, goodsNum = @goodsNum, goodsName = @goodsName, goodsImg = @goodsImg, "
                 + "goodsDescribe = @goodsDescribe where goodsID = @goodsID";
@@ -259,7 +263,7 @@ namespace DAL
 
         public static bool ChangeGoodsStat(int goodsID, bool goodsAvailable, int goodsStorage)
         {
-            sqlString = "update goodsInfo set goodsAvailable = " + goodsAvailable.ToString() 
+            string sqlString = "update goodsInfo set goodsAvailable = " + goodsAvailable.ToString() 
                 + ", goodsStorage" + goodsStorage.ToString() + " where goodsID = " + goodsID.ToString();
 
             using (dataProvider = new DataProvider())
@@ -279,12 +283,24 @@ namespace DAL
         /// 查找最近添加的（num个）产品
         /// </summary>
         /// <param name="num">产品个数</param>
+        /// <param name="orderByVolume">是否按照销量排序</param>
         /// <returns>DataTable型的查找结果</returns>
 
-        public static DataTable LatestGoods(int num)
+        public static DataTable LatestGoods(int num, bool orderByVolume)
         {
-            sqlString = "select top " + num.ToString() + " goodsID, goodsName, goodsImg from goodsInfo order by goodsID desc";
+            string sqlString = "select top " + num.ToString() + " goodsID, goodsName, goodsImg";
             DataTable latestGoods;
+
+            if (orderByVolume)
+            {
+                sqlString += ", goodsDescribe";
+            }
+            sqlString += " from goodsInfo order by ";
+            if (orderByVolume)
+            {
+                sqlString += "goodsVolume, ";
+            }
+            sqlString += "goodsID desc";
             using (dataProvider = new DataProvider())
             {
                 latestGoods = dataProvider.ExecuteQuery(sqlString);
