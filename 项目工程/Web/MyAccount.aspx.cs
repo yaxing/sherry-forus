@@ -57,7 +57,7 @@ public partial class MyAccount : System.Web.UI.Page
                     lblGender.Text = "´º¸ç";
                     break;
             }
-            lblBirth.Text = oldUser.UserBirth.Date.ToString();
+            lblBirth.Text = oldUser.UserBirth.Date.ToShortDateString().ToString();
             lblIDCardNum.Text = oldUser.IDCardNum;
             lblScore.Text = oldUser.UserScore.ToString();
             switch(oldUser.UserLv)
