@@ -2,9 +2,6 @@
     CodeFile="Details.aspx.cs" Inherits="Details" Title="Untitled Page" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="contentHolder" runat="Server">
-    <div class="crumb_nav">
-        <a href="index.html">主页</a> &gt;&gt; 产品展示
-    </div>
     <div class="title">
         <span class="title_icon">
             <img src="images/bullet1.gif" alt="" title="" /></span>
@@ -35,10 +32,9 @@
                             <img src="images/color2.gif" alt="" title="" /></span> <span class="colors">
                                 <img src="images/color3.gif" alt="" title="" /></span>
                 </div>
-                <a href="details.html" class="more">
-                    <asp:Button ID="addToCart" runat="server" Text="加入购物车" OnClick="addToCart_Click" />
-                    <asp:Button ID="showCart" runat="server" Text="显示购物车" OnClick="showCart_Click" />
-                    <img src="images/order_now.gif" alt="" title="" /></a>
+                <div style="padding: 0 30px 0 0px">
+                    <asp:Button ID="addToCart" runat="server" OnClick="addToCart_Click" CssClass="register" Text="加入购物车"
+                        ToolTip="加入购物车" /></div>
                 <div class="clear">
                 </div>
             </div>
@@ -67,22 +63,23 @@
             </div>
             <div style="display: none;" class="tab" id="tab2">
                 <asp:Repeater runat="server" ID="SameCategory">
-                <ItemTemplate>
-                    <div class="new_prod_box">
-                        <a href="<%#"Details.aspx?GoodsID=" + DataBinder.Eval(Container.DataItem, "goodsID")%>" ><%#DataBinder.Eval(Container.DataItem, "goodsName")%></a>
-                        <div class="new_prod_bg">
-                            <span class="new_icon">
-                                <img src="images/new_icon.gif" alt="" title="" /></span>
-                            <a href="<%#"Details.aspx?GoodsID=" + DataBinder.Eval(Container.DataItem, "goodsID")%>" >
-                                <img src="<%#DataBinder.Eval(Container.DataItem, "goodsImg")%>" alt="<%#DataBinder.Eval(Container.DataItem, "goodsName")%>" title="" height="100px" width="112px" class="thumb" />
+                    <ItemTemplate>
+                        <div class="new_prod_box">
+                            <a href="Details.aspx?GoodsID=<%#Eval("goodsID")%>">
+                                <%#Eval("goodsName")%>
                             </a>
+                            <div class="new_prod_bg">
+                                <span class="new_icon">
+                                    <img src="images/new_icon.gif" alt="" title="" /></span> <a href="Details.aspx?GoodsID=<%#Eval("goodsID")%>">
+                                        <img src="<%#Eval("goodsImg")%>" alt="<%#Eval("goodsName")%>" title="" height="100px"
+                                            width="112px" class="thumb" />
+                                    </a>
+                            </div>
                         </div>
-                    </div>
-                </ItemTemplate>
-            </asp:Repeater>
+                    </ItemTemplate>
+                </asp:Repeater>
                 <div class="clear">
                 </div>
-                
             </div>
         </div>
     </div>
