@@ -68,6 +68,11 @@ namespace BLL
         #endregion
 
         #region 根据用户名获取主订单列表
+        /// <summary>
+        /// 获取订单列表
+        /// </summary>
+        /// <param name="orders">订单DataTable</param>
+        /// <returns>操作成功返回true，否则返回false</returns>
         public bool GetOrderList(ref DataTable orders) 
         {
             MembershipUser curUser = Membership.GetUser(HttpContext.Current.User.Identity.Name.ToString());
@@ -82,6 +87,12 @@ namespace BLL
         #endregion
 
         #region 根据订单号获取商品列表
+        /// <summary>
+        ///  获取订单详细商品项
+        /// </summary>
+        /// <param name="items">订单项DataTable</param>
+        /// <param name="orderId">订单号</param>
+        /// <returns>操作成功返回true，否则返回false</returns>
         public bool GetItemList(ref DataTable items, int orderId)
         {
             OrderCtrlDAL orderCtrl = new OrderCtrlDAL();

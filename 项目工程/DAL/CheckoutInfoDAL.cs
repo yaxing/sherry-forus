@@ -140,7 +140,7 @@ namespace DAL
             //不需要插入发票信息
             else 
             {
-                sqlString = "insert into mainOrderInfo (userId, postAdd, postNum, userRealName, phoneNum, province, orderTime, orderPrice, orderState) values (@id,@add,@zip,@name,@tel,@prov,@time,@price,0)";
+                sqlString = "insert into mainOrderInfo (userId, postAdd, postNum, userRealName, phoneNum, province, orderTime, orderPrice, orderState) values (@id,@add,@zip,@name,@tel,@prov,@time,@price,@state)";
                 pt = new SqlParameter[] { 
                                 new SqlParameter("@id",SqlDbType.UniqueIdentifier),
                                 new SqlParameter("@add",SqlDbType.VarChar),

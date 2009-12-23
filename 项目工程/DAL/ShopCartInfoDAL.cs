@@ -33,7 +33,7 @@ namespace DAL
             {
                 using (dp = new DataProvider())
                 {
-                    if ((dt=dp.ExecuteQuery(sqlString))==null)
+                    if ((dt=dp.ExecuteQuery(sqlString))==null||dt.Rows.Count<=0)
                         return false;
                 }
             }
