@@ -1,14 +1,6 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="PollMain.aspx.cs" Inherits="PollMain" %>
+<%@ Page Language="C#" MasterPageFile="~/IndexMaster.master" AutoEventWireup="true" CodeFile="PollMain.aspx.cs" Inherits="PollMain" %>
 <%@ Import Namespace="System.Data" %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head id="Head1" runat="server">
-    <title>Œﬁ±ÍÃ‚“≥</title>
-</head>
-<body>
-    <form id="form1" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="contentHolder" runat="Server">
     <div align="center">
         <asp:Repeater ID="Repeater1" runat="server" OnItemDataBound="Repeater1_ItemDataBound" OnItemCommand="Repeater1_ItemCommand">
         
@@ -38,6 +30,4 @@
         </ItemTemplate>
         </asp:Repeater>
     </div>
-    </form>
-</body>
-</html>
+</asp:Content>

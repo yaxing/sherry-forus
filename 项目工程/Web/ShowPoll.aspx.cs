@@ -25,11 +25,11 @@ public partial class ShowPoll : System.Web.UI.Page
             mainPoll.MainPollID = Int32.Parse(id);
             PollInfoBLL selectMainPoll = new PollInfoBLL();
             selectMainPoll.SelectByID(ref mainPoll);
-            drawChart(mainPoll);
+            drawChart(mainPoll,id);
         }
     }
 
-    private void drawChart(MainPoll mainPoll)
+    private void drawChart(MainPoll mainPoll, string id)
     {
         IList<SubPoll> subPollList = new List<SubPoll>();
         PollInfoBLL selectSubPoll = new PollInfoBLL();
@@ -147,7 +147,9 @@ public partial class ShowPoll : System.Web.UI.Page
             LegendPoint.Y += 20;
             DescPoint.Y += 20;
         }
-        bm.Save(Response.OutputStream, ImageFormat.Jpeg);
+        //bm.Save(Response.OutputStream, ImageFormat.Jpeg);
+        bm.Save(Server.MapPath("./images/statistic/"+id+".jpeg"));
+        map.ImageUrl = "images/statistic/"+id+".jpeg";
     }
     private Color GetColor(string colorstr)
     {

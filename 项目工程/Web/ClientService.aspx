@@ -1,18 +1,11 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ClientService.aspx.cs" Inherits="ClientService" %>
+<%@ Page Language="C#" MasterPageFile="~/IndexMaster.master" AutoEventWireup="true" CodeFile="ClientService.aspx.cs" Inherits="ClientService" %>
 <%@ Import Namespace="System.Data" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head runat="server">
-    <title>Untitled Page</title>
-</head>
-<body>
-    <form id="form1" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="contentHolder" runat="Server">
     <div>
-        F &amp; Q ：<br />
+        客户问答：<br />
         <br />
-        <asp:DataList ID="dataList" runat="server" CellPadding="2" ForeColor="#333333" Width="739px">
+        <asp:DataList ID="dataList" runat="server" CellPadding="2" ForeColor="#333333" >
                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                <SelectedItemStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                <AlternatingItemStyle BackColor="White" />
@@ -20,12 +13,11 @@
                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                
                   <ItemTemplate>
-                    <font face="宋体">
                     <blockquote>
                         标题：<%# DataBinder.Eval(Container.DataItem,"Topic") %>
                         内容:<%# DataBinder.Eval(Container.DataItem,"Messages") %>
                         管理员回复:<%# DataBinder.Eval(Container.DataItem,"Reply") %>
-                    </blockquote></font>
+                    </blockquote>
                    </ItemTemplate>
 
                
@@ -44,14 +36,12 @@
                     <asp:TextBox ID="Message" runat="server" Width="356px" Height="46px"></asp:TextBox></td>
             </tr>
             <tr>
-                <td style="width: 104px; height: 29px">
-        <asp:Button ID="Submit" runat="server" type="reset" Text="提交" OnClick="Submit_Click"  /></td>
-                <td style="width: 245px; height: 29px">
-                    <input id="Reset" type="reset" value="清空" /></td>
+                <td style="width: 74px; height: 29px">
+        <asp:Button ID="Submit" runat="server" Text="提交" OnClick="Submit_Click" CssClass="register" /></td>
+                <td style="width: 100px; height: 29px">
+                    <input id="Reset" type="reset" value="清空" class="register" /></td>
             </tr>
         </table>
         <br />
     </div>
-    </form>
-</body>
-</html>
+</asp:Content>
