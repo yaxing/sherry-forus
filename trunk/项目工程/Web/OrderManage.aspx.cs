@@ -34,8 +34,6 @@ public partial class OrderManage : System.Web.UI.Page
             {
                 Response.Write("<script>alert('数据绑定失败！请尝试重新操作');history.go(-1);</script>");
             }
-            pOrderList.Visible = true;
-            pOrderDetail.Visible = false;
         }
         else 
         {
@@ -43,8 +41,6 @@ public partial class OrderManage : System.Web.UI.Page
             {
                 Response.Write("<script>alert('数据绑定失败！请尝试重新操作');history.go(-1);</script>");
             }
-            pOrderList.Visible = false;
-            pOrderDetail.Visible = true;
         }
     }
 
@@ -272,20 +268,22 @@ public partial class OrderManage : System.Web.UI.Page
         if (orders.Rows.Count > 0)
         {
             pOrderDetail.Visible = false;
-            pOrderList.Visible = false;
+            pOrderList.Visible = true;
             pError.Visible = false;
-            return true;
         }
         else
         {
+            pOrderDetail.Visible = false;
+            pOrderDetail.Visible = false;
             pError.Visible = true;
             lError.Text = "您还没有确认过的订单";
+            return true;
         }
         gvOrderList.DataSource = orders;
         gvOrderList.DataBind();
         return true;
     }
-#endregion
+    #endregion
 
     #region 订单详细信息数据绑定
     public bool subOrderDatabind()
@@ -300,15 +298,17 @@ public partial class OrderManage : System.Web.UI.Page
         }
         if (items.Rows.Count > 0)
         {
-            pOrderDetail.Visible = false;
+            pOrderDetail.Visible = true;
             pOrderList.Visible = false;
             pError.Visible = false;
-            return true;
         }
         else 
         {
+            pOrderDetail.Visible = false;
+            pOrderList.Visible = false;
             pError.Visible = true;
             lError.Text = "当前订单不存在或已被撤销";
+            return true;
         }
 
 

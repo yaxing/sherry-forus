@@ -45,13 +45,17 @@ namespace BLL
             //每次构造购物车将重新合并COOKIE与XML中ITEMS，构造一个新的HASHTABLE
 
             /*如果cookie购物车存在，读取cookie购物车至哈希表*/
-            if (HttpContext.Current.Request.Cookies["Cart"] != null)
+            if (HttpContext.Current.Request.Cookies["Cart"] != null&&HttpContext.Current.Request.Cookies["Cart"].Value.Length>0)
             {
                 cartValue = HttpContext.Current.Request.Cookies["Cart"].Value;
                 String[] temp = cartValue.Split(new char[] { '@' }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (String item in temp)
                 {
                     String[] temp2 = item.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
+                    if (temp2.Length < 5) 
+                    {
+                        break;
+                    }
                     Info = new ItemEntity(Convert.ToInt32(temp2[0]), temp2[1].ToString(), Convert.ToInt32(temp2[2]), Convert.ToInt32(temp2[3]),temp2[4]);
                     curCart.curDic.Add(Info.ID, Info);
                 }
@@ -309,6 +313,10 @@ namespace BLL
             {
                 XmlDocument xmlD = new XmlDocument();
                 XmlElement e = GetUserNode(xmlD,curCart.curUser);
+                if (e == null) 
+                {
+                    return true;
+                }
                 e.ParentNode.RemoveChild((XmlNode)e);
                 try
                 {

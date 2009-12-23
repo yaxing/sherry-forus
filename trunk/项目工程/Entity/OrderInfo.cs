@@ -5,6 +5,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Entity
 {
@@ -23,7 +25,7 @@ namespace Entity
         private string invoiceContent = null;
         private string orderTime = string.Empty;
         private int state = 0;
-        private IList<ItemEntity> userOrderItems;
+        private DataTable userOrderItems;
 
         public int OrderID 
         {
@@ -71,7 +73,7 @@ namespace Entity
             get { return userPay; }
             set { userPay = value; }
         }
-        public IList<ItemEntity> UserOrderItems
+        public DataTable UserOrderItems
         {
             get { return userOrderItems; }
             set { userOrderItems = value; }
