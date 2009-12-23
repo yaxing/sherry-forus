@@ -219,14 +219,22 @@ public partial class CheckOut : System.Web.UI.Page
                 userOrderInfo.InvoiceContent = tbInvoiceContent.Text.ToString();
             }
 
-            if (newOrder.GenerateOrder(userOrderInfo)) 
+            int orderID = -1;
+            if (newOrder.GenerateOrder(userOrderInfo, ref orderID))
             {
                 CartCtrl removeCart = new CartCtrl();
-                if(!removeCart.RemoveCart())
+                if (!removeCart.RemoveCart())
                 {
                     Response.Write("<script>alert('购物车清空失败，请手动清空购物车');location.href('CartView.aspx');</script>");
                 }
-                Response.Write("<script>alert('订单保存成功！');location.href('CartView.aspx');</script>");
+                if (userOrderInfo.State == 1)
+                {
+                    Response.Write("<script>alert('订单保存成功！将转向支付页面');location.href('Pay.aspx?ID="+orderID+"');</script>");
+                }
+                else
+                {
+                    Response.Write("<script>alert('订单保存成功！');location.href('CartView.aspx');</script>");
+                }
             }
             else
             {

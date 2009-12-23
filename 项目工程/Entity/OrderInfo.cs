@@ -96,5 +96,10 @@ namespace Entity
             get { return orderTime; }
             set { orderTime = value; }
         }
+
+        public int GoodsNumber 
+        {
+            get { return userOrderItems.Count; }
+        }
     }
 }

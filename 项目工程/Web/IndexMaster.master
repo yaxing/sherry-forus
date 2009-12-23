@@ -27,7 +27,7 @@
                     <ul>
                         <li class="selected"><a href="Index.aspx">主页</a></li>
                         <li><a href="About.aspx">关于我们</a></li>
-                        <li><a href="Products.aspx">产品</a></li>
+                        <li><a href="Goods.aspx">产品</a></li>
                         <li><a href="Special.aspx">特价活动</a></li>
                         <li><a href="MyAccount.aspx">我的帐户</a></li>
                         <li><a href="Register.aspx">注册</a></li>
@@ -64,6 +64,7 @@
                                 <asp:Label ID="lbTotalPrice" ForeColor="black" runat="server" Text=""></asp:Label></span>
                         </div>
                         <a href="CartView.aspx" class="view_cart">查看</a>
+                        <asp:Label ID="lShowOrder" runat="server"><a href="OrderManage.aspx" class="view_cart">订单</a></asp:Label>
                     </div>
                     <div class="title">
                         <span class="title_icon">
@@ -84,7 +85,7 @@
                         <asp:Repeater ID="RpSpecailOffer" runat="server">
                             <ItemTemplate>
                                 <div class="new_prod_box">
-                                    <a href='Products.aspx?ID=<%#Eval("ID") %>'>
+                                    <a href='Details.aspx?ID=<%#Eval("ID") %>'>
                                         <%#Eval("Name") %>
                                     </a>
                                     <div class="new_prod_bg">
@@ -104,7 +105,7 @@
                         <ul class="list">
                             <asp:DataList ID="dlCatagoryList" runat="server">
                                 <ItemTemplate>
-                                    <li><a href='Categories.aspx?ID=<%#Eval("GoodsCategory") %>'>
+                                    <li><a href='Goods.aspx?Category=<%#Eval("GoodsCategory") %>'>
                                         <%#Eval("CategoryName") %>
                                     </a></li>
                                 </ItemTemplate>

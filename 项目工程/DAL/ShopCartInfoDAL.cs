@@ -25,7 +25,7 @@ namespace DAL
         public bool SetItemEntity(ref ItemEntity info) 
         {
             DataTable dt = new DataTable();
-            sqlString = "select * from goodsInfo where goodsID="+info.ID;
+            sqlString = "select goodsName, goodsPrice, goodsImg from goodsInfo where goodsID=" + info.ID;
             //SqlParameter sp = new SqlParameter("@id", SqlDbType.Int);
             //sp.Value = info.ID;
 
@@ -42,10 +42,10 @@ namespace DAL
                 return false;
             }
 
-            info.Name = dt.Rows[0][2].ToString();
+            info.Name = dt.Rows[0][0].ToString();
             info.Number = 1;
-            info.Price = Convert.ToDouble(dt.Rows[0][6].ToString());
-            info.ImgPath = dt.Rows[0][5].ToString();
+            info.Price = Convert.ToDouble(dt.Rows[0][1].ToString());
+            info.ImgPath = dt.Rows[0][2].ToString();
 
             return true;
         }

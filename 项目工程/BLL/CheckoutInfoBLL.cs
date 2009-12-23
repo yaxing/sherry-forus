@@ -68,12 +68,12 @@ namespace BLL
         /// </summary>
         /// <param name="orderInfo">订单实体</param>
         /// <returns>bool值</returns>
-        public bool GenerateOrder(OrderInfo orderInfo)
+        public bool GenerateOrder(OrderInfo orderInfo, ref int orderID)
         {
             CheckoutInfoDAL newOrder = new CheckoutInfoDAL();
             MembershipUser curUser = Membership.GetUser(HttpContext.Current.User.Identity.Name.ToString());
             orderInfo.UserID = (Guid)curUser.ProviderUserKey;
-            return newOrder.InsertNewOrder(orderInfo);
+            return newOrder.InsertNewOrder(orderInfo, ref orderID);
         }
         #endregion
     }

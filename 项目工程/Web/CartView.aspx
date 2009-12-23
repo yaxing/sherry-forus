@@ -111,26 +111,48 @@
                 <asp:TemplateField>
                     <HeaderStyle BackColor="lightgray" />
                     <ItemTemplate>
-                        <table>
-                            <tr style="height: 20px">
-                            </tr>
-                            <tr>
-                                <td align="center">
-                                    <asp:LinkButton ForeColor="black" ID="itemInfo" Font-Underline="true" runat="server"
-                                        CommandName="ShowInfo" CommandArgument='<%# Eval("ID") %>'><%#Eval("Name") %></asp:LinkButton>
-                                </td>
-                            </tr>
-                            <tr style="height: 20px">
-                            </tr>
-                            <tr>
-                                <td>
-                                    <asp:LinkButton ForeColor="black" Font-Underline="true" ID="LinkButton1" runat="server"
-                                        CommandName="DelFromCart" OnClientClick="return confirm('真的要从购物车中删除该商品吗？')" CommandArgument='<%# Eval("ID") %>'>移除此项</asp:LinkButton>
-                                </td>
-                            </tr>
-                            <tr style="height: 10px">
-                            </tr>
-                        </table>
+                        <div style="position:relative; top:20px">
+                            <table>
+                                <tr style="height: 20px;">
+                                </tr>
+                                <tr>
+                                    <td align="left" style="width:120px">
+                                        <asp:LinkButton ForeColor="black" ID="itemInfo" Font-Underline="true" runat="server"
+                                            CommandName="ShowInfo" CommandArgument='<%# Eval("ID") %>'><%#Eval("Name") %></asp:LinkButton>
+                                    </td>
+                                </tr>
+                                <tr style="height: 20px">
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:LinkButton ForeColor="black" Font-Underline="true" ID="LinkButton1" runat="server"
+                                            CommandName="DelFromCart" OnClientClick="return confirm('真的要从购物车中删除该商品吗？')" CommandArgument='<%# Eval("ID") %>'>移除此项</asp:LinkButton>
+                                    </td>
+                                </tr>
+                                <tr style="height: 10px">
+                                </tr>
+                            </table>
+                        </div>
+                        <%--<asp:Panel ID="pError" runat="server">
+                        <div style="position: relative; left: 100px; bottom: 40px">
+                            <table>
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lQuantityError1" runat="server" ForeColor="red" Text="输入的商品数量错误"></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td align="center">
+                                        <a href='Details.aspx?ID=<%#Eval("ID") %>'>查看库存</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        </asp:Panel>--%>
                     </ItemTemplate>
                     <ItemStyle Width="200px" Font-Names="微软雅黑" />
                 </asp:TemplateField>
