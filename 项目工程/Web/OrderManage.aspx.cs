@@ -264,20 +264,21 @@ public partial class OrderManage : System.Web.UI.Page
     {
         DataTable orders = new DataTable();
         orderCtrl = new OrderCtrlBLL();
+        pError.Visible = false;
         if (!orderCtrl.GetOrderList(ref orders))
         {
             return false;
         }
-        if (orders.Rows.Count <= 0)
+        if (orders.Rows.Count > 0)
         {
             pOrderDetail.Visible = false;
             pOrderList.Visible = false;
-            pError.Visible = true;
+            pError.Visible = false;
             return true;
         }
         else
         {
-            pError.Visible = false;
+            pError.Visible = true;
             lError.Text = "您还没有确认过的订单";
         }
         gvOrderList.DataSource = orders;
@@ -292,20 +293,21 @@ public partial class OrderManage : System.Web.UI.Page
         String state = String.Empty;
         DataTable items = new DataTable();
         orderCtrl = new OrderCtrlBLL();
+        pError.Visible = false;
         if (!orderCtrl.GetItemList(ref items, orderId))
         {
             return false;
         }
-        if (items.Rows.Count <= 0)
+        if (items.Rows.Count > 0)
         {
             pOrderDetail.Visible = false;
             pOrderList.Visible = false;
-            pError.Visible = true;
+            pError.Visible = false;
             return true;
         }
         else 
         {
-            pError.Visible = false;
+            pError.Visible = true;
             lError.Text = "当前订单不存在或已被撤销";
         }
 
