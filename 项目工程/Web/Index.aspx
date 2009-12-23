@@ -4,52 +4,33 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="contentHolder" runat="Server">
     <div class="title">
         <span class="title_icon">
-            <img src="images/bullet1.gif" alt="" title="" /></span>特色产品</div>
-    <div class="feat_prod_box">
-        <div class="prod_img">
-            <a href="Details.aspx?ID=5">
-                <img src="images/eg1.jpg" width="149px" height="137px" alt="" title="" border="0" /></a></div>
-        <div class="prod_det_box">
-            <div class="box_top">
-            </div>
-            <div class="box_center">
-                <div class="prod_title">
-                    产品名称</div>
-                <p class="details">
-                    肌肤的“隐形修正液” 纪梵希感光皙颜粉底肌肤的“隐形修正液” 纪梵希感光皙颜粉底肌肤的“隐形修正液” 纪梵希感光皙颜粉底</p>
-                <a href="Details.aspx?ID=5" class="more">- 详细信息 -</a>
+            <img src="images/bullet1.gif" alt="" title="" /></span>热卖产品</div>
+    <asp:Repeater runat="server" ID="HotGoods">
+        <ItemTemplate>
+            <div class="feat_prod_box">
+                <div class="prod_img">
+                    <a href="Details.aspx?GoodsID=<%#Eval("goodsID")%>">
+                        <img src="<%#Eval("goodsImg")%>" width="149px" height="137px" alt="<%#Eval("goodsName")%>" title="" /></a></div>
+                <div class="prod_det_box">
+                    <div class="box_top">
+                    </div>
+                    <div class="box_center">
+                        <div class="prod_title">
+                            <%#Eval("goodsName")%></div>
+                        <p class="details">
+                            <%#Eval("goodsDescribe")%></p>
+                        <a href="Details.aspx?GoodsID=<%#Eval("goodsID")%>" class="more">- 详细信息 -</a>
+                        <div class="clear">
+                        </div>
+                    </div>
+                    <div class="box_bottom">
+                    </div>
+                </div>
                 <div class="clear">
                 </div>
             </div>
-            <div class="box_bottom">
-            </div>
-        </div>
-        <div class="clear">
-        </div>
-    </div>
-    <div class="feat_prod_box">
-        <div class="prod_img">
-            <a href="Details.aspx?ID=7">
-                <img src="images/eg2.jpg" width="149px" height="137px" alt="" title="" border="0" /></a></div>
-        <div class="prod_det_box">
-            <div class="box_top">
-            </div>
-            <div class="box_center">
-                <div class="prod_title">
-                    产品名称</div>
-                <p class="details">
-                    肌肤的“隐形修正液” 纪梵希感光皙颜粉底肌肤的“隐形修正液” 纪梵希感光皙颜粉底肌肤的“隐形修正液” 纪梵希感光皙颜粉底
-                </p>
-                <a href="Details.aspx?ID=7" class="more">- 详细信息 -</a>
-                <div class="clear">
-                </div>
-            </div>
-            <div class="box_bottom">
-            </div>
-        </div>
-        <div class="clear">
-        </div>
-    </div>
+        </ItemTemplate>
+    </asp:Repeater>
     <div class="title">
         <span class="title_icon">
             <img src="images/bullet2.gif" alt="" title="" /></span>新品上架</div>
@@ -57,14 +38,14 @@
         <asp:Repeater runat="server" ID="NewGoods">
             <ItemTemplate>
                 <div class="new_prod_box">
-                    <a href="<%#"Details.aspx?GoodsID=" + DataBinder.Eval(Container.DataItem, "goodsID")%>">
-                        <%#DataBinder.Eval(Container.DataItem, "goodsName")%>
+                    <a href="Details.aspx?GoodsID=<%#Eval("goodsID")%>">
+                        <%#Eval("goodsName")%>
                     </a>
                     <div class="new_prod_bg">
                         <span class="new_icon">
-                            <img src="images/new_icon.gif" alt="" title="" /></span> <a href="<%#"Details.aspx?GoodsID=" + DataBinder.Eval(Container.DataItem, "goodsID")%>">
-                                <img src="<%#DataBinder.Eval(Container.DataItem, "goodsImg")%>" alt="<%#DataBinder.Eval(Container.DataItem, "goodsName")%>"
-                                    title="" height="100px" width="112px" class="thumb" />
+                            <img src="images/new_icon.gif" alt="" title="" /></span> <a href="Details.aspx?GoodsID=<%#Eval("goodsID")%>">
+                                <img src="<%#Eval("goodsImg")%>" alt="<%#Eval("goodsName")%>" title="" height="100px"
+                                    width="112px" class="thumb" />
                             </a>
                     </div>
                 </div>
