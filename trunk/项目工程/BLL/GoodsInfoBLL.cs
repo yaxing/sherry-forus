@@ -118,11 +118,17 @@ namespace BLL
         /// 查找最近添加的（num个）产品
         /// </summary>
         /// <param name="num">产品个数</param>
+        /// <param name="orderByVolume">是否按照销量排序</param>
         /// <returns>DataTable型的查找结果</returns>
 
         public static DataTable LatestGoods(int num)
         {
-            return (GoodsInfoDAL.LatestGoods(num));
+            return (LatestGoods(num, false));
+        }
+
+        public static DataTable LatestGoods(int num, bool orderByVolume)
+        {
+            return (GoodsInfoDAL.LatestGoods(num, orderByVolume));
         }
         #endregion
     }
