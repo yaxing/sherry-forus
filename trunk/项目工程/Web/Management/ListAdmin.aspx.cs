@@ -71,8 +71,7 @@ public partial class Management_ListAdmin : System.Web.UI.Page
         Label lblAdminType = (Label)this.AdminList.Rows[e.NewEditIndex].Cells[1].FindControl("lblAdminType");
         if (lblAdminType.Text == "顶级管理员")
         {
-            Response.Write("<script language='javascript'>alert('请勿调整顶级管理员级别');</script>");
-            return;
+            Response.Write("<script language='javascript'>alert('请勿调整顶级管理员级别');location.href='ListAdmin.aspx'</script>");
         }
         ListBind();
     }
@@ -120,5 +119,10 @@ public partial class Management_ListAdmin : System.Web.UI.Page
         {
             Response.Write("<script language='javascript'>alert('操作为完成，请重试或联系管理员。');</script>");
         }
+    }
+    protected void AdminList_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        this.AdminList.PageIndex = e.NewPageIndex;
+        ListBind();
     }
 }
