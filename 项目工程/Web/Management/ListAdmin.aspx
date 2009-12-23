@@ -10,7 +10,7 @@
     <form id="form1" runat="server">
     <div>
        <asp:GridView ID="AdminList" runat="server" AutoGenerateColumns="False" 
-        DataKeyNames="AdminID" OnRowEditing="AdminList_RowEditing" OnRowCancelingEdit="AdminList_RowCancelingEdit" OnRowUpdating="AdminList_RowUpdating" OnRowDeleting="AdminList_RowDeleting">
+        DataKeyNames="AdminID" OnRowEditing="AdminList_RowEditing" OnRowCancelingEdit="AdminList_RowCancelingEdit" OnRowUpdating="AdminList_RowUpdating" OnRowDeleting="AdminList_RowDeleting" AllowPaging="True" OnPageIndexChanging="AdminList_PageIndexChanging">
         <Columns>
             <asp:BoundField DataField="AdminName" HeaderText="管理员名" ReadOnly="True" />
             <asp:TemplateField HeaderText="类型">
