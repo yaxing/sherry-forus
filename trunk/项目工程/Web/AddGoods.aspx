@@ -20,11 +20,17 @@
                 产品类别</td>
             <td>
                 <asp:ListBox ID="GoodsCategory" runat="server" Rows="1">
-                    <asp:ListItem Value="1">基础</asp:ListItem>
-                    <asp:ListItem Value="2">美白</asp:ListItem>
-                    <asp:ListItem Value="3">彩妆</asp:ListItem>
-                    <asp:ListItem Value="4">洗浴</asp:ListItem>
-                    <asp:ListItem Value="5">香品</asp:ListItem>
+                    <asp:ListItem Value="1">面部护理</asp:ListItem>
+                    <asp:ListItem Value="2">手部护理</asp:ListItem>
+                    <asp:ListItem Value="3">身体护理</asp:ListItem>
+                    <asp:ListItem Value="4">秀发护理</asp:ListItem>
+                    <asp:ListItem Value="5">眼部护理</asp:ListItem>
+                    <asp:ListItem Value="6">颈部护理</asp:ListItem>
+                    <asp:ListItem Value="7">唇部</asp:ListItem>
+                    <asp:ListItem Value="8">香水</asp:ListItem>
+                    <asp:ListItem Value="9">彩妆</asp:ListItem>
+                    <asp:ListItem Value="10">香精/精油/花水</asp:ListItem>
+                    <asp:ListItem Value="11">瘦身美体</asp:ListItem>
                 </asp:ListBox></td>
         </tr>
         <tr>
@@ -73,7 +79,7 @@
             <td>
             </td>
             <td>
-                <asp:Button ID="AddCommit" OnClick="AddGoodsCommit" runat="server" Text="确认" /></td>
+                <asp:Button CssClass="register" ID="AddCommit" OnClick="AddGoodsCommit" runat="server" Text="确认" /></td>
         </tr>
     </table>
     <asp:Label ID="AddResult" runat="server" Visible="false"/>
