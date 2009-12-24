@@ -157,7 +157,7 @@ namespace DAL
                             user = new WorkerInfo();
 
                             user.WorkerID = reader.GetGuid(0);
-                            user.WorkerRealName = reader.GetString(1);
+                            user.WorkerRealName = reader.GetString(3);
 
                             workerList.Add(user);
                         }
@@ -174,6 +174,102 @@ namespace DAL
 
         #endregion
 
+        #region 显示所有工作人员列表
+
+        /// <summary>
+        /// 显示所有工作人员列表
+        /// </summary>
+        /// <param name="workerList">工作人员实体对象集合</param>
+        /// <returns>集合元素个数</returns>
+
+        public bool ShowAllWorkerInfo(ref WorkerInfo user)
+        {
+            sqlString = "select * from workerInfo,shopInfo where workerInfo.shopID = shopInfo.shopID and workerInfo.workerID = @workerID";
+            SqlParameter[] pt = new SqlParameter[]{
+                                new SqlParameter("@workerID", SqlDbType.UniqueIdentifier)
+                                };
+            pt[0].Value = user.WorkerID;
+            try
+            {
+                using (dp = new DataProvider())
+                {
+                    using (SqlDataReader reader = dp.ExecuteReader(sqlString, pt))
+                    {
+                        while (reader.Read())
+                        {
+                            user.WorkerID = reader.GetGuid(0);
+                            user.WorkerNum = reader.GetInt32(1);
+                            user.ShopID = reader.GetInt32(2);
+                            user.WorkerRealName = reader.GetString(3);
+                            user.ManageID = reader.GetGuid(4);
+                            user.EmailAdd = reader.GetString(5);
+                            user.PhoneNum = reader.GetString(6);
+                            user.WorkerLv = reader.GetInt32(7);
+                            user.WorkerState = reader.GetInt32(8);
+                            user.ShopName = reader.GetString(10);
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        #endregion
+
+        #region 显示所有工作人员列表
+
+        /// <summary>
+        /// 显示所有工作人员列表
+        /// </summary>
+        /// <param name="workerList">工作人员实体对象集合</param>
+        /// <returns>集合元素个数</returns>
+
+        public bool ShowWorkerOfManager(ref WorkerInfo user, Guid manageID)
+        {
+            sqlString = "select * from workerInfo,shopInfo where workerInfo.shopID = shopInfo.shopID and workerInfo.workerID = @workerID and workerInfo.manageID = @manageID";
+            SqlParameter[] pt = new SqlParameter[]{
+                                new SqlParameter("@workerID", SqlDbType.UniqueIdentifier),
+                                new SqlParameter("@manageID",SqlDbType.UniqueIdentifier)
+                                };
+            pt[0].Value = user.WorkerID;
+            pt[1].Value = manageID;
+            try
+            {
+                using (dp = new DataProvider())
+                {
+                    using (SqlDataReader reader = dp.ExecuteReader(sqlString, pt))
+                    {
+                        while (reader.Read())
+                        {
+                            user.WorkerID = reader.GetGuid(0);
+                            user.WorkerNum = reader.GetInt32(1);
+                            user.ShopID = reader.GetInt32(2);
+                            user.WorkerRealName = reader.GetString(3);
+                            user.ManageID = reader.GetGuid(4);
+                            user.EmailAdd = reader.GetString(5);
+                            user.PhoneNum = reader.GetString(6);
+                            user.WorkerLv = reader.GetInt32(7);
+                            user.WorkerState = reader.GetInt32(8);
+                            user.ShopName = reader.GetString(10);
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        #endregion
+
         # region 根据用户id查询用户
 
         /// <summary>
@@ -184,11 +280,11 @@ namespace DAL
 
         public bool SrchWorkerInfo(ref WorkerInfo user)
         {
-            sqlString = "select * from workerInfo where id = @userID";
+            sqlString = "select * from workerInfo where workerID = @userID";
             SqlParameter[] pt = new SqlParameter[]{
                                 new SqlParameter("@userID", SqlDbType.UniqueIdentifier)
                                 };
-            pt[0].Value = user.WorkerNum;
+            pt[0].Value = user.WorkerID;
 
             try
             {
@@ -199,7 +295,14 @@ namespace DAL
                         while (reader.Read())
                         {
                             user.WorkerID = reader.GetGuid(0);
+                            user.WorkerNum = reader.GetInt32(1);
+                            user.ShopID = reader.GetInt32(2);
                             user.WorkerRealName = reader.GetString(3);
+                            user.ManageID = reader.GetGuid(4);
+                            user.EmailAdd = reader.GetString(5);
+                            user.PhoneNum = reader.GetString(6);
+                            user.WorkerLv = reader.GetInt32(7);
+                            user.WorkerState = reader.GetInt32(8);
                         }
                     }
                 }
@@ -207,6 +310,7 @@ namespace DAL
             catch
             {
                 ///////此处可以返回false
+                return false;
             }
 
             return true;
