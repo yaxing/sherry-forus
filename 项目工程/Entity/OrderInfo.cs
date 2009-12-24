@@ -25,7 +25,7 @@ namespace Entity
         private string invoiceContent = null;
         private string orderTime = string.Empty;
         private int state = 0;
-        private DataTable userOrderItems;
+        private IList<ItemEntity> userOrderItems;
 
         public int OrderID 
         {
@@ -73,7 +73,7 @@ namespace Entity
             get { return userPay; }
             set { userPay = value; }
         }
-        public DataTable UserOrderItems
+        public IList<ItemEntity> UserOrderItems
         {
             get { return userOrderItems; }
             set { userOrderItems = value; }
