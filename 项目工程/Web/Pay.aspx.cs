@@ -25,14 +25,18 @@ public partial class Pay : System.Web.UI.Page
     protected void bPay_Click(object sender, EventArgs e)
     {
         OrderCtrlBLL payOrder = new OrderCtrlBLL();
+        UserScoreBLL addScore = new UserScoreBLL();
         if (!payOrder.ChangePayState(id))
         {
-            Response.Write("<script>alert('错误');location.href('Pay.aspx?ID=" + id + "');</script>");
+            Response.Write("<script>alert('付款失败，请重新操作！');location.href('Pay.aspx?ID=" + id + "');</script>");
         }
-        else 
+        else if (!addScore.AddUserScore(id, false)) 
         {
-            Response.Write("<script>alert('成功');location.href('OrderManage.aspx?ID=" + id + "');</script>");
-            
+            Response.Write("<script>alert('付款成功，积分添加失败，请联系管理员！');location.href('OrderManage.aspx?ID=" + id + "');</script>"); 
+        }
+        else
+        {
+            Response.Write("<script>alert('付款成功！');location.href('OrderManage.aspx?ID=" + id + "');</script>");
         }
     }
 }

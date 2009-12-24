@@ -68,12 +68,31 @@ namespace BLL
         /// </summary>
         /// <param name="orderInfo">订单实体</param>
         /// <returns>bool值</returns>
-        public bool GenerateOrder(OrderInfo orderInfo, ref int orderID)
+        public int GenerateOrder(OrderInfo orderInfo, ref int orderID)
         {
             CheckoutInfoDAL newOrder = new CheckoutInfoDAL();
             MembershipUser curUser = Membership.GetUser(HttpContext.Current.User.Identity.Name.ToString());
             orderInfo.UserID = (Guid)curUser.ProviderUserKey;
-            return newOrder.InsertNewOrder(orderInfo, ref orderID);
+            if (!newOrder.InsertNewOrder(orderInfo, ref orderID)) 
+            {
+                return 1;
+            }
+            if (orderInfo.UserOrderPrice >= 1000.0) 
+            {
+                if (!newOrder.UpdateToGoldenUser(orderInfo.UserID)) 
+                {
+                    return 2;
+                }
+            }
+            if (orderInfo.State == 0) 
+            {
+                UserScoreBLL addScore = new UserScoreBLL();
+                if (!addScore.AddUserScore(Convert.ToInt32(orderInfo.UserOrderPrice),true)) 
+                {
+                    return 3;
+                }
+            }
+            return 0;
         }
         #endregion
     }
