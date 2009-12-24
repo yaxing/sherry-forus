@@ -23,7 +23,7 @@ namespace BLL
         /// 构造订单处理实体
         /// </summary>
         /// <param name="orderInfo">订单实体对象</param>
-        /// <returns>操作成功返回true，否则返回false</returns
+        /// <returns>操作成功返回true，否则返回false</returns>
         public bool InitialOrderCtrl(OrderInfo orderInfo) 
         {
             curOrder = orderInfo;

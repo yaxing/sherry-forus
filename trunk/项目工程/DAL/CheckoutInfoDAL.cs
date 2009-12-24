@@ -256,5 +256,35 @@ namespace DAL
             return true;
         }
         #endregion
+
+        #region 升级为金卡用户
+        /// <summary>
+        /// 将用户升级为金卡用户
+        /// </summary>
+        /// <param name="userId">用户ID</param>
+        /// <returns>bool值</returns>
+        public bool UpdateToGoldenUser(Guid userId)
+        {
+            sqlString = "update userInfo set userLv=1 where userID=@userId";
+            SqlParameter[] pt = new SqlParameter[] { 
+                                new SqlParameter("@userId",SqlDbType.UniqueIdentifier)
+                                };
+            pt[0].Value = userId;
+            try
+            {
+                using (dp = new DataProvider())
+                {
+                    if (dp.ExecuteNonQuery(sqlString, pt) == 0)
+                        return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+        #endregion
+
     }
 }

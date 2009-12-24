@@ -220,25 +220,32 @@ public partial class CheckOut : System.Web.UI.Page
             }
 
             int orderID = -1;
-            if (newOrder.GenerateOrder(userOrderInfo, ref orderID))
-            {
-                CartCtrl removeCart = new CartCtrl();
-                if (!removeCart.RemoveCart())
-                {
-                    Response.Write("<script>alert('购物车清空失败，请手动清空购物车');location.href('CartView.aspx');</script>");
-                }
-                if (userOrderInfo.State == 1)
-                {
-                    Response.Write("<script>alert('订单保存成功！将转向支付页面');location.href('Pay.aspx?ID="+orderID+"');</script>");
-                }
-                else
-                {
-                    Response.Write("<script>alert('订单保存成功！');location.href('CartView.aspx');</script>");
-                }
-            }
-            else
-            {
-                Response.Write("<script>alert('订单保存失败！');history.go(-1);</script>");
+            int processState = newOrder.GenerateOrder(userOrderInfo, ref orderID);
+            switch(processState){
+                case 0:
+                    CartCtrl removeCart = new CartCtrl();
+                    if (!removeCart.RemoveCart())
+                    {
+                        Response.Write("<script>alert('购物车清空失败，请手动清空购物车');location.href('CartView.aspx');</script>");
+                    }
+                    if (userOrderInfo.State == 1)
+                    {
+                        Response.Write("<script>alert('订单保存成功！将转向支付页面');location.href('Pay.aspx?ID="+orderID+"');</script>");
+                    }
+                    else
+                    {
+                        Response.Write("<script>alert('订单保存成功！');location.href('CartView.aspx');</script>");
+                    }
+                    break;
+                case 1:
+                    Response.Write("<script>alert('订单保存失败！');history.go(-1);</script>");
+                    break;
+                case 2: 
+                    Response.Write("<script>alert('用户等级更改失败，请联系管理员！');history.go(-1);</script>");
+                    break;
+                case 3:
+                    Response.Write("<script>alert('积分添加失败，请联系管理员！');history.go(-1);</script>");
+                    break;
             }
         }
     }
