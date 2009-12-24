@@ -156,6 +156,105 @@ namespace BLL
         }
         # endregion
 
+        # region 显示全体工作人员列表
+
+        /// <summary>
+        /// 全体工作人员列表
+        /// </summary>
+        /// <param name="workerList"></param>
+        /// <returns>工作人员个数</returns>
+
+        public int ShowAllWorker(ref IList<WorkerInfo> workerList,string manageName,string role)
+        {
+            string[] workerNames = Roles.GetUsersInRole("工作人员");
+            WorkerInfoDAL workerDAL = new WorkerInfoDAL();
+            WorkerInfo workerInfo = null;
+            WorkerInfo workerListInfo = null;
+            foreach (string workerName in workerNames)
+            {
+                MembershipUser user = Membership.GetUser(workerName);
+                workerInfo = new WorkerInfo();
+                workerInfo.WorkerID = (Guid)user.ProviderUserKey;
+                if (role == "工作人员")
+                {
+                    MembershipUser manager = Membership.GetUser(manageName);
+                    try
+                    {
+                        if (!workerDAL.ShowWorkerOfManager(ref workerInfo, (Guid)manager.ProviderUserKey))
+                            return -1;
+                    }
+                    catch
+                    {
+                        return -1;
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        if (!workerDAL.ShowAllWorkerInfo(ref workerInfo))
+                            return -1;
+                    }
+                    catch
+                    {
+                        return -1;
+                    }
+                    
+                }
+                if (workerInfo.WorkerRealName==null)
+                {
+                    continue;
+                }
+
+                workerListInfo = new WorkerInfo();
+                workerListInfo.WorkerID = (Guid)user.ProviderUserKey;
+                workerListInfo.WorkerName = workerName;
+                workerListInfo.WorkerLv = workerInfo.WorkerLv;
+                workerListInfo.WorkerState = workerInfo.WorkerState;
+                workerListInfo.ShopID = workerInfo.ShopID;
+                workerListInfo.WorkerRealName = workerInfo.WorkerRealName;
+                workerListInfo.ManageID = workerInfo.ManageID;
+                workerListInfo.WorkerNum = workerInfo.WorkerNum;
+                workerListInfo.AddTime = user.CreationDate;
+                workerListInfo.ShopName = workerInfo.ShopName;
+                workerListInfo.EmailAdd = workerInfo.EmailAdd;
+                workerListInfo.PhoneNum = workerInfo.PhoneNum;
+                switch (workerInfo.WorkerLv)
+                {
+                    case 0:
+                        workerListInfo.WorkerType = "工作人员";
+                        break;
+                    case 1:
+                        workerListInfo.WorkerType = "负责人";
+                        break;
+                }
+                switch (user.IsApproved)
+                {
+                    case true:
+                        workerListInfo.AccountState = "启用";
+                        break;
+                    case false:
+                        workerListInfo.AccountState = "冻结";
+                        break;
+                }
+                switch(workerInfo.WorkerState)
+                {
+                    case 0:
+                        workerListInfo.WorkerWorkStat = "空闲";
+                        break;
+                    case 1:
+                        workerListInfo.WorkerWorkStat = "有订单";
+                        break;
+                }
+
+
+                workerList.Add(workerListInfo);
+            }
+
+            return workerList.Count;
+        }
+        # endregion
+
         # region 显示指定店面负责人列表
 
         /// <summary>
