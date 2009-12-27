@@ -194,7 +194,7 @@ namespace DAL
                 pt[0].Value = orderID;
                 pt[1].Value = ie.ID;
                 pt[2].Value = ie.Name;
-                pt[3].Value = ie.Price;
+                pt[3].Value = ie.Price*ie.Discount;
                 pt[4].Value = ie.Number;
 
                 try
