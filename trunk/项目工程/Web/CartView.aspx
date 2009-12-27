@@ -160,6 +160,18 @@
                     <HeaderStyle ForeColor="Black" Font-Size="15px" BackColor="lightgray" />
                     <ItemStyle HorizontalAlign="Center" Width="40px" Font-Names="微软雅黑" />
                     <HeaderTemplate>
+                        | <font style="font-family: 微软雅黑; font-weight: bold">积分</font>
+                    </HeaderTemplate>
+                    <ItemTemplate>
+                        <font color="black">
+                            <%#Eval("TotalPrice") %>分
+                        </font>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField>
+                    <HeaderStyle ForeColor="Black" Font-Size="15px" BackColor="lightgray" />
+                    <ItemStyle HorizontalAlign="Center" Width="40px" Font-Names="微软雅黑" />
+                    <HeaderTemplate>
                         | <font style="font-family: 微软雅黑; font-weight: bold">单价</font>
                     </HeaderTemplate>
                     <ItemTemplate>
@@ -176,6 +188,16 @@
                     </HeaderTemplate>
                     <ItemTemplate>
                         <asp:TextBox ID="tbNumber" Width="30px" runat="server" ForeColor="black" Text='<%#Eval("Number") %>'></asp:TextBox>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField>
+                    <ItemStyle HorizontalAlign="Center" Width="45px" Font-Names="微软雅黑" />
+                    <HeaderStyle ForeColor="Black" Font-Size="15px" BackColor="lightgray" />
+                    <HeaderTemplate>
+                        | <font style="font-family: 微软雅黑; font-weight: bold">折扣</font>
+                    </HeaderTemplate>
+                    <ItemTemplate>
+                        <%#Convert.ToDouble(Eval("Discount").ToString())*10 %>折
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField>

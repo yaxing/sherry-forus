@@ -8,6 +8,9 @@ using System.Data;
 using System.Data.SqlClient;
 using DbCtrl;
 using Entity;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
 
 namespace DAL
 {
@@ -24,6 +27,7 @@ namespace DAL
         /// <returns>bool值</returns>
         public bool SetItemEntity(ref ItemEntity info) 
         {
+            //=====================================获取商品基本信息==================================//
             DataTable dt = new DataTable();
             sqlString = "select goodsName, goodsPrice, goodsImg from goodsInfo where goodsID=" + info.ID;
             //SqlParameter sp = new SqlParameter("@id", SqlDbType.Int);
@@ -47,6 +51,29 @@ namespace DAL
             info.Price = Convert.ToDouble(dt.Rows[0][1].ToString());
             info.ImgPath = dt.Rows[0][2].ToString();
 
+            //===================================根据用户等级判断优惠价格========================//
+            MembershipUser curUser =  Membership.GetUser(HttpContext.Current.User.Identity.Name);
+            if (curUser == null) 
+            {
+                info.Discount = 0.95;
+                return true;
+            }
+            Guid userId = (Guid)curUser.ProviderUserKey;
+            int userLv = 0;
+            UserScoreDAL getLv = new UserScoreDAL();
+            getLv.GetUserLv(userId,ref userLv);
+            if (userLv == 0)
+            {
+                info.Discount = 0.95;
+            }
+            else if (userLv == 1)
+            {
+                info.Discount = 0.9;
+            }
+            else 
+            {
+                info.Discount = 1;
+            }
             return true;
         }
         #endregion

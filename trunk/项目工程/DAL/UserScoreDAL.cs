@@ -21,7 +21,40 @@ namespace DAL
         SqlParameter[] sq = null;
         DataProvider dp;
 
-        #region 为用户积分添加score分
+        #region 查询用户等级
+        /// <summary>
+        /// 查询用户等级
+        /// </summary>
+        /// <param name="userId,ref userLv">用户ID,用户等级</param>
+        /// <returns>操作成功返回true，否则返回false</returns>
+        public bool GetUserLv(Guid userId, ref int userLv) 
+        {
+            sqlString = "select userLv from userInfo where userID=@id";
+            SqlParameter[] sp = new SqlParameter[] 
+                                  {
+                                      new SqlParameter("@id",SqlDbType.UniqueIdentifier)
+                                  };
+            sp[0].Value = userId;
+            try
+            {
+                using (dp = new DataProvider())
+                {
+                    if ((dt = dp.ExecuteDataTable(sqlString, sp)) == null || dt.Rows.Count <= 0)
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
+            userLv = Convert.ToInt32(dt.Rows[0]["userLv"].ToString());
+            return true;
+        }
+        #endregion
+
+        #region 为用户积分添加积分
         /// <summary>
         /// 增加用户积分
         /// </summary>
