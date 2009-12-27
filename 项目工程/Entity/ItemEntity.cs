@@ -14,12 +14,15 @@ namespace Entity
         private String name = String.Empty;
         private int number;
         private double price;
+        private double totalPrice;
+        private double discount;
         private String imgPath = String.Empty;
         private string discribe = string.Empty;
         private string goodsNum = string.Empty;
         private int goodsStorage;
         private int goodsCategory;
         private string categoryName;
+        
 
         public ItemEntity() { }
 
@@ -72,9 +75,21 @@ namespace Entity
             set { price = value; }
         }
 
+        public double Discount 
+        {
+            get { return discount; }
+            set { discount = value; }
+        }
+
+        public double TotalPrice 
+        {
+            get { return price*number*discount; }
+            set { totalPrice = value; }
+        }
+
         public String CurItemTotalPrice
         {
-            get { return String.Format("{0:C}", price * number); }
+            get { return String.Format("{0:C}", price * number*discount); }
         }
 
         public string GoodsNum 

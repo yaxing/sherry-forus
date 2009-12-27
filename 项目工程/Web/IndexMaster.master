@@ -7,16 +7,10 @@
     <title>Sherry化妆品网上销售</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="stylesheet" type="text/css" href="lightbox.css" />
-
     <script src="js/prototype.js" type="text/javascript"></script>
-
     <script src="js/scriptaculous.js?load=effects" type="text/javascript"></script>
-
     <script src="js/lightbox.js" type="text/javascript"></script>
-
     <script type="text/javascript" src="js/java.js"></script>
-    
-
 </head>
 <body>
     <form id="form1" runat="server">
@@ -47,26 +41,27 @@
                 <!--end of left content-->
                 <div class="right_content">
                     <div class="languages_box">
-                        <%-- <span class="red"></span> <a href="#" class="selected">
-                            <img src="images/gb.gif" alt="" title="" border="0" /></a> <a href="#">
-                                <img src="images/fr.gif" alt="" title="" border="0" /></a> <a href="#">
-                                    <img src="images/de.gif" alt="" title="" border="0" /></a>--%>
                     </div>
                     <div class="currency">
-                        <%--<span class="red">结算方式: </span><a href="#">GBP</a> <a href="#">EUR</a> <a href="#"
-                            class="selected">USD</a>--%>
                         <asp:Label ID="lShowOrder" runat="server"><a href="OrderManage.aspx">查看我的订单</a></asp:Label>
                     </div>
                     <div class="cart">
                         <div class="title">
                             <span class="title_icon">
                                 <img src="images/cart.gif" alt="" title="" /></span>我的购物车</div>
-                        <div class="home_cart_content">
-                            <asp:Label ID="lbTotalQuantity" ForeColor="black" runat="server" Text=""></asp:Label>
-                            x 商品 | <span class="red">小计:
-                                <asp:Label ID="lbTotalPrice" ForeColor="black" runat="server" Text=""></asp:Label></span>
-                        </div>
-                        <a href="CartView.aspx" class="view_cart">查看</a>
+                        <asp:Panel ID="pShopCart" runat="server">
+                            <div class="home_cart_content">
+                                <asp:Label ID="lbTotalQuantity" ForeColor="black" runat="server" Text=""></asp:Label>
+                                x 商品 | <span class="red">小计:
+                                    <asp:Label ID="lbTotalPrice" ForeColor="black" runat="server" Text=""></asp:Label></span>
+                            </div>
+                            <a href="CartView.aspx" class="view_cart">查看</a>
+                        </asp:Panel>
+                        <asp:Panel ID="pShopCartError" runat="server">
+                            <div class="home_cart_content">
+                                <asp:Label ID="lShopCartError" ForeColor="red" runat="server" Text="购物车读取失败..."></asp:Label>
+                            </div>
+                        </asp:Panel>
                     </div>
                     <div class="title">
                         <span class="title_icon">

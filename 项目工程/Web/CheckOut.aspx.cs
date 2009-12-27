@@ -39,7 +39,7 @@ public partial class CheckOut : System.Web.UI.Page
                 pAnonymous.Visible = false;
                 shopCart = new CartCtrl();
 
-                lbTotalPrice.Text = shopCart.ShowTotalPrice();
+                lbTotalPrice.Text = String.Format("{0:C}",shopCart.GetTotalPrice());
                 lbTotalQuantity.Text = shopCart.GetItemQuantity().ToString();
 
                 checkOutCtrl = new CheckoutCtrl();
@@ -228,13 +228,17 @@ public partial class CheckOut : System.Web.UI.Page
                     {
                         Response.Write("<script>alert('购物车清空失败，请手动清空购物车');location.href('CartView.aspx');</script>");
                     }
-                    if (userOrderInfo.State == 1)
+                    if (rblPayMethods.SelectedValue.Equals("1"))
                     {
                         Response.Write("<script>alert('订单保存成功！将转向支付页面');location.href('Pay.aspx?ID="+orderID+"');</script>");
                     }
-                    else
+                    else if (rblPayMethods.SelectedValue.Equals("2"))
                     {
-                        Response.Write("<script>alert('订单保存成功！');location.href('CartView.aspx');</script>");
+                        Response.Write("<script>alert('订单保存成功！请及时付款！');location.href('CartView.aspx');</script>");
+                    }
+                    else if (rblPayMethods.SelectedValue.Equals("3"))
+                    {
+                        Response.Write("<script>alert('订单保存成功！您的积分已成功添加');location.href('CartView.aspx');</script>");
                     }
                     break;
                 case 1:

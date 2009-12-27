@@ -66,27 +66,13 @@ public partial class CartView : System.Web.UI.Page
     #region 绑定数据
     protected void GvSourceBind() 
     {
-        #region 构造购物车
-        shopCart = new CartCtrl();
-        /*获取用户登录名*/
-        String userName = HttpContext.Current.User.Identity.Name;
-        /*如果用户为登录状态并且COOKIE存在则将COOKIE购物车写入XML*/
-        if (userName != null && userName.Length > 0)
-        {
-            if (HttpContext.Current.Request.Cookies["Cart"] != null)
-            {
-                shopCart.WriteToXML(userName);
-                /*购物车转存完毕后清除COOKIE购物车*/
-                Response.Cookies["Cart"].Expires = DateTime.Now.AddDays(-1);
-            }
-        }
-        #endregion
+            shopCart = new CartCtrl();
 
             gvItems.AllowPaging = true;
             gvItems.PageSize = 3;
             gvItems.DataSource = shopCart.GetItems();
             gvItems.DataBind();
-            lbTotalPrice.Text = shopCart.ShowTotalPrice();
+            lbTotalPrice.Text = String.Format("{0:C}",shopCart.GetTotalPrice());
             lbTotalQuantity.Text = shopCart.GetItemQuantity().ToString();
             if (shopCart.GetItemQuantity() == 0)
             {
@@ -100,14 +86,6 @@ public partial class CartView : System.Web.UI.Page
                 ibClearCart.Visible = true;
                 ibSaveCart.Visible = true;
             }
-            //if (validated)
-            //{
-            //    foreach (GridViewRow row in gvItems.Rows)
-            //    {
-            //        Panel p = (Panel)row.FindControl("pError");
-            //        p.Visible = false;
-            //    }
-            //}
     }
     #endregion
 
@@ -214,27 +192,13 @@ public partial class CartView : System.Web.UI.Page
     {
         String index = Convert.ToString(e.CommandArgument);
         shopCart = new CartCtrl();
-
-        if (e.CommandName == "AddItemOne")
-        {
-
-            if (shopCart != null)
-            {
-                shopCart.Edit(Convert.ToInt32(index), shopCart.GetItem(Convert.ToInt32(index)).Number + 1);
-            }
-        }
-        else if (e.CommandName == "DelItemOne")
-        {
-
-            shopCart.Edit(Convert.ToInt32(index), shopCart.GetItem(Convert.ToInt32(index)).Number - 1);
-        }
-        else if (e.CommandName == "DelFromCart")
+        if (e.CommandName == "DelFromCart")
         {
             shopCart.Remove(Convert.ToInt32(index));
         }
         else if (e.CommandName == "ShowInfo")
         {
-            Response.Redirect("ProductInfo.aspx?ID="+index);
+            Response.Redirect("Details.aspx?ID="+index);
         }
         Response.Redirect("CartView.aspx");
     }
