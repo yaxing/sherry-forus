@@ -78,7 +78,7 @@
                 <table width="100%" style="font-family: 微软雅黑; font-size: 12px">
                     <tr>
                         <td align="center" style="height: 80px">
-                            您还没有选购商品。<a href="index.aspx">浏览商品>></a>
+                            您还没有选购商品。<a href="Goods.aspx">浏览商品>></a>
                         </td>
                     </tr>
                 </table>

@@ -283,7 +283,7 @@ public partial class CartView : System.Web.UI.Page
     #endregion
     protected void ibReturn_Click(object sender, ImageClickEventArgs e)
     {
-        Response.Redirect("Index.aspx");
+        Response.Redirect("Goods.aspx");
     }
     protected void ibPay_Click(object sender, ImageClickEventArgs e)
     {
