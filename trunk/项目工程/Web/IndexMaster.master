@@ -19,7 +19,8 @@
                 <div class="logo">
                     <a href="index.aspx">
                         <img src="images/logo.gif" alt="" title="" border="0" /></a></div>
-                <div id="menu">
+                <asp:Literal ID="ltMenu" runat="server"></asp:Literal>
+                <%--<div id="menu">
                     <ul>
                         <li class="selected"><a href="Index.aspx">主页</a></li>
                         <li><a href="About.aspx">关于我们</a></li>
@@ -27,11 +28,9 @@
                         <li><a href="Special.aspx">特价活动</a></li>
                         <li><a href="MyAccount.aspx">我的帐户</a></li>
                         <li><a href="Register.aspx">注册</a></li>
-                        <li><a href="Contact.aspx">联系我们</a>
-                            <asp:LoginStatus ID="lsLogOut" runat="server" LoginText="" LogoutText="注销登录" LogoutPageUrl="javascript:history.go(-1);" />
-                        </li>
+                        <li><a href="Contact.aspx">联系我们</a></li>
                     </ul>
-                </div>
+                </div>--%>
             </div>
             <div class="center_content">
                 <div class="left_content">
@@ -40,10 +39,10 @@
                 </div>
                 <!--end of left content-->
                 <div class="right_content">
-                    <div class="languages_box">
-                    </div>
                     <div class="currency">
-                        <asp:Label ID="lShowOrder" runat="server"><a href="OrderManage.aspx">查看我的订单</a></asp:Label>
+                    <span class="red"><asp:Label ID="lCountOp" runat="server">我的帐户：</asp:Label> </span>
+                        <asp:Label ID="lShowOrder" runat="server"><a href="OrderManage.aspx">我的订单</a></asp:Label>
+                        <asp:LoginStatus ID="lsLogOut" runat="server" LoginText="" LogoutText="注销登录" LogoutPageUrl="javascript:history.go(-1);" />
                     </div>
                     <div class="cart">
                         <div class="title">
