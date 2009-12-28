@@ -49,8 +49,15 @@ public partial class Details : System.Web.UI.Page
     {
         shopCart = new CartCtrl();
 
-        shopCart.Add(goodsID);
-        Response.Redirect("Details.aspx?GoodsID=" + goodsID);
+        if (!shopCart.Add(goodsID))
+        {
+            Response.Write("<script>alert('添加商品失败，请重新操作！');history.go(-1);</script>");
+        }
+        else
+        {
+            Response.Write("<script>alert('商品已成功加入购物车！');location.href('Details.aspx?GoodsID="+goodsID+"');</script>");
+            //Response.Redirect("Details.aspx?GoodsID=" + goodsID);
+        }
     }
     #endregion
 }
