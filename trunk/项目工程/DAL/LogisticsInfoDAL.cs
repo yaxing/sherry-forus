@@ -24,19 +24,17 @@ namespace DAL
 
         public bool AddShippingInfo(LogisticsInfo logisticsInfo)
         {
-            sqlString = "Insert Into logisticsInfo (logisticsID,workerID,mainOrderID,logisticsType)"
-                        + " Values (@logisticsID,@workerID,@mainOrderID,@logisticsType)";
+            sqlString = "Insert Into logisticsInfo (workerID,mainOrderID,logisticsType)"
+                        + " Values (@workerID,@mainOrderID,@logisticsType)";
 
             SqlParameter[] pt = new SqlParameter[] { 
-                                new SqlParameter("@logisticsID", SqlDbType.Int),
-                                new SqlParameter("@workerID",SqlDbType.Int),
+                                new SqlParameter("@workerID",SqlDbType.UniqueIdentifier),
                                 new SqlParameter("@mainOrderID",SqlDbType.Int),
                                 new SqlParameter("@logisticsType",SqlDbType.Int)
                                 };
-            pt[0].Value = logisticsInfo.LogisticsID;
-            pt[1].Value = logisticsInfo.WorkerID;
-            pt[2].Value = logisticsInfo.MainOrderID;
-            pt[3].Value = logisticsInfo.LogisticsType;
+            pt[0].Value = logisticsInfo.WorkerID;
+            pt[1].Value = logisticsInfo.MainOrderID;
+            pt[2].Value = logisticsInfo.LogisticsType;
 
             try
             {
