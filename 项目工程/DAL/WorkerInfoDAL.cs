@@ -372,7 +372,7 @@ namespace DAL
 
         public bool SrchShopManager(ref WorkerInfo shopManager)
         {
-            sqlString = "select * from workerInfo where shipID = @shopID and manageID = workerNum";
+            sqlString = "select * from workerInfo where shopID = @shopID and workerLv = 1";
             SqlParameter[] pt = new SqlParameter[]{
                                 new SqlParameter("@shopID", SqlDbType.Int)
                                 };
@@ -418,7 +418,7 @@ namespace DAL
 
         public bool SelectWorkerByShop(ref WorkerInfo workerInfo)
         {
-            sqlString = "select top 1 from workerInfo where shipID = @shopID order by workerState ASC";
+            sqlString = "select top 1 * from workerInfo where shopID = @shopID and workerLv = 0 order by workerState ASC";
             SqlParameter[] pt = new SqlParameter[]{
                                 new SqlParameter("@shopID", SqlDbType.Int)
                                 };
@@ -465,12 +465,12 @@ namespace DAL
 
         public bool AssignOrder(WorkerInfo workerInfo)
         {
-            string preSqlString = "Update workerInfo Set workerState = @workerState where workerNum = @workerNum";
+            string sqlString = "Update workerInfo Set workerState = @workerState where workerID = @workerID";
             SqlParameter[] pt = new SqlParameter[] { 
-                                new SqlParameter("@workerNum", SqlDbType.UniqueIdentifier),
+                                new SqlParameter("@workerID", SqlDbType.UniqueIdentifier),
                                 new SqlParameter("@workerState", SqlDbType.Int) 
                                 };
-            pt[0].Value = workerInfo.WorkerNum;
+            pt[0].Value = workerInfo.WorkerID;
             pt[1].Value = workerInfo.WorkerState + 1;
 
             try

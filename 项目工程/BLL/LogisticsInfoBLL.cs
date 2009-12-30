@@ -2,6 +2,7 @@
 ////日  期：2009-12-8
 ////功  能：物流管理部分的逻辑处理
 
+using System;
 using DAL;
 using Entity;
 using InterFace;
@@ -19,13 +20,14 @@ namespace BLL
 
         public bool StartShipping(OrderInfo orderInfo)
         {
-            int shippingMode = JudgeMode();
+            int shippingMode = JudgeMode(orderInfo);
 
             switch (shippingMode)
             {
                 case 1:         //店面方式送货 
                     {
                         ShopInfo shopInfo = new ShopInfo();
+                        shopInfo.Area = orderInfo.UserProvince;
                         if(SelectShop(ref shopInfo))   //操作成功
                         {
                             //查询店面负责人信息
@@ -43,7 +45,7 @@ namespace BLL
                             //分配订单
                             LogisticsInfo logisticsInfo = new LogisticsInfo();
                             logisticsInfo.LogisticsType = 0;
-                            logisticsInfo.MainOrderID = 123;
+                            logisticsInfo.MainOrderID = orderInfo.OrderID;
                             logisticsInfo.WorkerID = workerInfo.WorkerID;
                             if (!AddShippingInfo(logisticsInfo , workerInfo))
                                 return false;
@@ -52,14 +54,14 @@ namespace BLL
                             MailBLL mailBLL = new MailBLL();
                             string tomail = shopManager.EmailAdd;
                             string mailTitle = "新订单分配";
-                            string mailBody = "订单号为****的订单已经分配给您所在店面的工作人员："+workerInfo.WorkerRealName;
+                            string mailBody = "订单号为" + orderInfo.OrderID + "的订单已经分配给您所在店面的工作人员："+workerInfo.WorkerRealName;
                             if (!mailBLL.SendEmail(tomail, mailTitle, mailBody))
                                 return false;
 
                             //发送邮件给店面送货人员
                             tomail = workerInfo.EmailAdd;
                             mailTitle = "新订单分配";
-                            mailBody = "订单号为****的订单已经分配给您，请及时处理";
+                            mailBody = "订单号为" + orderInfo.OrderID + "的订单已经分配给您，请及时处理";
                             if (!mailBLL.SendEmail(tomail, mailTitle, mailBody))
                                 return false;
 
@@ -74,7 +76,7 @@ namespace BLL
                         }
                     }
                     break;
-                case 2:         //邮寄方式送货
+                case 0:         //邮寄方式送货
                     {
                         //选择邮寄负责人
                         WorkerInfo mailResponser = new WorkerInfo();
@@ -91,7 +93,7 @@ namespace BLL
                         //分配订单
                         LogisticsInfo logisticsInfo = new LogisticsInfo();
                         logisticsInfo.LogisticsType = 0;
-                        logisticsInfo.MainOrderID = 123;
+                        logisticsInfo.MainOrderID = orderInfo.OrderID;
                         logisticsInfo.WorkerID = mailResponser.WorkerID;
                         if (!AddShippingInfo(logisticsInfo, mailResponser))
                             return false;
@@ -100,14 +102,14 @@ namespace BLL
                         MailBLL mailBLL = new MailBLL();
                         string tomail = marketResponser.EmailAdd;
                         string mailTitle = "新订单分配";
-                        string mailBody = "订单号为****的订单已经分配给您的工作人员：" + mailResponser.WorkerRealName;
+                        string mailBody = "订单号为" + orderInfo.OrderID + "的订单已经分配给您的工作人员：" + mailResponser.WorkerRealName;
                         if (!mailBLL.SendEmail(tomail, mailTitle, mailBody))
                             return false;
 
                         //发送邮件给邮寄负责人
                         tomail = mailResponser.EmailAdd;
                         mailTitle = "新订单分配";
-                        mailBody = "订单号为****的订单已经分配给您，请及时处理";
+                        mailBody = "订单号为" + orderInfo.OrderID + "的订单已经分配给您，请及时处理";
                         if (!mailBLL.SendEmail(tomail, mailTitle, mailBody))
                             return false;
 
@@ -130,11 +132,32 @@ namespace BLL
         /// </summary>
         /// <returns>1表示店面方式送货，2表示邮寄方式送货</returns>
 
-        private int JudgeMode()
+        private int JudgeMode(OrderInfo orderInfo)
         {
-            int mode = 1;
+            int mode = 0;
 
             //判断邮寄地址是否包含在店面负责的范围之内
+            switch(orderInfo.UserProvince)
+            {
+                case "北京":
+                    mode = 1;
+                    break;
+                case "上海":
+                    mode = 1;
+                    break;
+                case "山东":
+                    mode = 1;
+                    break;
+                case "云南":
+                    mode = 1;
+                    break;
+                case "河北":
+                    mode = 1;
+                    break;
+                default:
+                    mode = 0;
+                    break;
+            }
 
             return mode;
         }
@@ -149,7 +172,6 @@ namespace BLL
 
         private bool SelectShop(ref ShopInfo shopInfo)
         {
-            shopInfo.ShopAdd = "山东省";
             ShopInfoBLL shopInfoBLL = new ShopInfoBLL();
             return shopInfoBLL.SrchShopInfoByAdd(ref shopInfo);
         }
