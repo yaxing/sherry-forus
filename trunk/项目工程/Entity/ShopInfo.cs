@@ -10,6 +10,7 @@ namespace Entity
         private string shopName;
         private string shopAdd;
         private string shopDescribe;
+        private string area;
 
         public int ShopID
         {
@@ -33,6 +34,12 @@ namespace Entity
         {
             get { return shopDescribe; }
             set { shopDescribe = value; }
+        }
+
+        public string Area
+        {
+            get { return area; }
+            set { area = value; }
         }
     }
 }
