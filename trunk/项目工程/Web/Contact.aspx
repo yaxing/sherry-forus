@@ -41,7 +41,7 @@
  
                     
                     <div class="form_row"> 
-                        <asp:LinkButton ID="LinkButton1" runat="server" class="contact" OnClick="LinkButton1_Click">·¢ËÍ</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton1" runat="server" Cssclass="contact" OnClick="LinkButton1_Click">·¢ËÍ</asp:LinkButton>
                     </div>      
                 </div>
                 <div class="contact_form"> 

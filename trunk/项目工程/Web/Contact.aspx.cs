@@ -43,11 +43,16 @@ public partial class Contact : System.Web.UI.Page
         else
         {
             mailCont = mailCont + this.txtDetail.Text;
-            mailCont.Replace("\n\r","<br/>");
-            mailCont.Replace("\r\n","<br/>");
+            mailCont = mailCont.Replace("\r\n","<br/>");
             MailBLL mailSender = new MailBLL();
             if (mailSender.SendEmail("forus_2009@sina.com", mailTitle, mailCont))
+            {
                 Response.Write("<script language='javascript'>alert('邮件发送成功。我们将在7个工作日内回复您。');location.href='Contact.aspx';</script>");
+                if (this.txtEmail.Text.Length <= 0 || this.txtEmail.Text == null)
+                {
+                    mailSender.SendEmail(this.txtEmail.Text, "Sherry化妆品客户意见回执", "我们已收到您的意见，将在7个工作日内恢复您");
+                }
+            }
             else
                 Response.Write("<script language='javascript'>alert('邮件发送失败。请重试或联系管理员。');location.href='Contact.aspx';</script>");
         }
