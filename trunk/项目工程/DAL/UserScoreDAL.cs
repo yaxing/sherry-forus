@@ -54,6 +54,39 @@ namespace DAL
         }
         #endregion
 
+        #region 查询用户现有积分
+        /// <summary>
+        /// 查询用户现有积分
+        /// </summary>
+        /// <param name="userId,ref userScore">用户ID,用户现有积分</param>
+        /// <returns>操作成功返回true，否则返回false</returns>
+        public bool GetUserScore(Guid userId, ref int userScore)
+        {
+            sqlString = "select userScore from userInfo where userID=@id";
+            SqlParameter[] sp = new SqlParameter[] 
+                                  {
+                                      new SqlParameter("@id",SqlDbType.UniqueIdentifier)
+                                  };
+            sp[0].Value = userId;
+            try
+            {
+                using (dp = new DataProvider())
+                {
+                    if ((dt = dp.ExecuteDataTable(sqlString, sp)) == null || dt.Rows.Count <= 0)
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
+            userScore = Convert.ToInt32(dt.Rows[0]["userScore"].ToString());
+            return true;
+        }
+        #endregion
+
         #region 为用户积分添加积分
         /// <summary>
         /// 增加用户积分

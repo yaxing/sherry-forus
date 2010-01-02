@@ -161,14 +161,15 @@ namespace BLL
 
             if (curCart.curUser != null && curCart.curUser.Length > 0)
             {
-                if (WriteToXML(curCart.curUser))
+                if (!WriteToXML(curCart.curUser))
                 {
-                    return true;
-                }
-                else
                     return false;
+                }
             }
-            SaveCookie();
+            if (!SaveCookie()) 
+            {
+                return false;
+            }
             return true;
         }
         #endregion

@@ -73,17 +73,27 @@ namespace BLL
             CheckoutInfoDAL newOrder = new CheckoutInfoDAL();
             MembershipUser curUser = Membership.GetUser(HttpContext.Current.User.Identity.Name.ToString());
             orderInfo.UserID = (Guid)curUser.ProviderUserKey;
+            UserScoreDAL getScore = new UserScoreDAL();
+            int userScore = 0;
+            //插入订单信息
             if (!newOrder.InsertNewOrder(orderInfo, ref orderID)) 
             {
                 return 1;
             }
-            if (orderInfo.UserOrderPrice >= 1000.0) 
+            //获取用户现有积分
+            if (!getScore.GetUserScore(orderInfo.UserID, ref userScore))
+            {
+                return 2;
+            }
+            //根据用户现有积分和此订单可获积分判断是否升级为会员
+            if (orderInfo.UserOrderPrice >= 1000.0||Convert.ToDouble(userScore)+orderInfo.UserOrderPrice>=5000.0) 
             {
                 if (!newOrder.UpdateToGoldenUser(orderInfo.UserID)) 
                 {
                     return 2;
                 }
             }
+            //如果用户成功付款，为用户添加积分
             if (orderInfo.State == 0) 
             {
                 UserScoreBLL addScore = new UserScoreBLL();
