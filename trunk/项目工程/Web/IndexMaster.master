@@ -37,7 +37,7 @@
                         <span class="red">
                             <asp:Label ID="lCountOp" runat="server">我的帐户：</asp:Label>
                         </span>
-                        <asp:Label ID="lShowOrder" runat="server"><a href="LoggedIn/OrderManage.aspx">我的订单</a></asp:Label>
+                        <asp:Label ID="lShowOrder" runat="server"><a href="OrderManage.aspx">我的订单</a></asp:Label>
                         <asp:LoginStatus ID="lsLogOut" runat="server" LoginText="" LogoutText="注销登录" LogoutPageUrl="javascript:history.go(-1);" />
                     </div>
                     <div class="cart">
