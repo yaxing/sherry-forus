@@ -93,6 +93,22 @@ namespace BLL
         }
 
         #endregion
+
+        #region 按用户ID查询用户
+
+        /// <summary>
+        /// 查询用户
+        /// </summary>
+        /// <param name="workerInfo">用户实体对象</param>
+        /// <returns>bool</returns>
+
+        public bool SrchWorkerInfo(ref WorkerInfo workerInfo)
+        {
+            WorkerInfoDAL workerDAL = new WorkerInfoDAL();
+            return workerDAL.SrchWorkerInfo(ref workerInfo);
+        }
+
+        #endregion
         
         #region 查询店面负责人员信息
 
@@ -243,7 +259,10 @@ namespace BLL
                         workerListInfo.WorkerWorkStat = "空闲";
                         break;
                     case 1:
-                        workerListInfo.WorkerWorkStat = "有订单";
+                        workerListInfo.WorkerWorkStat = "有1份订单";
+                        break;
+                    default:
+                        workerListInfo.WorkerWorkStat = "有" + workerInfo.WorkerState.ToString() + "份订单";
                         break;
                 }
 
