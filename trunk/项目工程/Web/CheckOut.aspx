@@ -6,7 +6,7 @@
         color: #a81f22">结算中心</font>
     <asp:Panel runat="server" ID="pAnonymous">
         <div style="position: relative; left: 100px; top: 60px;">
-            您还未登录，请先登录或者<a href="Register.aspx?checkOut=1">注册</a>
+            您还未登录，请先登录或者<a href="~/Register.aspx?checkOut=1">注册</a>
             <div style="position:relative; top:10px; border-bottom-color:Black; border-bottom-style:solid; border-bottom-width:1px; width:300px"></div>
             <asp:LoginView ID="LoginView1" runat="server">
                 <AnonymousTemplate>
@@ -50,7 +50,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="3" align="left">
-                                        <a href="GetPassword.aspx">忘记密码？</a>
+                                        <a href="~/GetPassword.aspx">忘记密码？</a>
                                     </td>
                                     <td>
                                     </td>
@@ -289,17 +289,6 @@
             <div style="position: relative; left: 0px; top: 15px; width: 200px; border-style: solid;
                 border-width: 2px; border-color: black; font-family: 微软雅黑">
                 <table style="width: 200px">
-                    <%--<tr style="">
-                    </tr>
-                    <tr>
-                        <td style="width: 15px">
-                        </td>
-                        <td style="width: 180px; font-size: 15px">
-                            订单小结：
-                        </td>
-                        <td style="width: 45px">
-                        </td>
-                    </tr>--%>
                     <tr style="">
                     </tr>
                     <tr>

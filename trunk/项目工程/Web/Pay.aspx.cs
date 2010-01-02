@@ -36,7 +36,7 @@ public partial class Pay : System.Web.UI.Page
         }
         else
         {
-            Response.Write("<script>alert('付款成功！');location.href('OrderManage.aspx?ID=" + id + "');</script>");
+            Response.Write("<script>alert('付款成功，您的积分已经顺利添加！');location.href('OrderManage.aspx?ID=" + id + "');</script>");
         }
     }
 }
