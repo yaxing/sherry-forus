@@ -133,26 +133,6 @@
                                 </tr>
                             </table>
                         </div>
-                        <%--<asp:Panel ID="pError" runat="server">
-                        <div style="position: relative; left: 100px; bottom: 40px">
-                            <table>
-                                <tr>
-                                    <td>
-                                    </td>
-                                    <td>
-                                        <asp:Label ID="lQuantityError1" runat="server" ForeColor="red" Text="输入的商品数量错误"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                    </td>
-                                    <td align="center">
-                                        <a href='Details.aspx?ID=<%#Eval("ID") %>'>查看库存</a>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        </asp:Panel>--%>
                     </ItemTemplate>
                     <ItemStyle Width="200px" Font-Names="微软雅黑" />
                 </asp:TemplateField>

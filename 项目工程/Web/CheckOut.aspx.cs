@@ -76,18 +76,6 @@ public partial class CheckOut : System.Web.UI.Page
         tbNewAdd.Text = curUserInfo.PostAdd;
         tbNewZip.Text = curUserInfo.PostNum;
         tbNewTel.Text = curUserInfo.PhoneNum;
-        
-
-        //ddlUserProvince.SelectedItem.Selected = false;
-
-        //foreach (ListItem lt in ddlUserProvince.Items)
-        //{
-        //    if (lt.Text.Equals(curUserInfo.Province))
-        //    {
-        //        lt.Selected = true;
-        //        break;
-        //    }
-        //} 
 
     }
     #endregion
@@ -220,6 +208,7 @@ public partial class CheckOut : System.Web.UI.Page
             }
 
             int orderID = -1;
+            //生成订单,返回生成的订单号
             int processState = newOrder.GenerateOrder(userOrderInfo, ref orderID);
             switch(processState){
                 case 0:
