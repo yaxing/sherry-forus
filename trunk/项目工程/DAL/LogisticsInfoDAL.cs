@@ -66,5 +66,45 @@ namespace DAL
             return true;
         }
         #endregion
+
+        #region 确定送货方式
+
+        /// <summary>
+        /// 确定送货方式
+        /// </summary>
+        /// <returns>1表示店面方式送货，2表示邮寄方式送货</returns>
+
+        public int JudgeMode(OrderInfo orderInfo)
+        {
+            int mode = 2;
+            int count = 0;
+            sqlString = "select count(*) from shopInfo where area = @area";
+            SqlParameter[] pt = new SqlParameter[] { 
+                                new SqlParameter("@area",SqlDbType.VarChar)
+                                };
+            pt[0].Value = orderInfo.UserProvince;
+
+            try
+            {
+                using (dp = new DataProvider())
+                {
+                    using (SqlDataReader reader = dp.ExecuteReader(sqlString, pt))
+                    {
+                        while (reader.Read())
+                        {
+                            count = reader.GetInt32(0);
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                return -1;
+            }
+            if (count > 0)
+                mode = 1;
+            return mode;
+        }
+        #endregion
     }
 }

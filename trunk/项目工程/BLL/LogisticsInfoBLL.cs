@@ -134,30 +134,8 @@ namespace BLL
 
         private int JudgeMode(OrderInfo orderInfo)
         {
-            int mode = 0;
-
-            //判断邮寄地址是否包含在店面负责的范围之内
-            switch(orderInfo.UserProvince)
-            {
-                case "北京":
-                    mode = 1;
-                    break;
-                case "上海":
-                    mode = 1;
-                    break;
-                case "山东":
-                    mode = 1;
-                    break;
-                case "云南":
-                    mode = 1;
-                    break;
-                case "河北":
-                    mode = 1;
-                    break;
-                default:
-                    mode = 0;
-                    break;
-            }
+            LogisticsInfoDAL logisticsInfoDAL = new LogisticsInfoDAL();
+            int mode = logisticsInfoDAL.JudgeMode(orderInfo);
 
             return mode;
         }
