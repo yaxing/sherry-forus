@@ -359,5 +359,27 @@ namespace BLL
             return true;
         }
         #endregion
+
+        #region 实现根据管理人员ID查询订单列表
+
+        /// <summary>
+        /// 实现根据管理人员ID查询订单列表
+        /// </summary>
+        /// <param name="orderInfoList">订单列表</param>
+        /// <param name="managerID">用户ID</param>
+        /// <returns></returns>
+        public bool SrchOrderListByManagerID(ref IList<OrderInfo> orderInfoList, Guid managerID)
+        {
+            LogisticsInfoDAL logisticsInfoDAL = new LogisticsInfoDAL();
+            if (logisticsInfoDAL.SrchOrderListByManagerID(ref orderInfoList, managerID) == -1)
+                return false;
+
+            IChangeOrderState orderCtrl = new OrderCtrlBLL();
+            if (!orderCtrl.SrchOrderInfoByID(ref orderInfoList))
+                return false;
+
+            return true;
+        }
+        #endregion
     }
 }
