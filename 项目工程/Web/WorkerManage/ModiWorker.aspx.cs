@@ -28,14 +28,14 @@ public partial class ModiWorker : System.Web.UI.Page
                 MembershipUser tmpUser = Membership.GetUser(User.Identity.Name);
                 workerID = tmpUser.ProviderUserKey.ToString();
             }
-            worker.WorkerID = new Guid(workerID);
+            this.worker.WorkerID = new Guid(workerID);
             if (!workerBLL.SrchWorkerInfo(ref worker))
             {
                 Response.Write("<script language='javascript'>alert('数据载入失败，请重试或联系管理员。');location.href='bgIndex.aspx';</script>");
             }
             else
             {
-                MembershipUser tempUser = Membership.GetUser(worker.WorkerID);
+                MembershipUser tempUser = Membership.GetUser(this.worker.WorkerID);
                 this.lblWorkerName.Text = tempUser.UserName;
                 this.lblRealName.Text = worker.WorkerRealName;
                 this.lblWorkerNum.Text = worker.WorkerNum.ToString();
@@ -81,7 +81,7 @@ public partial class ModiWorker : System.Web.UI.Page
 
         if (shopInfoBLL.DisplayAllShop(ref allShop) == -1)
         {
-            Response.Write("<script language='javascript'>alert('数据载入失败，请重试或联系管理员。');</script>");
+            Response.Write("<script language='javascript'>alert('数据载入失败，请重试或联系管理员。');location.href='bgIndex.aspx';</script>");
             return false;
         }
 
@@ -195,5 +195,34 @@ public partial class ModiWorker : System.Web.UI.Page
     {
         int shopID = Convert.ToInt32(this.DDLShop.SelectedValue);
         DDLManagerLoad(shopID);
+    }
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("ListWorker.aspx");
+    }
+    protected void btnCommit_Click(object sender, EventArgs e)
+    {
+        this.worker.WorkerID = new Guid(Request["workID"]);
+        this.worker.ShopID = Convert.ToInt32(this.DDLShop.SelectedValue);
+        this.worker.WorkerLv = Convert.ToInt32(this.DDLWorkerLv.SelectedValue);
+        if (worker.WorkerLv == 0)
+        {
+            this.worker.ManageID = new Guid(this.DDLManager.SelectedValue);
+        }
+        else
+        {
+            this.worker.ManageID = this.worker.WorkerID;
+        }
+        this.worker.EmailAdd = this.txtEmail.Text;
+        this.worker.PhoneNum = this.txtPhone.Text;
+
+        if (workerBLL.ModiWorkerInfo(this.worker))
+        {
+            Response.Write("<script language='javascript'>alert('用户" + worker.WorkerName + "修改成功。');location.href='ListWorker.aspx';</script>");
+        }
+        else
+        {
+            Response.Write("<script language='javascript'>alert('信息修改失败,请确认信息正确（邮箱可能已被使用）后重试或联系管理员。');location.href='ListWorker.aspx';</script>");
+        }
     }
 }

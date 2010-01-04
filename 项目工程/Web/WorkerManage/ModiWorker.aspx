@@ -80,10 +80,10 @@
         </tr>
         <tr>
           <td>
-              <asp:Button ID="btnCommit" runat="server" Text="确认修改" />
+              <asp:Button ID="btnCommit" runat="server" Text="确认修改" OnClick="btnCommit_Click" />
           </td>
           <td>
-              <asp:Button ID="btnCancel" runat="server" Text="取消修改" />
+              <asp:Button ID="btnCancel" runat="server" Text="取消修改" OnClick="btnCancel_Click" />
           </td>
         </tr>
       </table>
