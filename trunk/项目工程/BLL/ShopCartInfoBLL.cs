@@ -166,7 +166,7 @@ namespace BLL
                     return false;
                 }
             }
-            if (!SaveCookie()) 
+            else if (!SaveCookie()) 
             {
                 return false;
             }

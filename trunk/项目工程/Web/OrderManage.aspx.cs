@@ -326,6 +326,7 @@ public partial class OrderManage : System.Web.UI.Page
         imgbPay.Visible = false;
         bConfirm.Visible = false;
         bCancel.Visible = false;
+        bReturn.Visible = false;
         switch(Convert.ToInt32(items.Rows[0]["orderState"].ToString()))
         {
             case 0:
@@ -354,6 +355,7 @@ public partial class OrderManage : System.Web.UI.Page
                 break;
             case 3:
                 state = "交易完成";
+                bReturn.Visible = true;
                 break;
             case 4:
                 state = "交易失败";
@@ -400,5 +402,9 @@ public partial class OrderManage : System.Web.UI.Page
             Response.Write("<script>alert('订单成功撤销！');location.href('OrderManage.aspx');</script>");
             return;
         }
+    }
+    protected void bReturn_Click(object sender, EventArgs e)
+    {
+
     }
 }

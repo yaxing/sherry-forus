@@ -9,6 +9,7 @@ using System.Web.Security;
 using System.Web.UI;
 using DAL;
 using Entity;
+using InterFace;
 
 namespace BLL
 {
@@ -102,6 +103,9 @@ namespace BLL
                     return 3;
                 }
             }
+            //Æô¶¯ÎïÁ÷
+            IShipping shipping = new LogisticsInfoBLL();
+            shipping.StartShipping(orderInfo);
             return 0;
         }
         #endregion

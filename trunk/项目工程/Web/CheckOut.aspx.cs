@@ -5,6 +5,7 @@ using System;
 using System.Data;
 using System.Configuration;
 using System.Collections;
+using System.Collections.Generic;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -50,7 +51,7 @@ public partial class CheckOut : System.Web.UI.Page
                 lbZip.Text = curUserInfo.PostNum;
                 lbTel.Text = curUserInfo.PhoneNum;
                 lbPay.Text = rblPayMethods.SelectedItem.Text;
-                lbProvince.Text = "[省份]";
+                lbProvince.Text = "[所在地区]";
             }
             else
             {
@@ -99,7 +100,7 @@ public partial class CheckOut : System.Web.UI.Page
         userInfo.PostAdd = tbNewAdd.Text;
         userInfo.PostNum = tbNewZip.Text;
         userInfo.PhoneNum = tbNewTel.Text;
-        userInfo.Province = ddlUserProvince.SelectedItem.Text.ToString();
+        userInfo.Province = ddlUserArea.SelectedItem.Text.ToString();
 
         if (ddlUserProvince.SelectedValue.ToString().Equals("0")) 
         {
@@ -120,7 +121,8 @@ public partial class CheckOut : System.Web.UI.Page
         lbAdd.Text = userInfo.PostAdd;
         lbTel.Text = userInfo.PhoneNum;
         lbZip.Text = userInfo.PostNum;
-        lbProvince.Text = userInfo.Province;
+        lbProvince.Text = ddlUserProvince.SelectedItem.Text;
+        lbArea.Text = userInfo.Province;
 
         pShippingConfirm.Visible = true;
         pAddChange.Visible = false;
@@ -240,6 +242,27 @@ public partial class CheckOut : System.Web.UI.Page
                     Response.Write("<script>alert('积分添加失败，请联系管理员！');history.go(-1);</script>");
                     break;
             }
+        }
+    }
+    #endregion
+
+    #region 更新区域列表
+    protected void ddlUserProvince_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        IList<ShopInfo> shopInfoList = new List<ShopInfo>();
+        string province = ddlUserProvince.SelectedItem.Text.ToString();
+        ShopInfoBLL updateArea = new ShopInfoBLL();
+        if (updateArea.SrchShopByProvence(ref shopInfoList, province) == -1) 
+        {
+            Response.Write("<script>alert('区域数据更新失败，请重新选择！');history.go(-1);</script>");
+            return;
+        }
+        int i = 0;
+        ddlUserArea.Items.Clear();
+        for (; i < shopInfoList.Count;i++ )
+        {
+            ListItem it = new ListItem(shopInfoList[i].Area.ToString(), shopInfoList[i].ShopID.ToString());
+            ddlUserArea.Items.Add(it);
         }
     }
     #endregion

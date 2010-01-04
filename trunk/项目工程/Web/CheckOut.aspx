@@ -2,76 +2,80 @@
     CodeFile="CheckOut.aspx.cs" Inherits="CheckOut" Title="Untitled Page" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="contentHolder" runat="Server">
-<img src="images/bullet1.gif" width="20px" alt="" title="" /><font style="font-size: 19px;
+    <img src="images/bullet1.gif" width="20" alt="" title="" /><font style="font-size: 19px;
         color: #a81f22">结算中心</font>
     <asp:Panel runat="server" ID="pAnonymous">
         <div style="position: relative; left: 100px; top: 60px;">
             您还未登录，请先登录或者<a href="~/Register.aspx?checkOut=1">注册</a>
-            <div style="position:relative; top:10px; border-bottom-color:Black; border-bottom-style:solid; border-bottom-width:1px; width:300px"></div>
+            <div style="position: relative; top: 10px; border-bottom-color: Black; border-bottom-style: solid;
+                border-bottom-width: 1px; width: 300px">
+            </div>
             <asp:LoginView ID="LoginView1" runat="server">
                 <AnonymousTemplate>
                     <asp:Login ID="Login1" runat="server">
                         <LayoutTemplate>
-                        <div>
-                            <table border="0" cellpadding="1" cellspacing="0">
-                            <tr style="height:30px"></tr>
-                                <tr style="height: 10px">
-                                    <td style="width: 100px">
-                                    </td>
-                                    <td style="width: 100px">
-                                    </td>
-                                    <td style="width: 30px">
-                                    </td>
-                                </tr>
-                                <tr style="height: 20px">
-                                    <td align="left">
-                                        <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">用户名:</asp:Label>
-                                    </td>
-                                    <td colspan="2" align="left">
-                                        <asp:TextBox ID="UserName" runat="server" Width="120px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName"
-                                            ErrorMessage="必须填写“用户名”。" ToolTip="必须填写“用户名”。" ValidationGroup="ctl00$Login1"
-                                            ForeColor="White">*</asp:RequiredFieldValidator>
-                                    </td>
-                                    <td>
-                                    </td>
-                                </tr>
-                                <tr style="height: 30px">
-                                    <td align="left">
-                                        <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">密　码:</asp:Label>
-                                    </td>
-                                    <td colspan="2" align="left">
-                                        <asp:TextBox ID="Password" runat="server" TextMode="Password" Width="120px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password"
-                                            ErrorMessage="必须填写“密码”。" ToolTip="必须填写“密码”。" ValidationGroup="ctl00$Login1" ForeColor="White">*</asp:RequiredFieldValidator>
-                                    </td>
-                                    <td>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3" align="left">
-                                        <a href="~/GetPassword.aspx">忘记密码？</a>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center" colspan="2">
-                                        <asp:CheckBox ID="RememberMe" runat="server" Text="下次记住我。" />
-                                    </td>
-                                    <td align="left">
-                                        <asp:ImageButton ID="LoginButton" runat="server" CommandName="Login" ImageUrl="images/login.jpg" ValidationGroup="ctl00$Login1"  />
-                                        <%--<asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="登录" ValidationGroup="ctl00$Login1" />--%>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="left" colspan="3" style="color: White;">
-                                        <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
-                                    </td>
-                                </tr>
-                            </table>
+                            <div>
+                                <table border="0" cellpadding="1" cellspacing="0">
+                                    <tr style="height: 30px">
+                                    </tr>
+                                    <tr style="height: 10px">
+                                        <td style="width: 100px">
+                                        </td>
+                                        <td style="width: 100px">
+                                        </td>
+                                        <td style="width: 30px">
+                                        </td>
+                                    </tr>
+                                    <tr style="height: 20px">
+                                        <td align="left">
+                                            <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">用户名:</asp:Label>
+                                        </td>
+                                        <td colspan="2" align="left">
+                                            <asp:TextBox ID="UserName" runat="server" Width="120px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName"
+                                                ErrorMessage="必须填写“用户名”。" ToolTip="必须填写“用户名”。" ValidationGroup="ctl00$Login1"
+                                                ForeColor="White">*</asp:RequiredFieldValidator>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                    <tr style="height: 30px">
+                                        <td align="left">
+                                            <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">密　码:</asp:Label>
+                                        </td>
+                                        <td colspan="2" align="left">
+                                            <asp:TextBox ID="Password" runat="server" TextMode="Password" Width="120px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password"
+                                                ErrorMessage="必须填写“密码”。" ToolTip="必须填写“密码”。" ValidationGroup="ctl00$Login1" ForeColor="White">*</asp:RequiredFieldValidator>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" align="left">
+                                            <a href="~/GetPassword.aspx">忘记密码？</a>
+                                        </td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center" colspan="2">
+                                            <asp:CheckBox ID="RememberMe" runat="server" Text="下次记住我。" />
+                                        </td>
+                                        <td align="left">
+                                            <asp:ImageButton ID="LoginButton" runat="server" CommandName="Login" ImageUrl="images/login.jpg"
+                                                ValidationGroup="ctl00$Login1" />
+                                            <%--<asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="登录" ValidationGroup="ctl00$Login1" />--%>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" colspan="3" style="color: White;">
+                                            <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
                         </LayoutTemplate>
                     </asp:Login>
@@ -91,8 +95,14 @@
                         <td style="width: 150px">
                             <asp:Label runat="server" ID="lbTitleNewName" Text="收货人姓名：" />
                         </td>
-                        <td style="width: 200px">
+                        <td>
                             <asp:TextBox runat="server" ID="tbNewName" Text="" />
+                        </td>
+                    </tr>
+                </table>
+                <table  style="font-family: 微软雅黑">
+                    <tr>
+                        <td style="width: 150px">
                         </td>
                     </tr>
                     <tr style="height: 10px">
@@ -102,14 +112,26 @@
                             <asp:Label runat="server" ID="lbTitleNewAdd" Text="收货人地址：" />
                         </td>
                         <td>
-                            <asp:DropDownList ID="ddlUserProvince" runat="server">
-                                <asp:ListItem Text="[未选择省]" Value="0" />
+                            <asp:DropDownList ID="ddlUserProvince" runat="server" OnSelectedIndexChanged="ddlUserProvince_SelectedIndexChanged" AutoPostBack="true" Width="75px">
+                                <asp:ListItem Text="[请选择]" Value="0" />
                                 <asp:ListItem Text="北京" Value="1" />
                                 <asp:ListItem Text="上海" Value="2" />
                                 <asp:ListItem Text="山东" Value="3" />
                                 <asp:ListItem Text="云南" Value="4" />
                                 <asp:ListItem Text="河北" Value="5" />
                             </asp:DropDownList>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="ddlUserArea" runat="server" AutoPostBack="false" Width="75px">
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                </table>
+                <table style="font-family: 微软雅黑">
+                    <tr>
+                        <td style="width: 150px">
+                        </td>
+                        <td style="width: 200px">
                         </td>
                     </tr>
                     <tr>
@@ -344,7 +366,8 @@
                             <asp:Label runat="server" ID="lbTitleAdd" Text="收货人地址：" />
                         </td>
                         <td>
-                            <asp:Label runat="server" Width="40px" ID="lbProvince" Text="" />
+                            <asp:Label runat="server" ID="lbProvince" Text="" />
+                            <asp:Label runat="server" ID="lbArea" Text="" />
                         </td>
                     </tr>
                     <tr>
