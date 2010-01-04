@@ -8,7 +8,7 @@ namespace Entity
     {
         private int areaID;
         private string area;
-        private string provence;
+        private string province;
 
         public int AreaID
         {
@@ -22,10 +22,10 @@ namespace Entity
             set { area = value; }
         }
 
-        public string Provence
+        public string Province
         {
-            get { return provence; }
-            set { provence = value; }
+            get { return province; }
+            set { province = value; }
         }
     }
 }

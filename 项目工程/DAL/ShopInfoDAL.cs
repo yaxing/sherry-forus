@@ -108,9 +108,9 @@ namespace DAL
 
         public int SrchShopByProvence(ref IList<ShopInfo> shopInfoList , string provence)
         {
-            sqlString = "select * from shopInfo where area in (select area from areaInfo where provence = @provence)";
+            sqlString = "select * from shopInfo where area in (select area from areaInfo where provence = @province)";
             SqlParameter[] pt = new SqlParameter[]{
-                                new SqlParameter("@provence", SqlDbType.VarChar)
+                                new SqlParameter("@province", SqlDbType.VarChar)
                                 };
             pt[0].Value = provence;
 
