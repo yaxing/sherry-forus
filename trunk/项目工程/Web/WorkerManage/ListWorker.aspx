@@ -18,7 +18,7 @@
                 <asp:BoundField DataField="WorkerWorkStat" HeaderText="当前状态" />
                 <asp:BoundField DataField="AccountState" HeaderText="账号状态" />
                 <asp:BoundField DataField="WorkerLv" HeaderText="负责人标记" Visible="False" />
-                <asp:ButtonField Text="删除" CommandName="Delete" />
+                <asp:ButtonField Text="冻结/激活" CommandName="Delete" />
                 <asp:ButtonField Text="编辑" CommandName="Edit" />
             </Columns>
         </asp:GridView>

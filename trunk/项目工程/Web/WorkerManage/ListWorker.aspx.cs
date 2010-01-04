@@ -109,15 +109,25 @@ public partial class WorkerManage_ListWorker : System.Web.UI.Page
         
         if (key[1].ToString() == "1" && User.IsInRole("工作人员"))
         {
-            Response.Write("<script language='javascript'>alert('您不能删除负责人');location.href='ListWorker.aspx'</script>");
+            Response.Write("<script language='javascript'>alert('您不能冻结负责人');location.href='ListWorker.aspx'</script>");
+            return;
         }
 
         if (this.WorkerList.Rows[e.RowIndex].Cells[4].Text != "空闲" )
         {
             Response.Write("<script language='javascript'>alert('工作人员有订单尚未完成');location.href='ListWorker.aspx'</script>");
+            return;
         }
 
-        
+        UserInfoBLL workerModi = new UserInfoBLL();
+        if (workerModi.ModiUserLv(myID))
+        {
+            Response.Write("<script language='javascript'>alert('用户" + this.WorkerList.Rows[e.RowIndex].Cells[0].Text + "帐号状态调整成功。');location.href='ListWorker.aspx'</script>");
+        }
+        else
+        {
+            Response.Write("<script language='javascript'>alert('帐号状态变更失败。');location.href='ListWorker.aspx'</script>");
+        }
     }
     protected void WorkerList_RowEditing(object sender, GridViewEditEventArgs e)
     {
