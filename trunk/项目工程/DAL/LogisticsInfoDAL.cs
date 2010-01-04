@@ -151,5 +151,48 @@ namespace DAL
             return orderInfoList.Count;
         }
         #endregion
+
+        #region 实现根据管理人员ID查询订单列表ID
+
+        /// <summary>
+        /// 实现根据管理人员ID查询订单列表ID
+        /// </summary>
+        /// <param name="orderInfoList">订单列表</param>
+        /// <param name="managerID">用户ID</param>
+        /// <returns>返回列表个数，失败返回-1</returns>
+
+        public int SrchOrderListByManagerID(ref IList<OrderInfo> orderInfoList, Guid managerID)
+        {
+            sqlString = "select * from logisticsInfo where workerID in (select workerID from workerInfo where manageID = @managerID order by workerID";
+
+            SqlParameter[] pt = new SqlParameter[] { 
+                                new SqlParameter("@managerID",SqlDbType.UniqueIdentifier)
+                                };
+            pt[0].Value = managerID;
+
+            try
+            {
+                using (dp = new DataProvider())
+                {
+                    using (SqlDataReader reader = dp.ExecuteReader(sqlString, pt))
+                    {
+                        OrderInfo orderInfo;
+                        while (reader.Read())
+                        {
+                            orderInfo = new OrderInfo();
+                            orderInfo.OrderID = reader.GetInt32(2);
+                            orderInfoList.Add(orderInfo);
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                return -1;
+            }
+
+            return orderInfoList.Count;
+        }
+        #endregion
     }
 }
