@@ -2,6 +2,8 @@
 ////日  期：2009-11-25
 ////功  能：物流部分启动接口
 
+using System;
+using System.Collections.Generic;
 using Entity;
 
 namespace InterFace
@@ -9,5 +11,6 @@ namespace InterFace
     public interface IShipping
     {
        bool StartShipping(OrderInfo orderInfo);
+       bool SrchOrderListByWorkerID(ref IList<OrderInfo> orderInfoList , Guid workerID);
     }
 }
