@@ -53,8 +53,32 @@ namespace BLL
 
         public bool ModiWorkerInfo(WorkerInfo user)
         {
-            WorkerInfoDAL workerDAL = new WorkerInfoDAL();
-            return workerDAL.ModiWorkerInfo(user);
+            try
+            {
+                MembershipUser mUser = Membership.GetUser(user.WorkerID);
+                String oldEmail = mUser.Email;
+                if (Membership.GetUserNameByEmail(user.EmailAdd) == null || Membership.GetUserNameByEmail(user.EmailAdd) == mUser.UserName)
+                {
+                    mUser.Email = user.EmailAdd;
+                }
+                else
+                {
+                    return false;
+                }
+                Membership.UpdateUser(mUser);
+                WorkerInfoDAL workerDAL = new WorkerInfoDAL();
+                if (!workerDAL.ModiWorkerInfo(user))
+                {
+                    mUser.Email = oldEmail;
+                    Membership.UpdateUser(mUser);
+                    return false;
+                }
+            }
+            catch (System.Exception e)
+            {
+                return false;
+            }
+            return true;
         }
         #endregion
 
