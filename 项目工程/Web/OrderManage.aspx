@@ -114,6 +114,7 @@
                     <td align="right" style="font-size: 12px; font-weight: bold">
                         <asp:Button ID="bCancel" runat="server" OnClick="bCancel_Click" CssClass="register"
                             Text="³·Ïú¶©µ¥" />
+                        <asp:Button ID="bReturn" runat="server" Text="ÍË»õ" CssClass="register" OnClick="bReturn_Click" />  
                     </td>
                     <td>
                         <asp:Button ID="imgbPay" runat="server" OnClick="imgbPay_Click" CssClass="register"
