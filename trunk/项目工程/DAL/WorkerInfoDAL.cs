@@ -110,11 +110,21 @@ namespace DAL
         
         public bool ModiWorkerInfo(WorkerInfo user)
         {
-            string preSqlString = "Update workerInfo Set name = @userName";
+            string sqlString = "Update workerInfo Set shopID = @shopID , manageID = @manageID , emailAdd = @emailAdd , phoneNum = @phoneNum , workerLv = @workerLv where workerID = @workerID";
             SqlParameter[] pt = new SqlParameter[] { 
-                                new SqlParameter("@userName", SqlDbType.VarChar)
+                                new SqlParameter("@shopID", SqlDbType.Int),
+                                new SqlParameter("@manageID", SqlDbType.UniqueIdentifier),
+                                new SqlParameter("@emailAdd", SqlDbType.VarChar),
+                                new SqlParameter("@phoneNum", SqlDbType.VarChar),
+                                new SqlParameter("@workerLv", SqlDbType.Int),
+                                new SqlParameter("@workerID", SqlDbType.UniqueIdentifier)
                                 };
-            pt[0].Value = user.WorkerRealName;
+            pt[0].Value = user.ShopID;
+            pt[1].Value = user.ManageID;
+            pt[2].Value = user.EmailAdd;
+            pt[3].Value = user.PhoneNum;
+            pt[4].Value = user.WorkerLv;
+            pt[5].Value = user.WorkerID;
 
             try
             {
@@ -126,7 +136,7 @@ namespace DAL
             }
             catch
             {
-
+                return false;
             }
 
             return true;
