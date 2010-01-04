@@ -25,11 +25,11 @@ namespace DAL
 
         public bool SrchShopInfoByAdd(ref ShopInfo shopInfo)
         {
-            sqlString = "select * from shopInfo where shopAdd = @shopAdd";
+            sqlString = "select * from shopInfo where area = @area";
             SqlParameter[] pt = new SqlParameter[]{
-                                new SqlParameter("@shopAdd", SqlDbType.VarChar)
+                                new SqlParameter("@area", SqlDbType.VarChar)
                                 };
-            pt[0].Value = shopInfo.ShopAdd;
+            pt[0].Value = shopInfo.Area;
 
             try
             {
@@ -42,6 +42,7 @@ namespace DAL
                             shopInfo.ShopID = reader.GetInt32(0);
                             shopInfo.ShopName = reader.GetString(1);
                             shopInfo.ShopDescribe = reader.GetString(3);
+                            shopInfo.Area = reader.GetString(4);
                         }
                     }
                 }
@@ -94,6 +95,51 @@ namespace DAL
             }
 
             return allShop.Count;
+        }
+
+        #endregion
+
+        #region 根据省份查询店面列表
+
+        ///<summary>
+        ///根据省份查询店面列表
+        ///</summary>
+        ///<returns>店面数量,失败返回-1</returns>
+
+        public int SrchShopByProvence(ref IList<ShopInfo> shopInfoList , string provence)
+        {
+            sqlString = "select * from shopInfo where area in (select area from areaInfo where provence = @provence)";
+            SqlParameter[] pt = new SqlParameter[]{
+                                new SqlParameter("@provence", SqlDbType.VarChar)
+                                };
+            pt[0].Value = provence;
+
+            try
+            {
+                using (dp = new DataProvider())
+                {
+                    using (SqlDataReader reader = dp.ExecuteReader(sqlString, pt))
+                    {
+                        ShopInfo shopInfo = null;
+                        while (reader.Read())
+                        {
+                            shopInfo = new ShopInfo();
+                            shopInfo.ShopID = reader.GetInt32(0);
+                            shopInfo.ShopName = reader.GetString(1);
+                            shopInfo.ShopDescribe = reader.GetString(3);
+                            shopInfo.Area = reader.GetString(4);
+                            shopInfoList.Add(shopInfo);
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                ///////此处可以返回false
+                return -1;
+            }
+
+            return shopInfoList.Count;
         }
 
         #endregion
