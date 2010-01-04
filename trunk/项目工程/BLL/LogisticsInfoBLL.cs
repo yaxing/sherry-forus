@@ -3,6 +3,7 @@
 ////功  能：物流管理部分的逻辑处理
 
 using System;
+using System.Collections.Generic;
 using DAL;
 using Entity;
 using InterFace;
@@ -67,7 +68,7 @@ namespace BLL
 
                             //修改订单状态为正在送货
                             orderInfo.State = 1;
-                            IChangeOrderState changeOrderState = new OrderInfoBLL();
+                            IChangeOrderState changeOrderState = new OrderCtrlBLL();
                             changeOrderState.ChangeOrderState(orderInfo);
                         }
                         else                           //操作失败
@@ -115,7 +116,7 @@ namespace BLL
 
                         //修改订单状态为正在送货
                         orderInfo.State = 1;
-                        IChangeOrderState changeOrderState = new OrderInfoBLL();
+                        IChangeOrderState changeOrderState = new OrderCtrlBLL();
                         changeOrderState.ChangeOrderState(orderInfo);
                     }
                     break;
@@ -238,7 +239,7 @@ namespace BLL
         public bool ConfirmPicking(OrderInfo orderInfo)
         {
             orderInfo.State = 2;
-            IChangeOrderState changeOrderState = new OrderInfoBLL();
+            IChangeOrderState changeOrderState = new OrderCtrlBLL();
             return changeOrderState.ChangeOrderState(orderInfo);
         }
 
@@ -255,7 +256,7 @@ namespace BLL
         public bool ConfirmReceiving(OrderInfo orderInfo)
         {
             orderInfo.State = 3;
-            IChangeOrderState changeOrderState = new OrderInfoBLL();
+            IChangeOrderState changeOrderState = new OrderCtrlBLL();
             return changeOrderState.ChangeOrderState(orderInfo);
         }
         #endregion
@@ -271,7 +272,7 @@ namespace BLL
         public bool ApplyReturning(OrderInfo orderInfo)
         {
             orderInfo.State = 3;
-            IChangeOrderState changeOrderState = new OrderInfoBLL();
+            IChangeOrderState changeOrderState = new OrderCtrlBLL();
             return changeOrderState.ChangeOrderState(orderInfo);
         }
         #endregion
@@ -287,7 +288,7 @@ namespace BLL
         public bool ConfirmReturning(OrderInfo orderInfo)
         {
             orderInfo.State = 4;
-            IChangeOrderState changeOrderState = new OrderInfoBLL();
+            IChangeOrderState changeOrderState = new OrderCtrlBLL();
             return changeOrderState.ChangeOrderState(orderInfo);
         }
         #endregion
@@ -303,7 +304,7 @@ namespace BLL
         public bool RefuseReturning(OrderInfo orderInfo)
         {
             orderInfo.State = 5;
-            IChangeOrderState changeOrderState = new OrderInfoBLL();
+            IChangeOrderState changeOrderState = new OrderCtrlBLL();
             return changeOrderState.ChangeOrderState(orderInfo);
         }
         #endregion
@@ -333,6 +334,29 @@ namespace BLL
         {
             WorkerInfoBLL workerInfoBLL = new WorkerInfoBLL();
             return workerInfoBLL.SrchShopManager(ref marketResponser);
+        }
+        #endregion
+
+        #region 实现根据送货人员ID查询订单列表
+
+        /// <summary>
+        /// 实现根据送货人员ID查询订单列表
+        /// </summary>
+        /// <param name="orderInfoList">订单列表</param>
+        /// <param name="workerID">用户ID</param>
+        /// <returns></returns>
+        public bool SrchOrderListByWorkerID(ref IList<OrderInfo> orderInfoList , Guid workerID)
+        {
+
+            LogisticsInfoDAL logisticsInfoDAL = new LogisticsInfoDAL();
+            if (logisticsInfoDAL.SrchOrderListByWorkerID(ref orderInfoList, workerID) == -1)
+                return false;
+
+            IChangeOrderState orderCtrl = new OrderCtrlBLL();
+            if (!orderCtrl.SrchOrderInfoByID(ref orderInfoList))
+                return false;
+
+            return true;
         }
         #endregion
     }
