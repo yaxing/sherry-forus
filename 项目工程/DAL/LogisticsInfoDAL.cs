@@ -2,6 +2,8 @@
 ////日  期：2009-12-8
 ////功  能：物流信息登记数据访问操作
 
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using DbCtrl;
@@ -104,6 +106,49 @@ namespace DAL
             if (count > 0)
                 mode = 1;
             return mode;
+        }
+        #endregion
+
+        #region 实现根据送货人员ID查询订单列表ID
+
+        /// <summary>
+        /// 实现根据送货人员ID查询订单列表ID
+        /// </summary>
+        /// <param name="orderInfoList">订单列表</param>
+        /// <param name="workerID">用户ID</param>
+        /// <returns>返回列表个数，失败返回-1</returns>
+        
+        public int SrchOrderListByWorkerID(ref IList<OrderInfo> orderInfoList, Guid workerID)
+        {
+            sqlString = "select * from logisticsInfo where workerID = @workerID";
+
+            SqlParameter[] pt = new SqlParameter[] { 
+                                new SqlParameter("@workerID",SqlDbType.UniqueIdentifier)
+                                };
+            pt[0].Value = workerID;
+
+            try
+            {
+                using (dp = new DataProvider())
+                {
+                    using (SqlDataReader reader = dp.ExecuteReader(sqlString, pt))
+                    {
+                        OrderInfo orderInfo = null;
+                        while (reader.Read())
+                        {
+                            orderInfo = new OrderInfo();
+                            orderInfo.OrderID = reader.GetInt32(2);
+                            orderInfoList.Add(orderInfo);
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                return -1;
+            }
+
+            return orderInfoList.Count;
         }
         #endregion
     }
