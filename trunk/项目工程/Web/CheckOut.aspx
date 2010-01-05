@@ -116,9 +116,9 @@
                                 <asp:ListItem Text="[请选择]" Value="0" />
                                 <asp:ListItem Text="北京" Value="1" />
                                 <asp:ListItem Text="上海" Value="2" />
-                                <asp:ListItem Text="山东" Value="3" />
-                                <asp:ListItem Text="云南" Value="4" />
-                                <asp:ListItem Text="河北" Value="5" />
+                                <asp:ListItem Text="沈阳" Value="3" />
+                                <asp:ListItem Text="成都" Value="4" />
+                                <asp:ListItem Text="广州" Value="5" />
                             </asp:DropDownList>
                         </td>
                         <td>
