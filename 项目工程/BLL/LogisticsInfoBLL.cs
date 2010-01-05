@@ -66,10 +66,12 @@ namespace BLL
                             if (!mailBLL.SendEmail(tomail, mailTitle, mailBody))
                                 return false;
 
-                            //修改订单状态为正在送货
-                            orderInfo.State = 1;
+                            /*
+                            //修改订单状态为已发货
+                            orderInfo.State = 2;
                             IChangeOrderState changeOrderState = new OrderCtrlBLL();
                             changeOrderState.ChangeOrderState(orderInfo);
+                            */
                         }
                         else                           //操作失败
                         {
@@ -114,12 +116,16 @@ namespace BLL
                         if (!mailBLL.SendEmail(tomail, mailTitle, mailBody))
                             return false;
 
-                        //修改订单状态为正在送货
-                        orderInfo.State = 1;
+                        /*
+                        //修改订单状态为已发货
+                        orderInfo.State = 2;
                         IChangeOrderState changeOrderState = new OrderCtrlBLL();
                         changeOrderState.ChangeOrderState(orderInfo);
+                        */
                     }
                     break;
+                default:
+                    return false;
             }
 
             return true;
@@ -228,10 +234,10 @@ namespace BLL
         }
         #endregion
 
-        #region 取货确认
+        #region 发货确认
 
         /// <summary>
-        /// 取货确认处理
+        /// 发货确认处理
         /// </summary>
         /// <param name="orderInfo">订单实体对象</param>
         /// <returns>成功返回true，否则返回false</returns>
@@ -271,7 +277,7 @@ namespace BLL
 
         public bool ApplyReturning(OrderInfo orderInfo)
         {
-            orderInfo.State = 3;
+            orderInfo.State = 4;
             IChangeOrderState changeOrderState = new OrderCtrlBLL();
             return changeOrderState.ChangeOrderState(orderInfo);
         }
@@ -303,7 +309,7 @@ namespace BLL
 
         public bool RefuseReturning(OrderInfo orderInfo)
         {
-            orderInfo.State = 5;
+            orderInfo.State = 3;
             IChangeOrderState changeOrderState = new OrderCtrlBLL();
             return changeOrderState.ChangeOrderState(orderInfo);
         }
