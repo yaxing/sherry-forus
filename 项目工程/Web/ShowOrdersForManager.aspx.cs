@@ -1,3 +1,6 @@
+////编写者：陈亚星
+////日  期：2010-01-05
+////功  能：后台管理员订单显示
 using System;
 using System.Data;
 using System.Configuration;

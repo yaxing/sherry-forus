@@ -119,7 +119,7 @@ namespace DAL
         {
             DataTable dt = null;
             //sqlString = "select m.*, s.*, g.goodsImg from mainOrderInfo as m, subOrderInfo as s, goodsInfo as g where m.userID=@userID and m.mainOrderID=s.mainOrderID and g.goodsID=s.goodsID";
-            sqlString = "select * from mainOrderInfo where userID=@userID";
+            sqlString = "select * from mainOrderInfo where userID=@userID order by orderTime desc";
             sq = new SqlParameter[] { 
                                 new SqlParameter("@userID",SqlDbType.UniqueIdentifier)
                                 };
