@@ -163,7 +163,7 @@ namespace DAL
 
         public int SrchOrderListByManagerID(ref IList<OrderInfo> orderInfoList, Guid managerID)
         {
-            sqlString = "select * from logisticsInfo where workerID in (select workerID from workerInfo where manageID = @managerID order by workerID";
+            sqlString = "select * from logisticsInfo where workerID in (select workerID from workerInfo where manageID = @managerID) order by workerID";
 
             SqlParameter[] pt = new SqlParameter[] { 
                                 new SqlParameter("@managerID",SqlDbType.UniqueIdentifier)
