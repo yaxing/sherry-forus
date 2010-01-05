@@ -225,11 +225,11 @@ public partial class CheckOut : System.Web.UI.Page
                     }
                     else if (rblPayMethods.SelectedValue.Equals("2"))
                     {
-                        Response.Write("<script>alert('订单保存成功！请及时付款！');location.href('CartView.aspx');</script>");
+                        Response.Write("<script>alert('订单保存成功！请及时付款！');location.href('OrderManage.aspx?ID=" + orderID + "');</script>");
                     }
                     else if (rblPayMethods.SelectedValue.Equals("3"))
                     {
-                        Response.Write("<script>alert('订单保存成功！您的积分已成功添加');location.href('CartView.aspx');</script>");
+                        Response.Write("<script>alert('订单保存成功！您的积分已成功添加');location.href('OrderManage.aspx?ID="+orderID+"');</script>");
                     }
                     break;
                 case 1:
@@ -252,7 +252,7 @@ public partial class CheckOut : System.Web.UI.Page
         IList<ShopInfo> shopInfoList = new List<ShopInfo>();
         string province = ddlUserProvince.SelectedItem.Text.ToString();
         ShopInfoBLL updateArea = new ShopInfoBLL();
-        if (updateArea.SrchShopByProvence(ref shopInfoList, province) == -1) 
+        if (updateArea.SrchShopByProvince(ref shopInfoList, province) == -1) 
         {
             Response.Write("<script>alert('区域数据更新失败，请重新选择！');history.go(-1);</script>");
             return;
