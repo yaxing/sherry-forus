@@ -1,20 +1,14 @@
 ////编写者：陈亚星
 ////日  期：2010-01-05
 ////功  能：后台管理员订单显示
+
 using System;
 using System.Data;
-using System.Configuration;
-using System.Collections;
 using System.Collections.Generic;
-using System.Web;
 using System.Web.Security;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using System.Drawing;
 using BLL;
-using DAL;
 using Entity;
 using InterFace;
 
@@ -23,7 +17,8 @@ public partial class Management_ShowOrdersForManager : System.Web.UI.Page
     
     int orderId;
     OrderCtrlBLL orderCtrl;
-    LogisticsInfoBLL logisticCtrl;
+    IShipping shipping;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         orderId = Convert.ToInt32(Request.QueryString["ID"]);
@@ -263,9 +258,9 @@ public partial class Management_ShowOrdersForManager : System.Web.UI.Page
     public bool mainOrderDatabind()
     {
         IList<OrderInfo> orderInfoList = new List<OrderInfo>();
-        logisticCtrl = new LogisticsInfoBLL();
+        shipping = new LogisticsInfoBLL();
         //获取需要显示的订单列表(仅包括订单ID)
-        if (!logisticCtrl.SrchOrderListByManagerID(ref orderInfoList, (Guid)Membership.GetUser().ProviderUserKey)) 
+        if (!shipping.SrchOrderListByManagerID(ref orderInfoList, new Guid("b271297e-7175-49b4-b560-0af29776b687")))//(Guid)Membership.GetUser().ProviderUserKey)) 
         {
             return false;
         }
