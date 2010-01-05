@@ -106,13 +106,13 @@ namespace DAL
         ///</summary>
         ///<returns>店面数量,失败返回-1</returns>
 
-        public int SrchShopByProvence(ref IList<ShopInfo> shopInfoList , string provence)
+        public int SrchShopByProvence(ref IList<ShopInfo> shopInfoList , string province)
         {
-            sqlString = "select * from shopInfo where area in (select area from areaInfo where provence = @province)";
+            sqlString = "select * from shopInfo where area in (select area from areaInfo where province = @province)";
             SqlParameter[] pt = new SqlParameter[]{
                                 new SqlParameter("@province", SqlDbType.VarChar)
                                 };
-            pt[0].Value = provence;
+            pt[0].Value = province;
 
             try
             {
