@@ -49,11 +49,11 @@ namespace BLL
         }
         #endregion
 
-        #region 更改订单状态
+        #region 更改订单状态(重载)
         /// <summary>
-        /// 修改指定订单状态为指定状态
+        /// 根据新订单实体状态修改订单状态
         /// </summary>
-        /// <param name="orderInfo">新订单</param>
+        /// <param name="orderInfo">新订单实体</param>
         /// <returns>操作成功返回true，否则返回false</returns>
         public bool ChangeOrderState(OrderInfo orderInfo)
         {
@@ -61,6 +61,29 @@ namespace BLL
             if (!updateOrder.ChangeOrderState(orderInfo))
             {
                 return false;
+            }
+            return true;
+        }
+        #endregion
+
+        #region 根据一系列订单ID列表获取主订单列表
+        /// <summary>
+        /// 根据一系列订单ID查找订单列表
+        /// </summary>
+        /// <param name="orderInfoList">订单列表容器</param>
+        /// <returns>操作成功返回true，否则返回false</returns>
+        public bool SrchOrderInfoByID(ref IList<OrderInfo> orderInfoList) 
+        {
+            OrderCtrlDAL SrchOrders = new OrderCtrlDAL();
+            int i = 0;
+            for (; i < orderInfoList.Count; i++)
+            {
+                OrderInfo buffer = orderInfoList[i];
+                if (!SrchOrders.SrchOrderInfoByID(ref buffer))
+                {
+                    return false;
+                }
+                orderInfoList[i] = buffer;
             }
             return true;
         }

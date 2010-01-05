@@ -179,9 +179,9 @@ namespace DAL
         }
         #endregion
 
-        #region 按订单ID查询订单详细信息
+        #region 按订单ID查询订单项详细信息(datatable)
         /// <summary>
-        /// 根据订单号得到订单项
+        /// 根据订单号得到订单项(返回DATATABLE)
         /// </summary>
         /// <param name="items",name="orderId">订单项容器,订单号</param>
         /// <returns>订单项列表</returns>
@@ -210,6 +210,51 @@ namespace DAL
                 return false;
             }
             items = dt;
+            return true;
+        }
+        #endregion
+
+        #region 按订单ID查询主订单详细信息(OrderInfo实体)
+        /// <summary>
+        /// 根据订单号得到主订单信息(返回OrderInfo实体)
+        /// </summary>
+        /// <param name="orderInfo">订单实体</param>
+        /// <returns>成功返回true，否则返回false</returns>
+        public bool SrchOrderInfoByID(ref OrderInfo orderInfo)
+        {
+            DataTable dt = null;
+            sqlString = "select * from mainOrderInfo where mainOrderID=@orderID";
+            sq = new SqlParameter[] { 
+                                new SqlParameter("@orderID",SqlDbType.Int)
+                                };
+            sq[0].Value = orderInfo.OrderID;
+
+            try
+            {
+                using (dp = new DataProvider())
+                {
+                    if ((dt = dp.ExecuteDataTable(sqlString,sq)) == null)
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            orderInfo.UserID = (Guid)dt.Rows[0]["userID"];
+            orderInfo.UserRealName = dt.Rows[0]["userRealName"].ToString();
+            orderInfo.UserTel = dt.Rows[0]["phoneNum"].ToString();
+            orderInfo.UserZip = dt.Rows[0]["postNum"].ToString();
+            orderInfo.UserAdd = dt.Rows[0]["postAdd"].ToString();
+            orderInfo.UserProvince = dt.Rows[0]["province"].ToString();
+            orderInfo.UserOrderPrice = Convert.ToDouble(dt.Rows[0]["orderPrice"].ToString());
+            orderInfo.UserPayState = Convert.ToInt32(dt.Rows[0]["isPaid"].ToString());
+            orderInfo.State = Convert.ToInt32(dt.Rows[0]["orderState"].ToString());
+            orderInfo.OrderTime = dt.Rows[0]["orderTime"].ToString();
+            orderInfo.InvoiceHead = dt.Rows[0]["invoiceHead"].ToString();
+            orderInfo.InvoiceContent = dt.Rows[0]["invoiceContent"].ToString();
             return true;
         }
         #endregion
