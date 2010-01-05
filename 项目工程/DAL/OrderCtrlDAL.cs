@@ -281,18 +281,25 @@ namespace DAL
             {
                 return false;
             }
-            orderInfo.UserID = (Guid)dt.Rows[0]["userID"];
-            orderInfo.UserRealName = dt.Rows[0]["userRealName"].ToString();
-            orderInfo.UserTel = dt.Rows[0]["phoneNum"].ToString();
-            orderInfo.UserZip = dt.Rows[0]["postNum"].ToString();
-            orderInfo.UserAdd = dt.Rows[0]["postAdd"].ToString();
-            orderInfo.UserProvince = dt.Rows[0]["province"].ToString();
-            orderInfo.UserOrderPrice = Convert.ToDouble(dt.Rows[0]["orderPrice"].ToString());
-            orderInfo.UserPayState = Convert.ToInt32(dt.Rows[0]["isPaid"].ToString());
-            orderInfo.State = Convert.ToInt32(dt.Rows[0]["orderState"].ToString());
-            orderInfo.OrderTime = dt.Rows[0]["orderTime"].ToString();
-            orderInfo.InvoiceHead = dt.Rows[0]["invoiceHead"].ToString();
-            orderInfo.InvoiceContent = dt.Rows[0]["invoiceContent"].ToString();
+            try
+            {
+                orderInfo.UserID = (Guid) dt.Rows[0]["userID"];
+                orderInfo.UserRealName = dt.Rows[0]["userRealName"].ToString();
+                orderInfo.UserTel = dt.Rows[0]["phoneNum"].ToString();
+                orderInfo.UserZip = dt.Rows[0]["postNum"].ToString();
+                orderInfo.UserAdd = dt.Rows[0]["postAdd"].ToString();
+                orderInfo.UserProvince = dt.Rows[0]["province"].ToString();
+                orderInfo.UserOrderPrice = Convert.ToDouble(dt.Rows[0]["orderPrice"].ToString());
+                orderInfo.UserPayState = Convert.ToInt32(dt.Rows[0]["isPaid"].ToString());
+                orderInfo.State = Convert.ToInt32(dt.Rows[0]["orderState"].ToString());
+                orderInfo.OrderTime = dt.Rows[0]["orderTime"].ToString();
+                orderInfo.InvoiceHead = dt.Rows[0]["invoiceHead"].ToString();
+                orderInfo.InvoiceContent = dt.Rows[0]["invoiceContent"].ToString();
+            }
+            catch
+            {
+                return false;
+            }
             return true;
         }
         #endregion
