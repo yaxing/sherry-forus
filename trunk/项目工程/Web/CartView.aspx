@@ -144,7 +144,7 @@
                     </HeaderTemplate>
                     <ItemTemplate>
                         <font color="black">
-                            <%#Eval("TotalPrice") %>分
+                            <%#Convert.ToInt32(Eval("TotalPrice")) %>分
                         </font>
                     </ItemTemplate>
                 </asp:TemplateField>
