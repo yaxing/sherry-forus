@@ -20,7 +20,7 @@ namespace Entity
         private string userTel;
         private string userProvince;
         private double userOrderPrice;
-        private string userPay;
+        private int userPayState;
         private string invoiceHead = null;
         private string invoiceContent = null;
         private string orderTime = string.Empty;
@@ -68,10 +68,10 @@ namespace Entity
             get { return userOrderPrice; }
             set { userOrderPrice = value; }
         }
-        public string UserPay
+        public int UserPayState
         {
-            get { return userPay; }
-            set { userPay = value; }
+            get { return userPayState; }
+            set { userPayState = value; }
         }
         public IList<ItemEntity> UserOrderItems
         {
