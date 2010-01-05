@@ -179,6 +179,44 @@ namespace DAL
         }
         #endregion
 
+        #region 按用户ID以及指定订单状态查询主订单
+        /// <summary>
+        /// 根据用户ID以及指定订单状态获取订单
+        /// </summary>
+        /// <param name="userID">用户ID</param>
+        /// <param name="orders">订单datatable</param>
+        /// <param name="orderState">订单指定状态</param>
+        /// <returns>成功true，失败false</returns>
+        public bool GetOrderList(ref DataTable orders, Guid userID, int orderState)
+        {
+            DataTable dt = null;
+            sqlString = "select * from mainOrderInfo where userID=@userID and orderState=@orderState order by orderTime desc";
+            sq = new SqlParameter[] { 
+                                new SqlParameter("@userID",SqlDbType.UniqueIdentifier),
+                                new SqlParameter("@orderState",SqlDbType.Int)
+                                };
+            sq[0].Value = userID;
+            sq[1].Value = orderState;
+
+            try
+            {
+                using (dp = new DataProvider())
+                {
+                    if ((dt = dp.ExecuteDataTable(sqlString, sq)) == null)
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            orders = dt;
+            return true;
+        }
+        #endregion
+
         #region 按订单ID查询订单项详细信息(datatable)
         /// <summary>
         /// 根据订单号得到订单项(返回DATATABLE)

@@ -126,6 +126,26 @@ namespace BLL
         }
         #endregion
 
+        #region 根据用户名获取指定状态的主订单列表
+        /// <summary>
+        /// 根据用户名获取指定状态的订单列表
+        /// </summary>
+        /// <param name="orders">订单DataTable</param>
+        /// <param name="orderState">指定订单状态</param>
+        /// <returns>操作成功返回true，否则返回false</returns>
+        public bool GetOrderList(ref DataTable orders, int orderState)
+        {
+            MembershipUser curUser = Membership.GetUser(HttpContext.Current.User.Identity.Name.ToString());
+            Guid userID = (Guid)curUser.ProviderUserKey;
+            OrderCtrlDAL orderCtrl = new OrderCtrlDAL();
+            if (!orderCtrl.GetOrderList(ref orders, userID, orderState))
+            {
+                return false;
+            }
+            return true;
+        }
+        #endregion
+
         #region 根据订单号获取商品列表
         /// <summary>
         ///  获取订单详细商品项

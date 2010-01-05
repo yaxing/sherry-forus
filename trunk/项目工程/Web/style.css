@@ -48,10 +48,6 @@ background:url(images/header.jpg) no-repeat center;
 .logo{
 padding:0 0 0 30px;
 }
-img
-{
-	border-width:0px;
-}
 /*-----------------------------menu-------------------*/
 #menu{
 width:628px;
@@ -588,3 +584,59 @@ color:#afaeaf;
 	FILTER: alpha(opacity=30); -moz-opacity: 0.3
 }
 
+img
+{
+	border-width:0px
+	}
+	
+	
+	
+	/*-----------------------------menuForOrder-------------------*/
+#menuO{
+width:480px;
+height:41px;
+margin:20px 0 0 0px;
+/*background:url(images/menu_bg.jpg) no-repeat center;*/
+}
+#menuO ul{
+display:block;
+list-style:none;
+padding:9px 0 0 10px;
+margin:0px;
+}
+#menuO ul li{
+display:inline;
+padding:0px;
+margin:0px;
+height:27px;
+}
+#menuO ul li a{
+height:27px;
+display:block;
+padding:0px 10px 0 10px;
+margin:0 4px 0 4px;
+_margin:0 2px 0 2px;
+float:left;
+text-decoration:none;
+text-align:center;
+color: #990033;
+font-size:13px;
+line-height:27px;
+}
+#menuO ul li.selected a{
+height:27px;
+display:block;
+padding:0px 10px 0 10px;
+margin:0 5px 0 5px;
+float:left;
+text-decoration:none;
+text-align:center;
+color:#fff;
+font-size:13px;
+line-height:27px;
+background:url(images/menu_bt_bg.gif) repeat-x center;
+}
+#menuO ul li a:hover{
+background:url(images/menu_bt_bg.gif) repeat-x center;
+color:#fff;
+}
