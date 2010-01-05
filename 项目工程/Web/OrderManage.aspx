@@ -5,14 +5,15 @@
     <img src="images/bullet1.gif" width="20" alt="" title="" /><font style="font-size: 19px;
         color: #a81f22">我的订单</font>
     <asp:Panel ID="pOrderList" runat="server">
-        <div style="position: relative; left: 30px; top: 30px">
+        <asp:Literal ID="ltMenu" runat="server"></asp:Literal>
+        <div style="position: relative; left: 30px; top: 20px">
             <asp:GridView ID="gvOrderList" runat="server" AutoGenerateColumns="False" GridLines="None"
                 AllowPaging="true" OnPageIndexChanging="gvOrderList_PageIndexChanging" OnRowCreated="gvOrderList_RowCreated">
                 <Columns>
                     <asp:TemplateField>
-                        <HeaderStyle Width="50px" ForeColor="Black" Font-Size="15px" BackColor="LightGray" />
+                        <HeaderStyle Width="50px" ForeColor="White" Font-Size="15px" BackColor="darkred" />
                         <HeaderTemplate>
-                            <font style="font-family: 微软雅黑; font-weight: bold">订单号</font>
+                            <font style="font-weight: bold">订单号</font>
                         </HeaderTemplate>
                         <ItemTemplate>
                             <table>
@@ -27,12 +28,12 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
-                        <HeaderStyle Width="200px" BackColor="lightgray" />
+                        <HeaderStyle Width="200px" BackColor="darkred" />
                     </asp:TemplateField>
                     <asp:TemplateField>
-                        <HeaderStyle Width="180px" ForeColor="Black" Font-Size="15px" BackColor="LightGray" />
+                        <HeaderStyle Width="180px" ForeColor="White" Font-Size="15px" BackColor="darkred" />
                         <HeaderTemplate>
-                            <font style="font-family: 微软雅黑; font-weight: bold">下单时间</font>
+                            <font style="font-weight: bold">下单时间</font>
                         </HeaderTemplate>
                         <ItemTemplate>
                             <table>
@@ -110,11 +111,12 @@
             <table>
                 <tr>
                     <td style="width: 200px">
+                        <asp:Button ID="bBackToList" runat="server" CssClass="register" Text="返回" OnClick="bBackToList_Click" />
                     </td>
                     <td align="right" style="font-size: 12px; font-weight: bold">
                         <asp:Button ID="bCancel" runat="server" OnClick="bCancel_Click" CssClass="register"
                             Text="撤销订单" />
-                        <asp:Button ID="bReturn" runat="server" Text="退货" CssClass="register" OnClick="bReturn_Click" />  
+                        <asp:Button ID="bReturn" runat="server" Text="申请退货" CssClass="register" OnClick="bReturn_Click" />
                     </td>
                     <td>
                         <asp:Button ID="imgbPay" runat="server" OnClick="imgbPay_Click" CssClass="register"
@@ -130,9 +132,9 @@
                 AllowPaging="true" OnPageIndexChanging="gvItemList_PageIndexChanging" OnRowCreated="gvItemList_RowCreated">
                 <Columns>
                     <asp:TemplateField>
-                        <HeaderStyle Width="180px" ForeColor="Black" Font-Size="15px" BackColor="LightGray" />
+                        <HeaderStyle Width="180px" ForeColor="White" Font-Size="15px" BackColor="darkred" />
                         <HeaderTemplate>
-                            <font style="font-family: 微软雅黑; font-weight: bold">商品</font>
+                            <font style="font-weight: bold">商品</font>
                         </HeaderTemplate>
                         <ItemTemplate>
                             <table>
@@ -146,7 +148,7 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
-                        <HeaderStyle ForeColor="Black" Font-Size="15px" BackColor="LightGray" />
+                        <HeaderStyle ForeColor="White" Font-Size="15px" BackColor="darkred" />
                         <HeaderTemplate>
                         </HeaderTemplate>
                         <ItemTemplate>
@@ -162,7 +164,7 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
-                        <HeaderStyle ForeColor="Black" Font-Size="15px" BackColor="LightGray" />
+                        <HeaderStyle ForeColor="White" Font-Size="15px" BackColor="darkred" />
                         <HeaderTemplate>
                             <font style="font-family: 微软雅黑; font-weight: bold">小计</font>
                         </HeaderTemplate>
