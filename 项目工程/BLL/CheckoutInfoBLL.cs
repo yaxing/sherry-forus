@@ -81,6 +81,7 @@ namespace BLL
             {
                 return 1;
             }
+            orderInfo.OrderID = orderID;
             //获取用户现有积分
             if (!getScore.GetUserScore(orderInfo.UserID, ref userScore))
             {
