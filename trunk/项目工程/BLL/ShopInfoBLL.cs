@@ -49,7 +49,7 @@ namespace BLL
         ///</summary>
         ///<returns>店面数量,失败返回-1</returns>
 
-        public int SrchShopByProvence(ref IList<ShopInfo> shopInfoList , string province)
+        public int SrchShopByProvince(ref IList<ShopInfo> shopInfoList , string province)
         {
             ShopInfoDAL shopInfoDAL = new ShopInfoDAL();
             return shopInfoDAL.SrchShopByProvence(ref shopInfoList , province);
