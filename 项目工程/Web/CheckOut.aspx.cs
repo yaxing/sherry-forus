@@ -187,7 +187,7 @@ public partial class CheckOut : System.Web.UI.Page
             OrderInfo userOrderInfo = new OrderInfo();
             userOrderInfo.UserRealName = lbName.Text;
             userOrderInfo.UserAdd = lbAdd.Text;
-            userOrderInfo.UserProvince = lbProvince.Text;
+            userOrderInfo.UserProvince = lbArea.Text;
             userOrderInfo.UserZip = lbZip.Text;
             userOrderInfo.UserTel = lbTel.Text;
             userOrderInfo.UserOrderPrice = userCart.GetTotalPrice();
