@@ -105,6 +105,7 @@ namespace DAL
             SqlParameter[] pt;
             int orderID;//订单号
             int goodsStorage;
+            int goodsVolume;
             DataTable dt = new DataTable();
             //============================================插入主订单数据===================================//
 
@@ -179,8 +180,8 @@ namespace DAL
             //===============================================插入订单商品信息=========================================//
 
             sqlString = "insert into subOrderInfo(mainOrderID, goodsID, goodsName, goodsPrice, goodsNum) values(@mainID,@gID,@name,@price,@num)";
-            sqlStringGetStorage = "select goodsStorage from goodsInfo where goodsID=@id";
-            sqlStringChangeStorage = "update goodsInfo set goodsStorage=@curS where goodsID=@id";
+            sqlStringGetStorage = "select goodsStorage, goodsVolume from goodsInfo where goodsID=@id";
+            sqlStringChangeStorage = "update goodsInfo set goodsStorage=@curS, goodsVolume=@curV where goodsID=@id";
 
             foreach (ItemEntity ie in info.UserOrderItems) 
             {
@@ -210,7 +211,7 @@ namespace DAL
                     return false;
                 }
 
-                //=========================获取商品库存====================//
+                //=========================获取商品库存以及销量====================//
                 
                 pt = new SqlParameter[] { 
                                 new SqlParameter("@id",SqlDbType.Int)
@@ -228,16 +229,18 @@ namespace DAL
                 {
                     return false;
                 }
-                goodsStorage = Convert.ToInt32(dt.Rows[0][0].ToString())-ie.Number;
-                
-                //======================修改商品库存========================//
+                goodsStorage = Convert.ToInt32(dt.Rows[0]["goodsStorage"].ToString())-ie.Number;
+                goodsVolume = Convert.ToInt32(dt.Rows[0]["goodsVolume"].ToString())+ie.Number;
+                //======================修改商品库存，销量========================//
 
                 pt = new SqlParameter[] { 
                                 new SqlParameter("@curS",SqlDbType.Int),
+                                new SqlParameter("@curV",SqlDbType.Int),
                                 new SqlParameter("@id",SqlDbType.Int)
                                 };
                 pt[0].Value = goodsStorage;
-                pt[1].Value = ie.ID;
+                pt[1].Value = goodsVolume;
+                pt[2].Value = ie.ID;
                 try
                 {
                     using (dp = new DataProvider())
