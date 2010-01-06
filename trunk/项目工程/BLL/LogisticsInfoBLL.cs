@@ -326,6 +326,39 @@ namespace BLL
 
         public bool ConfirmReturning(OrderInfo orderInfo)
         {
+            LogisticsInfoBLL logisticsInfoBLL = new LogisticsInfoBLL();
+            LogisticsInfo logisticsInfo = new LogisticsInfo();
+            if (!logisticsInfoBLL.SrchShippingInfo(ref logisticsInfo))
+                return false;
+
+            WorkerInfo workerInfo = new WorkerInfo();
+            workerInfo.WorkerID = logisticsInfo.WorkerID;
+
+            WorkerInfoBLL workerInfoBLL = new WorkerInfoBLL();
+            if (!workerInfoBLL.SrchWorkerInfo(ref workerInfo))
+                return false;
+
+            //发送邮件给订单负责人
+            MailBLL mailBLL = new MailBLL();
+            string tomail = workerInfo.EmailAdd;
+            string mailTitle = "确认退货";
+            string mailBody = "由于工作失误，您所负责的订单号为" + orderInfo.OrderID + "的订单已经确定退货，请注意！";
+            if (!mailBLL.SendEmail(tomail, mailTitle, mailBody))
+                return false;
+
+            WorkerInfo managerInfo = new WorkerInfo();
+            managerInfo.WorkerID = workerInfo.ManageID;
+
+            if (!workerInfoBLL.SrchWorkerInfo(ref managerInfo))
+                return false;
+
+            //发送邮件给管理员
+            tomail = managerInfo.EmailAdd;
+            mailTitle = "申请退货";
+            mailBody = "您所负责的员工" + workerInfo.WorkerRealName + "处理的订单号为" + orderInfo.OrderID + "的订单确定退货，请注意！";
+            if (!mailBLL.SendEmail(tomail, mailTitle, mailBody))
+                return false;
+
             orderInfo.State = 4;
             IChangeOrderState changeOrderState = new OrderCtrlBLL();
             return changeOrderState.ChangeOrderState(orderInfo);
