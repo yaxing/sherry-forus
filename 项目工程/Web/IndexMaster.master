@@ -137,4 +137,9 @@
         </div>
     </form>
 </body>
+
+<script type="text/javascript">
+     var tabber1 = new Yetii({id: 'demo'});
+</script>
+
 </html>

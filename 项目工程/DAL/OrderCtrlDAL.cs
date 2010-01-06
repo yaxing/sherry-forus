@@ -79,7 +79,7 @@ namespace DAL
         /// 更新订单状态为目标状态
         /// </summary>
         /// <param name=""></param>
-        /// <returns>操作成功返回true，否则返回false</returns
+        /// <returns>操作成功返回true，否则返回false</returns>
         public bool ChangeOrderState(OrderInfo curOrder)
         {
             sqlString = "update mainOrderInfo set orderState=@targetState where mainOrderID=@id";
@@ -319,14 +319,15 @@ namespace DAL
             }
             int i = 0;
             int curStorage = 0;
+            int curVolume = 0;
 
-            //===================清空子订单项，重新计算库存量=======================//
+            //===================清空子订单项，重新计算库存量以及销量=======================//
             for (; i < dt.Rows.Count; i++) 
             {
                 DataTable buffer = null;
                 
-                //======================获取商品库存量===================================//
-                sqlString = "select goodsStorage from goodsInfo where goodsID=@id";
+                //======================获取商品库存量，销量===================================//
+                sqlString = "select goodsStorage, goodsVolume from goodsInfo where goodsID=@id";
                 sq = new SqlParameter[] { 
                                 new SqlParameter("@id",SqlDbType.Int)
                                 };
@@ -343,17 +344,20 @@ namespace DAL
                 {
                     return false;
                 }
-                curStorage = Convert.ToInt32(buffer.Rows[0][0].ToString());
+                curStorage = Convert.ToInt32(buffer.Rows[0]["goodsStorage"].ToString());
+                curVolume = Convert.ToInt32(buffer.Rows[0]["goodsVolume"].ToString());
 
-                //==============================更新商品库存量为 现有存量+撤销订单内商品数 ==========================//
-                sqlString = "update goodsInfo set goodsStorage=@number where goodsID=@id";
+                //==============================更新商品库存量为 现有存量+撤销订单内商品数；更新销量为 当前销量-订单商品数量 ==========================//
+                sqlString = "update goodsInfo set goodsStorage=@number, goodsVolume=@volume where goodsID=@id";
                 sq = new SqlParameter[]
                                       {
                                         new SqlParameter("@number", SqlDbType.Int),
+                                        new SqlParameter("@volume", SqlDbType.Int),
                                         new SqlParameter("id",SqlDbType.Int)
                                       };
                 sq[0].Value = Convert.ToInt32(dt.Rows[i]["goodsNum"].ToString())+curStorage;
-                sq[1].Value = Convert.ToInt32(dt.Rows[i]["goodsID"].ToString());
+                sq[1].Value = curVolume - Convert.ToInt32(dt.Rows[i]["goodsNum"].ToString());
+                sq[2].Value = Convert.ToInt32(dt.Rows[i]["goodsID"].ToString());
                 try
                 {
                     using (dp = new DataProvider())

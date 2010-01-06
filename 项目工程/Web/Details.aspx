@@ -33,8 +33,8 @@
                                 <img src="images/color3.gif" alt="" title="" /></span>
                 </div>
                 <div style="padding: 0 30px 0 0px">
-                    <asp:Button ID="addToCart" runat="server" OnClick="addToCart_Click" CssClass="register" Text="加入购物车"
-                        ToolTip="加入购物车" /></div>
+                    <asp:Button ID="addToCart" runat="server" OnClick="addToCart_Click" CssClass="register"
+                        Text="加入购物车" ToolTip="加入购物车" /></div>
                 <div class="clear">
                 </div>
             </div>
@@ -69,11 +69,10 @@
                                 <%#Eval("goodsName")%>
                             </a>
                             <div class="new_prod_bg">
-                                <span class="new_icon">
-                                    <img src="images/new_icon.gif" alt="" title="" /></span> <a href="Details.aspx?GoodsID=<%#Eval("goodsID")%>">
-                                        <img src="<%#Eval("goodsImg")%>" alt="<%#Eval("goodsName")%>" title="" height="100px"
-                                            width="112px" class="thumb" />
-                                    </a>
+                                <a href="Details.aspx?GoodsID=<%#Eval("goodsID")%>">
+                                    <img src="<%#Eval("goodsImg")%>" alt="<%#Eval("goodsName")%>" title="" height="100px"
+                                        width="112px" class="thumb" />
+                                </a>
                             </div>
                         </div>
                     </ItemTemplate>
