@@ -23,6 +23,7 @@ namespace BLL
         private ShopCart curCart;
         private ItemEntity Info;
         private int curID;
+        private string securityKey = "11111111";
 
         #region 构造函数-查询库存
         public CartCtrl(int id) 
@@ -50,6 +51,11 @@ namespace BLL
             if (HttpContext.Current.Request.Cookies["Cart"] != null&&HttpContext.Current.Request.Cookies["Cart"].Value.Length>0)
             {
                 cartValue = HttpContext.Current.Request.Cookies["Cart"].Value;
+                //解密cookie信息
+                if (!SecurityService.DecryptDES(ref cartValue, securityKey)) 
+                {
+                    return;
+                }
                 String[] temp = cartValue.Split(new char[] { '@' }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (String item in temp)
                 {
@@ -392,6 +398,11 @@ namespace BLL
             else
             {
                 cookie = new HttpCookie("Cart");
+            }
+            //对将要写入COOKIE的信息进行DES加密处理
+            if (!SecurityService.EncryptDES(ref s, securityKey)) 
+            {
+                return false;
             }
             cookie.Value = s;
             if (s != null && s.Length > 0)
