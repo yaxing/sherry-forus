@@ -13,5 +13,10 @@ namespace InterFace
        bool StartShipping(OrderInfo orderInfo);
        bool SrchOrderListByWorkerID(ref IList<OrderInfo> orderInfoList , Guid workerID);
        bool SrchOrderListByManagerID(ref IList<OrderInfo> orderInfoList, Guid managerID);
+       bool ApplyReturning(OrderInfo orderInfo);
+       bool ConfirmPicking(OrderInfo orderInfo);
+       bool ConfirmReceiving(OrderInfo orderInfo);
+       bool ConfirmReturning(OrderInfo orderInfo);
+       bool RefuseReturning(OrderInfo orderInfo);
     }
 }
