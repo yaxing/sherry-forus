@@ -18,14 +18,14 @@
                         <table>
                         <tr>
                             <td>调查主题：</td>
-                            <td align="left"><asp:TextBox ID="tbTitle" runat="server" Width="300px" Text='<%# ((DataRowView)Container.DataItem)["Topic"] %>'></asp:TextBox>
+                            <td align="left"><asp:TextBox ID="tbTitle" runat="server" Width="280px" Text='<%# ((DataRowView)Container.DataItem)["Topic"] %>'></asp:TextBox>
                             <asp:RequiredFieldValidator
                                     ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" Display="Dynamic" ControlToValidate="tbTitle"></asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                             <td>选项总数：</td>
                             <td align="left">
-                                <asp:DropDownList ID="ddlOpCount" runat="server" AutoPostBack="True">
+                                <asp:DropDownList ID="ddlOpCount" runat="server" AutoPostBack="True" Enabled="false">
                                     <asp:ListItem>2</asp:ListItem>
                                     <asp:ListItem>3</asp:ListItem>
                                     <asp:ListItem>4</asp:ListItem>

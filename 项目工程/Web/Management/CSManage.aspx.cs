@@ -70,7 +70,11 @@ public partial class CSManage : System.Web.UI.Page
         string newReply = ((TextBox)e.Item.FindControl("Reply")).Text;
 
         ClientServiceBLL clientService = new ClientServiceBLL();
-        clientService.AddReply(messageID, newReply);
+        if (clientService.AddReply(messageID, newReply))
+        {
+            DataListBind();
+            this.RegisterStartupScript("msg", "<script>alert('ÒÑ»Ø¸´£¡')</script>");
+        }
 
         ((TextBox)e.Item.FindControl("Reply")).Text = "";
         

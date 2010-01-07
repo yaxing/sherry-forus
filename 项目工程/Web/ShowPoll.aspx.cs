@@ -25,7 +25,7 @@ public partial class ShowPoll : System.Web.UI.Page
             mainPoll.MainPollID = Int32.Parse(id);
             PollInfoBLL selectMainPoll = new PollInfoBLL();
             selectMainPoll.SelectByID(ref mainPoll);
-            drawChart(mainPoll,id);
+            drawChart(mainPoll, id);
         }
     }
 
@@ -33,26 +33,28 @@ public partial class ShowPoll : System.Web.UI.Page
     {
         IList<SubPoll> subPollList = new List<SubPoll>();
         PollInfoBLL selectSubPoll = new PollInfoBLL();
-    
+
         //选项总数
-        int TotalOptions = selectSubPoll.SelectSubPollByID(ref subPollList,mainPoll);;
+        int TotalOptions = selectSubPoll.SelectSubPollByID(ref subPollList, mainPoll); ;
         string[] OptionArray = new string[TotalOptions];
         string[] ColorArray = new string[TotalOptions];
         int[] BallotArray = new int[TotalOptions];
-       
+
         int TotalBallots = 0;
 
         for (int i = 0; i < TotalOptions; i++)
         {
             OptionArray[i] = subPollList[i].Description.ToString();
-            ColorArray[i] = subPollList[i].Color.ToString(); 
-            BallotArray[i] = subPollList[i].Num; 
+            ColorArray[i] = subPollList[i].Color.ToString();
+            BallotArray[i] = subPollList[i].Num;
             TotalBallots += BallotArray[i];
         }
-        
-        Bitmap bm = new Bitmap(300, 100);
+
+        Bitmap bm = new Bitmap(150, 50);
+
         Graphics g = Graphics.FromImage(bm);
-        g.Clear(Color.Yellow);
+
+        g.Clear(Color.Transparent);
         StringFormat sf = new StringFormat();
         sf.Alignment = StringAlignment.Center;
         sf.LineAlignment = StringAlignment.Center;
@@ -63,27 +65,28 @@ public partial class ShowPoll : System.Web.UI.Page
             if (GetStringLength(OptionArray[i]) > OptionLength)
                 OptionLength = GetStringLength(OptionArray[i]);
         }
-        int BallotsLength = (TotalBallots.ToString().Length) * 8 + 60;
+        int BallotsLength = (TotalBallots.ToString().Length) * 6 + 60;
         int LegendLength = 0;
         if (OptionLength > 20)
-            LegendLength = 200 + BallotsLength;
+            LegendLength = 150 + BallotsLength;
         else
-            LegendLength = OptionLength * 10 + 50 + BallotsLength;
+            LegendLength = OptionLength * 8 + 50 + BallotsLength;
         int BarWidth = Int32.Parse(ConfigurationSettings.AppSettings["BarWidth"]);
         int BarSpace = Int32.Parse(ConfigurationSettings.AppSettings["BarSpace"]);
-        int BarLeftSpace = (TotalBallots.ToString().Length) * 6 + 10;
+        int BarLeftSpace = (TotalBallots.ToString().Length) * 5 + 10;
         int PieChartWidth = Int32.Parse(ConfigurationSettings.AppSettings["PieWidth"]);
         int PieChartHeight = Int32.Parse(ConfigurationSettings.AppSettings["PieHeight"]);
         int BMWidth = (mainPoll.ColMode.Equals("True")) ? (TotalOptions * BarSpace + BarLeftSpace + 20 + LegendLength) : (PieChartWidth + 80 + LegendLength);
-        int LegendHeight = TotalOptions * 22 + 90;
+        int LegendHeight = TotalOptions * 20 + 90;
         int BMHeight = (mainPoll.ColMode.Equals("True")) ? LegendHeight : Math.Max(PieChartHeight + 110, LegendHeight);
-        if (BMHeight < 250)
-            BMHeight = 250;
+        if (BMHeight < 200)
+            BMHeight = 200;
         int BarChartHeight = BMHeight - 80;
         string PollSubject = ((GetStringLength(mainPoll.Topic) * 12) > BMWidth) ? GetLeftString(mainPoll.Topic, (int)(BMWidth / 25)) : mainPoll.Topic;
         bm = new Bitmap(BMWidth, BMHeight);
+
         g = Graphics.FromImage(bm);
-        g.Clear(Color.Snow);
+        g.Clear(Color.Transparent);
 
         Rectangle SubjectRec = new Rectangle(0, 4, BMWidth, 28);
         Rectangle BallotsRec = new Rectangle(0, 30, BMWidth, 20);
@@ -101,7 +104,7 @@ public partial class ShowPoll : System.Web.UI.Page
             float ScalePercent = 1.0f;
             int MaxBallotsValue = (TotalBallots > 90) ? (TotalBallots + (10 - TotalBallots % 10)) : (((TotalBallots <= 10) || (TotalBallots % (TotalBallots / 10 + 1) == 0) || (TotalBallots % 10 == 0)) ? TotalBallots : (TotalBallots + ((TotalBallots / 10 + 1) - (TotalBallots % (TotalBallots / 10 + 1)))));
             int BallotsStep = (TotalBallots <= 10) ? 1 : ((TotalBallots <= 90) ? ((TotalBallots % 10 == 0) ? (TotalBallots / 10) : (TotalBallots / 10 + 1)) : (MaxBallotsValue / 10));
-            ScalePercent = (float)TotalBallots / (float)MaxBallotsValue;                
+            ScalePercent = (float)TotalBallots / (float)MaxBallotsValue;
             for (int i = BallotsStep; i <= MaxBallotsValue; i += BallotsStep)
             {
                 float LinePosition = (float)(BMHeight - LineSpace);
@@ -148,8 +151,17 @@ public partial class ShowPoll : System.Web.UI.Page
             DescPoint.Y += 20;
         }
         //bm.Save(Response.OutputStream, ImageFormat.Jpeg);
-        bm.Save(Server.MapPath("./images/statistic/"+id+".jpeg"));
-        map.ImageUrl = "images/statistic/"+id+".jpeg";
+        try
+        {
+            bm.Save(Server.MapPath("./images/statistic/" + id + ".jpeg"));
+            map.ImageUrl = "images/statistic/" + id + ".jpeg";
+        }
+        catch
+        {
+            System.IO.Directory.CreateDirectory(Server.MapPath("./images/statistic/"));
+            bm.Save(Server.MapPath("./images/statistic/" + id + ".jpeg"));
+            map.ImageUrl = "images/statistic/" + id + ".jpeg";
+        }
     }
     private Color GetColor(string colorstr)
     {

@@ -22,39 +22,41 @@ public partial class ClientService : System.Web.UI.Page
         {
             IList<Message> messageList = new List<Message>();
             ClientServiceBLL clientService = new ClientServiceBLL(); ;
-            clientService.ShowTopN(ref messageList, 10, true);
-
-            DataTable dt = new DataTable("Message");
-            DataColumn dc = new DataColumn("Topic", System.Type.GetType("System.String"));
-            dt.Columns.Add(dc);
-            dc = new DataColumn("Messages", System.Type.GetType("System.String"));
-            dt.Columns.Add(dc);
-            dc = new DataColumn("Reply", System.Type.GetType("System.String"));
-            dt.Columns.Add(dc);
-
-            DataRow dr = null;
-            DataColumnCollection dcc = dt.Columns;
-            foreach (Message newMessage in messageList)
+            if (clientService.ShowTopN(ref messageList, 20, true))
             {
-                Type type = newMessage.GetType();
-                dr = dt.NewRow();
-                for (int i = 0; i < dcc.Count; i++)
+
+                DataTable dt = new DataTable("Message");
+                DataColumn dc = new DataColumn("Topic", System.Type.GetType("System.String"));
+                dt.Columns.Add(dc);
+                dc = new DataColumn("Messages", System.Type.GetType("System.String"));
+                dt.Columns.Add(dc);
+                dc = new DataColumn("Reply", System.Type.GetType("System.String"));
+                dt.Columns.Add(dc);
+
+                DataRow dr = null;
+                DataColumnCollection dcc = dt.Columns;
+                foreach (Message newMessage in messageList)
                 {
-                    string colName = dcc[i].ColumnName;
-
-                    PropertyInfo pInfo = type.GetProperty(colName);
-                    if (pInfo != null)
+                    Type type = newMessage.GetType();
+                    dr = dt.NewRow();
+                    for (int i = 0; i < dcc.Count; i++)
                     {
-                        object objInfo = pInfo.GetValue(newMessage, null);
-                        if (objInfo != null && (!Convert.IsDBNull(objInfo)) && objInfo.ToString() != null)
-                            dr[colName] = objInfo;
-                    }
+                        string colName = dcc[i].ColumnName;
 
+                        PropertyInfo pInfo = type.GetProperty(colName);
+                        if (pInfo != null)
+                        {
+                            object objInfo = pInfo.GetValue(newMessage, null);
+                            if (objInfo != null && (!Convert.IsDBNull(objInfo)) && objInfo.ToString() != null)
+                                dr[colName] = objInfo;
+                        }
+
+                    }
+                    dt.Rows.Add(dr);
                 }
-                dt.Rows.Add(dr);
+                dataList.DataSource = dt;
+                dataList.DataBind();
             }
-            dataList.DataSource = dt;
-            dataList.DataBind();
         }
     }
 
