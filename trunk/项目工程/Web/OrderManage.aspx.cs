@@ -16,6 +16,7 @@ using System.Drawing;
 using BLL;
 using DAL;
 using Entity;
+using InterFace;
 
 public partial class OrderManage : System.Web.UI.Page
 {
@@ -24,41 +25,44 @@ public partial class OrderManage : System.Web.UI.Page
     int orderState;
     protected void Page_Load(object sender, EventArgs e)
     {
-        orderId = Convert.ToInt32(Request.QueryString["ID"]);
-        String buffer = Request.QueryString["OrderState"];
-        if (buffer == null || buffer.Length == 0)
-        {
-            orderState = -1;
-        }
-        else
-        {
-            orderState = Convert.ToInt32(buffer);
-        }
-        if (!OrderMenuCtrl()) 
-        {
-            Response.Write("<script>alert('菜单初始化失败！请尝试重新操作');history.go(-1);</script>");
-            return;
-        }
-        gvOrderList.AllowPaging = true;
-        gvOrderList.PageSize = 10;
-        gvItemList.AllowPaging = true;
-        gvItemList.PageSize = 5;
-        if (orderId<=0)
-        {
-            if (!mainOrderDatabind())
+        //if (!IsPostBack)
+        //{
+            orderId = Convert.ToInt32(Request.QueryString["ID"]);
+            String buffer = Request.QueryString["OrderState"];
+            if (buffer == null || buffer.Length == 0)
             {
-                Response.Write("<script>alert('数据绑定失败！请尝试重新操作');history.go(-1);</script>");
+                orderState = -1;
+            }
+            else
+            {
+                orderState = Convert.ToInt32(buffer);
+            }
+            if (!OrderMenuCtrl())
+            {
+                Response.Write("<script>alert('菜单初始化失败！请尝试重新操作');history.go(-1);</script>");
                 return;
             }
-        }
-        else 
-        {
-            if (!subOrderDatabind())
+            gvOrderList.AllowPaging = true;
+            gvOrderList.PageSize = 10;
+            gvItemList.AllowPaging = true;
+            gvItemList.PageSize = 5;
+            if (orderId <= 0)
             {
-                Response.Write("<script>alert('数据绑定失败！请尝试重新操作');history.go(-1);</script>");
-                return;
+                if (!mainOrderDatabind())
+                {
+                    Response.Write("<script>alert('数据绑定失败！请尝试重新操作');history.go(-1);</script>");
+                    return;
+                }
             }
-        }
+            else
+            {
+                if (!subOrderDatabind())
+                {
+                    Response.Write("<script>alert('数据绑定失败！请尝试重新操作');history.go(-1);</script>");
+                    return;
+                }
+            }
+        //}
     }
 
     #region 订单状态菜单控制
@@ -501,6 +505,15 @@ public partial class OrderManage : System.Web.UI.Page
             case 4:
                 state = "交易失败";
                 break;
+            case 5:
+                state = "申请退货";
+                break;
+            case 6:
+                state = "退货驳回";
+                break;
+            default:
+                state = "订单状态错误";
+                break;
         }
         lState.Text = state;
         return true;
@@ -546,7 +559,10 @@ public partial class OrderManage : System.Web.UI.Page
     }
     protected void bReturn_Click(object sender, EventArgs e)
     {
-
+        OrderInfo curOrder = new OrderInfo();
+        curOrder.OrderID = Convert.ToInt32(lOrderID.Text.ToString());
+        IShipping goodsReturn = new LogisticsInfoBLL();
+        goodsReturn.ApplyReturning(curOrder);
     }
     protected void bBackToList_Click(object sender, EventArgs e)
     {
