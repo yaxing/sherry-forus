@@ -151,12 +151,12 @@ public partial class ShowPoll : System.Web.UI.Page
             DescPoint.Y += 20;
         }
         //bm.Save(Response.OutputStream, ImageFormat.Jpeg);
-        try
+        if (System.IO.Directory.Exists(Server.MapPath("./images/statistic/")))
         {
             bm.Save(Server.MapPath("./images/statistic/" + id + ".jpeg"));
             map.ImageUrl = "images/statistic/" + id + ".jpeg";
         }
-        catch
+        else
         {
             System.IO.Directory.CreateDirectory(Server.MapPath("./images/statistic/"));
             bm.Save(Server.MapPath("./images/statistic/" + id + ".jpeg"));
