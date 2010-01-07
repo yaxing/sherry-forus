@@ -117,11 +117,11 @@
                             <td style="width: 200px">
                             </td>
                             <td align="left" style="font-size: 12px; font-weight: bold">
-                                <asp:Button ID="cPicking" runat="server" Text="确认发货" />
-                                <asp:Button ID="cReturn" runat="server" Text="确认退货" />
+                                <asp:Button ID="cPicking" runat="server" Text="确认发货" onclick="cPicking_Click" />
+                                <asp:Button ID="cReturn" runat="server" Text="确认退货" onclick="cReturn_Click" />
                             </td>
                             <td>
-                                <asp:Button ID="rReturn" runat="server" Text="退货驳回" />
+                                <asp:Button ID="rReturn" runat="server" Text="退货驳回" onclick="rReturn_Click" />
                             </td>
                         </tr>
                     </table>
