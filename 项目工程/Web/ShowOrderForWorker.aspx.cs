@@ -367,9 +367,15 @@ public partial class ShowOrderForWorker : System.Web.UI.Page
                 //bReturn.Visible = true;
                 break;
             case 4:
+                state = "交易失败";
+                break;
+            case 5:
                 state = "申请退货";
                 cReturn.Visible = true;
                 rReturn.Visible = true;
+                break;
+            case 6:
+                state = "退货驳回";
                 break;
         }
         lState.Text = state;
