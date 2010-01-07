@@ -5,13 +5,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title>管理员管理</title>
+    <link rel="stylesheet" type="text/css" href="bgStyle.css" />
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:Panel ID="PanelAddAdmin" runat="server" Height="50px" Width="125px">
+        <table cellspacing="1" cellpadding="3" width="790px" align="center" border="0">
+           <tr>
+             <td valign="top" width="100%">
+               <p><br /></p>
+             </td>
+           </tr>
+         </table>
+         <table class="tableBorder" cellspacing="1" cellpadding="2" width="790px" align="center" border="0">
+           <tr>
+           <th width="100%" height="25px" class="tableHeaderText">添加新管理员</th>
+           </tr>
+         </table>
+         
+         <div align="center">
+        <asp:Panel ID="PanelAddAdmin" runat="server">
           <asp:CreateUserWizard ID="CreateUserWizard" runat="server" OnCreatedUser="CreateUserWizard_CreatedUser"
-                ContinueDestinationPageUrl="~/Management/bgIndex.aspx" CreateUserButtonText="添加管理员">
+                ContinueDestinationPageUrl="~/Management/bgIndex.aspx" CreateUserButtonText="添加管理员" LoginCreatedUser="False">
                 <WizardSteps>
                     <asp:CreateUserWizardStep ID="CreateUserWizardStep1" runat="server">
                         <ContentTemplate>
@@ -151,6 +166,13 @@
                 </WizardSteps>
             </asp:CreateUserWizard>
         </asp:Panel>
+          </div>
+        
+        <table class="tableBorder" cellspacing="1" cellpadding="2" width="790px" align="center" border="0">
+           <tr>
+             <th width="100%" class="tableHeaderText" style="height: 25px">&nbsp;</th>
+           </tr>
+         </table>
     </div>
     </form>
 </body>
