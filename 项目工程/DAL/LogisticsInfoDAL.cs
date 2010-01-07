@@ -65,6 +65,31 @@ namespace DAL
 
         public bool SrchShippingInfo(ref LogisticsInfo logisticsInfo)
         {
+            sqlString = "select * from logisticsInfo where mainOrderID = @mainOrderID";
+            SqlParameter[] pt = new SqlParameter[] { 
+                                new SqlParameter("@mainOrderID",SqlDbType.Int)
+                                };
+            pt[0].Value = logisticsInfo.MainOrderID;
+
+            try
+            {
+                using (dp = new DataProvider())
+                {
+                    using (SqlDataReader reader = dp.ExecuteReader(sqlString, pt))
+                    {
+                        while (reader.Read())
+                        {
+                            logisticsInfo.LogisticsID = reader.GetInt32(0);
+                            logisticsInfo.WorkerID = reader.GetGuid(1);
+                            logisticsInfo.LogisticsType = reader.GetInt32(3);
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
             return true;
         }
         #endregion
