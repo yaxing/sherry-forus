@@ -260,7 +260,7 @@ public partial class Management_ShowOrdersForManager : System.Web.UI.Page
         IList<OrderInfo> orderInfoList = new List<OrderInfo>();
         shipping = new LogisticsInfoBLL();
         //获取需要显示的订单列表(仅包括订单ID)
-        if (!shipping.SrchOrderListByManagerID(ref orderInfoList, new Guid("1ac90496-d3e0-4141-9d3c-5898e0941474")))//(Guid)Membership.GetUser().ProviderUserKey)) 
+        if (!shipping.SrchOrderListByManagerID(ref orderInfoList, (Guid)Membership.GetUser().ProviderUserKey)) 
         {
             return false;
         }
