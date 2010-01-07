@@ -310,7 +310,7 @@ namespace BLL
             if (!mailBLL.SendEmail(tomail, mailTitle, mailBody))
                 return false;
 
-            orderInfo.State = 4;
+            orderInfo.State = 5;
             IChangeOrderState changeOrderState = new OrderCtrlBLL();
             return changeOrderState.ChangeOrderState(orderInfo);
         }
@@ -375,7 +375,7 @@ namespace BLL
 
         public bool RefuseReturning(OrderInfo orderInfo)
         {
-            orderInfo.State = 3;
+            orderInfo.State = 6;
             IChangeOrderState changeOrderState = new OrderCtrlBLL();
             return changeOrderState.ChangeOrderState(orderInfo);
         }
