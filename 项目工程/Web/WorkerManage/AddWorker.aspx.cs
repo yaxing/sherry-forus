@@ -23,7 +23,8 @@ public partial class WorkerManage_AddWorker : System.Web.UI.Page
             {
                 Response.Write("<script language='javascript'>alert('数据载入失败，请重试或联系管理员。');location.href='bgIndex.aspx';</script>");
             }
-            if (!DDLManagerLoad(1))
+            DropDownList DDLShop = (DropDownList)CreateUserWizard.CreateUserStep.ContentTemplateContainer.FindControl("DDLShop");
+            if (!DDLManagerLoad(Convert.ToInt32(DDLShop.SelectedValue)))
             {
                 Response.Write("<script language='javascript'>alert('数据载入失败，请重试或联系管理员。');location.href='bgIndex.aspx';</script>");
             }
@@ -179,7 +180,15 @@ public partial class WorkerManage_AddWorker : System.Web.UI.Page
         newWorker.WorkerState = 0;
 
         WorkerInfoBLL workerInfoBLL = new WorkerInfoBLL();
-        workerInfoBLL.AddWorkerInfo(newWorker);
+        if(!workerInfoBLL.AddWorkerInfo(newWorker))
+        {
+            Response.Write("<script language='javascript'>alert('用户数据注册失败。请重试或联系管理员');location.href='../Management/bgIndex.aspx'</script>");
+            return;
+        }
+        else
+        {
+            Response.Write("<script language='javascript'>alert('添加工作人员成功');location.href='AddWorker.aspx'</script>");
+        }
     }
     protected void DDLShop_SelectedIndexChanged(object sender, EventArgs e)
     {

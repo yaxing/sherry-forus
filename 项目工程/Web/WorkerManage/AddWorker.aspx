@@ -5,12 +5,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title>添加新的工作人员</title>
+    <link rel="stylesheet" type="text/css" href="../Management/bgStyle.css" />
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
+        <table cellspacing="1" cellpadding="3" width="790px" align="center" border="0">
+           <tr>
+             <td valign="top" width="100%">
+               <p><br /></p>
+             </td>
+           </tr>
+         </table>
+         <table class="tableBorder" cellspacing="1" cellpadding="2" width="790px" align="center" border="0">
+           <tr>
+           <th width="100%" height="25px" class="tableHeaderText">添加新的工作人员</th>
+           </tr>
+         </table>
+         
+         
+         <div align="center">
           <asp:CreateUserWizard ID="CreateUserWizard" runat="server" OnCreatedUser="CreateUserWizard_CreatedUser"
-                ContinueDestinationPageUrl="~/Management/bgIndex.aspx" CreateUserButtonText="添加工作人员">
+                ContinueDestinationPageUrl="~/Management/bgIndex.aspx" CreateUserButtonText="添加工作人员" LoginCreatedUser="False">
                 <WizardSteps>
                     <asp:CreateUserWizardStep ID="CreateUserWizardStep1" runat="server">
                         <ContentTemplate>
@@ -166,7 +182,14 @@
                     </asp:CompleteWizardStep>
                 </WizardSteps>
             </asp:CreateUserWizard>
-        &nbsp;
+            </div>
+            
+            
+            <table class="tableBorder" cellspacing="1" cellpadding="2" width="790px" align="center" border="0">
+           <tr>
+             <th width="100%" class="tableHeaderText" style="height: 25px" />
+           </tr>
+         </table>
     </div>
     </form>
 </body>

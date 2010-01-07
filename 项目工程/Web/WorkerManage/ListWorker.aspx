@@ -5,11 +5,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title>工作人员列表</title>
+    <link rel="stylesheet" type="text/css" href="../Management/bgStyle.css" />
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:GridView ID="WorkerList" runat="server" AutoGenerateColumns="False" DataKeyNames="WorkerID,WorkerLv,ManageID" OnRowDeleting="WorkerList_RowDeleting" OnRowEditing="WorkerList_RowEditing">
+        <table cellspacing="1" cellpadding="3" width="790px" align="center" border="0">
+           <tr>
+             <td valign="top" width="100%">
+               <p><br /></p>
+             </td>
+           </tr>
+         </table>
+         <table class="tableBorder" cellspacing="1" cellpadding="2" width="790px" align="center" border="0">
+           <tr>
+           <th width="100%" height="25px" class="tableHeaderText">工作人员列表</th>
+           </tr>
+         </table>
+         
+         <div align="center">
+        <asp:GridView ID="WorkerList" runat="server" AutoGenerateColumns="False" DataKeyNames="WorkerID,WorkerLv,ManageID" OnRowDeleting="WorkerList_RowDeleting" OnRowEditing="WorkerList_RowEditing" AllowPaging="True" OnPageIndexChanging="WorkerList_PageIndexChanging" Width="790px">
             <Columns>
                 <asp:BoundField DataField="WorkerName" HeaderText="工作人员名" />
                 <asp:BoundField DataField="WorkerNum" HeaderText="工号" />
@@ -22,8 +37,13 @@
                 <asp:ButtonField Text="编辑" CommandName="Edit" />
             </Columns>
         </asp:GridView>
+         </div>
         
-        
+        <table class="tableBorder" cellspacing="1" cellpadding="2" width="790px" align="center" border="0">
+           <tr>
+             <th width="100%" class="tableHeaderText" style="height: 25px" />
+           </tr>
+         </table>
         
     </div>
     </form>
