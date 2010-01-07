@@ -1,14 +1,14 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ShowOrdersForManager.aspx.cs"
-    Inherits="Management_ShowOrdersForManager" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ShowOrderForWorker.aspx.cs" Inherits="ShowOrderForWorker" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title>Untitled Page</title>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+    <div>
             <asp:Panel ID="pOrderList" runat="server">
                 <div style="position: relative; left: 30px; top: 30px">
                     <asp:GridView ID="gvOrderList" runat="server" AutoGenerateColumns="False" GridLines="None"
