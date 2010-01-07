@@ -15,9 +15,12 @@
                   <ItemTemplate>
                     <blockquote>
                         标题：<%# DataBinder.Eval(Container.DataItem,"Topic") %>
-                        内容:<%# DataBinder.Eval(Container.DataItem,"Messages") %>
-                        管理员回复:<%# DataBinder.Eval(Container.DataItem,"Reply") %>
                     </blockquote>
+                      <blockquote>
+                          内容:：<%# DataBinder.Eval(Container.DataItem,"Messages") %></blockquote>
+                      <blockquote>
+                          管理员回复：<%# DataBinder.Eval(Container.DataItem,"Reply") %>
+                      </blockquote>
                    </ItemTemplate>
 
                

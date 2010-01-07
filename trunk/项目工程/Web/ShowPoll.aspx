@@ -3,6 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="contentHolder" runat="Server">
     <div>
         <asp:Label ID="lbTitle" runat="server" Text=""></asp:Label>
-        <asp:Image runat="server" ID="map" Width="100%" />
+        <asp:Image runat="server" ID="map" Width="96%" />
     </div>
 </asp:Content>

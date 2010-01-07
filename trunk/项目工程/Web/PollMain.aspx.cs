@@ -89,8 +89,7 @@ public partial class PollMain : System.Web.UI.Page
         }
 
         string parentId = ((Label)e.Item.FindControl("lbId")).Text;
-        //OleDbDataReader reader = AccessDBUtil.ExecuteReader("select * from [voteOption] where [parentId] = " + parentId);
-
+        
         IList<SubPoll> subPollList = new List<SubPoll>();
         PollInfoBLL subPoll = new PollInfoBLL();
         MainPoll mainPoll = new MainPoll();
@@ -172,7 +171,6 @@ public partial class PollMain : System.Web.UI.Page
                             subPoll.SubPollID = Int32.Parse(li.Value.ToString());
                             update.UpdatePollNum(subPoll);
                         }
-                        //AccessDBUtil.ExecuteNonQuery("update [voteOption] set [ballots] = [ballots] + 1 where [id] = " + li.Value);
                     }
                 }
 
@@ -187,7 +185,6 @@ public partial class PollMain : System.Web.UI.Page
                     subPoll.SubPollID = Int32.Parse(rbl.SelectedValue.ToString());
                     update.UpdatePollNum(subPoll);
                 }
-                //AccessDBUtil.ExecuteNonQuery("update [voteOption] set [ballots] = [ballots] + 1 where [id] = " + rbl.SelectedValue);
             }
             Response.Redirect("ShowPoll.aspx?id=" + e.CommandArgument.ToString());
         }
@@ -221,4 +218,18 @@ public partial class PollMain : System.Web.UI.Page
 
     }
     #endregion
+
+    protected void PrevOnClick(object source, EventArgs e)
+    {
+        int currentPage = Convert.ToInt32(ViewState["currentPage"]);
+        if (currentPage == 0)
+        {
+            this.RegisterStartupScript("msg", "<script>alert('这是第一页了！')</script>");
+            return;
+        }
+        currentPage--;
+        ViewState["currentPage"] = currentPage.ToString();
+
+        bindRepeater(currentPage);
+    }
 }
