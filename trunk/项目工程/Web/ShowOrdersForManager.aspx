@@ -23,7 +23,7 @@
                                     <table>
                                         <tr>
                                             <td align="center" style="width: 50px">
-                                                <a href='OrderManage.aspx?ID=<%#Eval("OrderID") %>'>
+                                                <a href='ShowOrdersForManager.aspx?ID=<%#Eval("OrderID") %>'>
                                                     <%#Eval("OrderID") %>
                                                 </a>
                                             </td>
@@ -116,16 +116,12 @@
                         <tr>
                             <td style="width: 200px">
                             </td>
-                            <td align="right" style="font-size: 12px; font-weight: bold">
-                                <%--<asp:Button ID="bCancel" runat="server" OnClick="bCancel_Click" CssClass="register"
-                                    Text="撤销订单" />
-                                <asp:Button ID="bReturn" runat="server" Text="退货" CssClass="register" OnClick="bReturn_Click" />--%>
+                            <td align="left" style="font-size: 12px; font-weight: bold">
+                                <asp:Button ID="cPicking" runat="server" Text="确认发货" />
+                                <asp:Button ID="cReturn" runat="server" Text="确认退货" />
                             </td>
                             <td>
-                                <%--<asp:Button ID="imgbPay" runat="server" OnClick="imgbPay_Click" CssClass="register"
-                                    Text="付 款" />
-                                <asp:Button ID="bConfirm" runat="server" OnClick="bConfirm_Click" CssClass="register"
-                                    Text="确认收货" />--%>
+                                <asp:Button ID="rReturn" runat="server" Text="退货驳回" />
                             </td>
                         </tr>
                     </table>
