@@ -366,10 +366,15 @@ public partial class Management_ShowOrdersForManager : System.Web.UI.Page
                 state = "交易完成";
                 //bReturn.Visible = true;
                 break;
+
             case 4:
+                state = "交易失败";
+                break;
+            case 5:
                 state = "申请退货";
-                //cReturn.Visible = true;
-                //rReturn.Visible = true;
+                break;
+            case 6:
+                state = "退货驳回";
                 break;
         }
         lState.Text = state;
