@@ -376,4 +376,30 @@ public partial class Management_ShowOrdersForManager : System.Web.UI.Page
         return true;
     }
     #endregion
+
+    protected void cPicking_Click(object sender, EventArgs e)
+    {
+        OrderInfo orderInfo = new OrderInfo();
+        orderInfo.OrderID = Convert.ToInt32(lOrderID.Text);
+        shipping = new LogisticsInfoBLL();
+        if(!shipping.ConfirmPicking(orderInfo))
+            Response.Write("<script>alert('发货确认失败！请尝试重新尝试');history.go(-1);</script>");
+
+    }
+    protected void cReturn_Click(object sender, EventArgs e)
+    {
+        OrderInfo orderInfo = new OrderInfo();
+        orderInfo.OrderID = Convert.ToInt32(lOrderID.Text);
+        shipping = new LogisticsInfoBLL();
+        if(!shipping.ConfirmReturning(orderInfo))
+            Response.Write("<script>alert('退货确认失败！请尝试重新尝试');history.go(-1);</script>");
+    }
+    protected void rReturn_Click(object sender, EventArgs e)
+    {
+        OrderInfo orderInfo = new OrderInfo();
+        orderInfo.OrderID = Convert.ToInt32(lOrderID.Text);
+        shipping = new LogisticsInfoBLL();
+        if(!shipping.RefuseReturning(orderInfo))
+            Response.Write("<script>alert('退货驳回失败！请尝试重新尝试');history.go(-1);</script>");
+    }
 }
