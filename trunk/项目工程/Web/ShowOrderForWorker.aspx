@@ -23,7 +23,7 @@
                                     <table>
                                         <tr>
                                             <td align="center" style="width: 50px">
-                                                <a href='ShowOrdersForManager.aspx?ID=<%#Eval("OrderID") %>'>
+                                                <a href='ShowOrderForWorker.aspx?ID=<%#Eval("OrderID") %>'>
                                                     <%#Eval("OrderID") %>
                                                 </a>
                                             </td>
