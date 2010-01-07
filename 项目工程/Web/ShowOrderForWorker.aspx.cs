@@ -18,25 +18,28 @@ public partial class ShowOrderForWorker : System.Web.UI.Page
     IShipping shipping;
     protected void Page_Load(object sender, EventArgs e)
     {
-        orderId = Convert.ToInt32(Request.QueryString["ID"]);
-        gvOrderList.AllowPaging = true;
-        gvOrderList.PageSize = 10;
-        gvItemList.AllowPaging = true;
-        gvItemList.PageSize = 5;
-        if (orderId <= 0)
+        if (!IsPostBack)
         {
-            if (!mainOrderDatabind())
+            orderId = Convert.ToInt32(Request.QueryString["ID"]);
+            gvOrderList.AllowPaging = true;
+            gvOrderList.PageSize = 10;
+            gvItemList.AllowPaging = true;
+            gvItemList.PageSize = 5;
+            if (orderId <= 0)
             {
-                Response.Write("<script>alert('数据绑定失败！请尝试重新操作');history.go(-1);</script>");
-                return;
+                if (!mainOrderDatabind())
+                {
+                    Response.Write("<script>alert('数据绑定失败！请尝试重新操作');history.go(-1);</script>");
+                    return;
+                }
             }
-        }
-        else
-        {
-            if (!subOrderDatabind())
+            else
             {
-                Response.Write("<script>alert('数据绑定失败！请尝试重新操作');history.go(-1);</script>");
-                return;
+                if (!subOrderDatabind())
+                {
+                    Response.Write("<script>alert('数据绑定失败！请尝试重新操作');history.go(-1);</script>");
+                    return;
+                }
             }
         }
     }
@@ -381,6 +384,15 @@ public partial class ShowOrderForWorker : System.Web.UI.Page
         shipping = new LogisticsInfoBLL();
         if (!shipping.ConfirmPicking(orderInfo))
             Response.Write("<script>alert('发货确认失败！请尝试重新尝试');history.go(-1);</script>");
+        else
+        {
+            Response.Write("<script>alert('发货确认成功！');</script>");
+            orderId = Convert.ToInt32(lOrderID.Text);
+            if (!subOrderDatabind())
+            {
+                Response.Write("<script>alert('数据绑定失败！请尝试重新操作');history.go(-1);</script>");
+            }
+        }
 
     }
     protected void cReturn_Click(object sender, EventArgs e)
@@ -390,6 +402,16 @@ public partial class ShowOrderForWorker : System.Web.UI.Page
         shipping = new LogisticsInfoBLL();
         if (!shipping.ConfirmReturning(orderInfo))
             Response.Write("<script>alert('退货确认失败！请尝试重新尝试');history.go(-1);</script>");
+        else
+        {
+            Response.Write("<script>alert('退货确认成功！');</script>");
+            orderId = Convert.ToInt32(lOrderID.Text);
+            if (!subOrderDatabind())
+            {
+                Response.Write("<script>alert('数据绑定失败！请尝试重新操作');history.go(-1);</script>");
+                return;
+            }
+        }
     }
     protected void rReturn_Click(object sender, EventArgs e)
     {
@@ -398,5 +420,15 @@ public partial class ShowOrderForWorker : System.Web.UI.Page
         shipping = new LogisticsInfoBLL();
         if (!shipping.RefuseReturning(orderInfo))
             Response.Write("<script>alert('退货驳回失败！请尝试重新尝试');history.go(-1);</script>");
+        else
+        {
+            Response.Write("<script>alert('退货驳回成功！');</script>");
+            orderId = Convert.ToInt32(lOrderID.Text);
+            if (!subOrderDatabind())
+            {
+                Response.Write("<script>alert('数据绑定失败！请尝试重新操作');history.go(-1);</script>");
+                return;
+            }
+        }
     }
 }
