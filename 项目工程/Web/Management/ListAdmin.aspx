@@ -5,13 +5,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title>管理员列表</title>
+    <link rel="stylesheet" type="text/css" href="bgStyle.css" />
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-       <asp:GridView ID="AdminList" runat="server" AutoGenerateColumns="False" 
-        DataKeyNames="AdminID" OnRowEditing="AdminList_RowEditing" OnRowCancelingEdit="AdminList_RowCancelingEdit" OnRowUpdating="AdminList_RowUpdating" OnRowDeleting="AdminList_RowDeleting" AllowPaging="True" OnPageIndexChanging="AdminList_PageIndexChanging">
-        <Columns>
+        <table cellspacing="1" cellpadding="3" width="790px" align="center" border="0">
+           <tr>
+             <td valign="top" width="100%">
+               <p><br /></p>
+             </td>
+           </tr>
+         </table>
+         <table class="tableBorder" cellspacing="1" cellpadding="2" width="790px" align="center" border="0">
+           <tr>
+           <th width="100%" height="25px" class="tableHeaderText">管理员列表</th>
+           </tr>
+         </table>
+         <div align="center">
+           <asp:GridView ID="AdminList" runat="server" AutoGenerateColumns="False" 
+           DataKeyNames="AdminID" OnRowEditing="AdminList_RowEditing" OnRowCancelingEdit="AdminList_RowCancelingEdit" OnRowUpdating="AdminList_RowUpdating" OnRowDeleting="AdminList_RowDeleting" AllowPaging="True" OnPageIndexChanging="AdminList_PageIndexChanging" Width="790px">
+           <Columns>
             <asp:BoundField DataField="AdminName" HeaderText="管理员名" ReadOnly="True" />
             <asp:TemplateField HeaderText="类型">
                 <EditItemTemplate>
@@ -31,8 +45,15 @@
             <asp:ButtonField Text="删除" CommandName="Delete" />
             <asp:CommandField CancelText="取消" DeleteText="删除" EditText="职务调整" InsertText="插入"
                 NewText="新建" SelectText="选中" ShowEditButton="True" UpdateText="更新" />
-        </Columns>
-    </asp:GridView>
+           </Columns>
+           </asp:GridView>
+         </div>
+         <table class="tableBorder" cellspacing="1" cellpadding="2" width="790px" align="center" border="0">
+           <tr>
+             <th width="100%" class="tableHeaderText" style="height: 25px">&nbsp;</th>
+           </tr>
+         </table>
+       
     </div>
     </form>
 </body>
