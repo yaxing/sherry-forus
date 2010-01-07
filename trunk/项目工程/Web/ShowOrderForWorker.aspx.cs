@@ -4,7 +4,6 @@
 using System;
 using System.Data;
 using System.Collections.Generic;
-using System.Web.Security;
 using System.Web.UI.WebControls;
 using System.Drawing;
 using BLL;
@@ -258,7 +257,7 @@ public partial class ShowOrderForWorker : System.Web.UI.Page
         IList<OrderInfo> orderInfoList = new List<OrderInfo>();
         shipping = new LogisticsInfoBLL();
         //获取需要显示的订单列表(仅包括订单ID)
-        if (!shipping.SrchOrderListByManagerID(ref orderInfoList, new Guid("1ac90496-d3e0-4141-9d3c-5898e0941474")))//(Guid)Membership.GetUser().ProviderUserKey)) 
+        if (!shipping.SrchOrderListByWorkerID(ref orderInfoList, new Guid("1ac90496-d3e0-4141-9d3c-5898e0941474")))//(Guid)Membership.GetUser().ProviderUserKey)) 
         {
             return false;
         }
