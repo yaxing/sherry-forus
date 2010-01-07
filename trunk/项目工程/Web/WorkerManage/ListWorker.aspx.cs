@@ -136,4 +136,9 @@ public partial class WorkerManage_ListWorker : System.Web.UI.Page
 
         Response.Redirect("ModiWorker.aspx?workID="+workID);
     }
+    protected void WorkerList_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        this.WorkerList.PageIndex = e.NewPageIndex;
+        ListBind();
+    }
 }
