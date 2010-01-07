@@ -260,7 +260,7 @@ public partial class Management_ShowOrdersForManager : System.Web.UI.Page
         IList<OrderInfo> orderInfoList = new List<OrderInfo>();
         shipping = new LogisticsInfoBLL();
         //获取需要显示的订单列表(仅包括订单ID)
-        if (!shipping.SrchOrderListByManagerID(ref orderInfoList, new Guid("1ac90496-d3e0-4141-9d3c-5898e0941474")))//(Guid)Membership.GetUser().ProviderUserKey)) 
+        if (!shipping.SrchOrderListByWorkerID(ref orderInfoList, new Guid("aa2a2a35-6a6e-4ec0-93b2-2f850f3eaca9")))//(Guid)Membership.GetUser().ProviderUserKey)) 
         {
             return false;
         }
@@ -331,9 +331,9 @@ public partial class Management_ShowOrdersForManager : System.Web.UI.Page
         lTotalPrice.Text = String.Format("{0:C}", Convert.ToDouble(items.Rows[0]["orderPrice"].ToString()));
         lOrderTime.Text = items.Rows[0]["orderTime"].ToString();
 
-        cPicking.Visible = false;
-        cReturn.Visible = false;
-        rReturn.Visible = false;
+        //cPicking.Visible = false;
+        //cReturn.Visible = false;
+        //rReturn.Visible = false;
 
         switch (Convert.ToInt32(items.Rows[0]["orderState"].ToString()))
         {
@@ -342,12 +342,12 @@ public partial class Management_ShowOrdersForManager : System.Web.UI.Page
                 if (Convert.ToInt32(items.Rows[0]["isPaid"].ToString()) == 0)
                 {
                     state += "，货到付款";
-                    cPicking.Visible = true;
+                    //cPicking.Visible = true;
                 }
                 else
                 {
                     state += "，货款已付";
-                    cPicking.Visible = true;
+                    //cPicking.Visible = true;
                 }
                 break;
             case 1:
@@ -368,8 +368,8 @@ public partial class Management_ShowOrdersForManager : System.Web.UI.Page
                 break;
             case 4:
                 state = "申请退货";
-                cReturn.Visible = true;
-                rReturn.Visible = true;
+                //cReturn.Visible = true;
+                //rReturn.Visible = true;
                 break;
         }
         lState.Text = state;
@@ -377,29 +377,29 @@ public partial class Management_ShowOrdersForManager : System.Web.UI.Page
     }
     #endregion
 
-    protected void cPicking_Click(object sender, EventArgs e)
-    {
-        OrderInfo orderInfo = new OrderInfo();
-        orderInfo.OrderID = Convert.ToInt32(lOrderID.Text);
-        shipping = new LogisticsInfoBLL();
-        if(!shipping.ConfirmPicking(orderInfo))
-            Response.Write("<script>alert('发货确认失败！请尝试重新尝试');history.go(-1);</script>");
+    //protected void cPicking_Click(object sender, EventArgs e)
+    //{
+    //    OrderInfo orderInfo = new OrderInfo();
+    //    orderInfo.OrderID = Convert.ToInt32(lOrderID.Text);
+    //    shipping = new LogisticsInfoBLL();
+    //    if(!shipping.ConfirmPicking(orderInfo))
+    //        Response.Write("<script>alert('发货确认失败！请尝试重新尝试');history.go(-1);</script>");
 
-    }
-    protected void cReturn_Click(object sender, EventArgs e)
-    {
-        OrderInfo orderInfo = new OrderInfo();
-        orderInfo.OrderID = Convert.ToInt32(lOrderID.Text);
-        shipping = new LogisticsInfoBLL();
-        if(!shipping.ConfirmReturning(orderInfo))
-            Response.Write("<script>alert('退货确认失败！请尝试重新尝试');history.go(-1);</script>");
-    }
-    protected void rReturn_Click(object sender, EventArgs e)
-    {
-        OrderInfo orderInfo = new OrderInfo();
-        orderInfo.OrderID = Convert.ToInt32(lOrderID.Text);
-        shipping = new LogisticsInfoBLL();
-        if(!shipping.RefuseReturning(orderInfo))
-            Response.Write("<script>alert('退货驳回失败！请尝试重新尝试');history.go(-1);</script>");
-    }
+    //}
+    //protected void cReturn_Click(object sender, EventArgs e)
+    //{
+    //    OrderInfo orderInfo = new OrderInfo();
+    //    orderInfo.OrderID = Convert.ToInt32(lOrderID.Text);
+    //    shipping = new LogisticsInfoBLL();
+    //    if(!shipping.ConfirmReturning(orderInfo))
+    //        Response.Write("<script>alert('退货确认失败！请尝试重新尝试');history.go(-1);</script>");
+    //}
+    //protected void rReturn_Click(object sender, EventArgs e)
+    //{
+    //    OrderInfo orderInfo = new OrderInfo();
+    //    orderInfo.OrderID = Convert.ToInt32(lOrderID.Text);
+    //    shipping = new LogisticsInfoBLL();
+    //    if(!shipping.RefuseReturning(orderInfo))
+    //        Response.Write("<script>alert('退货驳回失败！请尝试重新尝试');history.go(-1);</script>");
+    //}
 }
