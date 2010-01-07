@@ -17,6 +17,6 @@ public partial class Management_BgLogin : System.Web.UI.Page
     }
     protected void BgLogin_LoggedIn(object sender, EventArgs e)
     {
-        Response.Redirect("bgIndex.aspx");
+        Response.Redirect("Index.html");
     }
 }

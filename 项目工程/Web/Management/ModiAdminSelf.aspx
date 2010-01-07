@@ -5,10 +5,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title>个人信息修改</title>
+    <link rel="stylesheet" type="text/css" href="bgStyle.css" />
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
+    <table cellspacing="1" cellpadding="3" width="790px" align="center" border="0">
+           <tr>
+             <td valign="top" width="100%">
+               <p><br /></p>
+             </td>
+           </tr>
+         </table>
+         <table class="tableBorder" cellspacing="1" cellpadding="2" width="790px" align="center" border="0">
+           <tr>
+           <th width="100%" height="25px" class="tableHeaderText">个人信息修改</th>
+           </tr>
+         </table>
+         
+         
+         <div align="center">
       <table>
         <tr>
           <td colspan="2" align="center">
@@ -56,6 +72,13 @@
               <asp:Button ID="btnReset" runat="server" Text="重置" OnClick="btnReset_Click" /></td>
         </tr>
       </table>
+      </div>
+      
+      <table class="tableBorder" cellspacing="1" cellpadding="2" width="790px" align="center" border="0">
+           <tr>
+             <th width="100%" class="tableHeaderText" style="height: 25px">&nbsp;</th>
+           </tr>
+         </table>
     </div>
     </form>
 </body>
