@@ -3,18 +3,9 @@
 ////功  能：订单管理
 using System;
 using System.Data;
-using System.Configuration;
-using System.Collections;
-using System.Collections.Generic;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using System.Drawing;
 using BLL;
-using DAL;
 using Entity;
 using InterFace;
 
@@ -529,9 +520,8 @@ public partial class OrderManage : System.Web.UI.Page
     {
         OrderInfo curOrder = new OrderInfo();
         curOrder.OrderID = Convert.ToInt32(lOrderID.Text.ToString());
-        OrderCtrlBLL confirmOrder = new OrderCtrlBLL();
-        confirmOrder.InitialOrderCtrl(curOrder);
-        if (!confirmOrder.ChangeOrderState(3))
+        IShipping confirmOrder = new LogisticsInfoBLL();
+        if (!confirmOrder.ConfirmReceiving(curOrder))
         {
             Response.Write("<script>alert('订单状态修改出错，请重新操作！');history.go(-1);</script>");
             return;
