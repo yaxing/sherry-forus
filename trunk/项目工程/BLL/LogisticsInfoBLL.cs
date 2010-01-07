@@ -279,6 +279,7 @@ namespace BLL
         {
             LogisticsInfoBLL logisticsInfoBLL = new LogisticsInfoBLL();
             LogisticsInfo logisticsInfo = new LogisticsInfo();
+            logisticsInfo.MainOrderID = orderInfo.OrderID;
             if (!logisticsInfoBLL.SrchShippingInfo(ref logisticsInfo))
                 return false;
 
@@ -328,6 +329,7 @@ namespace BLL
         {
             LogisticsInfoBLL logisticsInfoBLL = new LogisticsInfoBLL();
             LogisticsInfo logisticsInfo = new LogisticsInfo();
+            logisticsInfo.MainOrderID = orderInfo.OrderID;
             if (!logisticsInfoBLL.SrchShippingInfo(ref logisticsInfo))
                 return false;
 
