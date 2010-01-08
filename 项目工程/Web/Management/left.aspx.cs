@@ -28,7 +28,7 @@ public partial class Management_left : System.Web.UI.Page
                     return;
                 }
 
-                if (admin.AdminLv == 1)
+                if (admin.AdminLv == 0)
                 {
                     //不对商品管理员显示
                     this.PanelAdmin.Visible = false;
@@ -36,13 +36,13 @@ public partial class Management_left : System.Web.UI.Page
                     this.PanelService.Visible = false;
                     this.PanelWorker.Visible = false;
                 }
-                if (admin.AdminLv == 2)
+                if (admin.AdminLv == 1)
                 {
                     //不对市场管理员显示
                     this.PanelWorker.Visible = false;
                     this.PanelAdmin.Visible = false;
                 }
-                if (admin.AdminLv == 3)
+                if (admin.AdminLv == 2)
                 {
                     //不对人事管理员显示
                     this.PanelGoods.Visible = false;
