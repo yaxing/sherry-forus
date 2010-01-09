@@ -22,11 +22,13 @@ public partial class ModiWorker : System.Web.UI.Page
     {
         if (!this.IsPostBack)
         {
+            int flag = 0;
             String workerID = Request["workID"];
             if (workerID == null || workerID == "")
             {
                 MembershipUser tmpUser = Membership.GetUser(User.Identity.Name);
                 workerID = tmpUser.ProviderUserKey.ToString();
+                flag = 1;
             }
             this.worker.WorkerID = new Guid(workerID);
             if (!workerBLL.SrchWorkerInfo(ref worker))
@@ -69,6 +71,11 @@ public partial class ModiWorker : System.Web.UI.Page
             if (!DDLManagerLoad(Convert.ToInt32(this.DDLShop.SelectedValue)))
             {
                 Response.Write("<script language='javascript'>alert('数据载入失败，请重试或联系管理员。');location.href='bgIndex.aspx';</script>");
+            }
+            if (flag == 0)
+            {
+                this.PanelPwd.Visible = false;
+                this.PanelButton.Visible = false;
             }
         }
         
@@ -202,7 +209,15 @@ public partial class ModiWorker : System.Web.UI.Page
     }
     protected void btnCommit_Click(object sender, EventArgs e)
     {
-        this.worker.WorkerID = new Guid(Request["workID"]);
+        String workerID = Request["workID"];
+        if (workerID == null || workerID == "")
+        {
+            MembershipUser tmpUser = Membership.GetUser(User.Identity.Name);
+            workerID = tmpUser.ProviderUserKey.ToString();
+            this.worker.WorkerID = new Guid(workerID);
+        }
+        else
+            this.worker.WorkerID = new Guid(workerID);
         this.worker.ShopID = Convert.ToInt32(this.DDLShop.SelectedValue);
         this.worker.WorkerLv = Convert.ToInt32(this.DDLWorkerLv.SelectedValue);
         if (worker.WorkerLv == 0)
@@ -223,6 +238,18 @@ public partial class ModiWorker : System.Web.UI.Page
         else
         {
             Response.Write("<script language='javascript'>alert('信息修改失败,请确认信息正确（邮箱可能已被使用）后重试或联系管理员。');location.href='ListWorker.aspx';</script>");
+        }
+    }
+    protected void btnPassword_Click(object sender, EventArgs e)
+    {
+        MembershipUser oldUser = Membership.GetUser(User.Identity.Name);
+        if (!oldUser.ChangePassword(this.txtPassword.Text, this.txtNewPwd.Text))
+        {
+            Response.Write("<script language='javascript'>alert('您的密码输入错误。');location.href='ModiWorker.aspx';</script>");
+        }
+        else
+        {
+            Response.Write("<script language='javascript'>alert('密码修改成功。');location.href='ModiWorker.aspx';</script>");
         }
     }
 }
