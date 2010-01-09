@@ -120,6 +120,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="4">
+                                        <asp:RegularExpressionValidator ID="revPwd" runat="server" ErrorMessage="密码应在6-16位之间" ToolTip="密码应在6-16位之间" ValidationGroup="CreateUserWizard" Display="Dynamic" ControlToValidate="Password" ValidationExpression="\d{6,16}"></asp:RegularExpressionValidator><br />
                                         <asp:CompareValidator ID="PasswordCompare" runat="server" ControlToCompare="Password" 
                                         ControlToValidate="ConfirmPassword" Display="Dynamic" ErrorMessage="“密码”和“确认密码”必须匹配。" 
                                         ValidationGroup="CreateUserWizard"></asp:CompareValidator>

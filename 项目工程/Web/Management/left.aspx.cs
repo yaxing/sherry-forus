@@ -49,6 +49,7 @@ public partial class Management_left : System.Web.UI.Page
                     this.PanelService.Visible = false;
                 }
 
+                this.ltlModiSelf.Text = "<a href='ModiAdminSelf.aspx' target='mainFrame'>修改个人信息</a>";
             }
             else if (User.IsInRole("工作人员"))
             {
@@ -71,6 +72,7 @@ public partial class Management_left : System.Web.UI.Page
                     //不对普通工作人员显示
                     this.PanelLogistic.Visible = false;
                 }
+                this.ltlModiSelf.Text = "<a href='../WorkerManage/ModiWorker.aspx' target='mainFrame'>修改个人信息</a>";
             }
             else
             {

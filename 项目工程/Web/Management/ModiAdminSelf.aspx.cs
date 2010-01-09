@@ -95,4 +95,16 @@ public partial class Management_ModiAdminSelf : System.Web.UI.Page
         this.txtPhoneNum.Text = admin.AdminPhoneNum;
         
     }
+    protected void btnPassword_Click(object sender, EventArgs e)
+    {
+        MembershipUser oldUser = Membership.GetUser(User.Identity.Name);
+        if (!oldUser.ChangePassword(this.txtPassword.Text, this.txtNewPwd.Text))
+        {
+            Response.Write("<script language='javascript'>alert('您的密码输入错误。');location.href='ModiAdminSelf.aspx';</script>");
+        }
+        else
+        {
+            Response.Write("<script language='javascript'>alert('密码修改成功。');location.href='ModiAdminSelf.aspx';</script>");
+        }
+    }
 }

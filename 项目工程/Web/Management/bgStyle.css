@@ -40,6 +40,18 @@ TD.txlRowHighlight {
 INPUT {
 	FONT-SIZE: 12px; LINE-HEIGHT: 15px; FONT-FAMILY: Tahoma,Verdana,宋体
 }
+
+input.submit
+{
+width:70px;
+height:20px;
+border:#6595d6 1px solid;
+cursor:pointer;
+text-align:center;
+float:right;
+color:#000000;
+}
+
 SELECT {
 	FONT-SIZE: 12px; LINE-HEIGHT: 15px; FONT-FAMILY: Tahoma,Verdana,宋体
 }

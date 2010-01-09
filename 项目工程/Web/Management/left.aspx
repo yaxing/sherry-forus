@@ -325,7 +325,8 @@ eval("submenu" + sid + ".style.display=\"none\";");
             <div class="sec_menu" style="WIDTH: 156px">
             <table cellspacing="0" cellpadding="0" width="135" align="center">
               <tr>
-                <td height=20 bgcolor="#D6DFF7" style="LINE-HEIGHT: 150%"><a href="Modiself.aspx" target="mainFrame">个人信息</a>
+                <td height=20 bgcolor="#D6DFF7" style="LINE-HEIGHT: 150%">
+                    <asp:Literal ID="ltlModiSelf" runat="server"></asp:Literal>
                 </td>
               </tr>
             </table>
