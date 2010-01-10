@@ -217,6 +217,41 @@ namespace DAL
         }
         #endregion
 
+        #region 按用户ID查询历史订单
+        /// <summary>
+        /// 根据用户ID获取历史订单
+        /// </summary>
+        /// <param name="userID">用户ID</param>
+        /// <param name="orders">订单datatable</param>
+        /// <returns>成功true，失败false</returns>
+        public bool GetHistoryOrderList(ref DataTable orders, Guid userID)
+        {
+            DataTable dt = null;
+            sqlString = "select * from mainOrderInfo where userID=@userID and (orderState=3 or orderState=4) order by orderTime desc";
+            sq = new SqlParameter[] { 
+                                new SqlParameter("@userID",SqlDbType.UniqueIdentifier)
+                                };
+            sq[0].Value = userID;
+
+            try
+            {
+                using (dp = new DataProvider())
+                {
+                    if ((dt = dp.ExecuteDataTable(sqlString, sq)) == null)
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            orders = dt;
+            return true;
+        }
+        #endregion
+
         #region 按订单ID查询订单项详细信息(datatable)
         /// <summary>
         /// 根据订单号得到订单项(返回DATATABLE)
