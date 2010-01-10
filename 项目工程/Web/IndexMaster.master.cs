@@ -44,11 +44,9 @@ public partial class IndexMaster : System.Web.UI.MasterPage
         {
             lsLogOut.Visible = false;
             lShowOrder.Visible = false;
-            lCountOp.Visible = false;
         }
         else 
         {
-            lCountOp.Visible = true;
             lsLogOut.Visible = true;
             lShowOrder.Visible = true;
         }

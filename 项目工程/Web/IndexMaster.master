@@ -8,6 +8,8 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="stylesheet" type="text/css" href="lightbox.css" />
 
+    <script type="text/javascript" src="js/lightBoxForPoll.js"></script>
+
     <script src="js/prototype.js" type="text/javascript"></script>
 
     <script src="js/scriptaculous.js?load=effects" type="text/javascript"></script>
@@ -18,8 +20,44 @@
 
     <script src="js/common.js" type="text/javascript"></script>
 
+    <style type="text/css">
+    
+html,body{ height:100%; padding:0; margin:0; font:normal 12px/22px Arial, Helvetica, sans-serif;}
+.row{ margin:5px 0;}
+input.input,textarea{ padding:5px; border:solid 1px #bbb; width:70%;font:normal 12px/150% Arial, Helvetica, sans-serif;}
+textarea{ height:80px;}
+b.label{ width:18%; float:left; display:inline-block;margin:6px 15px 0;}
+.Boxheader,.Boxfooter,.Boxbody{ position:relative;}
+
+.headerR,.FooterR,.BodyR{ float:left;width:20px; }
+.headerL,.FooterL,.BodyL{ float:left;}
+
+.headerR{background:url(images/lightbox-header.png) no-repeat right 0; height:46px;}
+.headerL{background:url(images/lightbox-header.png) no-repeat left 0; height:46px;padding:0 0 0 20px;}
+
+.FooterR{background:url(images/lightbox-footer.png) no-repeat right 0;height:59px;}
+.FooterL{background:url(images/lightbox-footer.png) no-repeat left 0;height:39px;padding:10px 0 10px 20px;}
+
+
+
+.BodyL{background:url(images/lightbox-body.png) repeat-y left 0;padding:10px 0 10px 20px;}
+.BodyR{background:url(images/lightbox-body.png) repeat-y right 0;}
+
+.BoxMask{ height:100%; width:100%;left:0; top:0; background:#000;opacity:0.25;filter:alpha(opacity=25);}
+
+.Boxfooter{height:59px; }
+.Boxbody{overflow:hidden;}
+.Boxheader{ height:46px;cursor:move; }
+.Boxfooter .btn{ display:inline-block; float:right; margin:10px 10px 0 0;}
+</style>
 </head>
 <body>
+
+    <script type="text/javascript">
+var html3 = '<iframe src="PollMain.aspx" width=500 height=327 frameborder="0"></iframe>';
+var	footerhtml3='<input type="image" alt="Cancel" src="images/cancel.png" class="btn" id="msg3cancel" />';
+    </script>
+
     <form id="form1" runat="server">
         <div id="wrap">
             <div class="header">
@@ -41,6 +79,7 @@
                         </span>
                         <asp:Label ID="lShowOrder" runat="server"><a href="OrderManage.aspx">我的订单</a></asp:Label>
                         <asp:LoginStatus ID="lsLogOut" runat="server" LoginText="" LogoutText="注销登录" LogoutPageUrl="javascript:history.go(-1);" />
+                        <a href="#" onclick='Box("msg3",500,327,html3,footerhtml3);'>用户调查</a>
                     </div>
                     <div class="cart">
                         <div class="title">
