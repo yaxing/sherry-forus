@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Report" targetNamespace="http://tempuri.org/Report.xsd" xmlns:mstns="http://tempuri.org/Report.xsd" xmlns="http://tempuri.org/Report.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Report" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="Report" msprop:Generator_DataSetName="Report">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MemberReport" msprop:Generator_UserTableName="MemberReport" msprop:Generator_RowDeletedName="MemberReportRowDeleted" msprop:Generator_RowChangedName="MemberReportRowChanged" msprop:Generator_RowClassName="MemberReportRow" msprop:Generator_RowChangingName="MemberReportRowChanging" msprop:Generator_RowEvArgName="MemberReportRowChangeEvent" msprop:Generator_RowEvHandlerName="MemberReportRowChangeEventHandler" msprop:Generator_TableClassName="MemberReportDataTable" msprop:Generator_TableVarName="tableMemberReport" msprop:Generator_RowDeletingName="MemberReportRowDeleting" msprop:Generator_TablePropName="MemberReport">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="AgeGap" msprop:Generator_UserColumnName="AgeGap" msprop:Generator_ColumnVarNameInTable="columnAgeGap" msprop:Generator_ColumnPropNameInRow="AgeGap" msprop:Generator_ColumnPropNameInTable="AgeGapColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Amount" msprop:Generator_UserColumnName="Amount" msprop:Generator_ColumnVarNameInTable="columnAmount" msprop:Generator_ColumnPropNameInRow="Amount" msprop:Generator_ColumnPropNameInTable="AmountColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Percent" msprop:Generator_UserColumnName="Percent" msprop:Generator_ColumnVarNameInTable="columnPercent" msprop:Generator_ColumnPropNameInRow="Percent" msprop:Generator_ColumnPropNameInTable="PercentColumn" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="GoodsSalesReport" msprop:Generator_UserTableName="GoodsSalesReport" msprop:Generator_RowDeletedName="GoodsSalesReportRowDeleted" msprop:Generator_RowChangedName="GoodsSalesReportRowChanged" msprop:Generator_RowClassName="GoodsSalesReportRow" msprop:Generator_RowChangingName="GoodsSalesReportRowChanging" msprop:Generator_RowEvArgName="GoodsSalesReportRowChangeEvent" msprop:Generator_RowEvHandlerName="GoodsSalesReportRowChangeEventHandler" msprop:Generator_TableClassName="GoodsSalesReportDataTable" msprop:Generator_TableVarName="tableGoodsSalesReport" msprop:Generator_RowDeletingName="GoodsSalesReportRowDeleting" msprop:Generator_TablePropName="GoodsSalesReport">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="OverallSalesAmount" msprop:Generator_UserColumnName="OverallSalesAmount" msprop:Generator_ColumnVarNameInTable="columnOverallSalesAmount" msprop:Generator_ColumnPropNameInRow="OverallSalesAmount" msprop:Generator_ColumnPropNameInTable="OverallSalesAmountColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="PhoneSalesAmount" msprop:Generator_UserColumnName="PhoneSalesAmount" msprop:Generator_ColumnVarNameInTable="columnPhoneSalesAmount" msprop:Generator_ColumnPropNameInRow="PhoneSalesAmount" msprop:Generator_ColumnPropNameInTable="PhoneSalesAmountColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="ShopSalesAmount" msprop:Generator_UserColumnName="ShopSalesAmount" msprop:Generator_ColumnVarNameInTable="columnShopSalesAmount" msprop:Generator_ColumnPropNameInRow="ShopSalesAmount" msprop:Generator_ColumnPropNameInTable="ShopSalesAmountColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="OnlineSalesAmount" msprop:Generator_UserColumnName="OnlineSalesAmount" msprop:Generator_ColumnVarNameInTable="columnOnlineSalesAmount" msprop:Generator_ColumnPropNameInRow="OnlineSalesAmount" msprop:Generator_ColumnPropNameInTable="OnlineSalesAmountColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="GoodsCategory" msprop:Generator_UserColumnName="GoodsCategory" msprop:Generator_ColumnVarNameInTable="columnGoodsCategory" msprop:Generator_ColumnPropNameInRow="GoodsCategory" msprop:Generator_ColumnPropNameInTable="GoodsCategoryColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="OverallPercent" msprop:Generator_UserColumnName="OverallPercent" msprop:Generator_ColumnVarNameInTable="columnOverallPercent" msprop:Generator_ColumnPropNameInRow="OverallPercent" msprop:Generator_ColumnPropNameInTable="OverallPercentColumn" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MemberSalesReport" msprop:Generator_UserTableName="MemberSalesReport" msprop:Generator_RowDeletedName="MemberSalesReportRowDeleted" msprop:Generator_RowChangedName="MemberSalesReportRowChanged" msprop:Generator_RowClassName="MemberSalesReportRow" msprop:Generator_RowChangingName="MemberSalesReportRowChanging" msprop:Generator_RowEvArgName="MemberSalesReportRowChangeEvent" msprop:Generator_RowEvHandlerName="MemberSalesReportRowChangeEventHandler" msprop:Generator_TableClassName="MemberSalesReportDataTable" msprop:Generator_TableVarName="tableMemberSalesReport" msprop:Generator_RowDeletingName="MemberSalesReportRowDeleting" msprop:Generator_TablePropName="MemberSalesReport">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="OverallSalesAmount" msprop:Generator_UserColumnName="OverallSalesAmount" msprop:Generator_ColumnVarNameInTable="columnOverallSalesAmount" msprop:Generator_ColumnPropNameInRow="OverallSalesAmount" msprop:Generator_ColumnPropNameInTable="OverallSalesAmountColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="PhoneSalesAmount" msprop:Generator_UserColumnName="PhoneSalesAmount" msprop:Generator_ColumnVarNameInTable="columnPhoneSalesAmount" msprop:Generator_ColumnPropNameInRow="PhoneSalesAmount" msprop:Generator_ColumnPropNameInTable="PhoneSalesAmountColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="ShopSalesAmount" msprop:Generator_UserColumnName="ShopSalesAmount" msprop:Generator_ColumnVarNameInTable="columnShopSalesAmount" msprop:Generator_ColumnPropNameInRow="ShopSalesAmount" msprop:Generator_ColumnPropNameInTable="ShopSalesAmountColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="OnlineSalesAmount" msprop:Generator_UserColumnName="OnlineSalesAmount" msprop:Generator_ColumnVarNameInTable="columnOnlineSalesAmount" msprop:Generator_ColumnPropNameInRow="OnlineSalesAmount" msprop:Generator_ColumnPropNameInTable="OnlineSalesAmountColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="OverallPercent" msprop:Generator_UserColumnName="OverallPercent" msprop:Generator_ColumnVarNameInTable="columnOverallPercent" msprop:Generator_ColumnPropNameInRow="OverallPercent" msprop:Generator_ColumnPropNameInTable="OverallPercentColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="AgeGap" msprop:Generator_UserColumnName="AgeGap" msprop:Generator_ColumnVarNameInTable="columnAgeGap" msprop:Generator_ColumnPropNameInRow="AgeGap" msprop:Generator_ColumnPropNameInTable="AgeGapColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
