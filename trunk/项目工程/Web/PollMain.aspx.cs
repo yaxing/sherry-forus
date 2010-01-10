@@ -16,7 +16,6 @@ using Entity;
 public partial class PollMain : System.Web.UI.Page
 {
     const int PAGE_SIZE = 1;
-
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -29,12 +28,9 @@ public partial class PollMain : System.Web.UI.Page
         }
 
         int currentPage = Convert.ToInt32(ViewState["currentPage"]);
-        
+
         bindRepeater(currentPage);
-
-        
     }
-
     private void bindRepeater(int currentPage)
     {
         IList<MainPoll> ds = new List<MainPoll>();
@@ -74,7 +70,6 @@ public partial class PollMain : System.Web.UI.Page
             }
             dt.Rows.Add(dr);
         }
-
         Repeater1.DataSource = dt;
         Repeater1.DataBind();
     }
@@ -89,7 +84,7 @@ public partial class PollMain : System.Web.UI.Page
         }
 
         string parentId = ((Label)e.Item.FindControl("lbId")).Text;
-        
+
         IList<SubPoll> subPollList = new List<SubPoll>();
         PollInfoBLL subPoll = new PollInfoBLL();
         MainPoll mainPoll = new MainPoll();
@@ -194,7 +189,8 @@ public partial class PollMain : System.Web.UI.Page
             int currentPage = Convert.ToInt32(ViewState["currentPage"]);
             if (currentPage == pageLength - 1)
             {
-                this.RegisterStartupScript("msg", "<script>alert('已经是最后一页了！')</script>");
+                //this.RegisterStartupScript("msg", "<script>alert('已经是最后一页了！')</script>");
+
                 return;
             }
             currentPage++;
@@ -207,7 +203,7 @@ public partial class PollMain : System.Web.UI.Page
             int currentPage = Convert.ToInt32(ViewState["currentPage"]);
             if (currentPage == 0)
             {
-                this.RegisterStartupScript("msg", "<script>alert('这是第一页了！')</script>");
+                //this.RegisterStartupScript("msg", "<script>alert('这是第一页了！')</script>");
                 return;
             }
             currentPage--;
@@ -224,7 +220,7 @@ public partial class PollMain : System.Web.UI.Page
         int currentPage = Convert.ToInt32(ViewState["currentPage"]);
         if (currentPage == 0)
         {
-            this.RegisterStartupScript("msg", "<script>alert('这是第一页了！')</script>");
+            //this.RegisterStartupScript("msg", "<script>alert('这是第一页了！')</script>");
             return;
         }
         currentPage--;
