@@ -13,28 +13,15 @@ public partial class OrderManage : System.Web.UI.Page
 {
     OrderCtrlBLL orderCtrl;
     int orderId;
-    int orderState;
     protected void Page_Load(object sender, EventArgs e)
     {
-        //if (!IsPostBack)
-        //{
+        if (!IsPostBack)
+        {
             orderId = Convert.ToInt32(Request.QueryString["ID"]);
-            String buffer = Request.QueryString["OrderState"];
-            if (buffer == null || buffer.Length == 0)
-            {
-                orderState = -1;
-            }
-            else
-            {
-                orderState = Convert.ToInt32(buffer);
-            }
-            if (!OrderMenuCtrl())
-            {
-                Response.Write("<script>alert('菜单初始化失败！请尝试重新操作');history.go(-1);</script>");
-                return;
-            }
             gvOrderList.AllowPaging = true;
             gvOrderList.PageSize = 10;
+            gvOrderListHistory.AllowPaging = true;
+            gvOrderListHistory.PageSize = 10;
             gvItemList.AllowPaging = true;
             gvItemList.PageSize = 5;
             if (orderId <= 0)
@@ -53,102 +40,8 @@ public partial class OrderManage : System.Web.UI.Page
                     return;
                 }
             }
-        //}
+        }
     }
-
-    #region 订单状态菜单控制
-    public bool OrderMenuCtrl() 
-    {
-        switch (orderState)
-        {
-            case -1:
-                ltMenu.Text = "<div id='menuO' style='border-bottom-width:1px; border-bottom-color:Red; border-bottom-style:dotted;'>"
-                    + "<ul>"
-                        + "<li class='selected'><a href='OrderManage.aspx'>所有订单</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=0'>等待发货</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=1'>等待付款</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=2'>已发货</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=3'>交易成功</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=4'>交易失败</a></li>"
-                    + "</ul>"
-                + "</div>";
-                break;
-            case 0:
-                ltMenu.Text = "<div id='menuO' style='border-bottom-width:1px; border-bottom-color:Red; border-bottom-style:dotted;'>"
-                    + "<ul>"
-                        + "<li><a href='OrderManage.aspx'>所有订单</a></li>"
-                        + "<li class='selected'><a href='OrderManage.aspx?OrderState=0'>等待发货</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=1'>等待付款</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=2'>已发货</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=3'>交易成功</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=4'>交易失败</a></li>"
-                    + "</ul>"
-                + "</div>";
-                break;
-            case 1:
-                ltMenu.Text = "<div id='menuO' style='border-bottom-width:1px; border-bottom-color:Red; border-bottom-style:dotted;'>"
-                    + "<ul>"
-                        + "<li><a href='OrderManage.aspx'>所有订单</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=0'>等待发货</a></li>"
-                        + "<li class='selected'><a href='OrderManage.aspx?OrderState=1'>等待付款</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=2'>已发货</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=3'>交易成功</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=4'>交易失败</a></li>"
-                    + "</ul>"
-                + "</div>";
-                break;
-            case 2:
-                ltMenu.Text = "<div id='menuO' style='border-bottom-width:1px; border-bottom-color:Red; border-bottom-style:dotted;'>"
-                    + "<ul>"
-                        + "<li><a href='OrderManage.aspx'>所有订单</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=0'>等待发货</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=1'>等待付款</a></li>"
-                        + "<li class='selected'><a href='OrderManage.aspx?OrderState=2'>已发货</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=3'>交易成功</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=4'>交易失败</a></li>"
-                    + "</ul>"
-                + "</div>";
-                break;
-            case 3:
-                ltMenu.Text = "<div id='menuO' style='border-bottom-width:1px; border-bottom-color:Red; border-bottom-style:dotted;'>"
-                    + "<ul>"
-                        + "<li><a href='OrderManage.aspx'>所有订单</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=0'>等待发货</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=1'>等待付款</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=2'>已发货</a></li>"
-                        + "<li class='selected'><a href='OrderManage.aspx?OrderState=3'>交易成功</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=4'>交易失败</a></li>"
-                    + "</ul>"
-                + "</div>";
-                break;
-            case 4:
-                ltMenu.Text = "<div id='menuO' style='border-bottom-width:1px; border-bottom-color:Red; border-bottom-style:dotted;'>"
-                    + "<ul>"
-                        + "<li><a href='OrderManage.aspx'>所有订单</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=0'>等待发货</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=1'>等待付款</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=2'>已发货</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=3'>交易成功</a></li>"
-                        + "<li class='selected'><a href='OrderManage.aspx?OrderState=4'>交易失败</a></li>"
-                    + "</ul>"
-                + "</div>";
-                break;
-            default:
-                ltMenu.Text = "<div id='menuO' style='border-bottom-width:1px; border-bottom-color:Red; border-bottom-style:dotted;'>"
-                    + "<ul>"
-                        + "<li><a href='OrderManage.aspx'>所有订单</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=0'>等待发货</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=1'>等待付款</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=2'>已发货</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=3'>交易成功</a></li>"
-                        + "<li><a href='OrderManage.aspx?OrderState=4'>交易失败</a></li>"
-                    + "</ul>"
-                + "</div>";
-                break;
-        } 
-        return true;
-    }
-    #endregion
 
     #region mainOrderList分页
     #region PageIndexChanging
@@ -364,59 +257,44 @@ public partial class OrderManage : System.Web.UI.Page
     #region 订单列表数据绑定
     public bool mainOrderDatabind() 
     {
-        DataTable orders = new DataTable();
+        DataTable curOrders = new DataTable();
+        DataTable historyOrders = new DataTable();
         orderCtrl = new OrderCtrlBLL();
         pError.Visible = false;
-        if (orderState >= 0)
+        if (!orderCtrl.GetHistoryOrderList(ref historyOrders))
         {
-            if (!orderCtrl.GetOrderList(ref orders, orderState))
-            {
-                return false;
-            }
+           return false;
         }
-        else 
+        if (!orderCtrl.GetOrderList(ref curOrders))
         {
-            if (!orderCtrl.GetOrderList(ref orders))
-            {
-                return false;
-            }
+           return false;
         }
-        if (orders.Rows.Count > 0)
+        if (curOrders.Rows.Count <= 0)
+        {
+            pOrderDetail.Visible = false;
+            pOrderList.Visible = false;
+            pError.Visible = true;
+            lError.Text = "当前没有等待处理的订单";
+            return true;
+        }
+        if (historyOrders.Rows.Count <= 0) 
+        {
+            pOrderDetail.Visible = false;
+            pOrderList.Visible = false;
+            pError.Visible = true;
+            lError.Text = "没有交易已完成的订单";
+            return true;
+        }
+        else
         {
             pOrderDetail.Visible = false;
             pOrderList.Visible = true;
             pError.Visible = false;
         }
-        else
-        {
-            pOrderDetail.Visible = false;
-            pOrderDetail.Visible = false;
-            pError.Visible = true;
-            switch (orderState) 
-            {
-                case -1:
-                    lError.Text = "您还没有确认过的订单";
-                    break;
-                case 0:
-                    lError.Text = "您没有等待发货的订单";
-                    break;
-                case 1:
-                    lError.Text = "您没有等待付款的订单";
-                    break;
-                case 2:
-                    lError.Text = "您没有等待确认收货的订单";
-                    break;
-                case 3:
-                    lError.Text = "您没有交易成功的订单";
-                    break;
-                case 4:
-                    lError.Text = "您没有交易失败的订单";
-                    break;
-            }
-            return true;
-        }
-        gvOrderList.DataSource = orders;
+        gvOrderList.DataSource = curOrders;
         gvOrderList.DataBind();
+        gvOrderListHistory.DataSource = historyOrders;
+        gvOrderListHistory.DataBind();
         return true;
     }
     #endregion

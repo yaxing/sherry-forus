@@ -146,6 +146,26 @@ namespace BLL
         }
         #endregion
 
+        #region 根据用户名获取历史订单主订单列表
+        /// <summary>
+        /// 根据用户名获取历史订单列表
+        /// </summary>
+        /// <param name="orders">订单DataTable</param>
+        /// <param name="orderState">指定订单状态</param>
+        /// <returns>操作成功返回true，否则返回false</returns>
+        public bool GetHistoryOrderList(ref DataTable orders)
+        {
+            MembershipUser curUser = Membership.GetUser(HttpContext.Current.User.Identity.Name.ToString());
+            Guid userID = (Guid)curUser.ProviderUserKey;
+            OrderCtrlDAL orderCtrl = new OrderCtrlDAL();
+            if (!orderCtrl.GetHistoryOrderList(ref orders, userID))
+            {
+                return false;
+            }
+            return true;
+        }
+        #endregion
+
         #region 根据订单号获取商品列表
         /// <summary>
         ///  获取订单详细商品项
