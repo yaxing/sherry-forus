@@ -16,6 +16,8 @@
 
     <script type="text/javascript" src="js/java.js"></script>
 
+    <script src="js/common.js" type="text/javascript"></script>
+
 </head>
 <body>
     <form id="form1" runat="server">
