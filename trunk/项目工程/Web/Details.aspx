@@ -21,16 +21,14 @@
                 <div class="prod_title">
                     详细信息</div>
                 <p class="details">
-                    <asp:Label ID="GoodsDescribe" runat="server" />
+                    <asp:Label ID="ShortGoodsDescribe" runat="server" />
                 </p>
                 <div class="price">
                     <strong>售价:</strong> <span class="red">
                         <asp:Label ID="GoodsPrice" runat="server" /></span></div>
                 <div class="price">
-                    <strong>折扣:</strong> <span class="colors">
-                        <img src="images/color1.gif" alt="" title="" /></span> <span class="colors">
-                            <img src="images/color2.gif" alt="" title="" /></span> <span class="colors">
-                                <img src="images/color3.gif" alt="" title="" /></span>
+                    <strong>折扣:</strong>
+                    <asp:Label ID="Discount" runat="server" ToolTip="网购为9.5折，会员或商品为特价为9.0折" />
                 </div>
                 <div style="padding: 0 30px 0 0px">
                     <asp:Button ID="addToCart" runat="server" OnClick="addToCart_Click" CssClass="register"
@@ -52,14 +50,8 @@
         <div class="tabs-container">
             <div style="display: block;" class="tab" id="tab1">
                 <p class="more_details">
-                    肌肤的“隐形修正液” 纪梵希感光皙颜粉底肌肤的
+                    <asp:Label ID="GoodsDescribe" runat="server" />
                 </p>
-                <ul class="list">
-                    <li><a href="#">特点1</a></li>
-                    <li><a href="#">特点2</a></li>
-                    <li><a href="#">特点3</a></li>
-                    <li><a href="#">特点4</a></li>
-                </ul>
             </div>
             <div style="display: none;" class="tab" id="tab2">
                 <asp:Repeater runat="server" ID="SameCategory">

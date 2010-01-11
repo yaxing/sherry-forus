@@ -37,7 +37,7 @@
             <td>
                 产品图片</td>
             <td>
-                <asp:FileUpload ID="GoodsImg" runat="server" /></td>
+                <asp:FileUpload ID="GoodsImg" runat="server" />不选为网站默认图片</td>
         </tr>
         <tr>
             <td>
@@ -45,13 +45,13 @@
             <td>
                 <asp:TextBox ID="Year" runat="server" Width="15" Text="2"></asp:TextBox>年
                 <asp:TextBox ID="Month" runat="server" Width="15"></asp:TextBox>月
-                <asp:TextBox ID="Day" runat="server" Width="15"></asp:TextBox>日</td>
+                <asp:TextBox ID="Day" runat="server" Width="15"></asp:TextBox>日（相对时间）</td>
         </tr>
         <tr>
             <td>
                 产品单价</td>
             <td>
-               <asp:TextBox ID="GoodsPrice" runat="server"></asp:TextBox></td>
+               <asp:TextBox ID="GoodsPrice" runat="server"></asp:TextBox>（元）</td>
         </tr>
         <tr>
             <td>
@@ -82,6 +82,6 @@
                 <asp:Button CssClass="register" ID="AddCommit" OnClick="AddGoodsCommit" runat="server" Text="确认" /></td>
         </tr>
     </table>
-    <asp:Label ID="AddResult" runat="server" Visible="false"/>
+    <div style="text-align:center; color:Red"><asp:Label ID="AddResult" runat="server"/></div>
 </asp:Content>
 

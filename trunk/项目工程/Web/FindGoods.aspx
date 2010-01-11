@@ -1,5 +1,7 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/IndexMaster.master" AutoEventWireup="true" CodeFile="FindGoods.aspx.cs" Inherits="Goods_FindGoods" Title="Untitled Page" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="contentHolder" Runat="Server">
+﻿<%@ Page Language="C#" MasterPageFile="~/IndexMaster.master" AutoEventWireup="true"
+    CodeFile="FindGoods.aspx.cs" Inherits="Goods_FindGoods" Title="Untitled Page" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="contentHolder" runat="Server">
     <table>
         <tr>
             <td>
@@ -39,14 +41,21 @@
                 <asp:Button ID="FindCommit" OnClick="FindGoodsCommit" runat="server" Text="查找产品" /></td>
         </tr>
     </table>
-    <asp:GridView ID="FindResult" runat="server" AutoGenerateColumns="False" OnRowDeleting="FindResult_RowDeleting" DataKeyNames="goodsID">
+    <asp:GridView ID="FindResult" runat="server" AutoGenerateColumns="False" OnRowDeleting="FindResult_RowDeleting"
+        DataKeyNames="goodsID">
         <Columns>
-            <asp:HyperLinkField DataNavigateUrlFields="goodsID" DataTextField="goodsName" HeaderText="产品名称" DataNavigateUrlFormatString="ShowGoods.aspx?goodsID={0}" />
+            <asp:HyperLinkField DataNavigateUrlFields="goodsID" DataTextField="goodsName" HeaderText="产品名称"
+                DataNavigateUrlFormatString="Details.aspx?goodsID={0}" />
             <asp:BoundField DataField="goodsNum" HeaderText="产品编号" />
             <asp:BoundField DataField="goodsAddTime" HeaderText="产品添加日期" />
             <asp:BoundField DataField="goodsCategory" HeaderText="产品类别" />
-            <asp:CommandField ButtonType="Image" DeleteImageUrl="~/images/delete.png" ShowDeleteButton="True" />
+            <asp:TemplateField ShowHeader="False">
+                <ItemTemplate>
+                    <asp:ImageButton ID="DeleteGoods" runat="server" CausesValidation="False" CommandName="Delete"
+                        ImageUrl="~/images/delete.png" ToolTip="删除" OnClientClick="return confirm('确认要删除吗？');" />
+                    <asp:ImageButton ID="ChangeGoods" runat="server" ImageUrl="~/images/delete.png" ToolTip="修改产品信息" PostBackUrl="ChangeGoods.aspx" />
+                </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
     </asp:GridView>
 </asp:Content>
-
