@@ -25,6 +25,7 @@ public partial class Details : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        int shortDescribeLength = 20;
         GoodsInfo goodsInfo = new GoodsInfo();
         try
         {
@@ -38,7 +39,24 @@ public partial class Details : System.Web.UI.Page
         GoodsImg.ImageUrl = goodsInfo.goodsImg;
         GoodsName.Text = goodsInfo.goodsName;
         GoodsPrice.Text = goodsInfo.goodsPrice.ToString();
+        if (goodsInfo.goodsDescribe.Length <= shortDescribeLength)
+        {
+            ShortGoodsDescribe.Text = goodsInfo.goodsDescribe;
+        }
+        else
+        {
+            ShortGoodsDescribe.Text = goodsInfo.goodsDescribe.Substring(0, shortDescribeLength) + "...";
+        }
         GoodsDescribe.Text = goodsInfo.goodsDescribe;
+
+        if (goodsInfo.goodsSpecialOffer == 0 && User.Identity.Name.ToString().Length == 0)
+        {
+            Discount.Text = "9.5уш";
+        }
+        else
+        {
+            Discount.Text = "9.0уш";
+        }
 
         SameCategory.DataSource = GoodsInfoBLL.FindGoods(goodsInfo.goodsCategory);
         SameCategory.DataBind();

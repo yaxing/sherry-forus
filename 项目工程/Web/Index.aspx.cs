@@ -14,9 +14,16 @@ public partial class Index : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        HotGoods.DataSource = GoodsInfoBLL.LatestGoods(5, true);
-        HotGoods.DataBind();
-        NewGoods.DataSource = GoodsInfoBLL.LatestGoods(3);
-        NewGoods.DataBind();
+        try
+        {
+            HotGoods.DataSource = GoodsInfoBLL.LatestGoods(5, true);
+            HotGoods.DataBind();
+            NewGoods.DataSource = GoodsInfoBLL.LatestGoods(3);
+            NewGoods.DataBind();
+        }
+        catch
+        {
+            return;
+        }
     }
 }
