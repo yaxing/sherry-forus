@@ -109,9 +109,9 @@ namespace DAL
         }
         #endregion
 
-        #region 按用户ID查询主订单
+        #region 按用户ID查询主订单(DataTable)
         /// <summary>
-        /// 根据用户ID得到所有订单
+        /// 根据用户ID得到所有订单(DataTable)
         /// </summary>
         /// <param name="userID",name="orders">用户ID,订单list</param>
         /// <returns>订单列表</returns>
@@ -175,6 +175,66 @@ namespace DAL
             //    ie.ImgPath = dt.Rows[i]["goodsImg"].ToString();
             //    order.UserOrderItems.Add(ie);
             //}
+            return true;
+        }
+        #endregion
+
+        #region 按用户ID查询主订单(IList<OrderInfo>)
+        /// <summary>
+        ///  按用户ID查询主订单(IList<OrderInfo>)
+        /// </summary>
+        /// <param name="orders">订单列表IList</param>
+        /// <param name="userId">用户ID</param>
+        /// <returns>操作成功返回true，否则返回false</returns>
+        public bool GetAllOrders(ref IList<OrderInfo> orders, Guid userId)
+        {
+            DataTable bufferDt;
+            sqlString = "select * from mainOrderInfo where userID=@userID order by orderTime desc";
+            sq = new SqlParameter[] { 
+                                new SqlParameter("@userID",SqlDbType.UniqueIdentifier)
+                                };
+            sq[0].Value = userId;
+
+            try
+            {
+                using (dp = new DataProvider())
+                {
+                    if ((bufferDt = dp.ExecuteDataTable(sqlString, sq)) == null)
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            int i = 0;
+            try
+            {
+                for (; i < bufferDt.Rows.Count; i++)
+                {
+                    OrderInfo orderInfo = new OrderInfo();
+                    orderInfo.OrderID = Convert.ToInt32(bufferDt.Rows[i]["mainOrderID"].ToString());
+                    orderInfo.UserID = (Guid)bufferDt.Rows[i]["userID"];
+                    orderInfo.UserRealName = bufferDt.Rows[i]["userRealName"].ToString();
+                    orderInfo.UserTel = bufferDt.Rows[i]["phoneNum"].ToString();
+                    orderInfo.UserZip = bufferDt.Rows[i]["postNum"].ToString();
+                    orderInfo.UserAdd = bufferDt.Rows[i]["postAdd"].ToString();
+                    orderInfo.UserProvince = bufferDt.Rows[i]["province"].ToString();
+                    orderInfo.UserOrderPrice = Convert.ToDouble(bufferDt.Rows[i]["orderPrice"].ToString());
+                    orderInfo.UserPayState = Convert.ToInt32(bufferDt.Rows[i]["isPaid"].ToString());
+                    orderInfo.State = Convert.ToInt32(bufferDt.Rows[i]["orderState"].ToString());
+                    orderInfo.OrderTime = bufferDt.Rows[i]["orderTime"].ToString();
+                    orderInfo.InvoiceHead = bufferDt.Rows[i]["invoiceHead"].ToString();
+                    orderInfo.InvoiceContent = bufferDt.Rows[i]["invoiceContent"].ToString();
+                    orders.Add(orderInfo);
+                }
+            }
+            catch
+            {
+                return false;
+            }
             return true;
         }
         #endregion
@@ -252,9 +312,44 @@ namespace DAL
         }
         #endregion
 
-        #region 按订单ID查询订单项详细信息(datatable)
+        #region 按用户ID查询交易中订单
         /// <summary>
-        /// 根据订单号得到订单项(返回DATATABLE)
+        /// 根据用户ID获取交易中订单
+        /// </summary>
+        /// <param name="orders">订单datatable</param>
+        /// <param name="userID">用户ID</param>
+        /// <returns>成功true，失败false</returns>
+        public bool GetCurrentOrderList(ref DataTable orders, Guid userID)
+        {
+            DataTable dt = null;
+            sqlString = "select * from mainOrderInfo where userID=@userID and (orderState=0 or orderState=1 or orderState=2 or orderState=5) order by orderTime desc";
+            sq = new SqlParameter[] { 
+                                new SqlParameter("@userID",SqlDbType.UniqueIdentifier)
+                                };
+            sq[0].Value = userID;
+
+            try
+            {
+                using (dp = new DataProvider())
+                {
+                    if ((dt = dp.ExecuteDataTable(sqlString, sq)) == null)
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            orders = dt;
+            return true;
+        }
+        #endregion
+
+        #region 按订单ID查询订单项详细信息(DataTable)
+        /// <summary>
+        /// 根据订单号得到订单项(返回DataTable)
         /// </summary>
         /// <param name="items",name="orderId">订单项容器,订单号</param>
         /// <returns>订单项列表</returns>
@@ -287,9 +382,9 @@ namespace DAL
         }
         #endregion
 
-        #region 按订单ID查询主订单详细信息(OrderInfo实体)
+        #region 按订单ID查询主订单详细信息(OrderInfo)
         /// <summary>
-        /// 根据订单号得到主订单信息(返回OrderInfo实体)
+        /// 根据订单号得到主订单信息(OrderInfo)
         /// </summary>
         /// <param name="orderInfo">订单实体</param>
         /// <returns>成功返回true，否则返回false</returns>
@@ -339,9 +434,129 @@ namespace DAL
         }
         #endregion
 
-        #region 撤销订单
+        #region 获取所有订单列表(IList<OrderInfo>)
         /// <summary>
-        /// 撤销订单
+        ///  获取所有订单列表
+        /// </summary>
+        /// <param name="orders">订单列表IList</param>
+        /// <returns>操作成功返回true，否则返回false</returns>
+        public bool GetAllOrders(ref IList<OrderInfo> orders) 
+        {
+            DataTable bufferDt;
+            sqlString = "select * from mainOrderInfo order by orderTime desc";
+            try
+            {
+                using (dp = new DataProvider())
+                {
+                    if ((bufferDt = dp.ExecuteQuery(sqlString)) == null)
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch 
+            {
+                return false;
+            }
+            int i = 0;
+            try
+            {
+                for (; i < bufferDt.Rows.Count; i++)
+                {
+                    OrderInfo orderInfo = new OrderInfo();
+                    orderInfo.OrderID = Convert.ToInt32(bufferDt.Rows[i]["mainOrderID"].ToString());
+                    orderInfo.UserID = (Guid)bufferDt.Rows[i]["userID"];
+                    orderInfo.UserRealName = bufferDt.Rows[i]["userRealName"].ToString();
+                    orderInfo.UserTel = bufferDt.Rows[i]["phoneNum"].ToString();
+                    orderInfo.UserZip = bufferDt.Rows[i]["postNum"].ToString();
+                    orderInfo.UserAdd = bufferDt.Rows[i]["postAdd"].ToString();
+                    orderInfo.UserProvince = bufferDt.Rows[i]["province"].ToString();
+                    orderInfo.UserOrderPrice = Convert.ToDouble(bufferDt.Rows[i]["orderPrice"].ToString());
+                    orderInfo.UserPayState = Convert.ToInt32(bufferDt.Rows[i]["isPaid"].ToString());
+                    orderInfo.State = Convert.ToInt32(bufferDt.Rows[i]["orderState"].ToString());
+                    orderInfo.OrderTime = bufferDt.Rows[i]["orderTime"].ToString();
+                    orderInfo.InvoiceHead = bufferDt.Rows[i]["invoiceHead"].ToString();
+                    orderInfo.InvoiceContent = bufferDt.Rows[i]["invoiceContent"].ToString();
+                    orders.Add(orderInfo);
+                }
+            }
+            catch 
+            {
+                return false;
+            }
+            return true;
+        }
+        #endregion
+
+        #region 获取指定时间段内当前用户所有订单列表(IList<OrderInfo>)
+        /// <summary>
+        ///  获取指定时间段内当前用户所有订单列表
+        /// </summary>
+        /// <param name="userId">用户Id</param>
+        /// <param name="orders">订单列表IList</param>
+        /// <param name="dateStart">起始日期</param>
+        /// <param name="dateEnd">结束日期</param>
+        /// <returns>操作成功返回true，否则返回false</returns>
+        public bool GetOrdersByTime_CurCustomer(ref IList<OrderInfo> orders, Guid userId, DateTime dateStart, DateTime dateEnd)
+        {
+            DataTable bufferDt;
+            sqlString = "select * from mainOrderInfo where userID=@userID and orderTime>@dateStart and orderTime<@dateEnd order by orderTime desc";
+            sq = new SqlParameter[] 
+                                 {
+                                     new SqlParameter("@dateStart",SqlDbType.DateTime),
+                                     new SqlParameter("@dateEnd",SqlDbType.DateTime),
+                                     new SqlParameter("@userID",SqlDbType.UniqueIdentifier)
+                                 };
+            sq[0].Value = dateStart;
+            sq[1].Value = dateEnd;
+            sq[2].Value = userId;
+            try
+            {
+                using (dp = new DataProvider())
+                {
+                    if ((bufferDt = dp.ExecuteDataTable(sqlString,sq)) == null)
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
+            int i = 0;
+            try
+            {
+                for (; i < bufferDt.Rows.Count; i++)
+                {
+                    OrderInfo orderInfo = new OrderInfo();
+                    orderInfo.OrderID = Convert.ToInt32(bufferDt.Rows[i]["mainOrderID"].ToString());
+                    orderInfo.UserID = (Guid)bufferDt.Rows[i]["userID"];
+                    orderInfo.UserRealName = bufferDt.Rows[i]["userRealName"].ToString();
+                    orderInfo.UserTel = bufferDt.Rows[i]["phoneNum"].ToString();
+                    orderInfo.UserZip = bufferDt.Rows[i]["postNum"].ToString();
+                    orderInfo.UserAdd = bufferDt.Rows[i]["postAdd"].ToString();
+                    orderInfo.UserProvince = bufferDt.Rows[i]["province"].ToString();
+                    orderInfo.UserOrderPrice = Convert.ToDouble(bufferDt.Rows[i]["orderPrice"].ToString());
+                    orderInfo.UserPayState = Convert.ToInt32(bufferDt.Rows[i]["isPaid"].ToString());
+                    orderInfo.State = Convert.ToInt32(bufferDt.Rows[i]["orderState"].ToString());
+                    orderInfo.OrderTime = bufferDt.Rows[i]["orderTime"].ToString();
+                    orderInfo.InvoiceHead = bufferDt.Rows[i]["invoiceHead"].ToString();
+                    orderInfo.InvoiceContent = bufferDt.Rows[i]["invoiceContent"].ToString();
+                    orders.Add(orderInfo);
+                }
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+        #endregion
+
+        #region 撤销,删除订单
+        /// <summary>
+        /// 撤销,删除订单
         /// </summary>
         /// <param name="orderId">订单号</param>
         /// <returns>操作成功返回true，否则返回false</returns>

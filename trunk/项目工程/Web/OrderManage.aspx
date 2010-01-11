@@ -4,14 +4,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="contentHolder" runat="Server">
     <img src="images/bullet1.gif" width="20" alt="" title="" /><font style="font-size: 19px;
         color: #a81f22">我的订单</font>
+    <div style="position: relative; bottom: 20px; left: 330px; color: DarkRed">
+        <a href="SearchOrder.aspx">订单搜索</a>&nbsp;|&nbsp;<a href="OrderManage.aspx">我的订单</a>
+    </div>
     <asp:Panel ID="pOrderList" runat="server">
-        <div id="demo" class="demolayout">
-            <ul id="demo-nav" class="demolayout">
-                <li><a class="active" href="tab1">当前订单</a></li>
-                <li><a class="" href="tab2">历史订单</a></li>
-            </ul>
+        <div id="demo" class="demolayout" style="margin-top: 10px; margin-top: 20pxf">
+            <asp:Literal ID="ltTabs" runat="server"></asp:Literal>
             <div class="tabs-container">
-                <div style="display: block; height:300px; width:436px" class="tab" id="tab1">
+                <div style="display: block; height: 366px; width: 436px" class="tab" id="tab1">
                     <asp:GridView ID="gvOrderList" runat="server" AutoGenerateColumns="False" GridLines="None"
                         AllowPaging="true" OnPageIndexChanging="gvOrderList_PageIndexChanging" OnRowCreated="gvOrderList_RowCreated">
                         <Columns>
@@ -53,9 +53,10 @@
                         </Columns>
                     </asp:GridView>
                 </div>
-                <div style="display: none;  height:300px; width:436px" class="tab" id="tab2">
-                    <asp:GridView ID="gvOrderListHistory" runat="server" AutoGenerateColumns="False" GridLines="None"
-                        AllowPaging="true" OnPageIndexChanging="gvOrderList_PageIndexChanging" OnRowCreated="gvOrderList_RowCreated">
+                <div style="display: none; height: 366px; width: 436px" class="tab" id="tab2">
+                    <asp:GridView ID="gvOrderListHistory" runat="server" AutoGenerateColumns="False"
+                        GridLines="None" AllowPaging="true" OnPageIndexChanging="gvOrderList_PageIndexChanging"
+                        OnRowCreated="gvOrderList_RowCreated">
                         <Columns>
                             <asp:TemplateField>
                                 <HeaderStyle Width="50px" ForeColor="White" Font-Size="15px" BackColor="darkred" />

@@ -8,23 +8,40 @@ using System.Drawing;
 using BLL;
 using Entity;
 using InterFace;
+using System.Collections.Generic;
 
 public partial class OrderManage : System.Web.UI.Page
 {
     OrderCtrlBLL orderCtrl;
     int orderId;
+    string buffer;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
-            orderId = Convert.ToInt32(Request.QueryString["ID"]);
+                ltTabs.Text = "<ul id='demo-nav' class='demolayout'>"
+                              + "<li><a class='active' href='tab1'>当前订单</a></li>"
+                              + "<li><a class='' href='tab2'>历史订单</a></li>"
+                              + "</ul>";
+            
+            buffer = Request.QueryString["ID"];
+            if (buffer == null || buffer.Length == 0)
+            {
+                orderId = -1;
+            }
+            else 
+            {
+                orderId = Convert.ToInt32(buffer);
+            }
             gvOrderList.AllowPaging = true;
             gvOrderList.PageSize = 10;
             gvOrderListHistory.AllowPaging = true;
             gvOrderListHistory.PageSize = 10;
             gvItemList.AllowPaging = true;
             gvItemList.PageSize = 5;
-            if (orderId <= 0)
+            
+
+            if (orderId < 0)
             {
                 if (!mainOrderDatabind())
                 {
@@ -32,7 +49,7 @@ public partial class OrderManage : System.Web.UI.Page
                     return;
                 }
             }
-            else
+            else if (orderId > 0)
             {
                 if (!subOrderDatabind())
                 {
@@ -253,6 +270,7 @@ public partial class OrderManage : System.Web.UI.Page
 
     #endregion
 
+    
 
     #region 订单列表数据绑定
     public bool mainOrderDatabind() 
@@ -265,7 +283,7 @@ public partial class OrderManage : System.Web.UI.Page
         {
            return false;
         }
-        if (!orderCtrl.GetOrderList(ref curOrders))
+        if (!orderCtrl.GetCurrentOrderList(ref curOrders))
         {
            return false;
         }
@@ -388,6 +406,8 @@ public partial class OrderManage : System.Web.UI.Page
         return true;
     }
     #endregion
+
+    
 
     protected void imgbPay_Click(object sender, EventArgs e)
     {
