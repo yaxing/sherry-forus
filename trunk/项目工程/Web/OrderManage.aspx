@@ -210,7 +210,7 @@
                             <table>
                                 <tr>
                                     <td align="center" style="width: 120px">
-                                        <a href='Details.aspx?ID=<%#Eval("goodsID") %>'>
+                                        <a href='Details.aspx?GoodsID=<%#Eval("goodsID") %>'>
                                             <%#Eval("goodsName") %>
                                         </a>
                                     </td>
