@@ -56,9 +56,9 @@ namespace BLL
             return (FindGoods("", "", goodsCategory, DateTime.MinValue, DateTime.MaxValue));
         }
 
-        public static DataTable FindGoods(string goodsName, string goodsNum)
+        public static DataTable FindGoods(string goodsName)
         {
-            return (FindGoods(goodsName, goodsNum, 0, DateTime.MinValue, DateTime.MaxValue));
+            return (FindGoods(goodsName, "", 0, DateTime.MinValue, DateTime.MaxValue));
         }
 
         public static DataTable FindGoods(string goodsName, string goodsNUM, int goodsCategory, DateTime timeFrom, DateTime timeTo)
@@ -112,6 +112,19 @@ namespace BLL
         }
         #endregion       
 
+        #region 查找所有的特价产品
+
+        /// <summary>
+        /// 查找所有的特价产品
+        /// </summary>
+        /// <returns>DataTable型的查找结果</returns>
+
+        public static DataTable FindSpecialGoods()
+        {
+            return (GoodsInfoDAL.FindSpecialGoods());
+        }
+        #endregion
+
         #region 查找最近添加的（num个）产品
 
         /// <summary>
@@ -123,7 +136,7 @@ namespace BLL
 
         public static DataTable LatestGoods(int num)
         {
-            return (LatestGoods(num, false));
+            return (GoodsInfoDAL.LatestGoods(num, false));
         }
 
         public static DataTable LatestGoods(int num, bool orderByVolume)
