@@ -18,9 +18,18 @@ using Entity;
 public partial class Pay : System.Web.UI.Page
 {
     int id;
+    string buffer;
     protected void Page_Load(object sender, EventArgs e)
     {
-        id = Convert.ToInt32(Request.QueryString["ID"]);
+        if ((buffer = Request.QueryString["ID"]) == null || buffer.Length == 0)
+        {
+            Response.Write("<script>alert('您还没有确认订单!');history.go(-1);</script>");
+            return;
+        }
+        else
+        {
+            id = Convert.ToInt32(buffer);
+        }
     }
     protected void bPay_Click(object sender, EventArgs e)
     {
