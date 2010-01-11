@@ -20,6 +20,10 @@ public partial class ModiWorker : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!User.IsInRole("工作人员"))
+        {
+            Response.Write("<script language='javascript'>alert('您不属于此用户组。');location.href='../Management/bgIndex.aspx';</script>");
+        }
         if (!this.IsPostBack)
         {
             int flag = 0;
@@ -33,7 +37,8 @@ public partial class ModiWorker : System.Web.UI.Page
             this.worker.WorkerID = new Guid(workerID);
             if (!workerBLL.SrchWorkerInfo(ref worker))
             {
-                Response.Write("<script language='javascript'>alert('数据载入失败，请重试或联系管理员。');location.href='bgIndex.aspx';</script>");
+                Response.Write("<script language='javascript'>alert('数据载入失败，请重试或联系管理员。');location.href='../Management/bgIndex.aspx';</script>");
+                return;
             }
             else
             {
@@ -66,11 +71,13 @@ public partial class ModiWorker : System.Web.UI.Page
             }
             if (!DDLLoader())
             {
-                Response.Write("<script language='javascript'>alert('数据载入失败，请重试或联系管理员。');location.href='bgIndex.aspx';</script>");
+                Response.Write("<script language='javascript'>alert('数据载入失败，请重试或联系管理员。');location.href='../Management/bgIndex.aspx';</script>");
+                return;
             }
             if (!DDLManagerLoad(Convert.ToInt32(this.DDLShop.SelectedValue)))
             {
-                Response.Write("<script language='javascript'>alert('数据载入失败，请重试或联系管理员。');location.href='bgIndex.aspx';</script>");
+                Response.Write("<script language='javascript'>alert('数据载入失败，请重试或联系管理员。');location.href='../Management/bgIndex.aspx';</script>");
+                return;
             }
             if (flag == 0)
             {

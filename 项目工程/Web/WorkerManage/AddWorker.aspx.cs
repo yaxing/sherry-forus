@@ -21,12 +21,12 @@ public partial class WorkerManage_AddWorker : System.Web.UI.Page
         {
             if (!DDLLoader())
             {
-                Response.Write("<script language='javascript'>alert('数据载入失败，请重试或联系管理员。');location.href='bgIndex.aspx';</script>");
+                Response.Write("<script language='javascript'>alert('数据载入失败，请重试或联系管理员。');location.href='../Management/bgIndex.aspx';</script>");
             }
             DropDownList DDLShop = (DropDownList)CreateUserWizard.CreateUserStep.ContentTemplateContainer.FindControl("DDLShop");
             if (!DDLManagerLoad(Convert.ToInt32(DDLShop.SelectedValue)))
             {
-                Response.Write("<script language='javascript'>alert('数据载入失败，请重试或联系管理员。');location.href='bgIndex.aspx';</script>");
+                Response.Write("<script language='javascript'>alert('数据载入失败，请重试或联系管理员。');location.href='../Management/bgIndex.aspx';</script>");
             }
         }
         
