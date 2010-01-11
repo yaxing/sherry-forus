@@ -146,7 +146,8 @@ namespace DAL
             {
                 sqlString += " where" + sqlStringVary.Substring(4);
             }
-            
+
+            sqlString += " order by goodsID desc";
             using (dataProvider = new DataProvider())
             {
                 findResult = dataProvider.ExecuteDataTable(sqlString, pt);
@@ -209,14 +210,13 @@ namespace DAL
 
         public static bool ChangeGoods(int goodsID, GoodsInfo goodsInfo)
         {
-            string sqlString = "update goodsInfo set goodsCategory = @goodsCategory, goodsAddTime = @goodsAddTime, "
-                + "goodsValidity = @goodsValidity, goodsPrice = @goodsPrice, goodsAvailable = @goodsAvailable, "
-                + "goodsStorage = @goodsStorage, goodsNum = @goodsNum, goodsName = @goodsName, goodsImg = @goodsImg, "
-                + "goodsDescribe = @goodsDescribe where goodsID = @goodsID";
+            string sqlString = "update goodsInfo set goodsCategory = @goodsCategory, goodsValidity = @goodsValidity, "
+                + "goodsPrice = @goodsPrice, goodsAvailable = @goodsAvailable, goodsStorage = @goodsStorage, "
+                + "goodsNum = @goodsNum, goodsName = @goodsName, goodsImg = @goodsImg, goodsDescribe = @goodsDescribe "
+                + "where goodsID = @goodsID";
 
             SqlParameter[] pt = new SqlParameter[] { 
                                 new SqlParameter("@goodsCategory",SqlDbType.Int),
-                                new SqlParameter("@goodsAddTime",SqlDbType.DateTime),
                                 new SqlParameter("@goodsValidity",SqlDbType.DateTime),
                                 new SqlParameter("@goodsPrice",SqlDbType.SmallMoney),
                                 new SqlParameter("@goodsAvailable",SqlDbType.Bit),
@@ -228,16 +228,15 @@ namespace DAL
                                 new SqlParameter("@goodsID",SqlDbType.Int)
                                 };
             pt[0].Value = goodsInfo.goodsCategory;
-            pt[1].Value = goodsInfo.goodsAddTime;
-            pt[2].Value = goodsInfo.goodsValidity;
-            pt[3].Value = goodsInfo.goodsPrice;
-            pt[4].Value = goodsInfo.goodsAvailable;
-            pt[5].Value = goodsInfo.goodsStorage;
-            pt[6].Value = goodsInfo.goodsNum;
-            pt[7].Value = goodsInfo.goodsName;
-            pt[8].Value = goodsInfo.goodsImg;
-            pt[9].Value = goodsInfo.goodsDescribe;
-            pt[10].Value = goodsInfo.goodsID;
+            pt[1].Value = goodsInfo.goodsValidity;
+            pt[2].Value = goodsInfo.goodsPrice;
+            pt[3].Value = goodsInfo.goodsAvailable;
+            pt[4].Value = goodsInfo.goodsStorage;
+            pt[5].Value = goodsInfo.goodsNum;
+            pt[6].Value = goodsInfo.goodsName;
+            pt[7].Value = goodsInfo.goodsImg;
+            pt[8].Value = goodsInfo.goodsDescribe;
+            pt[9].Value = goodsInfo.goodsID;
 
             using (dataProvider = new DataProvider())
             {
@@ -277,6 +276,26 @@ namespace DAL
         }
         #endregion
 
+        #region 查找所有的特价产品
+
+        /// <summary>
+        /// 查找所有的特价产品
+        /// </summary>
+        /// <returns>DataTable型的查找结果</returns>
+
+        public static DataTable FindSpecialGoods()
+        {
+            DataTable findResult;
+            string sqlString = "select goodsID, goodsName, goodsImg from goodsInfo where goodsSpecialOffer = 1 order by goodsID desc";
+
+            using (dataProvider = new DataProvider())
+            {
+                findResult = dataProvider.ExecuteQuery(sqlString);
+            }
+            return (findResult);
+        }
+        #endregion
+
         #region 查找最近添加的（num个）产品
 
         /// <summary>
@@ -304,6 +323,18 @@ namespace DAL
             using (dataProvider = new DataProvider())
             {
                 latestGoods = dataProvider.ExecuteQuery(sqlString);
+            }
+            if (orderByVolume)
+            {
+                int shortDescribeLength = 20;
+
+                for (int i = 0; i < latestGoods.Rows.Count; ++i)
+                {
+                    if (latestGoods.Rows[i]["goodsDescribe"].ToString().Length > shortDescribeLength)
+                    {
+                        latestGoods.Rows[i]["goodsDescribe"] = latestGoods.Rows[i]["goodsDescribe"].ToString().Substring(0, shortDescribeLength) + "...";
+                    }
+                }
             }
             return (latestGoods);
         }
