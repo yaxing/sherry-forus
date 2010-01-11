@@ -49,9 +49,9 @@ namespace BLL
         }
         #endregion
 
-        #region 更改订单状态(重载)
+        #region 更改订单状态(OrderInfo)
         /// <summary>
-        /// 根据新订单实体状态修改订单状态
+        /// 根据新订单实体状态修改订单状态(OrderInfo)
         /// </summary>
         /// <param name="orderInfo">新订单实体</param>
         /// <returns>操作成功返回true，否则返回false</returns>
@@ -166,6 +166,26 @@ namespace BLL
         }
         #endregion
 
+        #region 根据用户名获取交易中订单主订单列表(DataTable)
+        /// <summary>
+        /// 根据用户名获取交易中订单列表
+        /// </summary>
+        /// <param name="orders">订单DataTable</param>
+        /// <param name="orderState">指定订单状态</param>
+        /// <returns>操作成功返回true，否则返回false</returns>
+        public bool GetCurrentOrderList(ref DataTable orders)
+        {
+            MembershipUser curUser = Membership.GetUser(HttpContext.Current.User.Identity.Name.ToString());
+            Guid userID = (Guid)curUser.ProviderUserKey;
+            OrderCtrlDAL orderCtrl = new OrderCtrlDAL();
+            if (!orderCtrl.GetCurrentOrderList(ref orders, userID))
+            {
+                return false;
+            }
+            return true;
+        }
+        #endregion
+
         #region 根据订单号获取商品列表
         /// <summary>
         ///  获取订单详细商品项
@@ -177,6 +197,62 @@ namespace BLL
         {
             OrderCtrlDAL orderCtrl = new OrderCtrlDAL();
             if (!orderCtrl.GetItemList(ref items, orderId))
+            {
+                return false;
+            }
+            return true;
+        }
+        #endregion
+
+        #region 获取所有订单列表(IList<OrderInfo>)
+        /// <summary>
+        ///  获取所有订单列表
+        /// </summary>
+        /// <param name="orders">订单列表IList</param>
+        /// <returns>操作成功返回true，否则返回false</returns>
+        public bool GetAllOrders(ref IList<OrderInfo> orders)
+        {
+            OrderCtrlDAL orderCtrl = new OrderCtrlDAL();
+            if (!orderCtrl.GetAllOrders(ref orders))
+            {
+                return false;
+            }
+            return true;
+        }
+        #endregion
+
+        #region 获取当前用户指定时间段内所有订单列表(IList<OrderInfo>)
+        /// <summary>
+        ///  获取指定时间段内所有订单列表
+        /// </summary>
+        /// <param name="orders">订单列表IList</param>
+        /// <param name="dateStart">起始日期</param>
+        /// <param name="dateEnd">结束日期</param>
+        /// <returns>操作成功返回true，否则返回false</returns>
+        public bool GetOrdersByTime(ref IList<OrderInfo> orders, DateTime dateStart, DateTime dateEnd)
+        {
+            OrderCtrlDAL orderCtrl = new OrderCtrlDAL();
+            Guid userId = (Guid)Membership.GetUser(HttpContext.Current.User.Identity.Name).ProviderUserKey;
+            //如果起始日期与结束日期均为空，则默认查询所有订单
+            if ((dateStart == null || dateStart.ToString().Length == 0) && (dateEnd == null || dateEnd.ToString().Length == 0)) 
+            {
+                if (!orderCtrl.GetAllOrders(ref orders)) 
+                {
+                    return false;
+                }
+                return true;
+            }
+            //如果起始日期为空，默认起始日期为当前日期
+            else if (dateStart == null || dateStart.ToString().Length == 0) 
+            {
+                dateStart = DateTime.Today.Date;
+            }
+            //如果结束日期为空，默认为当前日期
+            else if (dateEnd == null || dateEnd.ToString().Length == 0) 
+            {
+                dateEnd = DateTime.Today.Date;
+            }
+            if (!orderCtrl.GetOrdersByTime_CurCustomer(ref orders,userId,dateStart,dateEnd))
             {
                 return false;
             }
