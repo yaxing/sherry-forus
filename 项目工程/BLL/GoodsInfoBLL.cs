@@ -144,5 +144,19 @@ namespace BLL
             return (GoodsInfoDAL.LatestGoods(num, orderByVolume));
         }
         #endregion
+
+        #region 获取分类列表
+
+        /// <summary>
+        /// 获取分类列表
+        /// </summary>
+        /// <param name="category">商品分类datatable</param>
+        /// <returns>bool值</returns>
+
+        public static bool GetCategory(ref DataTable category)
+        {
+            return (GoodsInfoDAL.GetCategory(ref category));
+        }
+        #endregion
     }
 }
