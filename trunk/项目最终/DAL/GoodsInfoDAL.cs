@@ -339,5 +339,34 @@ namespace DAL
             return (latestGoods);
         }
         #endregion
+
+        #region 获取分类列表
+
+        /// <summary>
+        /// 获取分类列表
+        /// </summary>
+        /// <param name="category">商品分类datatable</param>
+        /// <returns>bool值</returns>
+
+        public static bool GetCategory(ref DataTable category)
+        {
+            string sqlString = "select * from category";
+            try
+            {
+                using (dataProvider = new DataProvider())
+                {
+                    if ((category = dataProvider.ExecuteQuery(sqlString)) == null)
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch 
+            {
+                return false;
+            }
+            return true;
+        }
+        #endregion
     }
 }
