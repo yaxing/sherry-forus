@@ -1,0 +1,188 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="IndexMaster.master.cs"
+    Inherits="IndexMaster" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>Sherry化妆品网上销售</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="lightbox.css" />
+
+    <script type="text/javascript" src="js/lightBoxForPoll.js"></script>
+
+    <script src="js/prototype.js" type="text/javascript"></script>
+
+    <script src="js/scriptaculous.js?load=effects" type="text/javascript"></script>
+
+    <script src="js/lightbox.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="js/java.js"></script>
+
+    <script src="js/common.js" type="text/javascript"></script>
+
+    <style type="text/css">
+    
+html,body{ height:100%; padding:0; margin:0; font:normal 12px/22px Arial, Helvetica, sans-serif;}
+.row{ margin:5px 0;}
+input.input,textarea{ padding:5px; border:solid 1px #bbb; width:70%;font:normal 12px/150% Arial, Helvetica, sans-serif;}
+textarea{ height:80px;}
+b.label{ width:18%; float:left; display:inline-block;margin:6px 15px 0;}
+.Boxheader,.Boxfooter,.Boxbody{ position:relative;}
+
+.headerR,.FooterR,.BodyR{ float:left;width:20px; }
+.headerL,.FooterL,.BodyL{ float:left;}
+
+.headerR{background:url(images/lightbox-header.png) no-repeat right 0; height:46px;}
+.headerL{background:url(images/lightbox-header.png) no-repeat left 0; height:46px;padding:0 0 0 20px;}
+
+.FooterR{background:url(images/lightbox-footer.png) no-repeat right 0;height:59px;}
+.FooterL{background:url(images/lightbox-footer.png) no-repeat left 0;height:39px;padding:10px 0 10px 20px;}
+
+
+
+.BodyL{background:url(images/lightbox-body.png) repeat-y left 0;padding:10px 0 10px 20px;}
+.BodyR{background:url(images/lightbox-body.png) repeat-y right 0;}
+
+.BoxMask{ height:100%; width:100%;left:0; top:0; background:#000;opacity:0.25;filter:alpha(opacity=25);}
+
+.Boxfooter{height:59px; }
+.Boxbody{overflow:hidden;}
+.Boxheader{ height:46px;cursor:move; }
+.Boxfooter .btn{ display:inline-block; float:right; margin:10px 10px 0 0;}
+</style>
+</head>
+<body>
+
+    <script type="text/javascript">
+var html3 = '<iframe src="PollMain.aspx" width=500 height=327 frameborder="0"></iframe>';
+var	footerhtml3='<input type="image" alt="Cancel" src="images/cancel.png" class="btn" id="msg3cancel" />';
+    </script>
+
+    <form id="form1" runat="server">
+        <div id="wrap">
+            <div class="header">
+                <div class="logo">
+                    <a href="index.aspx">
+                        <img src="images/logo.gif" alt="" title="" border="0" /></a></div>
+                <asp:Literal ID="ltMenu" runat="server"></asp:Literal>
+            </div>
+            <div class="center_content">
+                <div class="left_content">
+                    <asp:ContentPlaceHolder ID="contentHolder" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+                <!--end of left content-->
+                <div class="right_content" style="width:300px">
+                    <div class="currency">
+                        <span class="red">
+                            <asp:Label ID="lCountOp" runat="server">我的帐户：</asp:Label>
+                        </span>
+                        <asp:Label ID="lShowOrder" runat="server"><a href="OrderManage.aspx">我的订单</a></asp:Label>
+                        <asp:LoginStatus ID="lsLogOut" runat="server" LoginText="" LogoutText="注销登录" LogoutPageUrl="javascript:history.go(-1);" />
+                        <a href="#" onclick='Box("msg3",500,327,html3,footerhtml3);'>用户调查</a>
+                        <p></p>
+                    </div>
+                    
+                    <div class="cart">
+                        <div class="title">
+                            <span class="title_icon">
+                                <img src="images/cart.gif" alt="" title="" /></span>我的购物车</div>
+                        <asp:Panel ID="pShopCart" runat="server">
+                            <div class="home_cart_content">
+                                <asp:Label ID="lbTotalQuantity" ForeColor="black" runat="server" Text=""></asp:Label>
+                                x 商品 | <span class="red">小计:
+                                    <asp:Label ID="lbTotalPrice" ForeColor="black" runat="server" Text=""></asp:Label></span>
+                            </div>
+                            <a href="CartView.aspx" class="view_cart">查看</a>
+                        </asp:Panel>
+                        <asp:Panel ID="pShopCartError" runat="server">
+                            <div class="home_cart_content">
+                                <asp:Label ID="lShopCartError" ForeColor="red" runat="server" Text="购物车读取失败..."></asp:Label>
+                            </div>
+                        </asp:Panel>
+                    </div>
+                    <div class="title">
+                        <span class="title_icon">
+                            <img src="images/bullet3.gif" alt="" title="" /></span>关于我们</div>
+                    <div class="about">
+                        <p>
+                            <img src="images/about.gif" alt="" title="" class="right" />
+                            SHERRY化妆品公司分析并了解现代消费者需求，开发出一系列高品质产品，其中，佳雪芦荟保湿系列、佳雪冰点防晒系列连续多年位于市场前列，深受广大消费者喜爱。为了更好的服务消费者，SHERRY建立完善的市场调研系统，开展消费者追踪、回访并与消费者建立更为紧密和持久的沟通关系。SHERRY的市场部建立了庞大的数据库，把消费者的意见、要求及时分析、反馈给生产和技术部门，以生产出更适合消费者使用的产品。
+                        </p>
+                    </div>
+                    <div class="right_box">
+                        <div class="title">
+                            <span class="title_icon">
+                                <img src="images/bullet4.gif" alt="" title="" />
+                            </span>特价商品
+                        </div>
+                        <asp:Label ID="SOfferError" runat="server" Text="读取特价商品错误..." ForeColor="red" />
+                        <asp:Repeater ID="RpSpecailOffer" runat="server">
+                            <ItemTemplate>
+                                <div class="new_prod_box">
+                                    <a href='Details.aspx?GoodsID=<%#Eval("ID") %>'>
+                                        <%#Eval("Name") %>
+                                    </a>
+                                    <div class="new_prod_bg">
+                                        <span class="new_icon">
+                                            <img src="images/promo_icon.gif" alt="" title="" /></span> <a href='Details.aspx?GoodsID=<%#Eval("ID") %>'>
+                                                <img src='<%#Eval("ImgPath") %>' width="112px" height="100px" alt="" title="" class="thumb"
+                                                    border="0" /></a>
+                                    </div>
+                                </div>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </div>
+                    <div class="right_box">
+                        <div class="title">
+                            <span class="title_icon">
+                                <img src="images/bullet5.gif" alt="" title="" /></span>产品分类</div>
+                        <ul class="list">
+                            <asp:DataList ID="dlCatagoryList" runat="server">
+                                <ItemTemplate>
+                                    <li><a href='Goods.aspx?Category=<%#Eval("GoodsCategory") %>'>
+                                        <%#Eval("CategoryName") %>
+                                    </a></li>
+                                </ItemTemplate>
+                            </asp:DataList>
+                        </ul>
+                        <asp:Label ID="CategoryError" runat="server" Text="读取商品列表错误..." ForeColor="red" />
+                        <div class="title">
+                            <span class="title_icon">
+                                <img src="images/bullet6.gif" alt="" title="" /></span>友情链接</div>
+                        <ul class="list">
+                            <li><a href="http://www.shiseidochina.com" target="_blank">资生堂(中国)</a></li>
+                            <li><a href="http://www.maybellinechina.com/" target="_blank">美宝莲(中国)</a></li>
+                            <li><a href="http://www.benefitcosmetics.com" target="_blank">贝玲妃(Benefit)</a></li>
+                            <li><a href="http://www.arche.com.cn" target="_blank">雅倩化妆品有限公司</a></li>
+                            <li><a href="http://www.lorealchina.com" target="_blank">欧莱雅(中国)</a></li>
+                            <li><a href="http://www.EsteeLauder.com.cn" target="_blank">雅诗兰黛(中国)</a></li>
+                            <li><a href="http://www.yuesai.com" target="_blank">羽西化妆品</a></li>
+                            <li><a href="http://www.lancome.com.cn" target="_blank">兰蔻(中国)</a></li>
+                            <li><a href="http://www.avon.com.cn" target="_blank">雅芳化妆品</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--end of right content-->
+                <div class="clear">
+                </div>
+            </div>
+            <!--end of center content-->
+            <div class="footer">
+                <div class="left_footer">
+                    <img src="images/footer_logo.gif" alt="" title="" /><br />
+                    <a href="#" title="free templates">Forus</a></div>
+                <div class="right_footer">
+                    <a href="#">home</a> <a href="#">about us</a> <a href="#">services</a> <a href="#">privacy
+                        policy</a> <a href="#">contact us</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+
+<script type="text/javascript">
+     var tabber1 = new Yetii({id: 'demo'});
+</script>
+
+</html>
