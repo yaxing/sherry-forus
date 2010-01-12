@@ -11,7 +11,7 @@
         <div id="demo" class="demolayout" style="margin-top: 10px; margin-top: 20pxf">
             <asp:Literal ID="ltTabs" runat="server"></asp:Literal>
             <div class="tabs-container">
-                <div style="display: block; height: 366px; width: 436px" class="tab" id="tab1">
+                <div style="display: block; height: 416px; width: 436px" class="tab" id="tab1">
                     <asp:GridView ID="gvOrderList" runat="server" AutoGenerateColumns="False" GridLines="None"
                         AllowPaging="true" OnPageIndexChanging="gvOrderList_PageIndexChanging" OnRowCreated="gvOrderList_RowCreated">
                         <Columns>
@@ -53,7 +53,7 @@
                         </Columns>
                     </asp:GridView>
                 </div>
-                <div style="display: none; height: 366px; width: 436px" class="tab" id="tab2">
+                <div style="display: none; height: 416px; width: 436px" class="tab" id="tab2">
                     <asp:GridView ID="gvOrderListHistory" runat="server" AutoGenerateColumns="False"
                         GridLines="None" AllowPaging="true" OnPageIndexChanging="gvOrderList_PageIndexChanging"
                         OnRowCreated="gvOrderList_RowCreated">
