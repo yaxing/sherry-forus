@@ -70,9 +70,17 @@ public partial class CartView : System.Web.UI.Page
 
             gvItems.AllowPaging = true;
             gvItems.PageSize = 3;
-            gvItems.DataSource = shopCart.GetItems();
-            gvItems.DataBind();
-            lbTotalPrice.Text = String.Format("{0:C}",shopCart.GetTotalPrice());
+            try
+            {
+                gvItems.DataSource = shopCart.GetItems();
+                gvItems.DataBind();
+            }
+            catch 
+            {
+                Response.Write("<script>alert('获取购物车错误，请重新操作！');history.go(-1);</script>");
+                return;
+            }
+            lbTotalPrice.Text = String.Format("{0:C}", shopCart.GetTotalPrice());
             lbTotalQuantity.Text = shopCart.GetItemQuantity().ToString();
             if (shopCart.GetItemQuantity() == 0)
             {

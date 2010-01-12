@@ -16,8 +16,8 @@ namespace DAL
 {
     public class ShopCartInfoDAL
     {
-        private string sqlString = string.Empty;
-        private DataProvider dp;
+        private static string sqlString = string.Empty;
+        private static DataProvider dp;
 
         #region 构造商品实体
         /// <summary>
@@ -46,10 +46,10 @@ namespace DAL
                 return false;
             }
 
-            info.Name = dt.Rows[0][0].ToString();
+            info.Name = dt.Rows[0]["goodsName"].ToString();
             info.Number = 1;
-            info.Price = Convert.ToDouble(dt.Rows[0][1].ToString());
-            info.ImgPath = dt.Rows[0][2].ToString();
+            info.Price = Convert.ToDouble(dt.Rows[0]["goodsPrice"].ToString());
+            info.ImgPath = dt.Rows[0]["goodsImg"].ToString();
 
             //===================================根据用户等级判断优惠价格========================//
             MembershipUser curUser =  Membership.GetUser(HttpContext.Current.User.Identity.Name);
@@ -79,7 +79,7 @@ namespace DAL
         #endregion
 
         #region 查询商品库存
-        public bool GetStorage(ref int storage, int id) 
+        public static bool GetStorage(ref int storage, int id) 
         {
             DataTable dt = new DataTable();
             sqlString = "select goodsStorage from goodsInfo where goodsID=" + id;
@@ -97,7 +97,7 @@ namespace DAL
             {
                 return false;
             }
-            storage = Convert.ToInt32(dt.Rows[0][0].ToString());
+            storage = Convert.ToInt32(dt.Rows[0]["goodsStorage"].ToString());
             return true;
         }
         #endregion

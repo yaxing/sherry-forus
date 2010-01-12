@@ -5,7 +5,7 @@
     <img src="images/bullet1.gif" width="20px" alt="" title="" /><font style="font-size: 19px;
         color: #a81f22">我的购物车</font>
     <div style="position: relative; left: 0px; top: 15px; width: 270px; border-style: solid;
-        border-width: 2px; border-color:black;">
+        border-width: 2px; border-color: black;">
         <table>
             <tr style="">
             </tr>
@@ -54,8 +54,7 @@
             </tr>
         </table>
     </div>
-    <div style="position: relative; left: 0px; font-size: 15px; font-weight: bold;
-        width: 350px">
+    <div style="position: relative; left: 0px; font-size: 15px; font-weight: bold; width: 350px">
         <table>
             <%--<tr>
                 <td style="color: black">
@@ -64,8 +63,7 @@
             </tr>--%>
             <tr>
                 <td>
-                    <asp:Label ID="lbCookieWarning" runat="server" Font-Size="10px"
-                        Text="！为了您能够方便的使用购物车功能，请将您的浏览器设置为允许cookie！"></asp:Label>
+                    <asp:Label ID="lbCookieWarning" runat="server" Font-Size="10px" Text="！为了您能够方便的使用购物车功能，请将您的浏览器设置为允许cookie！"></asp:Label>
                 </td>
             </tr>
         </table>
@@ -75,7 +73,7 @@
             OnRowCommand="gvItems_RowCommand" GridLines="None" AllowPaging="true" OnPageIndexChanging="gvItems_PageIndexChanging"
             OnRowCreated="gvItems_RowCreated">
             <EmptyDataTemplate>
-                <table width="100%" style=" font-size: 12px">
+                <table width="100%" style="font-size: 12px">
                     <tr>
                         <td align="center" style="height: 80px">
                             您还没有选购商品。<a href="Goods.aspx">浏览商品>></a>
@@ -111,17 +109,21 @@
                 <asp:TemplateField>
                     <HeaderStyle BackColor="darkred" />
                     <ItemTemplate>
-                        <div style="position:relative; top:0px">
+                        <div style="position: relative; top: 0px">
                             <table>
                                 <tr style="height: 20px;">
                                 </tr>
                                 <tr>
-                                    <td align="left" style="width:120px">
+                                    <td align="left" style="width: 120px">
                                         <asp:LinkButton ForeColor="black" ID="itemInfo" Font-Underline="true" runat="server"
                                             CommandName="ShowInfo" CommandArgument='<%# Eval("ID") %>'><%#Eval("Name") %></asp:LinkButton>
                                     </td>
                                 </tr>
                                 <tr style="height: 20px">
+                                    <td>
+                                        (剩余: <a><strong><%#Eval("GoodsStorage")%></strong></a>
+                                        个)
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -134,18 +136,18 @@
                             </table>
                         </div>
                     </ItemTemplate>
-                    <ItemStyle Width="180px"/>
+                    <ItemStyle Width="180px" />
                 </asp:TemplateField>
                 <asp:TemplateField>
                     <HeaderStyle ForeColor="white" Font-Size="15px" BackColor="darkred" />
                     <ItemStyle HorizontalAlign="Center" Width="40px" />
                     <HeaderTemplate>
-                        | <font style=" font-weight: bold">积分</font>
+                        | <font style="font-weight: bold">积分</font>
                     </HeaderTemplate>
                     <ItemTemplate>
                         <font color="black">
-                            <%#Convert.ToInt32(Eval("TotalPrice")) %>分
-                        </font>
+                            <%#Convert.ToInt32(Eval("TotalPrice")) %>
+                            分 </font>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField>
@@ -171,13 +173,14 @@
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField>
-                    <ItemStyle HorizontalAlign="Center" Width="45px"/>
+                    <ItemStyle HorizontalAlign="Center" Width="45px" />
                     <HeaderStyle ForeColor="white" Font-Size="15px" BackColor="darkred" />
                     <HeaderTemplate>
                         | <font style="font-weight: bold">折扣</font>
                     </HeaderTemplate>
                     <ItemTemplate>
-                        <%#Convert.ToDouble(Eval("Discount").ToString())*10 %>折
+                        <%#Convert.ToDouble(Eval("Discount").ToString())*10 %>
+                        折
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField>
@@ -185,7 +188,7 @@
                     <HeaderStyle ForeColor="white" Font-Size="15px" BackColor="darkred" />
                     <FooterStyle ForeColor="Black" Font-Size="15px" />
                     <HeaderTemplate>
-                        | <font style=" font-weight: bold">小计</font>
+                        | <font style="font-weight: bold">小计</font>
                     </HeaderTemplate>
                     <ItemTemplate>
                         <font color="darkred" style="font-weight: bold">

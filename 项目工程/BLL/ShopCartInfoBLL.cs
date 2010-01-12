@@ -136,8 +136,8 @@ namespace BLL
         /// <returns>bool值</returns>
         public bool curStorage(ref int curS)
         {
-            ShopCartInfoDAL sc = new ShopCartInfoDAL();
-            return sc.GetStorage(ref curS, curID);
+            //ShopCartInfoDAL sc = new ShopCartInfoDAL();
+            return ShopCartInfoDAL.GetStorage(ref curS, curID);
         }
         #endregion
 
@@ -238,6 +238,18 @@ namespace BLL
         /// <returns>商品列表(ICollection)</returns>
         public ICollection GetItems() 
         {
+            foreach (ItemEntity e in curCart.curDic.Values)
+            {
+                int buffer = 0;
+                if (!ShopCartInfoDAL.GetStorage(ref buffer, e.ID))
+                {
+                    return null;
+                }
+                else
+                {
+                    e.GoodsStorage = buffer;
+                }
+            }
             return curCart.curDic.Values;
         }
         #endregion
