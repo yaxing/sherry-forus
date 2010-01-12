@@ -76,7 +76,7 @@ create table goodsComment(
 --main order info 有问题 就是那些default不知该怎么写表达式
 create table mainOrderInfo(
 	mainOrderID int not null primary key identity(1,1),
-	userID uniqueidentifier not null foreign key references userInfo(userID),
+	userID uniqueidentifier foreign key references userInfo(userID),
 	postAdd varchar(200) not null,-- ??default ( select postAdd from userInfo where userInfo.userID=new.userID),
 	userRealName varchar(50) not null,
 	phoneNum varchar(20) not null, --?? default (select * from )...
