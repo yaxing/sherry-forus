@@ -8,7 +8,7 @@
         <a href="SearchOrder.aspx">订单搜索</a>&nbsp;|&nbsp;<a href="OrderManage.aspx">我的订单</a>
     </div>
     <asp:Panel ID="pOrderList" runat="server">
-        <div id="demo" class="demolayout" style="margin-top: 10px; margin-top: 20pxf">
+        <div id="demo" class="demolayout" style="margin-top: 10px; margin-top: 20px">
             <asp:Literal ID="ltTabs" runat="server"></asp:Literal>
             <div class="tabs-container">
                 <div style="display: block; height: 416px; width: 436px" class="tab" id="tab1">
