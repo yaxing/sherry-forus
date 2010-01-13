@@ -21,6 +21,11 @@ public partial class Pay : System.Web.UI.Page
     string buffer;
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (HttpContext.Current.User.Identity.Name.Length == 0)
+        {
+            Response.Write("<script>history.go(-1);</script>");
+            return;
+        }
         if ((buffer = Request.QueryString["ID"]) == null || buffer.Length == 0)
         {
             Response.Write("<script>alert('您还没有确认订单!');history.go(-1);</script>");
@@ -37,15 +42,15 @@ public partial class Pay : System.Web.UI.Page
         UserScoreBLL addScore = new UserScoreBLL();
         if (!payOrder.ChangePayState(id))
         {
-            Response.Write("<script>alert('付款失败，请重新操作！');location.href('Pay.aspx?ID=" + id + "');</script>");
+            Response.Write("<script>alert('付款失败，请重新操作！');location.href('/Web/User/Pay.aspx?ID=" + id + "');</script>");
         }
         else if (!addScore.AddUserScore(id, false)) 
         {
-            Response.Write("<script>alert('付款成功，积分添加失败，请联系管理员！');location.href('OrderManage.aspx?ID=" + id + "');</script>"); 
+            Response.Write("<script>alert('付款成功，积分添加失败，请联系管理员！');location.href('/Web/User/OrderManage.aspx?ID=" + id + "');</script>"); 
         }
         else
         {
-            Response.Write("<script>alert('付款成功，您的积分已经顺利添加！');location.href('OrderManage.aspx?ID=" + id + "');</script>");
+            Response.Write("<script>alert('付款成功，您的积分已经顺利添加！');location.href('/Web/User/OrderManage.aspx?ID=" + id + "');</script>");
         }
     }
 }

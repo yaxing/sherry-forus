@@ -2,16 +2,16 @@
     CodeFile="OrderManage.aspx.cs" Inherits="OrderManage" Title="Untitled Page" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="contentHolder" runat="Server">
-    <img src="images/bullet1.gif" width="20" alt="" title="" /><font style="font-size: 19px;
+    <img src="/Web/images/bullet1.gif" width="20" alt="" title="" /><font style="font-size: 19px;
         color: #a81f22">我的订单</font>
     <div style="position: relative; bottom: 20px; left: 330px; color: DarkRed">
         <a href="SearchOrder.aspx">订单搜索</a>&nbsp;|&nbsp;<a href="OrderManage.aspx">我的订单</a>
     </div>
     <asp:Panel ID="pOrderList" runat="server">
-        <div id="demo" class="demolayout" style="margin-top: 10px; margin-top: 20pxf">
+        <div id="demo" class="demolayout" style="margin-top: 10px; margin-top: 20px">
             <asp:Literal ID="ltTabs" runat="server"></asp:Literal>
             <div class="tabs-container">
-                <div style="display: block; height: 366px; width: 436px" class="tab" id="tab1">
+                <div style="display: block; height: 416px; width: 436px" class="tab" id="tab1">
                     <asp:GridView ID="gvOrderList" runat="server" AutoGenerateColumns="False" GridLines="None"
                         AllowPaging="true" OnPageIndexChanging="gvOrderList_PageIndexChanging" OnRowCreated="gvOrderList_RowCreated">
                         <Columns>
@@ -24,7 +24,7 @@
                                     <table>
                                         <tr>
                                             <td align="center" style="width: 50px">
-                                                <a href='OrderManage.aspx?ID=<%#Eval("mainOrderID") %>'>
+                                                <a href='/Web/User/OrderManage.aspx?ID=<%#Eval("mainOrderID") %>'>
                                                     <%#Eval("mainOrderID") %>
                                                 </a>
                                             </td>
@@ -53,7 +53,7 @@
                         </Columns>
                     </asp:GridView>
                 </div>
-                <div style="display: none; height: 366px; width: 436px" class="tab" id="tab2">
+                <div style="display: none; height: 416px; width: 436px" class="tab" id="tab2">
                     <asp:GridView ID="gvOrderListHistory" runat="server" AutoGenerateColumns="False"
                         GridLines="None" AllowPaging="true" OnPageIndexChanging="gvOrderList_PageIndexChanging"
                         OnRowCreated="gvOrderList_RowCreated">
@@ -67,7 +67,7 @@
                                     <table>
                                         <tr>
                                             <td align="center" style="width: 50px">
-                                                <a href='OrderManage.aspx?ID=<%#Eval("mainOrderID") %>'>
+                                                <a href='/Web/User/OrderManage.aspx?ID=<%#Eval("mainOrderID") %>'>
                                                     <%#Eval("mainOrderID") %>
                                                 </a>
                                             </td>
@@ -197,7 +197,7 @@
                                 <tr>
                                     <td align="center" style="width: 180px">
                                         <asp:Image BorderStyle="Solid" BorderColor="black" BorderWidth="1px" ID="itemImg"
-                                            runat="server" Width="70px" ImageUrl='<%#Eval("goodsImg") %>' />
+                                            runat="server" Width="70px" ImageUrl='<%#"/Web/"+Eval("goodsImg") %>' />
                                     </td>
                                 </tr>
                             </table>
@@ -211,7 +211,7 @@
                             <table>
                                 <tr>
                                     <td align="center" style="width: 120px">
-                                        <a href='Details.aspx?GoodsID=<%#Eval("goodsID") %>'>
+                                        <a href='/Web/Details.aspx?GoodsID=<%#Eval("goodsID") %>'>
                                             <%#Eval("goodsName") %>
                                         </a>
                                     </td>

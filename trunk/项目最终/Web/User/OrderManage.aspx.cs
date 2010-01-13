@@ -9,6 +9,7 @@ using BLL;
 using Entity;
 using InterFace;
 using System.Collections.Generic;
+using System.Web;
 
 public partial class OrderManage : System.Web.UI.Page
 {
@@ -17,6 +18,11 @@ public partial class OrderManage : System.Web.UI.Page
     string buffer;
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (HttpContext.Current.User.Identity.Name.Length==0) 
+        {
+            Response.Write("<script>history.go(-1);</script>");
+            return;
+        }
         if (!IsPostBack)
         {
                 ltTabs.Text = "<ul id='demo-nav' class='demolayout'>"
@@ -411,7 +417,7 @@ public partial class OrderManage : System.Web.UI.Page
 
     protected void imgbPay_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Pay.aspx?ID=" + orderId);
+        Response.Redirect("/Web/User/Pay.aspx?ID=" + orderId);
     }
     
     protected void bConfirm_Click(object sender, EventArgs e)
@@ -426,7 +432,7 @@ public partial class OrderManage : System.Web.UI.Page
         }
         else 
         {
-            Response.Write("<script>alert('交易已完成');location.href('OrderManage.aspx?ID="+curOrder.OrderID+"');</script>");
+            Response.Write("<script>alert('交易已完成');location.href('/Web/User/OrderManage.aspx?ID=" + curOrder.OrderID + "');</script>");
             return;
         }
     }
@@ -441,7 +447,7 @@ public partial class OrderManage : System.Web.UI.Page
         }
         else
         {
-            Response.Write("<script>alert('订单成功撤销！');location.href('OrderManage.aspx');</script>");
+            Response.Write("<script>alert('订单成功撤销！');location.href('/Web/User/OrderManage.aspx');</script>");
             return;
         }
     }
@@ -482,11 +488,11 @@ public partial class OrderManage : System.Web.UI.Page
         }
         if (state >= 0)
         {
-            Response.Redirect("OrderManage.aspx?OrderState=" + state);
+            Response.Redirect("/Web/User/OrderManage.aspx?OrderState=" + state);
         }
         else
         {
-            Response.Redirect("OrderManage.aspx");
+            Response.Redirect("/Web/User/OrderManage.aspx");
         }
     }
 }
