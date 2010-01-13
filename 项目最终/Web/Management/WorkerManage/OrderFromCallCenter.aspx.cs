@@ -416,7 +416,7 @@ public partial class Management_OrderFromCallCenter : System.Web.UI.Page
         }
         else
         {
-            Response.Write("<script>alert('交易已完成');location.href('/Web/Management/OrderFromCallCenter.aspx?ID=" + curOrder.OrderID + "');</script>");
+            Response.Write("<script>alert('交易已完成');location.href('/Web/Management/WorkerManage/OrderFromCallCenter.aspx?ID=" + curOrder.OrderID + "');</script>");
             return;
         }
     }
@@ -451,11 +451,11 @@ public partial class Management_OrderFromCallCenter : System.Web.UI.Page
         }
         if (state >= 0)
         {
-            Response.Redirect("/Web/Management/OrderFromCallCenter.aspx?OrderState=" + state);
+            Response.Redirect("/Web/Management/WorkerManage/OrderFromCallCenter.aspx?OrderState=" + state);
         }
         else
         {
-            Response.Redirect("/Web/Management/OrderFromCallCenter.aspx");
+            Response.Redirect("/Web/Management/WorkerManage/OrderFromCallCenter.aspx");
         }
     }
 }
