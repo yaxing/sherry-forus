@@ -72,7 +72,7 @@ var	footerhtml3='<input type="image" alt="Cancel" src="images/cancel.png" class=
                     </asp:ContentPlaceHolder>
                 </div>
                 <!--end of left content-->
-                <div class="right_content" style="width:300px">
+                <div class="right_content">
                     <div class="currency">
                         <span class="red">
                             <asp:Label ID="lCountOp" runat="server">我的帐户：</asp:Label>
@@ -83,7 +83,7 @@ var	footerhtml3='<input type="image" alt="Cancel" src="images/cancel.png" class=
                         <p></p>
                     </div>
                     
-                    <div class="cart">
+                    <div class="cart" style="width:350px;">
                         <div class="title">
                             <span class="title_icon">
                                 <img src="images/cart.gif" alt="" title="" /></span>我的购物车</div>
