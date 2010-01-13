@@ -28,7 +28,7 @@ public partial class Management_AddOrder : System.Web.UI.Page
 
         if (!adminBLL.SrchAdminInfoByUserName(ref admin, User.Identity.Name))
         {
-            Response.Write("<script language='javascript'>alert('无法获取数据，请重试或联系管理员');top.location='../Index.aspx';</script>");
+            Response.Write("<script language='javascript'>alert('无法获取数据，请重试或联系管理员');top.location='/Web/Index.aspx';</script>");
             return;
         }
         if (admin.AdminLv == 0 || admin.AdminLv == 2) 
@@ -406,18 +406,18 @@ public partial class Management_AddOrder : System.Web.UI.Page
         {
             if (!curCart.RemoveCart()) 
             {
-                Response.Write("<script>alert('订单生成成功,购物车清空失败!请重新操作');location.href('AddOrder.aspx');</script>");
+                Response.Write("<script>alert('订单生成成功,购物车清空失败!请重新操作');location.href('/Web/Management/AddOrder.aspx');</script>");
             }
-            Response.Write("<script>alert('订单生成成功,物流启动失败!请联系管理员');location.href('AddOrder.aspx');</script>");
+            Response.Write("<script>alert('订单生成成功,物流启动失败!请联系管理员');location.href('/Web/Management/AddOrder.aspx');</script>");
             return;
         }
         else 
         {
             if (!curCart.RemoveCart())
             {
-                Response.Write("<script>alert('订单生成成功,购物车清空失败!请重新操作');location.href('AddOrder.aspx');</script>");
+                Response.Write("<script>alert('订单生成成功,购物车清空失败!请重新操作');location.href('/Web/Management/AddOrder.aspx');</script>");
             }
-            Response.Write("<script>alert('订单生成成功!');location.href('AddOrder.aspx');</script>");
+            Response.Write("<script>alert('订单生成成功!');location.href('/Web/Management/AddOrder.aspx');</script>");
             return;
         }
     }
