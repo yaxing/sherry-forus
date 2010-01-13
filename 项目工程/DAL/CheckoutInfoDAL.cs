@@ -99,20 +99,31 @@ namespace DAL
         /// 向数据库插入新订单
         /// </summary>
         /// <param name="info">新订单实体对象</param>
+        /// <param name="mainOrderID">生成的订单号</param>
+        /// <param name="isCallCenter">电销/网销标记</param>
         /// <returns>bool值</returns>
-        public bool InsertNewOrder(OrderInfo info, ref int mainOrderID)
+        public bool InsertNewOrder(OrderInfo info, ref int mainOrderID, bool isCallCenter)
         {
             SqlParameter[] pt;
             int orderID;//订单号
             int goodsStorage;
             int goodsVolume;
+            int sellWay;
+            if (isCallCenter)
+            {
+                sellWay = 1;
+            }
+            else 
+            {
+                sellWay = 0;
+            }
             DataTable dt = new DataTable();
             //============================================插入主订单数据===================================//
 
             //需要插入发票信息
             if (info.InvoiceHead != null && info.InvoiceHead.Length > 0 && info.InvoiceContent != null && info.InvoiceContent.Length > 0)
             {
-                sqlString = "insert into mainOrderInfo (userId, postAdd, postNum, userRealName, phoneNum, province, invoiceHead, invoiceContent, orderTime, orderPrice, orderState) values (@id,@add,@zip,@name,@tel,@prov,@head,@content,@time,@price,@state)";
+                sqlString = "insert into mainOrderInfo (userId, postAdd, postNum, userRealName, phoneNum, province, invoiceHead, invoiceContent, orderTime, orderPrice, orderState, sellWay) values (@id,@add,@zip,@name,@tel,@prov,@head,@content,@time,@price,@state,@sellWay)";
                 pt = new SqlParameter[] { 
                                 new SqlParameter("@id",SqlDbType.UniqueIdentifier),
                                 new SqlParameter("@add",SqlDbType.VarChar),
@@ -124,7 +135,8 @@ namespace DAL
                                 new SqlParameter("@content",SqlDbType.VarChar),
                                 new SqlParameter("@time",SqlDbType.DateTime),
                                 new SqlParameter("@price",SqlDbType.Money),
-                                new SqlParameter("@state",SqlDbType.Int)
+                                new SqlParameter("@state",SqlDbType.Int),
+                                new SqlParameter("@sellWay",SqlDbType.Int)
                                 };
                 pt[0].Value = info.UserID;
                 pt[1].Value = info.UserAdd;
@@ -137,6 +149,7 @@ namespace DAL
                 pt[8].Value = DateTime.Now;
                 pt[9].Value = info.UserOrderPrice;
                 pt[10].Value = info.State;
+                pt[11].Value = sellWay;
             }
             //不需要插入发票信息
             else 

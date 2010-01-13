@@ -235,11 +235,17 @@ public partial class CheckOut : System.Web.UI.Page
                 case 1:
                     Response.Write("<script>alert('订单保存失败！');history.go(-1);</script>");
                     break;
-                case 2: 
-                    Response.Write("<script>alert('用户等级更改失败，请联系管理员！');history.go(-1);</script>");
+                case 2:
+                    Response.Write("<script>alert('订单保存成功,用户等级更改失败，请联系管理员！');history.go(-1);</script>");
                     break;
                 case 3:
-                    Response.Write("<script>alert('积分添加失败，请联系管理员！');history.go(-1);</script>");
+                    Response.Write("<script>alert('订单保存成功,积分添加失败，请联系管理员！');history.go(-1);</script>");
+                    break;
+                case 4:
+                    Response.Write("<script>alert('订单保存成功,物流启动失败，请联系管理员！');history.go(-1);</script>");
+                    break;
+                default:
+                    Response.Write("<script>alert('订单生成失败！');history.go(-1);</script>");
                     break;
             }
         }
