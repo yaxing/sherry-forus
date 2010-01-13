@@ -21,24 +21,6 @@ public partial class Management_AddOrder : System.Web.UI.Page
 {
     CartCtrl shopCart;
 
-    protected override void OnInit(EventArgs e)
-    {
-        base.OnInit(e);
-        this.Unload += new EventHandler(Page_Unload);
-    }
-
-    protected void Page_Unload(object sender, EventArgs e)
-    {
-        HttpCookie curCookie = HttpContext.Current.Request.Cookies["CartForCallCenter"];
-        if (curCookie == null||curCookie.Value.Length==0) 
-        {
-            return;
-        }
-        curCookie.Value = "";
-        curCookie.Expires = DateTime.Now.AddDays(-1);
-        HttpContext.Current.Response.Cookies.Add(curCookie);
-    }
-
     protected void Page_Load(object sender, EventArgs e)
     {
         AdminInfo admin = new AdminInfo();
@@ -426,20 +408,34 @@ public partial class Management_AddOrder : System.Web.UI.Page
         }
         else if (state == 2)
         {
+            HttpCookie curCookie = HttpContext.Current.Request.Cookies["CartForCallCenter"];
+            if (curCookie != null || curCookie.Value.Length > 0)
+            {
+                curCookie.Value = "";
+                curCookie.Expires = DateTime.Now.AddDays(-1);
+                HttpContext.Current.Response.Cookies.Add(curCookie);
+            }
             if (!curCart.RemoveCart()) 
             {
-                Response.Write("<script>alert('订单生成成功,购物车清空失败!请重新操作');location.href('/Web/Management/AddOrder.aspx');</script>");
+                Response.Write("<script>alert('订单生成成功,购物车清空失败!请重新操作');location.href('/Web/Management/WorkerManage/AddOrder.aspx');</script>");
             }
-            Response.Write("<script>alert('订单生成成功,物流启动失败!请联系管理员');location.href('/Web/Management/AddOrder.aspx');</script>");
+            Response.Write("<script>alert('订单生成成功,物流启动失败!请联系管理员');location.href('/Web/Management/WorkerManage/AddOrder.aspx');</script>");
             return;
         }
         else 
         {
+            HttpCookie curCookie = HttpContext.Current.Request.Cookies["CartForCallCenter"];
+            if (curCookie != null || curCookie.Value.Length > 0)
+            {
+                curCookie.Value = "";
+                curCookie.Expires = DateTime.Now.AddDays(-1);
+                HttpContext.Current.Response.Cookies.Add(curCookie);
+            }
             if (!curCart.RemoveCart())
             {
-                Response.Write("<script>alert('订单生成成功,购物车清空失败!请重新操作');location.href('/Web/Management/AddOrder.aspx');</script>");
+                Response.Write("<script>alert('订单生成成功,购物车清空失败!请重新操作');location.href('/Web/Management/WorkerManage/AddOrder.aspx');</script>");
             }
-            Response.Write("<script>alert('订单生成成功!');location.href('/Web/Management/AddOrder.aspx');</script>");
+            Response.Write("<script>alert('订单生成成功!');location.href('/Web/Management/WorkerManage/AddOrder.aspx');</script>");
             return;
         }
     }

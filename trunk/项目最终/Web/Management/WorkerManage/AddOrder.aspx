@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title>电话销售订单添加</title>
-    <link rel="stylesheet" type="text/css" href="bgStyle.css" />
+    <link rel="stylesheet" type="text/css" href="/Web/Management/bgStyle.css" />
     <script type="text/jscript" >
     function quantityCheck(){
 //     var quantity = parseint(document.all.tbGoodQuantity.value);
