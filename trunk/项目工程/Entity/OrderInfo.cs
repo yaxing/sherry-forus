@@ -13,19 +13,19 @@ namespace Entity
     public class OrderInfo
     {
         private int orderID;
-        private Guid userID;
-        private string userRealName;
-        private string userAdd;
-        private string userZip;
-        private string userTel;
-        private string userProvince;
-        private double userOrderPrice;
-        private int userPayState;
-        private string invoiceHead = null;
-        private string invoiceContent = null;
+        private Guid userID = Guid.Empty;
+        private string userRealName = string.Empty;
+        private string userAdd = string.Empty;
+        private string userZip = string.Empty;
+        private string userTel = string.Empty;
+        private string userProvince = string.Empty;
+        private double userOrderPrice = 0.0;
+        private int userPayState = 0;
+        private string invoiceHead = string.Empty;
+        private string invoiceContent = string.Empty;
         private string orderTime = string.Empty;
         private int state = 0;
-        private IList<ItemEntity> userOrderItems;
+        private IList<ItemEntity> userOrderItems = null;
 
         public int OrderID 
         {

@@ -241,8 +241,8 @@ public partial class CartView : System.Web.UI.Page
             int quantity = Convert.ToInt32(tbCtrl.Text);
 
             int s = 0;
-            CartCtrl getStorage = new CartCtrl(id);
-            bool flagStorage = getStorage.curStorage(ref s);
+            //CartCtrl getStorage = new CartCtrl(id);
+            bool flagStorage = CartCtrl.curStorage(ref s,id);
             
             if (quantity == 0)
             {
@@ -289,6 +289,7 @@ public partial class CartView : System.Web.UI.Page
         GvSourceBind();
     }
     #endregion
+
     protected void ibReturn_Click(object sender, ImageClickEventArgs e)
     {
         Response.Redirect("Goods.aspx");

@@ -202,7 +202,7 @@
             <table>
                 <tr>
                     <td style="width: 90px">
-                        <asp:ImageButton ID="ibClearCart" runat="server" ImageUrl="images/clearAll.jpg" Width="85px"
+                        <asp:ImageButton ID="ibClearCart" runat="server" ImageUrl="images/clearAll.jpg" Width="85px"  OnClientClick="return confirm('真的要清空吗？')"
                             OnClick="ibClearCart_Click" />
                     </td>
                     <td>

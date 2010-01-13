@@ -35,6 +35,7 @@ public partial class Management_left : System.Web.UI.Page
                     this.PanelLogistic.Visible = false;
                     this.PanelService.Visible = false;
                     this.PanelWorker.Visible = false;
+                    this.PanelCallCenter.Visible = false;
                 }
                 if (admin.AdminLv == 1)
                 {
@@ -47,6 +48,7 @@ public partial class Management_left : System.Web.UI.Page
                     //不对人事管理员显示
                     this.PanelGoods.Visible = false;
                     this.PanelService.Visible = false;
+                    this.PanelCallCenter.Visible = false;
                 }
 
                 this.ltlModiSelf.Text = "<a href='ModiAdminSelf.aspx' target='mainFrame'>修改个人信息</a>";
