@@ -222,6 +222,42 @@ eval("submenu" + sid + ".style.display=\"none\";");
       </table>
 	  </asp:Panel>
 	  
+	  <asp:Panel ID="PanelCallCenter" runat="server">
+	  <table cellspacing="0" cellpadding="0" width="158px" align="center">
+        
+          <tr>
+            <td class="menu_title" id="Td6" onmouseover="this.className='menu_title2';" onclick="showsubmenu(30)" onmouseout="this.className='menu_title';" background="left.files/admin_left_2.gif" height="25">
+              <span>电话销售</span>
+            </td>
+          </tr>
+          <tr>
+            <td id="Td7">
+			 <div class="sec_menu" style="WIDTH: 156px">
+			   <table cellspacing="0" cellpadding="0" width="135" align="center">
+                   <tr>
+                     <td height="20">
+                       <a href="AddOrder.aspx" target="mainFrame">添加订单</a>
+                     </td>
+                   </tr>
+                   <tr>
+                     <td height="20">
+                       <a href="OrderFromCallCenter.aspx" target="mainFrame">订单显示</a>
+                     </td>
+                   </tr>
+                </table>
+			 </div>
+            <div style="WIDTH: 156px">
+            <table cellspacing="0" cellpadding="0" width="135" align="center">
+              <tr>
+                <td height="20">
+                </td>
+              </tr>
+            </table>
+            </div>
+			</td>
+          </tr>
+      </table>
+      </asp:Panel>
 	  
 	  <asp:Panel ID="PanelLogistic" runat="server">
 	  <table cellspacing="0" cellpadding="0" width="158px" align="center">
@@ -235,6 +271,11 @@ eval("submenu" + sid + ".style.display=\"none\";");
             <td id="submenu30">
 			 <div class="sec_menu" style="WIDTH: 156px">
 			   <table cellspacing="0" cellpadding="0" width="135" align="center">
+                   <tr>
+                     <td height="20">
+                       <a href="AddOrder.aspx" target="mainFrame">添加订单</a>
+                     </td>
+                   </tr>
                    <tr>
                      <td height="20">
                        <a href="#" target="mainFrame">订单状态</a>
