@@ -88,7 +88,7 @@ create table mainOrderInfo(
 	orderState int not null,
 	Constraint CK_orderState check (orderState=0 or orderState=1 or orderState=2 or orderState=3 or orderState=4),
 	isPaid int not null default(0),
-                  sellWay int default(0),
+                  sellWay int not null default(0),
 	Constraint CK_isPaid check (isPaid=0 or isPaid=1),
 )
 
