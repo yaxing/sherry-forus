@@ -29,13 +29,14 @@ public partial class Management_AddOrder : System.Web.UI.Page
 
     protected void Page_Unload(object sender, EventArgs e)
     {
-        HttpCookie curCookie = Request.Cookies["CartForCallCenter"];
-        if (curCookie == null) 
+        HttpCookie curCookie = HttpContext.Current.Request.Cookies["CartForCallCenter"];
+        if (curCookie == null||curCookie.Value.Length==0) 
         {
             return;
         }
         curCookie.Value = "";
-        curCookie.Expires.AddDays(-1);
+        curCookie.Expires = DateTime.Now.AddDays(-1);
+        HttpContext.Current.Response.Cookies.Add(curCookie);
     }
 
     protected void Page_Load(object sender, EventArgs e)
