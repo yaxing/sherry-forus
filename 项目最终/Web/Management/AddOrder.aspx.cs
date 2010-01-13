@@ -25,6 +25,10 @@ public partial class Management_AddOrder : System.Web.UI.Page
     {
         AdminInfo admin = new AdminInfo();
         AdminInfoBLL adminBLL = new AdminInfoBLL();
+        if (User.Identity.Name.Length == 0)
+        {
+            Response.Write("<script>alert('没有权限访问！');top.location='/Web/Index.aspx';</script>");
+        }
 
         if (!adminBLL.SrchAdminInfoByUserName(ref admin, User.Identity.Name))
         {
