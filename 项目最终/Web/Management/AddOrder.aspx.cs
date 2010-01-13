@@ -20,7 +20,24 @@ using System.Drawing;
 public partial class Management_AddOrder : System.Web.UI.Page
 {
     CartCtrl shopCart;
-    
+
+    protected override void OnInit(EventArgs e)
+    {
+        base.OnInit(e);
+        this.Unload += new EventHandler(Page_Unload);
+    }
+
+    protected void Page_Unload(object sender, EventArgs e)
+    {
+        HttpCookie curCookie = Request.Cookies["CartForCallCenter"];
+        if (curCookie == null) 
+        {
+            return;
+        }
+        curCookie.Value = "";
+        curCookie.Expires.AddDays(-1);
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
         AdminInfo admin = new AdminInfo();
