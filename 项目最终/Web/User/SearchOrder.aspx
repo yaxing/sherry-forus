@@ -2,7 +2,7 @@
     CodeFile="SearchOrder.aspx.cs" Inherits="SearchOrder" Title="Untitled Page" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="contentHolder" runat="Server">
-    <img src="images/bullet1.gif" width="20" alt="" title="" /><font style="font-size: 19px;
+    <img src="/Web/images/bullet1.gif" width="20" alt="" title="" /><font style="font-size: 19px;
         color: #a81f22">我的订单</font>
     <div style="position: relative; bottom: 20px; left: 330px; color: DarkRed">
         <a href="SearchOrder.aspx">订单搜索</a>&nbsp;|&nbsp;<a href="OrderManage.aspx">我的订单</a>
@@ -52,7 +52,7 @@
                         <table>
                             <tr>
                                 <td align="center" style="width: 50px">
-                                    <a href='OrderManage.aspx?ID=<%#Eval("orderID") %>'>
+                                    <a href='/Web/User/OrderManage.aspx?ID=<%#Eval("orderID") %>'>
                                         <%#Eval("orderID") %>
                                     </a>
                                 </td>

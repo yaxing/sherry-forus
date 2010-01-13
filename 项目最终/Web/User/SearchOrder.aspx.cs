@@ -9,6 +9,7 @@ using BLL;
 using Entity;
 using InterFace;
 using System.Collections.Generic;
+using System.Web;
 
 public partial class SearchOrder : System.Web.UI.Page
 {
@@ -16,6 +17,11 @@ public partial class SearchOrder : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (HttpContext.Current.User.Identity.Name.Length == 0)
+        {
+            Response.Write("<script>history.go(-1);</script>");
+            return;
+        }
         tbDateStart.Attributes.Add("OnClick", bChooseStartDate.ClientID + ".click()");
         tbDateEnd.Attributes.Add("OnClick", bChooseEndDate.ClientID + ".click()");
         if (!IsPostBack) 

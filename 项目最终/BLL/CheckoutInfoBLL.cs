@@ -68,7 +68,7 @@ namespace BLL
         /// 生成订单，操作成功返回true，失败返回false
         /// </summary>
         /// <param name="orderInfo">订单实体</param>
-        /// <returns>bool值</returns>
+        /// <returns>生成状态</returns>
         public int GenerateOrder(OrderInfo orderInfo, ref int orderID)
         {
             CheckoutInfoDAL newOrder = new CheckoutInfoDAL();
@@ -77,7 +77,7 @@ namespace BLL
             UserScoreDAL getScore = new UserScoreDAL();
             int userScore = 0;
             //插入订单信息
-            if (!newOrder.InsertNewOrder(orderInfo, ref orderID)) 
+            if (!newOrder.InsertNewOrder(orderInfo, ref orderID, false)) 
             {
                 return 1;
             }
@@ -106,7 +106,37 @@ namespace BLL
             }
             //启动物流
             IShipping shipping = new LogisticsInfoBLL();
-            shipping.StartShipping(orderInfo);
+            if(!shipping.StartShipping(orderInfo))
+            {
+                return 4;
+            }
+            return 0;
+        }
+        #endregion
+
+        #region 电销确认订单，生成订单
+        /// <summary>
+        /// 生成订单，操作成功返回true，失败返回false
+        /// </summary>
+        /// <param name="orderInfo">订单实体</param>
+        /// <param name="orderID">生成的订单ID</param>
+        /// <param name="isCallCenter">callcenter 标记</param>
+        /// <returns>过程状态</returns>
+        public int GenerateOrder(OrderInfo orderInfo, ref int orderID,bool isCallCenter)
+        {
+            CheckoutInfoDAL newOrder = new CheckoutInfoDAL();
+            //插入订单信息
+            if (!newOrder.InsertNewOrder(orderInfo, ref orderID, true)) 
+            {
+                return 1;
+            }
+            orderInfo.OrderID = orderID;
+            //启动物流
+            IShipping shipping = new LogisticsInfoBLL();
+            if(!shipping.StartShipping(orderInfo))
+            {
+                return 2;
+            }
             return 0;
         }
         #endregion

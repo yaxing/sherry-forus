@@ -24,6 +24,7 @@ namespace BLL
         private ItemEntity Info;
         private int curID;
         private string securityKey = "11111111";
+        private bool isCallCenter = false;
 
         #region 构造函数-查询库存
         public CartCtrl(int id) 
@@ -128,16 +129,72 @@ namespace BLL
         }
         #endregion
 
+        #region 构造函数-CallCenter购物车
+        /// <summary>
+        /// 构造CallCenter购物车
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
+        public CartCtrl(bool flag)
+        {
+            isCallCenter = true;
+            String cartValue = String.Empty;
+            curCart = new ShopCart();
+            curCart.curDic = new Hashtable();//构造哈希表，作为购物车暂存空间
+            curCart.curUser = HttpContext.Current.User.Identity.Name;
+
+            //每次构造购物车将重新合并COOKIE与XML中ITEMS，构造一个新的HASHTABLE
+
+            /*如果cookie购物车存在，读取cookie购物车至哈希表*/
+            if (HttpContext.Current.Request.Cookies["CartForCallCenter"] != null && HttpContext.Current.Request.Cookies["CartForCallCenter"].Value.Length > 0)
+            {
+                cartValue = HttpContext.Current.Request.Cookies["CartForCallCenter"].Value;
+                //解密cookie信息
+                if (!SecurityService.DecryptDES(ref cartValue, securityKey))
+                {
+                    return;
+                }
+                String[] temp = cartValue.Split(new char[] { '@' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (String item in temp)
+                {
+                    String[] temp2 = item.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
+                    if (temp2.Length < 6)
+                    {
+                        break;
+                    }
+                    Info = new ItemEntity(Convert.ToInt32(temp2[0]), temp2[1].ToString(), Convert.ToInt32(temp2[2]), Convert.ToInt32(temp2[3]), temp2[5]);
+                    Info.Discount = Convert.ToDouble(temp2[4]);
+                    curCart.curDic.Add(Info.ID, Info);
+                }
+            }
+        }
+        #endregion
+
         #region 查询库存
         /// <summary>
-        /// 查询指定商品库存,使用public CartCtrl(int id)构造函数构造购物车,
+        /// 查询指定商品库存
         /// </summary>
         /// <param name="curS">商品库存量</param>
         /// <returns>bool值</returns>
-        public bool curStorage(ref int curS)
+        public static bool curStorage(ref int curS, int curID)
         {
             //ShopCartInfoDAL sc = new ShopCartInfoDAL();
             return ShopCartInfoDAL.GetStorage(ref curS, curID);
+        }
+        #endregion
+
+        #region 查询库存和价格
+        /// <summary>
+        /// 查询指定商品库存和价格
+        /// </summary>
+        /// <param name="curS">商品库存量</param>
+        /// <param name="price">商品价格</param>
+        /// <param name="curID">商品ID</param>
+        /// <returns>bool值</returns>
+        public static bool curStoragePrice(ref int curS, ref double price, int curID)
+        {
+            //ShopCartInfoDAL sc = new ShopCartInfoDAL();
+            return ShopCartInfoDAL.GetStoragePrice(ref curS, ref price, curID);
         }
         #endregion
 
@@ -165,7 +222,7 @@ namespace BLL
                 curCart.curDic.Add(Info.ID, Info);
             }
 
-            if (curCart.curUser != null && curCart.curUser.Length > 0)
+            if (curCart.curUser != null && curCart.curUser.Length > 0 && !isCallCenter)
             {
                 if (!WriteToXML(curCart.curUser))
                 {
@@ -173,6 +230,52 @@ namespace BLL
                 }
             }
             else if (!SaveCookie()) 
+            {
+                return false;
+            }
+            return true;
+        }
+        #endregion
+
+        #region 添加商品(指定数量)
+        /// <summary>
+        /// 添加商品至hashtable
+        /// </summary>
+        /// <param name="proId">需要添加的商品ID</param>
+        /// <param name="quantity">商品数量</param>
+        /// <returns>bool值</returns>
+        public bool Add(int proId, int quantity)
+        {
+            ShopCartInfoDAL shopData = new ShopCartInfoDAL();
+            ItemEntity Info = new ItemEntity(proId);
+            if (isCallCenter)
+            {
+                shopData.SetItemEntity(ref Info, 1);
+            }
+            else
+            {
+                shopData.SetItemEntity(ref Info);
+            }
+            if (curCart.curDic.ContainsKey(Info.ID))
+            {
+                ItemEntity curNum = (ItemEntity)curCart.curDic[Info.ID];
+                curCart.curDic.Remove(Info.ID);
+                Info.Number = curNum.Number + quantity;
+                curCart.curDic.Add(Info.ID, Info);
+            }
+            else
+            {
+                curCart.curDic.Add(Info.ID, Info);
+            }
+
+            if (curCart.curUser != null && curCart.curUser.Length > 0 && !isCallCenter)
+            {
+                if (!WriteToXML(curCart.curUser))
+                {
+                    return false;
+                }
+            }
+            else if (!SaveCookie())
             {
                 return false;
             }
@@ -315,7 +418,7 @@ namespace BLL
                 curCart.curDic.Remove(ID);
             }
 
-            if (curCart.curUser != null && curCart.curUser.Length > 0)
+            if (curCart.curUser != null && curCart.curUser.Length > 0 && !isCallCenter)
             {
                 return WriteToXML(curCart.curUser);
             }
@@ -335,7 +438,7 @@ namespace BLL
             curCart.curDic.Clear();
             SaveCookie();
             
-            if (curCart.curUser!=null&&curCart.curUser.Length>0) 
+            if (curCart.curUser!=null&&curCart.curUser.Length>0&&!isCallCenter) 
             {
                 XmlDocument xmlD = new XmlDocument();
                 XmlElement e = GetUserNode(xmlD,curCart.curUser);
@@ -376,7 +479,7 @@ namespace BLL
                 Info.Number = Number;
                 curCart.curDic.Add(ID, Info);
 
-                if (curCart.curUser != null && curCart.curUser.Length > 0)
+                if (curCart.curUser != null && curCart.curUser.Length > 0 && !isCallCenter)
                 {
                     return WriteToXML(curCart.curUser);
                 }
@@ -403,13 +506,27 @@ namespace BLL
                 Info = item;
                 s += Info.ID.ToString() + "|" + Info.Name + "|" + Info.Number.ToString() + "|" + Info.Price.ToString() + "|" + Info.Discount.ToString() + "|" + Info.ImgPath + "@";
             }
-            if (HttpContext.Current.Request.Cookies["Cart"] != null)
+            if (isCallCenter)
             {
-                cookie = HttpContext.Current.Request.Cookies["Cart"];
+                if (HttpContext.Current.Request.Cookies["CartForCallCenter"] != null)
+                {
+                    cookie = HttpContext.Current.Request.Cookies["CartForCallCenter"];
+                }
+                else
+                {
+                    cookie = new HttpCookie("CartForCallCenter");
+                }
             }
             else
             {
-                cookie = new HttpCookie("Cart");
+                if (HttpContext.Current.Request.Cookies["Cart"] != null)
+                {
+                    cookie = HttpContext.Current.Request.Cookies["Cart"];
+                }
+                else
+                {
+                    cookie = new HttpCookie("Cart");
+                }
             }
             //对将要写入COOKIE的信息进行DES加密处理
             if (!SecurityService.EncryptDES(ref s, securityKey)) 
@@ -424,7 +541,14 @@ namespace BLL
             else
             {
                 cookie.Expires = DateTime.Now.AddDays(-1);
-                HttpContext.Current.Request.Cookies.Remove("Cart");
+                if (isCallCenter)
+                {
+                    HttpContext.Current.Request.Cookies.Remove("CartForCallCenter");
+                }
+                else 
+                {
+                    HttpContext.Current.Request.Cookies.Remove("Cart");
+                }
             }
             try
             {
@@ -511,7 +635,7 @@ namespace BLL
             xmlD.PreserveWhitespace = false;
             try
             {
-                String FilePath = HttpContext.Current.Server.MapPath("UserCart.xml");
+                String FilePath = HttpContext.Current.Server.MapPath("/Web/User/UserCart.xml");
                 XmlTextWriter xmlTW = new XmlTextWriter(FilePath, Encoding.UTF8);
                 xmlD.WriteTo(xmlTW);
                 xmlTW.Close();
@@ -534,7 +658,7 @@ namespace BLL
         /// <returns>XmlElement</returns>
         public XmlElement GetUserNode(XmlDocument xmlD, String userName) 
         {
-            String FilePath = HttpContext.Current.Server.MapPath("UserCart.xml");
+            String FilePath = HttpContext.Current.Server.MapPath("/Web/User/UserCart.xml");
 
             try
             {
