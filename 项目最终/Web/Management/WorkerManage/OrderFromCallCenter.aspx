@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title>电话销售订单显示</title>
-    <link rel="stylesheet" type="text/css" href="bgStyle.css" />
+    <link rel="stylesheet" type="text/css" href="/Web/Management/bgStyle.css" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -44,7 +44,7 @@
                                                 <table>
                                                     <tr>
                                                         <td align="center" style="width: 50px">
-                                                            <a href='/Web/Management/OrderFromCallCenter.aspx?ID=<%#Eval("mainOrderID") %>'>
+                                                            <a href='/Web/Management/WorkerManage/OrderFromCallCenter.aspx?ID=<%#Eval("mainOrderID") %>'>
                                                                 <%#Eval("mainOrderID") %>
                                                             </a>
                                                         </td>

@@ -47,8 +47,6 @@ public partial class Management_OrderFromCallCenter : System.Web.UI.Page
             }
             gvOrderList.AllowPaging = true;
             gvOrderList.PageSize = 10;
-            //gvOrderListHistory.AllowPaging = true;
-            //gvOrderListHistory.PageSize = 10;
             gvItemList.AllowPaging = true;
             gvItemList.PageSize = 5;
 
