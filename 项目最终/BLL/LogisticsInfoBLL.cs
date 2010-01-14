@@ -390,7 +390,7 @@ namespace BLL
         /// </summary>
         /// <returns>成功返回true，否则返回false</returns>
 
-        public bool SelectMailResponser(ref WorkerInfo mailResponser)
+        private bool SelectMailResponser(ref WorkerInfo mailResponser)
         {
             WorkerInfoBLL workerInfoBLL = new WorkerInfoBLL();
             return workerInfoBLL.SelectWorkerByShop(ref mailResponser);
@@ -404,7 +404,7 @@ namespace BLL
         /// </summary>
         /// <returns>成功返回true，否则返回false</returns>
 
-        public bool SrchMarketResponser(ref WorkerInfo marketResponser)
+        private bool SrchMarketResponser(ref WorkerInfo marketResponser)
         {
             WorkerInfoBLL workerInfoBLL = new WorkerInfoBLL();
             return workerInfoBLL.SrchShopManager(ref marketResponser);
