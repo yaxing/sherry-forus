@@ -5,20 +5,20 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
     <title>Sherry化妆品网上销售</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <link rel="stylesheet" type="text/css" href="lightbox.css" />
+    <link rel="stylesheet" type="text/css" href="/Web/style.css" />
+    <link rel="stylesheet" type="text/css" href="/Web/lightbox.css" />
 
-    <script type="text/javascript" src="js/lightBoxForPoll.js"></script>
+    <script type="text/javascript" src="/Web/js/lightBoxForPoll.js"></script>
 
-    <script src="js/prototype.js" type="text/javascript"></script>
+    <script src="/Web/js/prototype.js" type="text/javascript"></script>
 
-    <script src="js/scriptaculous.js?load=effects" type="text/javascript"></script>
+    <script src="/Web/js/scriptaculous.js?load=effects" type="text/javascript"></script>
 
-    <script src="js/lightbox.js" type="text/javascript"></script>
+    <script src="/Web/js/lightbox.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="js/java.js"></script>
+    <script type="text/javascript" src="/Web/js/java.js"></script>
 
-    <script src="js/common.js" type="text/javascript"></script>
+    <script src="/Web/js/common.js" type="text/javascript"></script>
 
     <style type="text/css">
     
@@ -32,16 +32,16 @@ b.label{ width:18%; float:left; display:inline-block;margin:6px 15px 0;}
 .headerR,.FooterR,.BodyR{ float:left;width:20px; }
 .headerL,.FooterL,.BodyL{ float:left;}
 
-.headerR{background:url(images/lightbox-header.png) no-repeat right 0; height:46px;}
-.headerL{background:url(images/lightbox-header.png) no-repeat left 0; height:46px;padding:0 0 0 20px;}
+.headerR{background:url(/Web/images/lightbox-header.png) no-repeat right 0; height:46px;}
+.headerL{background:url(/Web/images/lightbox-header.png) no-repeat left 0; height:46px;padding:0 0 0 20px;}
 
-.FooterR{background:url(images/lightbox-footer.png) no-repeat right 0;height:59px;}
-.FooterL{background:url(images/lightbox-footer.png) no-repeat left 0;height:39px;padding:10px 0 10px 20px;}
+.FooterR{background:url(/Web/images/lightbox-footer.png) no-repeat right 0;height:59px;}
+.FooterL{background:url(/Web/images/lightbox-footer.png) no-repeat left 0;height:39px;padding:10px 0 10px 20px;}
 
 
 
-.BodyL{background:url(images/lightbox-body.png) repeat-y left 0;padding:10px 0 10px 20px;}
-.BodyR{background:url(images/lightbox-body.png) repeat-y right 0;}
+.BodyL{background:url(/Web/images/lightbox-body.png) repeat-y left 0;padding:10px 0 10px 20px;}
+.BodyR{background:url(/Web/images/lightbox-body.png) repeat-y right 0;}
 
 .BoxMask{ height:100%; width:100%;left:0; top:0; background:#000;opacity:0.25;filter:alpha(opacity=25);}
 
@@ -54,8 +54,8 @@ b.label{ width:18%; float:left; display:inline-block;margin:6px 15px 0;}
 <body>
 
     <script type="text/javascript">
-var html3 = '<iframe src="PollMain.aspx" width=500 height=327 frameborder="0"></iframe>';
-var	footerhtml3='<input type="image" alt="Cancel" src="images/cancel.png" class="btn" id="msg3cancel" />';
+var html3 = '<iframe src="/Web/PollMain.aspx" width=500 height=327 frameborder="0"></iframe>';
+var	footerhtml3='<input type="image" alt="Cancel" src="/Web/images/cancel.png" class="btn" id="msg3cancel" />';
     </script>
 
     <form id="form1" runat="server">
@@ -63,7 +63,7 @@ var	footerhtml3='<input type="image" alt="Cancel" src="images/cancel.png" class=
             <div class="header">
                 <div class="logo">
                     <a href="index.aspx">
-                        <img src="images/logo.gif" alt="" title="" border="0" /></a></div>
+                        <img src="/Web/images/logo.gif" alt="" title="" border="0" /></a></div>
                 <asp:Literal ID="ltMenu" runat="server"></asp:Literal>
             </div>
             <div class="center_content">
@@ -77,7 +77,7 @@ var	footerhtml3='<input type="image" alt="Cancel" src="images/cancel.png" class=
                         <span class="red">
                             <asp:Label ID="lCountOp" runat="server">我的帐户：</asp:Label>
                         </span>
-                        <asp:Label ID="lShowOrder" runat="server"><a href="OrderManage.aspx">我的订单</a></asp:Label>
+                        <asp:Label ID="lShowOrder" runat="server"><a href="/Web/User/OrderManage.aspx">我的订单</a></asp:Label>
                         <asp:LoginStatus ID="lsLogOut" runat="server" LoginText="" LogoutText="注销登录" LogoutPageUrl="javascript:history.go(-1);" />
                         <a href="#" onclick='Box("msg3",500,327,html3,footerhtml3);'>用户调查</a>
                         <p></p>
@@ -86,14 +86,14 @@ var	footerhtml3='<input type="image" alt="Cancel" src="images/cancel.png" class=
                     <div class="cart" style="width:350px;">
                         <div class="title">
                             <span class="title_icon">
-                                <img src="images/cart.gif" alt="" title="" /></span>我的购物车</div>
+                                <img src="/Web/images/cart.gif" alt="" title="" /></span>我的购物车</div>
                         <asp:Panel ID="pShopCart" runat="server">
                             <div class="home_cart_content">
                                 <asp:Label ID="lbTotalQuantity" ForeColor="black" runat="server" Text=""></asp:Label>
                                 x 商品 | <span class="red">小计:
                                     <asp:Label ID="lbTotalPrice" ForeColor="black" runat="server" Text=""></asp:Label></span>
                             </div>
-                            <a href="CartView.aspx" class="view_cart">查看</a>
+                            <a href="/Web/CartView.aspx" class="view_cart">查看</a>
                         </asp:Panel>
                         <asp:Panel ID="pShopCartError" runat="server">
                             <div class="home_cart_content">
@@ -103,30 +103,30 @@ var	footerhtml3='<input type="image" alt="Cancel" src="images/cancel.png" class=
                     </div>
                     <div class="title">
                         <span class="title_icon">
-                            <img src="images/bullet3.gif" alt="" title="" /></span>关于我们</div>
+                            <img src="/Web/images/bullet3.gif" alt="" title="" /></span>关于我们</div>
                     <div class="about">
                         <p>
-                            <img src="images/about.gif" alt="" title="" class="right" />
+                            <img src="/Web/images/about.gif" alt="" title="" class="right" />
                             SHERRY化妆品公司分析并了解现代消费者需求，开发出一系列高品质产品，其中，佳雪芦荟保湿系列、佳雪冰点防晒系列连续多年位于市场前列，深受广大消费者喜爱。为了更好的服务消费者，SHERRY建立完善的市场调研系统，开展消费者追踪、回访并与消费者建立更为紧密和持久的沟通关系。SHERRY的市场部建立了庞大的数据库，把消费者的意见、要求及时分析、反馈给生产和技术部门，以生产出更适合消费者使用的产品。
                         </p>
                     </div>
                     <div class="right_box">
                         <div class="title">
                             <span class="title_icon">
-                                <img src="images/bullet4.gif" alt="" title="" />
+                                <img src="/Web/images/bullet4.gif" alt="" title="" />
                             </span>特价商品
                         </div>
                         <asp:Label ID="SOfferError" runat="server" Text="读取特价商品错误..." ForeColor="red" />
                         <asp:Repeater ID="RpSpecailOffer" runat="server">
                             <ItemTemplate>
                                 <div class="new_prod_box">
-                                    <a href='Details.aspx?GoodsID=<%#Eval("ID") %>'>
+                                    <a href='/Web/Details.aspx?GoodsID=<%#Eval("ID") %>'>
                                         <%#Eval("Name") %>
                                     </a>
                                     <div class="new_prod_bg">
                                         <span class="new_icon">
-                                            <img src="images/promo_icon.gif" alt="" title="" /></span> <a href='Details.aspx?GoodsID=<%#Eval("ID") %>'>
-                                                <img src='<%#Eval("ImgPath") %>' width="112px" height="100px" alt="" title="" class="thumb"
+                                            <img src="/Web/images/promo_icon.gif" alt="" title="" /></span> <a href='/Web/Details.aspx?GoodsID=<%#Eval("ID") %>'>
+                                                <img src='/Web/<%#Eval("ImgPath") %>' width="112px" height="100px" alt="" title="" class="thumb"
                                                     border="0" /></a>
                                     </div>
                                 </div>
@@ -136,11 +136,11 @@ var	footerhtml3='<input type="image" alt="Cancel" src="images/cancel.png" class=
                     <div class="right_box">
                         <div class="title">
                             <span class="title_icon">
-                                <img src="images/bullet5.gif" alt="" title="" /></span>产品分类</div>
+                                <img src="/Web/images/bullet5.gif" alt="" title="" /></span>产品分类</div>
                         <ul class="list">
                             <asp:DataList ID="dlCatagoryList" runat="server">
                                 <ItemTemplate>
-                                    <li><a href='Goods.aspx?Category=<%#Eval("GoodsCategory") %>'>
+                                    <li><a href='/Web/Goods.aspx?Category=<%#Eval("GoodsCategory") %>'>
                                         <%#Eval("CategoryName") %>
                                     </a></li>
                                 </ItemTemplate>
@@ -149,7 +149,7 @@ var	footerhtml3='<input type="image" alt="Cancel" src="images/cancel.png" class=
                         <asp:Label ID="CategoryError" runat="server" Text="读取商品列表错误..." ForeColor="red" />
                         <div class="title">
                             <span class="title_icon">
-                                <img src="images/bullet6.gif" alt="" title="" /></span>友情链接</div>
+                                <img src="/Web/images/bullet6.gif" alt="" title="" /></span>友情链接</div>
                         <ul class="list">
                             <li><a href="http://www.shiseidochina.com" target="_blank">资生堂(中国)</a></li>
                             <li><a href="http://www.maybellinechina.com/" target="_blank">美宝莲(中国)</a></li>
@@ -170,7 +170,7 @@ var	footerhtml3='<input type="image" alt="Cancel" src="images/cancel.png" class=
             <!--end of center content-->
             <div class="footer">
                 <div class="left_footer">
-                    <img src="images/footer_logo.gif" alt="" title="" /><br />
+                    <img src="/Web/images/footer_logo.gif" alt="" title="" /><br />
                     <a href="#" title="free templates">Forus</a></div>
                 <div class="right_footer">
                     <a href="#">home</a> <a href="#">about us</a> <a href="#">services</a> <a href="#">privacy
