@@ -1,0 +1,27 @@
+﻿body 
+{
+	text-align:center;
+	background:#bbb;
+	color:#fff;
+}
+.login
+{
+	position:relative;
+	background-image:url(images/daffodil.jpg);
+	height:350px;
+	width:600px;
+	margin:60px,0px,0px,0px;
+	margin-top:60px;
+}
+.logo
+{
+	position:relative;
+	left:50px;
+	top:50px;
+}
+.lform
+{
+	position:relative;
+	left:50px;
+	top:150px;
+}

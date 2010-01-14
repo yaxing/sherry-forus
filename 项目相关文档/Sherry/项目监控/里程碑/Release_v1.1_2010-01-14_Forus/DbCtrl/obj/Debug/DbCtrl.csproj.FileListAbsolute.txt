@@ -1,0 +1,9 @@
+C:\Users\admin\Desktop\test\Sherry_Release1.1\DbCtrl\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\admin\Desktop\test\Sherry_Release1.1\DbCtrl\bin\Debug\DbCtrl.dll
+C:\Users\admin\Desktop\test\Sherry_Release1.1\DbCtrl\bin\Debug\DbCtrl.pdb
+C:\Users\admin\Desktop\test\Sherry_Release1.1\DbCtrl\bin\Debug\Entity.dll
+C:\Users\admin\Desktop\test\Sherry_Release1.1\DbCtrl\bin\Debug\InterFace.dll
+C:\Users\admin\Desktop\test\Sherry_Release1.1\DbCtrl\bin\Debug\InterFace.pdb
+C:\Users\admin\Desktop\test\Sherry_Release1.1\DbCtrl\bin\Debug\Entity.pdb
+C:\Users\admin\Desktop\test\Sherry_Release1.1\DbCtrl\obj\Debug\DbCtrl.dll
+C:\Users\admin\Desktop\test\Sherry_Release1.1\DbCtrl\obj\Debug\DbCtrl.pdb
