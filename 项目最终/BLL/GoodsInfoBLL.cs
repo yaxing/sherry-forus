@@ -67,6 +67,18 @@ namespace BLL
         }
         #endregion
 
+        #region 查找指定产品类别的产品
+
+        /// <summary>
+        /// <param name="goodsCategory">产品类别</param>
+        /// <returns>DataTable型的查找结果</returns>
+
+        public static DataTable FindGoodsByCategory(int goodsCategory)
+        {
+            return (GoodsInfoDAL.FindGoodsByCategory(goodsCategory));
+        }
+        #endregion
+
         #region 显示产品详细信息
 
         /// <summary>
