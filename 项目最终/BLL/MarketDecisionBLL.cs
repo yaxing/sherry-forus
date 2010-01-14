@@ -68,21 +68,6 @@ namespace BLL
             return dt;
         }
 
-        public DataSet1.DataTable1DataTable pugetDS()
-        {
-            //实例化XSD 
-            DataSet1.DataTable1DataTable dt = new DataSet1.DataTable1DataTable();
-            //填充数据,用Datatable
-            for (int i = 0; i <= 2; i++)
-            {
-                DataSet1.DataTable1Row dr = dt.NewDataTable1Row();
-                dr.Column1 = "shit" + i;
-                dr.Column2 = "shit" + i;
-                dt.Rows.Add(dr);
-            }
-
-            return dt;
-        }
     }
 
     #endregion
@@ -160,6 +145,7 @@ namespace BLL
             for (int i = 0; i < categoryList.Count; i++)
             {
                 Report.GoodsSalesReportRow r = dt.NewGoodsSalesReportRow();
+                r.GoodsCategory = categoryList[i];
                 r.ShopSalesAmount = shopSalesList[i];
                 r.OnlineSalesAmount = onlineSalesList[i];
                 r.PhoneSalesAmount = phoneSalesList[i];
@@ -224,7 +210,8 @@ namespace BLL
             //计算百分比
             for (int i = 0; i < ageList.Count; i++)
             {
-                overallPercentList.Add(Convert.ToInt32(100*overallSalesList[i]/sum));
+                int num = sum == 0 ? 0 : Convert.ToInt32(100 * i / sum);
+                overallPercentList.Add(num);
             }
 
             //填充数据表Datatable,遍历每一列
