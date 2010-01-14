@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title>管理员列表</title>
-    <link rel="stylesheet" type="text/css" href="bgStyle.css" />
+    <link rel="stylesheet" type="text/css" href="../bgStyle.css" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -42,9 +42,9 @@
             </asp:TemplateField>
             <asp:BoundField DataField="State" HeaderText="帐号状态" ReadOnly="True" />
             <asp:BoundField DataField="AddTime" HeaderText="添加时间" ReadOnly="True" />
-            <asp:ButtonField Text="删除" CommandName="Delete" />
+            <asp:ButtonField CommandName="Delete" HeaderText="删除" ImageUrl="../images/delete.png" ButtonType="Image" />
             <asp:CommandField CancelText="取消" DeleteText="删除" EditText="职务调整" InsertText="插入"
-                NewText="新建" SelectText="选中" ShowEditButton="True" UpdateText="更新" />
+                NewText="新建" SelectText="选中" ShowEditButton="True" UpdateText="更新" ButtonType="Image" EditImageUrl="../images/change.png" HeaderText="职务调整" CancelImageUrl="../images/delete.png" UpdateImageUrl="../images/update.png" />
            </Columns>
            </asp:GridView>
          </div>
