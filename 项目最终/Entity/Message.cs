@@ -4,12 +4,12 @@ using System.Text;
 
 namespace Entity
 {
-    public class Message
+    public class Message    //留言类
     {
-        private int messageID;
-        private string topic;
-        private string message;
-        private string reply;
+        private int messageID;  //留言ID
+        private string topic;   //留言主题
+        private string message; //留言内容
+        private string reply;   //管理员回复
 
         public int MessageID
         {

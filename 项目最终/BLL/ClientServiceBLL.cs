@@ -6,7 +6,7 @@ using Entity;
 
 namespace BLL
 {
-    public class ClientServiceBLL
+    public class ClientServiceBLL   //客户服务BLL
     {
         #region 添加新信息
 
@@ -16,7 +16,7 @@ namespace BLL
         /// <param name="message">信息实体对象</param>
         /// <returns>bool</returns>
        
-        public bool AddMessage(Message message)
+        public bool AddMessage(Message message) //添加新留言
         {
             ClientServiceDAL addMessage = new ClientServiceDAL();
             return addMessage.AddNewMessage(message);
@@ -33,7 +33,7 @@ namespace BLL
         /// <param name="num">查询的条数</param>
         /// <returns>bool</returns>
         
-        public bool ShowTopN(ref IList<Message> messageList, int num, bool isReply)
+        public bool ShowTopN(ref IList<Message> messageList, int num, bool isReply) //查询前N条留言
         {
             ClientServiceDAL showTopN = new ClientServiceDAL();
             return showTopN.ShowTopN(ref messageList, num, isReply);
@@ -50,7 +50,7 @@ namespace BLL
         /// <param name="reply">回复内容</param>
         /// <returns>bool</returns>
 
-        public bool AddReply(int messageID, string reply)
+        public bool AddReply(int messageID, string reply)   //添加管理员回复
         {
             ClientServiceDAL ClientService = new ClientServiceDAL();
             return ClientService.AddReply(messageID, reply);
@@ -66,7 +66,7 @@ namespace BLL
         /// <param name="messageID">留言ID</param>     
         /// <returns>bool</returns>
 
-        public bool DeleteMessage(int messageID)
+        public bool DeleteMessage(int messageID)    //删除留言
         {
             ClientServiceDAL ClientService = new ClientServiceDAL();
             return ClientService.DeleteMessage(messageID);
