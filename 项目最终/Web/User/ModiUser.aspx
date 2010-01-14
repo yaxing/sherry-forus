@@ -17,7 +17,7 @@ eval("submenu" + sid + ".style.display=\"none\";");
 }
 </script>
 
-<div class="title"><span class="title_icon"><img src="images/bullet1.gif" alt="" title="" /></span>修改您的帐户信息</div>
+<div class="title"><span class="title_icon"><img src="../images/bullet1.gif" alt="" title="" /></span>修改您的帐户信息</div>
         
        <div class="feat_prod_box_details">
             <p class="details">

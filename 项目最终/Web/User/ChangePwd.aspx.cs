@@ -29,6 +29,6 @@ public partial class ChangePwd : System.Web.UI.Page
     }
     protected void btnBack_Click(object sender, EventArgs e)
     {
-        Response.Redirect("MyAccount.aspx");
+        Response.Redirect("../MyAccount.aspx");
     }
 }

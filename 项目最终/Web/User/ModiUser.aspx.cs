@@ -21,7 +21,7 @@ public partial class ModiUser : System.Web.UI.Page
         }
         else
         {
-            Response.Write("<script language='javascript'>alert('您还没有登陆,无法修改个人信息.');location.href='Index.aspx';</script>");
+            Response.Write("<script language='javascript'>alert('您还没有登陆,无法修改个人信息.');location.href='../Index.aspx';</script>");
         }
     }
 
@@ -72,7 +72,7 @@ public partial class ModiUser : System.Web.UI.Page
         if(userInfoDAL.ModiUserInfo(userInfo))
         {
             //操作成功
-            Response.Write("<script language='javascript'>alert('用户"+userName+"信息已修改。');location.href='MyAccount.aspx';</script>");
+            Response.Write("<script language='javascript'>alert('用户"+userName+"信息已修改。');location.href='../MyAccount.aspx';</script>");
         }
         else
         {
@@ -82,6 +82,6 @@ public partial class ModiUser : System.Web.UI.Page
     }
     protected void back_Click(object sender, EventArgs e)
     {
-        Response.Redirect("MyAccount.aspx");
+        Response.Redirect("../MyAccount.aspx");
     }
 }
