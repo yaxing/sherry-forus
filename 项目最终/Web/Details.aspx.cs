@@ -58,7 +58,8 @@ public partial class Details : System.Web.UI.Page
             Discount.Text = "9.0уш";
         }
 
-        SameCategory.DataSource = GoodsInfoBLL.FindGoods(goodsInfo.goodsCategory);
+        Storage.Text = goodsInfo.goodsStorage.ToString();
+        SameCategory.DataSource = GoodsInfoBLL.FindGoodsByCategory(goodsInfo.goodsCategory);
         SameCategory.DataBind();
     }
 
