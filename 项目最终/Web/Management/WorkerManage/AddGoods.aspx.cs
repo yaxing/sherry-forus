@@ -17,7 +17,7 @@ public partial class AddGoods : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
     }
 
     protected void AddGoodsCommit(object sender, EventArgs e)
