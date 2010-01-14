@@ -185,27 +185,12 @@ eval("submenu" + sid + ".style.display=\"none\";");
                 <table cellspacing="0" cellpadding="0" width="135" align="center">
                     <tr>
                       <td height="20">
-                        <a href="#" target="mainFrame">商品添加</a>
+                        <a href="/Web/Management/WorkerManage/AddGoods.aspx" target="mainFrame">商品添加</a>
                       </td>
                     </tr>
                     <tr>
                       <td height="20">
-                        <a href="#" target="mainFrame">商品浏览|删除</a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td height="20">
-                        <a href="#" target="mainFrame">商品修改</a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td height="20">
-                        <a href="#" target="mainFrame">库存调整</a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td height="20">
-                        <a href="#" target="mainFrame">类别调整</a>
+                        <a href="/Web/Management/WorkerManage/FindGoods.aspx" target="mainFrame">商品查找</a>
                       </td>
                     </tr>
                 </table>
@@ -226,12 +211,12 @@ eval("submenu" + sid + ".style.display=\"none\";");
 	  <table cellspacing="0" cellpadding="0" width="158px" align="center">
         
           <tr>
-            <td class="menu_title" id="Td6" onmouseover="this.className='menu_title2';" onclick="showsubmenu(30)" onmouseout="this.className='menu_title';" background="left.files/admin_left_2.gif" height="25">
+            <td class="menu_title" id="Td6" onmouseover="this.className='menu_title2';" onclick="showsubmenu(25)" onmouseout="this.className='menu_title';" background="left.files/admin_left_2.gif" height="25">
               <span>电话销售</span>
             </td>
           </tr>
           <tr>
-            <td id="Td7">
+            <td id="submenu25">
 			 <div class="sec_menu" style="WIDTH: 156px">
 			   <table cellspacing="0" cellpadding="0" width="135" align="center">
                    <tr>
