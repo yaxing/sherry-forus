@@ -30,7 +30,7 @@ public partial class Goods : System.Web.UI.Page
         }
 
         SubTitle.Text = Category.fulName[category];
-        SameCategory.DataSource = GoodsInfoBLL.FindGoods(category);
+        SameCategory.DataSource = GoodsInfoBLL.FindGoodsByCategory(category);
         SameCategory.DataBind();
     }
 }
