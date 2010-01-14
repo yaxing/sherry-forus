@@ -67,9 +67,9 @@
                                 <%#String.Format("{0:C}",Eval("goodsPrice")) %>
                             </ItemTemplate>
                         </asp:TemplateField>--%>
-                        <asp:CommandField EditImageUrl="../images/update.png" ShowEditButton="True" HeaderText="修改状态"
-                            EditText="修改产品状态" ButtonType="Image" ItemStyle-Width="95px" CancelImageUrl="../images/delete.png"
-                            UpdateImageUrl="../images/commit.png" />
+                        <asp:CommandField EditImageUrl="../images/edit.png" ShowEditButton="True" HeaderText="修改状态"
+                            EditText="修改产品状态" ButtonType="Image" ItemStyle-Width="95px" CancelImageUrl="../images/cancel.png"
+                            UpdateImageUrl="../images/editCommit.png" />
                         <asp:TemplateField ShowHeader="False" HeaderText="删除" ItemStyle-Width="40px">
                             <ItemTemplate>
                                 <asp:ImageButton ID="DeleteGoods" runat="server" CausesValidation="False" CommandName="Delete"
@@ -79,7 +79,7 @@
                         <asp:TemplateField ShowHeader="False" HeaderText="修改信息" ItemStyle-Width="55px">
                             <ItemTemplate>
                                 <a href='/Web/Management/WorkerManage/ChangeGoods.aspx?GoodsID=<%#Eval("goodsID") %>'>
-                                    <img style="border: 0" src="../images/edit.png" alt="修改产品信息" /></a>
+                                    <img style="border: 0" src="../images/change.png" alt="修改产品信息" /></a>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
