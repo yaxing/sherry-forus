@@ -19,13 +19,13 @@ public partial class Management_AddAdmin : System.Web.UI.Page
         AdminInfoBLL adminBLL = new AdminInfoBLL();
         if (!adminBLL.SrchAdminInfoByUserName(ref admin, User.Identity.Name))
         {
-            Response.Write("<script language='javascript'>alert('数据读取失败，请重试或联系管理员。');location.href='bgIndex.aspx'</script>");
+            Response.Write("<script language='javascript'>alert('数据读取失败，请重试或联系管理员。');location.href='../bgIndex.aspx'</script>");
             return;
         }
 
         if (admin.AdminLv < 3)
         {
-            Response.Write("<script language='javascript'>alert('您无权使用此页面。');location.href='bgIndex.aspx'</script>");
+            Response.Write("<script language='javascript'>alert('您无权使用此页面。');location.href='../bgIndex.aspx'</script>");
         }
     }
     protected void CreateUserWizard_CreatedUser(object sender, EventArgs e)

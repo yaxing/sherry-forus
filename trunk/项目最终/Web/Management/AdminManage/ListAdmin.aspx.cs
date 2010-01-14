@@ -112,13 +112,13 @@ public partial class Management_ListAdmin : System.Web.UI.Page
 
         if (adminInfoBLL.DeleteAdmin(adminID))
         {
-            Response.Write("<script language='javascript'>alert('管理员" + this.AdminList.Rows[e.RowIndex].Cells[0].Text + "删除完成。');</script>");
-            ListBind();
+            //Response.Write("<script language='javascript'>alert('管理员" + this.AdminList.Rows[e.RowIndex].Cells[0].Text + "删除完成。');location.href='ListAdmin.aspx'</script>");
         }
         else
         {
-            Response.Write("<script language='javascript'>alert('操作为完成，请重试或联系管理员。');</script>");
+            //Response.Write("<script language='javascript'>alert('操作未完成，请重试或联系管理员。');</script>");
         }
+        ListBind();
     }
     protected void AdminList_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {

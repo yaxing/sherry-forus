@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title>管理员管理</title>
-    <link rel="stylesheet" type="text/css" href="bgStyle.css" />
+    <link rel="stylesheet" type="text/css" href="../bgStyle.css" />
 </head>
 <body>
     <form id="form1" runat="server">
