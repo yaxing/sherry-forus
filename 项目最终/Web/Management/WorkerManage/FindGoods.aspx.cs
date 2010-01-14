@@ -16,7 +16,7 @@ public partial class FindGoods : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+
     }
 
     protected void FindGoodsCommit(object sender, EventArgs e)
@@ -178,6 +178,7 @@ public partial class FindGoods : System.Web.UI.Page
     protected void FindResult_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
     {
         this.FindResult.EditIndex = -1;
+        BindData();
     }
 
     protected void FindResult_RowUpdating(object sender, GridViewUpdateEventArgs e)
@@ -188,10 +189,13 @@ public partial class FindGoods : System.Web.UI.Page
 
         try
         {
-            goodsStorage = Convert.ToInt32(FindResult.Rows[e.RowIndex].Cells[4].Text);
-            goodsPrice = Convert.ToDouble(FindResult.Rows[e.RowIndex].Cells[5].Text);
-            //goodsStorage = Convert.ToInt32(e.NewValues["goodsStorage"].ToString());
-            //goodsPrice = Convert.ToDouble(e.NewValues["goodsPrice"].ToString());
+            goodsStorage = Convert.ToInt32(((TextBox)FindResult.Rows[e.RowIndex].Cells[4].Controls[0]).Text);
+            goodsPrice = Convert.ToDouble(((TextBox)FindResult.Rows[e.RowIndex].Cells[5].Controls[0]).Text);
+            if (goodsStorage < 0 || goodsPrice < 0)
+            {
+                Result.Text = "库存和单价不能为负";
+                return;
+            }
         }
         catch
         {
@@ -201,12 +205,13 @@ public partial class FindGoods : System.Web.UI.Page
         try
         {
             GoodsInfoBLL.ChangeGoodsStat(goodsID, true, goodsStorage);
+            this.FindResult.EditIndex = -1;
+            BindData();
         }
         catch
         {
             Result.Text = "修改产品状态出错";
             return;
-        }
-        BindData();
+        } 
     }
 }
