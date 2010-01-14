@@ -25,7 +25,8 @@ namespace DbCtrl
         public string GetConnectionString()
         {
             string connectionString = null;
-            string xmlFile = System.Web.HttpContext.Current.Server.MapPath("~/web.config");
+            //string xmlFile = System.Web.HttpContext.Current.Server.MapPath("~/web.config");
+            string xmlFile = @"D:\test\Release_v1.1_2010-01-14_Forus\DbCtrl\web.config";
             XmlDocument xml = new XmlDocument();
             xml.Load(xmlFile);
 

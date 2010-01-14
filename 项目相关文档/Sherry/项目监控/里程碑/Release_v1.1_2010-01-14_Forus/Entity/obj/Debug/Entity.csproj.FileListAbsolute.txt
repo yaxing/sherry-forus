@@ -3,3 +3,13 @@ C:\Users\admin\Desktop\test\Sherry_Release1.1\Entity\bin\Debug\Entity.pdb
 C:\Users\admin\Desktop\test\Sherry_Release1.1\Entity\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\admin\Desktop\test\Sherry_Release1.1\Entity\obj\Debug\Entity.dll
 C:\Users\admin\Desktop\test\Sherry_Release1.1\Entity\obj\Debug\Entity.pdb
+C:\Users\admin\Desktop\test\Release_v1.1_2010-01-14_Forus\Entity\bin\Debug\Entity.dll
+C:\Users\admin\Desktop\test\Release_v1.1_2010-01-14_Forus\Entity\bin\Debug\Entity.pdb
+C:\Users\admin\Desktop\test\Release_v1.1_2010-01-14_Forus\Entity\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\admin\Desktop\test\Release_v1.1_2010-01-14_Forus\Entity\obj\Debug\Entity.dll
+C:\Users\admin\Desktop\test\Release_v1.1_2010-01-14_Forus\Entity\obj\Debug\Entity.pdb
+D:\test\Release_v1.1_2010-01-14_Forus\Entity\bin\Debug\Entity.dll
+D:\test\Release_v1.1_2010-01-14_Forus\Entity\bin\Debug\Entity.pdb
+D:\test\Release_v1.1_2010-01-14_Forus\Entity\obj\Debug\ResolveAssemblyReference.cache
+D:\test\Release_v1.1_2010-01-14_Forus\Entity\obj\Debug\Entity.dll
+D:\test\Release_v1.1_2010-01-14_Forus\Entity\obj\Debug\Entity.pdb
