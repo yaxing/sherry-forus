@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,8 +9,8 @@ namespace Entity
         public GoodsInfo()
         {
             goodsID = 0;
-            goodsDescribe = "æš‚æ— äº§å“æè¿°ã€‚";
-            goodsImg = "images/logo.jpg";
+            goodsDescribe = "ÔİÎŞ²úÆ·ÃèÊö¡£";
+            goodsImg = "images/logo.gif";
             goodsPrice = 0;
             goodsAvailable = false;
             goodsStorage = 0;
