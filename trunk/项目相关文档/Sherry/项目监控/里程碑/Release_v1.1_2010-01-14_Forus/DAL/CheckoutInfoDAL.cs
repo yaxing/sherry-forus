@@ -154,7 +154,7 @@ namespace DAL
             //不需要插入发票信息
             else 
             {
-                sqlString = "insert into mainOrderInfo (userId, postAdd, postNum, userRealName, phoneNum, province, orderTime, orderPrice, orderState) values (@id,@add,@zip,@name,@tel,@prov,@time,@price,@state)";
+                sqlString = "insert into mainOrderInfo (userId, postAdd, postNum, userRealName, phoneNum, province, orderTime, orderPrice, orderState, sellWay) values (@id,@add,@zip,@name,@tel,@prov,@time,@price,@state,@sellWay)";
                 pt = new SqlParameter[] { 
                                 new SqlParameter("@id",SqlDbType.UniqueIdentifier),
                                 new SqlParameter("@add",SqlDbType.VarChar),
@@ -164,7 +164,8 @@ namespace DAL
                                 new SqlParameter("@prov",SqlDbType.VarChar),
                                 new SqlParameter("@time",SqlDbType.DateTime),
                                 new SqlParameter("@price",SqlDbType.Money),
-                                new SqlParameter("@state",SqlDbType.Int)
+                                new SqlParameter("@state",SqlDbType.Int),
+                                new SqlParameter("@sellWay",SqlDbType.Int)
                                 };
                 pt[0].Value = info.UserID;
                 pt[1].Value = info.UserAdd;
@@ -175,6 +176,7 @@ namespace DAL
                 pt[6].Value = DateTime.Now;
                 pt[7].Value = info.UserOrderPrice;
                 pt[8].Value = info.State;
+                pt[9].Value = sellWay;
             }
             try
             {
@@ -184,7 +186,7 @@ namespace DAL
                         return false;
                 }
             }
-            catch
+            catch(Exception e)
             {
                 return false;
             }

@@ -5,3 +5,17 @@ C:\Users\admin\Desktop\test\Sherry_Release1.1\InterFace\bin\Debug\Entity.dll
 C:\Users\admin\Desktop\test\Sherry_Release1.1\InterFace\bin\Debug\Entity.pdb
 C:\Users\admin\Desktop\test\Sherry_Release1.1\InterFace\obj\Debug\InterFace.dll
 C:\Users\admin\Desktop\test\Sherry_Release1.1\InterFace\obj\Debug\InterFace.pdb
+C:\Users\admin\Desktop\test\Release_v1.1_2010-01-14_Forus\InterFace\bin\Debug\InterFace.dll
+C:\Users\admin\Desktop\test\Release_v1.1_2010-01-14_Forus\InterFace\bin\Debug\InterFace.pdb
+C:\Users\admin\Desktop\test\Release_v1.1_2010-01-14_Forus\InterFace\bin\Debug\Entity.dll
+C:\Users\admin\Desktop\test\Release_v1.1_2010-01-14_Forus\InterFace\bin\Debug\Entity.pdb
+C:\Users\admin\Desktop\test\Release_v1.1_2010-01-14_Forus\InterFace\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\admin\Desktop\test\Release_v1.1_2010-01-14_Forus\InterFace\obj\Debug\InterFace.dll
+C:\Users\admin\Desktop\test\Release_v1.1_2010-01-14_Forus\InterFace\obj\Debug\InterFace.pdb
+D:\test\Release_v1.1_2010-01-14_Forus\InterFace\bin\Debug\InterFace.dll
+D:\test\Release_v1.1_2010-01-14_Forus\InterFace\bin\Debug\InterFace.pdb
+D:\test\Release_v1.1_2010-01-14_Forus\InterFace\bin\Debug\Entity.dll
+D:\test\Release_v1.1_2010-01-14_Forus\InterFace\bin\Debug\Entity.pdb
+D:\test\Release_v1.1_2010-01-14_Forus\InterFace\obj\Debug\ResolveAssemblyReference.cache
+D:\test\Release_v1.1_2010-01-14_Forus\InterFace\obj\Debug\InterFace.dll
+D:\test\Release_v1.1_2010-01-14_Forus\InterFace\obj\Debug\InterFace.pdb
