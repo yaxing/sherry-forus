@@ -7,11 +7,11 @@ using Entity;
 
 namespace DAL
 {
-    public class ClientServiceDAL
+    public class ClientServiceDAL   //客户服务DAL
     {
 
-        private string sqlString;
-        private DataProvider dp = new DataProvider();
+        private string sqlString;   //数据库查询字符串
+        private DataProvider dp = new DataProvider();   //数据库查询类
 
         #region 添加新信息
 
@@ -21,7 +21,7 @@ namespace DAL
         /// <param name="newMessage">信息实体对象</param>
         /// <returns>bool</returns>
 
-        public bool AddNewMessage(Message newMessage)
+        public bool AddNewMessage(Message newMessage)   //添加新留言
         {
             sqlString = "Insert into Messages (topic, messages) Values (@topic, @messages)";
             
@@ -60,7 +60,7 @@ namespace DAL
         /// <param name="isReply">是否需要reply</param>
         /// <returns>bool</returns>
 
-        public bool ShowTopN(ref IList<Message> messageList, int num, bool isReply)
+        public bool ShowTopN(ref IList<Message> messageList, int num, bool isReply) //查询前N条留言
         {
             if (isReply)
                 sqlString = "Select Top " + num + " * from Messages where reply is not null";
@@ -111,7 +111,7 @@ namespace DAL
         /// <param name="reply">回复内容</param>
         /// <returns>bool</returns>
 
-        public bool AddReply(int messageID, string reply)
+        public bool AddReply(int messageID, string reply)   //添加管理员回复
         {
             sqlString = "update Messages set reply = " + reply + "where messageID = " + messageID;
 
@@ -141,7 +141,7 @@ namespace DAL
         /// <param name="messageID">留言ID</param>     
         /// <returns>bool</returns>
 
-        public bool DeleteMessage(int messageID)
+        public bool DeleteMessage(int messageID)    //删除留言
         {
             sqlString = "delete from Messages where messageID = " + messageID;
 

@@ -8,16 +8,16 @@ using System.Text;
 
 namespace Entity
 {
-    public class SubUpload
+    public class SubUpload  //上传表副表
     {
 
-        private int subUploadID;
-        private int mainUploadID;
-        private int goodsID;
-        private string goodsName;
-        private int number;
-        private float price;
-        private float totalValue;
+        private int subUploadID;    //副表ID
+        private int mainUploadID;   //对应主表ID
+        private int goodsID;        //商品ID
+        private string goodsName;   //商品名
+        private int number;         //商品数量
+        private float price;        //商品价格
+        private float totalValue;   //商品总价
 
         public int SubUploadID
         {

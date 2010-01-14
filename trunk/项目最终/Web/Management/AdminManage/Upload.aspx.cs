@@ -27,9 +27,9 @@ public partial class Management_Upload : System.Web.UI.Page
         if (fileName != "")
         {
             fileExtension = System.IO.Path.GetExtension(fileName); //上传文件的扩展名
-            if (fileExtension.Equals(".txt") == false)
+            if (fileExtension.Equals(".txt") == false && fileExtension.Equals(".csv") == false)
             {
-                this.RegisterStartupScript("msg", "<script>alert('请上传.txt文件')</script>");
+                this.RegisterStartupScript("msg", "<script>alert('请上传.txt文件或.csv文件')</script>");
                 return;
             }
             string new_filename = DateTime.UtcNow.ToLocalTime() + fileExtension; //给文件重新命名
