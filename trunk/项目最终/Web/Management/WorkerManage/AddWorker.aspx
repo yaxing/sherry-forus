@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title>添加新的工作人员</title>
-    <link rel="stylesheet" type="text/css" href="../Management/bgStyle.css" />
+    <link rel="stylesheet" type="text/css" href="../bgStyle.css" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -26,11 +26,11 @@
          
          <div align="center">
           <asp:CreateUserWizard ID="CreateUserWizard" runat="server" OnCreatedUser="CreateUserWizard_CreatedUser"
-                ContinueDestinationPageUrl="~/Management/bgIndex.aspx" CreateUserButtonText="添加工作人员" LoginCreatedUser="False">
+                ContinueDestinationPageUrl="~/Management/bgIndex.aspx" CreateUserButtonText="添加" LoginCreatedUser="False">
                 <WizardSteps>
                     <asp:CreateUserWizardStep ID="CreateUserWizardStep1" runat="server">
                         <ContentTemplate>
-                            <table border="0" width="790px">
+                            <table border="0" width="790">
                                 <tr>
                                     <td align="left">
                                         <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">用户名:</asp:Label>
@@ -134,9 +134,28 @@
                                 </tr>
                                 <tr>
                                     <td colspan="4">
+                                        <asp:RegularExpressionValidator ID="revPwd" runat="server" ControlToValidate="Password"
+                                            Display="Dynamic" ErrorMessage="密码应在6-16位之间" ToolTip="密码应在6-16位之间" ValidationExpression="\d{6,16}"
+                                            ValidationGroup="CreateUserWizard"></asp:RegularExpressionValidator>
+                                        <br />
                                         <asp:CompareValidator ID="PasswordCompare" runat="server" ControlToCompare="Password"
                                             ControlToValidate="ConfirmPassword" Display="Dynamic" ErrorMessage="“密码”和“确认密码”必须匹配。"
                                             ValidationGroup="CreateUserWizard"></asp:CompareValidator>
+                                        <br />
+                                        <asp:RegularExpressionValidator ID="revAdminName" runat="server" ControlToValidate="UserName" 
+                                        Display="Dynamic" ErrorMessage="管理员名只能包含字母、数字或“_”" ToolTip="管理员名只能包含字母、数字或“_”" 
+                                        ValidationExpression="^[A-Za-z0-9_]+$" ValidationGroup="CreateUserWizard"></asp:RegularExpressionValidator>
+                                        <br />
+                                        <asp:RegularExpressionValidator ID="revRealName" runat="server" ControlToValidate="txtRealName" 
+                                        Display="Dynamic" ErrorMessage="真实姓名只能使用汉字或英文" ToolTip="真实姓名只能使用汉字或英文" ValidationExpression="^[\u4e00-\u9fa5A-Za-z]+$" 
+                                        ValidationGroup="CreateUserWizard"></asp:RegularExpressionValidator>
+                                        <br />
+                                        <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="Email" 
+                                        Display="Dynamic" ErrorMessage="电子邮箱格式错误" ToolTip="电子邮箱格式错误" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" 
+                                        ValidationGroup="CreateUserWizard">电子邮箱格式错误</asp:RegularExpressionValidator>
+                                        <asp:RegularExpressionValidator ID="revPhone" runat="server" ControlToValidate="txtPhoneNum" 
+                                        Display="Dynamic" ErrorMessage="电话号码格式错误" ToolTip="电话号码格式错误" ValidationExpression="((\d{11})|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$)" 
+                                        ValidationGroup="CreateUserWizard"></asp:RegularExpressionValidator>
                                         <br />
                                         <font color="red"><asp:Literal ID="ErrorMessage" runat="server" EnableViewState="False"></asp:Literal></font>
                                     </td>
@@ -165,6 +184,7 @@
                         </ContentTemplate>
                     </asp:CompleteWizardStep>
                 </WizardSteps>
+              <CreateUserButtonStyle CssClass="submit" />
             </asp:CreateUserWizard>
             </div>
             

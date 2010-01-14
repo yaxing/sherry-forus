@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title>修改工作人员信息</title>
-    <link rel="stylesheet" type="text/css" href="../Management/bgStyle.css" />
+    <link rel="stylesheet" type="text/css" href="../bgStyle.css" />
     <script type="text/javascript">
 
 function showsubmenu(sid)

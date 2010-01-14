@@ -19,7 +19,7 @@ public partial class WorkerManage_ListWorker : System.Web.UI.Page
     {
         if (!ListBind())
         {
-            Response.Write("<script language='javascript'>alert('数据载入失败，请重试或联系管理员。');location.href='../Management/bgIndex.aspx'</script>");
+            Response.Write("<script language='javascript'>alert('数据载入失败，请重试或联系管理员。');location.href='../bgIndex.aspx'</script>");
         }
     }
 
