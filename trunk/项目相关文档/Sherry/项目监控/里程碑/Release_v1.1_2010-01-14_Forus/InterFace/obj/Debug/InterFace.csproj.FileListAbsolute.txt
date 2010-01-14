@@ -1,0 +1,7 @@
+C:\Users\admin\Desktop\test\Sherry_Release1.1\InterFace\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\admin\Desktop\test\Sherry_Release1.1\InterFace\bin\Debug\InterFace.dll
+C:\Users\admin\Desktop\test\Sherry_Release1.1\InterFace\bin\Debug\InterFace.pdb
+C:\Users\admin\Desktop\test\Sherry_Release1.1\InterFace\bin\Debug\Entity.dll
+C:\Users\admin\Desktop\test\Sherry_Release1.1\InterFace\bin\Debug\Entity.pdb
+C:\Users\admin\Desktop\test\Sherry_Release1.1\InterFace\obj\Debug\InterFace.dll
+C:\Users\admin\Desktop\test\Sherry_Release1.1\InterFace\obj\Debug\InterFace.pdb
