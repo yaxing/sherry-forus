@@ -1,7 +1,7 @@
 <%@ Page Language="C#" MasterPageFile="~/IndexMaster.master" AutoEventWireup="true" CodeFile="ChangePwd.aspx.cs" Inherits="ChangePwd" Title="修改密码" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="contentHolder" Runat="Server">
 
-     <div class="title"><span class="title_icon"><img src="images/bullet1.gif" alt="" title="" /></span>修改您的密码</div>
+     <div class="title"><span class="title_icon"><img src="../images/bullet1.gif" alt="" title="" /></span>修改您的密码</div>
         
         	<div class="feat_prod_box_details">
             <p class="details">
