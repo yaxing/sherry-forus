@@ -103,7 +103,7 @@ namespace DAL
         public static DataTable FindGoods(string goodsName, string goodsNum, int goodsCategory, DateTime timeFrom, DateTime timeTo)
         {
             DataTable findResult;
-            string sqlString = "select goodsID, goodsName, goodsNum, goodsCategory, goodsAddTime, goodsImg, goodsStorage, goodsPrice from goodsInfo";
+            string sqlString = "select goodsID, goodsName, goodsNum, goodsCategory, goodsAddTime, goodsStorage, goodsPrice from goodsInfo";
             string sqlStringVary = "";
 
             SqlParameter[] pt = new SqlParameter[] { 
@@ -148,6 +148,41 @@ namespace DAL
             }
 
             sqlString += " order by goodsID desc";
+            using (dataProvider = new DataProvider())
+            {
+                findResult = dataProvider.ExecuteDataTable(sqlString, pt);
+            }
+            return (findResult);
+        }
+        #endregion
+
+        #region 查找指定产品类别的产品
+
+        /// <summary>
+        /// <param name="goodsCategory">产品类别</param>
+        /// <returns>DataTable型的查找结果</returns>
+
+        public static DataTable FindGoodsByCategory(int goodsCategory)
+        {
+            DataTable findResult;
+            string sqlString = "select goodsID, goodsName, goodsImg from goodsInfo";
+
+            SqlParameter[] pt = new SqlParameter[] { 
+                                new SqlParameter("@goodsCategory",SqlDbType.Int)
+                                };
+
+            pt[0].Value = goodsCategory;
+
+            if (goodsCategory > 0)
+            {
+                sqlString += " where goodsCategory = @goodsCategory and goodsAvailable = 1";
+            }
+            else
+            {
+                sqlString += " where goodsAvailable = 1";
+            }
+            sqlString += " order by goodsID desc";
+
             using (dataProvider = new DataProvider())
             {
                 findResult = dataProvider.ExecuteDataTable(sqlString, pt);
@@ -262,8 +297,17 @@ namespace DAL
 
         public static bool ChangeGoodsStat(int goodsID, bool goodsAvailable, int goodsStorage)
         {
-            string sqlString = "update goodsInfo set goodsAvailable = " + goodsAvailable.ToString() 
-                + ", goodsStorage" + goodsStorage.ToString() + " where goodsID = " + goodsID.ToString();
+            string sqlString = "update goodsInfo set goodsAvailable = ";
+
+            if (goodsAvailable)
+            {
+                sqlString += "1";
+            }
+            else
+            {
+                sqlString += '0';
+            }
+            sqlString += ", goodsStorage = " + goodsStorage.ToString() + " where goodsID = " + goodsID.ToString();
 
             using (dataProvider = new DataProvider())
             {
@@ -286,7 +330,7 @@ namespace DAL
         public static DataTable FindSpecialGoods()
         {
             DataTable findResult;
-            string sqlString = "select goodsID, goodsName, goodsImg from goodsInfo where goodsSpecialOffer = 1 order by goodsID desc";
+            string sqlString = "select goodsID, goodsName, goodsImg from goodsInfo where goodsSpecialOffer = 1 and goodsAvailable = 1 order by goodsID desc";
 
             using (dataProvider = new DataProvider())
             {
@@ -314,7 +358,7 @@ namespace DAL
             {
                 sqlString += ", goodsDescribe";
             }
-            sqlString += " from goodsInfo order by ";
+            sqlString += " from goodsInfo where goodsAvailable = 1 order by ";
             if (orderByVolume)
             {
                 sqlString += "goodsVolume, ";
