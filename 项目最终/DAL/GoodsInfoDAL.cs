@@ -103,7 +103,7 @@ namespace DAL
         public static DataTable FindGoods(string goodsName, string goodsNum, int goodsCategory, DateTime timeFrom, DateTime timeTo)
         {
             DataTable findResult;
-            string sqlString = "select goodsID, goodsName, goodsNum, goodsCategory, goodsAddTime, goodsImg from goodsInfo";
+            string sqlString = "select goodsID, goodsName, goodsNum, goodsCategory, goodsAddTime, goodsImg, goodsStorage, goodsPrice from goodsInfo";
             string sqlStringVary = "";
 
             SqlParameter[] pt = new SqlParameter[] { 

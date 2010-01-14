@@ -130,7 +130,7 @@ public partial class Management_AddOrder : System.Web.UI.Page
         }
 
         gvItems.AllowPaging = true;
-        gvItems.PageSize = 4;
+        gvItems.PageSize = 3;
         try
         {
             gvItems.DataSource = shopCart.GetItems();

@@ -229,7 +229,7 @@
                     </tr>
                 </table>
             </div>
-            <div style="position: relative; left: 580px; bottom: 403px">
+            <div style="position: relative; left: 660px; bottom: 403px">
                 <asp:GridView ID="gvItems" runat="server" Width="330px" AutoGenerateColumns="False"
                     OnRowCommand="gvItems_RowCommand" GridLines="None" AllowPaging="true" OnPageIndexChanging="gvItems_PageIndexChanging"
                     OnRowCreated="gvItems_RowCreated">

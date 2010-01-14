@@ -236,12 +236,12 @@ eval("submenu" + sid + ".style.display=\"none\";");
 			   <table cellspacing="0" cellpadding="0" width="135" align="center">
                    <tr>
                      <td height="20">
-                       <a href="/Web/Management/AddOrder.aspx" target="mainFrame">添加订单</a>
+                       <a href="/Web/Management/WorkerManage/AddOrder.aspx" target="mainFrame">添加订单</a>
                      </td>
                    </tr>
                    <tr>
                      <td height="20">
-                       <a href="/Web/Management/OrderFromCallCenter.aspx" target="mainFrame">订单显示</a>
+                       <a href="/Web/Management/WorkerManage/OrderFromCallCenter.aspx" target="mainFrame">订单显示</a>
                      </td>
                    </tr>
                 </table>
