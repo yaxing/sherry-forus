@@ -77,10 +77,10 @@ public partial class MyAccount : System.Web.UI.Page
     }
     protected void BtnModiInfo_Click(object sender, EventArgs e)
     {
-        Response.Redirect("ModiUser.aspx");
+        Response.Redirect("~/User/ModiUser.aspx");
     }
     protected void BtnModiPwd_Click(object sender, EventArgs e)
     {
-        Response.Redirect("ChangePwd.aspx");
+        Response.Redirect("~/User/ChangePwd.aspx");
     }
 }
