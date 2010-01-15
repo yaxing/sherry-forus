@@ -1,0 +1,415 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="0c472890-ad5b-4845-a4f2-404973f0edc6" name="admin@LENOV10776291 2010-01-15 15:15:35" runUser="LENOV10776291\admin" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2006">
+  <TestRunConfiguration name="本地测试运行" id="df48566b-9bcd-4374-b916-00bd3644bf29">
+    <Description>这是本地测试运行的默认测试运行配置。</Description>
+    <CodeCoverage enabled="true">
+      <Regular>
+        <CodeCoverageItem binaryFile="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\Web\bin\BLL.dll" pdbFile="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\Web\bin\BLL.instr.pdb" instrumentInPlace="true" outputDirectory="Web\Bin" />
+        <CodeCoverageItem binaryFile="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\Web\bin\DAL.dll" pdbFile="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\Web\bin\DAL.instr.pdb" instrumentInPlace="true" outputDirectory="Web\Bin" />
+        <CodeCoverageItem binaryFile="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\Web\bin\DbCtrl.dll" pdbFile="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\Web\bin\DbCtrl.instr.pdb" instrumentInPlace="true" outputDirectory="Web\Bin" />
+        <CodeCoverageItem binaryFile="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\Web\bin\Entity.dll" pdbFile="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\Web\bin\Entity.instr.pdb" instrumentInPlace="true" outputDirectory="Web\Bin" />
+        <CodeCoverageItem binaryFile="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\BLL\bin\Debug\BLL.dll" pdbFile="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\BLL\bin\Debug\BLL.instr.pdb" instrumentInPlace="true" />
+        <CodeCoverageItem binaryFile="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\DAL\bin\Debug\DAL.dll" pdbFile="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\DAL\bin\Debug\DAL.instr.pdb" instrumentInPlace="true" />
+        <CodeCoverageItem binaryFile="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\DbCtrl\bin\Debug\DbCtrl.dll" pdbFile="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\DbCtrl\bin\Debug\DbCtrl.instr.pdb" instrumentInPlace="true" />
+        <CodeCoverageItem binaryFile="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\Entity\bin\Debug\Entity.dll" pdbFile="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\Entity\bin\Debug\Entity.instr.pdb" instrumentInPlace="true" />
+        <CodeCoverageItem binaryFile="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\bin\Debug\TestProject1.dll" pdbFile="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\bin\Debug\TestProject1.instr.pdb" instrumentInPlace="true" />
+      </Regular>
+      <AspNet>
+        <AspNetCodeCoverageItem id="ac344fef-7b77-4cde-ad9d-76d3a6920876" name="Web" applicationRoot="/Web" url="http://localhost:0/Web" />
+      </AspNet>
+    </CodeCoverage>
+    <Deployment runDeploymentRoot="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\TestResults\admin_LENOV10776291 2010-01-15 15_15_35">
+      <DeploymentItem filename="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\Entity\bin\Debug\Entity.dll" />
+      <DeploymentItem filename="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\DbCtrl\bin\Debug\DbCtrl.dll" />
+      <DeploymentItem filename="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\InterFace\bin\Debug\InterFace.dll" />
+      <DeploymentItem filename="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\DAL\bin\Debug\DAL.dll" />
+    </Deployment>
+    <Plugins>
+      <Plugin>Microsoft.VisualStudio.TestTools.CodeCoverage.CoveragePlugIn, Microsoft.VisualStudio.QualityTools.Plugins.CodeCoverage, PublicKeyToken=b03f5f7f11d50a3a</Plugin>
+    </Plugins>
+    <TestTypeSpecific>
+      <WebTestRunConfiguration testTypeId="4e7599fa-5ecb-43e9-a887-cd63cf72d207">
+        <Browser name="Internet Explorer 7.0">
+          <Headers>
+            <Header name="User-Agent" value="Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)" />
+            <Header name="Accept" value="*/*" />
+            <Header name="Accept-Language" value="{{$IEAcceptLanguage}}" />
+            <Header name="Accept-Encoding" value="GZIP" />
+          </Headers>
+        </Browser>
+        <Network Name="LAN" BandwidthInKbps="0" />
+      </WebTestRunConfiguration>
+    </TestTypeSpecific>
+  </TestRunConfiguration>
+  <ResultSummary outcome="Warning">
+    <Counters total="24" executed="24" passed="24" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="LENOV10776291" outcome="Warning" timestamp="2010-01-15T15:15:36.0329228+08:00">
+        <Text>处理文件 BLL.dll 时出现代码覆盖率检测警告:
+警告 VSP2013 : 检测此映像要求此映像以 32 位进程的方式运行。已更新 CLR 标头标志，以反映这一信息。。</Text>
+      </RunInfo>
+      <RunInfo computerName="LENOV10776291" outcome="Warning" timestamp="2010-01-15T15:15:36.2513228+08:00">
+        <Text>处理文件 DAL.dll 时出现代码覆盖率检测警告:
+警告 VSP2013 : 检测此映像要求此映像以 32 位进程的方式运行。已更新 CLR 标头标志，以反映这一信息。。</Text>
+      </RunInfo>
+      <RunInfo computerName="LENOV10776291" outcome="Warning" timestamp="2010-01-15T15:15:36.3449228+08:00">
+        <Text>处理文件 DbCtrl.dll 时出现代码覆盖率检测警告:
+警告 VSP2013 : 检测此映像要求此映像以 32 位进程的方式运行。已更新 CLR 标头标志，以反映这一信息。。</Text>
+      </RunInfo>
+      <RunInfo computerName="LENOV10776291" outcome="Warning" timestamp="2010-01-15T15:15:36.4541228+08:00">
+        <Text>处理文件 Entity.dll 时出现代码覆盖率检测警告:
+警告 VSP2013 : 检测此映像要求此映像以 32 位进程的方式运行。已更新 CLR 标头标志，以反映这一信息。。</Text>
+      </RunInfo>
+      <RunInfo computerName="LENOV10776291" outcome="Warning" timestamp="2010-01-15T15:15:36.5165228+08:00">
+        <Text>处理文件 InterFace.dll 时出现代码覆盖率检测警告:
+警告 VSP2007 : C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\InterFace\bin\Debug\InterFace.dll 不包含可检测的代码。。</Text>
+      </RunInfo>
+      <RunInfo computerName="LENOV10776291" outcome="Warning" timestamp="2010-01-15T15:15:36.6413228+08:00">
+        <Text>处理文件 TestProject1.dll 时出现代码覆盖率检测警告:
+警告 VSP2013 : 检测此映像要求此映像以 32 位进程的方式运行。已更新 CLR 标头标志，以反映这一信息。。</Text>
+      </RunInfo>
+      <RunInfo computerName="LENOV10776291" outcome="Warning" timestamp="2010-01-15T15:15:36.8441228+08:00">
+        <Text>处理文件 BLL.dll 时出现代码覆盖率检测警告:
+警告 VSP2013 : 检测此映像要求此映像以 32 位进程的方式运行。已更新 CLR 标头标志，以反映这一信息。。</Text>
+      </RunInfo>
+      <RunInfo computerName="LENOV10776291" outcome="Warning" timestamp="2010-01-15T15:15:37.0625228+08:00">
+        <Text>处理文件 DAL.dll 时出现代码覆盖率检测警告:
+警告 VSP2013 : 检测此映像要求此映像以 32 位进程的方式运行。已更新 CLR 标头标志，以反映这一信息。。</Text>
+      </RunInfo>
+      <RunInfo computerName="LENOV10776291" outcome="Warning" timestamp="2010-01-15T15:15:37.1717228+08:00">
+        <Text>处理文件 DbCtrl.dll 时出现代码覆盖率检测警告:
+警告 VSP2013 : 检测此映像要求此映像以 32 位进程的方式运行。已更新 CLR 标头标志，以反映这一信息。。</Text>
+      </RunInfo>
+      <RunInfo computerName="LENOV10776291" outcome="Warning" timestamp="2010-01-15T15:15:37.3745228+08:00">
+        <Text>处理文件 Entity.dll 时出现代码覆盖率检测警告:
+警告 VSP2013 : 检测此映像要求此映像以 32 位进程的方式运行。已更新 CLR 标头标志，以反映这一信息。。</Text>
+      </RunInfo>
+      <RunInfo computerName="LENOV10776291" outcome="Warning" timestamp="2010-01-15T15:15:37.4837228+08:00">
+        <Text>代码覆盖率就地检测: 无法完全备份二进制文件“C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\Web\bin\InterFace.dll”。无法找到检测实用工具创建的备份文件: “C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\Web\bin\InterFace.dll.orig”。</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <Times creation="2010-01-15T15:15:35.5493228+08:00" queuing="2010-01-15T15:15:38.1545228+08:00" start="2010-01-15T15:15:38.3885228+08:00" finish="2010-01-15T15:15:44.1293228+08:00" />
+  <TestDefinitions>
+    <UnitTest name="AddReplyTest" storage="c:\users\admin\desktop\svnnow\项目相关文档\sherry\项目监控\里程碑\release_v1.1_2010-01-14_forus\utest\bin\debug\testproject1.dll" id="38c6f2b2-9919-e5d9-9d54-c43bb1995ad0">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="e128f831-0303-4da6-bd96-c034f397809c" />
+      <TestMethod codeBase="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\bin\Debug\TestProject1.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.ClientServiceDALTest, TestProject1" name="AddReplyTest" />
+    </UnitTest>
+    <UnitTest name="GetStoragePriceTest" storage="c:\users\admin\desktop\svnnow\项目相关文档\sherry\项目监控\里程碑\release_v1.1_2010-01-14_forus\utest\bin\debug\testproject1.dll" id="9222b6a5-bfba-3afa-1c32-059a02242d2b">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="4efb6bc6-06f6-4bc9-9680-ad9bbcc2236c" />
+      <TestMethod codeBase="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\bin\Debug\TestProject1.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.ShopCartInfoDALTest, TestProject1" name="GetStoragePriceTest" />
+    </UnitTest>
+    <UnitTest name="AddNewMessageTest" storage="c:\users\admin\desktop\svnnow\项目相关文档\sherry\项目监控\里程碑\release_v1.1_2010-01-14_forus\utest\bin\debug\testproject1.dll" id="6d47dc54-481e-ff6d-e2bd-749b185b9a96">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="e816a29c-e427-4a99-8e75-c822e82afc8e" />
+      <TestMethod codeBase="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\bin\Debug\TestProject1.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.ClientServiceDALTest, TestProject1" name="AddNewMessageTest" />
+    </UnitTest>
+    <UnitTest name="ChangeOrderStateTest" storage="c:\users\admin\desktop\svnnow\项目相关文档\sherry\项目监控\里程碑\release_v1.1_2010-01-14_forus\utest\bin\debug\testproject1.dll" id="538705be-7fb2-3b92-c936-b8e28632cfc1">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="a7176943-e460-46d5-b070-22ba660b853c" />
+      <TestMethod codeBase="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\bin\Debug\TestProject1.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.OrderCtrlDALTest, TestProject1" name="ChangeOrderStateTest" />
+    </UnitTest>
+    <UnitTest name="UpdateToGoldenUserTest" storage="c:\users\admin\desktop\svnnow\项目相关文档\sherry\项目监控\里程碑\release_v1.1_2010-01-14_forus\utest\bin\debug\testproject1.dll" id="d75fa6b4-6767-a052-c66a-36071f75832a">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="cf0b20ba-51a4-4354-8102-eb94a90d8585" />
+      <TestMethod codeBase="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\bin\Debug\TestProject1.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.CheckoutInfoDALTest, TestProject1" name="UpdateToGoldenUserTest" />
+    </UnitTest>
+    <UnitTest name="DeleteOrderTest" storage="c:\users\admin\desktop\svnnow\项目相关文档\sherry\项目监控\里程碑\release_v1.1_2010-01-14_forus\utest\bin\debug\testproject1.dll" id="f68d414b-e218-9f98-4bad-6bfefbc9cb02">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="3ff56d58-9a1a-4aa5-ba34-01eee97531d9" />
+      <TestMethod codeBase="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\bin\Debug\TestProject1.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.OrderCtrlDALTest, TestProject1" name="DeleteOrderTest" />
+    </UnitTest>
+    <UnitTest name="InsertNewOrderTest" storage="c:\users\admin\desktop\svnnow\项目相关文档\sherry\项目监控\里程碑\release_v1.1_2010-01-14_forus\utest\bin\debug\testproject1.dll" id="a02a8242-705f-9f49-7218-1c7015aad4a7">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="7ef1be3a-69f2-4051-87bd-12c45079014e" />
+      <TestMethod codeBase="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\bin\Debug\TestProject1.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.CheckoutInfoDALTest, TestProject1" name="InsertNewOrderTest" />
+    </UnitTest>
+    <UnitTest name="ShowTopNTest" storage="c:\users\admin\desktop\svnnow\项目相关文档\sherry\项目监控\里程碑\release_v1.1_2010-01-14_forus\utest\bin\debug\testproject1.dll" id="8a668c31-e043-5a40-a46a-f3f5f2c46055">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="68ca90d3-26dc-4e5b-9297-05d5c5779f4c" />
+      <TestMethod codeBase="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\bin\Debug\TestProject1.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.ClientServiceDALTest, TestProject1" name="ShowTopNTest" />
+    </UnitTest>
+    <UnitTest name="ChangePayStateTest" storage="c:\users\admin\desktop\svnnow\项目相关文档\sherry\项目监控\里程碑\release_v1.1_2010-01-14_forus\utest\bin\debug\testproject1.dll" id="f1d66087-2900-ef50-7c49-3b93f6c05d72">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="0723e50f-b1f1-4692-8daf-f06b2dd85f19" />
+      <TestMethod codeBase="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\bin\Debug\TestProject1.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.OrderCtrlDALTest, TestProject1" name="ChangePayStateTest" />
+    </UnitTest>
+    <UnitTest name="GetAllOrdersTest" storage="c:\users\admin\desktop\svnnow\项目相关文档\sherry\项目监控\里程碑\release_v1.1_2010-01-14_forus\utest\bin\debug\testproject1.dll" id="36ef077f-4286-c964-f3ba-27883916b33a">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="2e1deeec-3a2a-478b-ab63-d7367cf3ec3f" />
+      <TestMethod codeBase="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\bin\Debug\TestProject1.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.OrderCtrlDALTest, TestProject1" name="GetAllOrdersTest" />
+    </UnitTest>
+    <UnitTest name="ChangeUserInfoTest" storage="c:\users\admin\desktop\svnnow\项目相关文档\sherry\项目监控\里程碑\release_v1.1_2010-01-14_forus\utest\bin\debug\testproject1.dll" id="ebd524a3-95e3-f682-9612-0cb6a986ea22">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="1796c607-a490-41db-9974-a9454087719a" />
+      <TestMethod codeBase="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\bin\Debug\TestProject1.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.CheckoutInfoDALTest, TestProject1" name="ChangeUserInfoTest" />
+    </UnitTest>
+    <UnitTest name="SetUserInfoTest" storage="c:\users\admin\desktop\svnnow\项目相关文档\sherry\项目监控\里程碑\release_v1.1_2010-01-14_forus\utest\bin\debug\testproject1.dll" id="0e45a9be-37d6-8091-59cb-bcce53f50665">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="33313c29-31cd-48ad-a356-c310ec0789b7" />
+      <TestMethod codeBase="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\bin\Debug\TestProject1.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.CheckoutInfoDALTest, TestProject1" name="SetUserInfoTest" />
+    </UnitTest>
+    <UnitTest name="GetUserLvTest" storage="c:\users\admin\desktop\svnnow\项目相关文档\sherry\项目监控\里程碑\release_v1.1_2010-01-14_forus\utest\bin\debug\testproject1.dll" id="046c245d-e535-52af-0064-be7ac4d3f170">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="1c46a16b-c946-4c48-ab2b-e367baec99ec" />
+      <TestMethod codeBase="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\bin\Debug\TestProject1.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.UserScoreDALTest, TestProject1" name="GetUserLvTest" />
+    </UnitTest>
+    <UnitTest name="DeleteMessageTest" storage="c:\users\admin\desktop\svnnow\项目相关文档\sherry\项目监控\里程碑\release_v1.1_2010-01-14_forus\utest\bin\debug\testproject1.dll" id="43674914-84dc-97a7-4fcd-e2315f766c33">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="14b3a353-b858-43bd-9adb-71f5de19b0ec" />
+      <TestMethod codeBase="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\bin\Debug\TestProject1.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.ClientServiceDALTest, TestProject1" name="DeleteMessageTest" />
+    </UnitTest>
+    <UnitTest name="GetOrdersByTime_CurCustomerTest" storage="c:\users\admin\desktop\svnnow\项目相关文档\sherry\项目监控\里程碑\release_v1.1_2010-01-14_forus\utest\bin\debug\testproject1.dll" id="acdad2db-f047-4c44-c16b-7da67828efae">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="e230f900-fb42-41e4-acb0-0c6c0faea17a" />
+      <TestMethod codeBase="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\bin\Debug\TestProject1.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.OrderCtrlDALTest, TestProject1" name="GetOrdersByTime_CurCustomerTest" />
+    </UnitTest>
+    <UnitTest name="GetCategoryListTest" storage="c:\users\admin\desktop\svnnow\项目相关文档\sherry\项目监控\里程碑\release_v1.1_2010-01-14_forus\utest\bin\debug\testproject1.dll" id="99878398-bd04-7894-519e-3099e67b30e2">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="4bf9d10f-234f-4124-946a-1bcc683aae4f" />
+      <TestMethod codeBase="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\bin\Debug\TestProject1.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.MasterPageDALTest, TestProject1" name="GetCategoryListTest" />
+    </UnitTest>
+    <UnitTest name="GetCurrentOrderListTest" storage="c:\users\admin\desktop\svnnow\项目相关文档\sherry\项目监控\里程碑\release_v1.1_2010-01-14_forus\utest\bin\debug\testproject1.dll" id="5e41b3e3-abee-94cd-3757-9c6df0c27912">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="fb508f7f-7195-4075-9956-3f2e657e3ce3" />
+      <TestMethod codeBase="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\bin\Debug\TestProject1.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.OrderCtrlDALTest, TestProject1" name="GetCurrentOrderListTest" />
+    </UnitTest>
+    <UnitTest name="GetHistoryOrderListTest" storage="c:\users\admin\desktop\svnnow\项目相关文档\sherry\项目监控\里程碑\release_v1.1_2010-01-14_forus\utest\bin\debug\testproject1.dll" id="9e54417c-b7d2-9cde-017b-045e1b3d6cab">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="7b620ef2-57dc-4437-b06c-d9118041a820" />
+      <TestMethod codeBase="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\bin\Debug\TestProject1.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.OrderCtrlDALTest, TestProject1" name="GetHistoryOrderListTest" />
+    </UnitTest>
+    <UnitTest name="SrchOrderInfoByIDTest" storage="c:\users\admin\desktop\svnnow\项目相关文档\sherry\项目监控\里程碑\release_v1.1_2010-01-14_forus\utest\bin\debug\testproject1.dll" id="ef225c7a-d961-d4a0-807f-78df4b563ec9">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="d6674acd-6168-4214-a26f-99c1974268ad" />
+      <TestMethod codeBase="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\bin\Debug\TestProject1.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.OrderCtrlDALTest, TestProject1" name="SrchOrderInfoByIDTest" />
+    </UnitTest>
+    <UnitTest name="GetUserScoreTest" storage="c:\users\admin\desktop\svnnow\项目相关文档\sherry\项目监控\里程碑\release_v1.1_2010-01-14_forus\utest\bin\debug\testproject1.dll" id="d55e4feb-b23e-65c0-2d56-e0409692cfae">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="c5759d45-ddfb-4ef2-9369-94a4cf90d5d1" />
+      <TestMethod codeBase="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\bin\Debug\TestProject1.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.UserScoreDALTest, TestProject1" name="GetUserScoreTest" />
+    </UnitTest>
+    <UnitTest name="GetItemListTest" storage="c:\users\admin\desktop\svnnow\项目相关文档\sherry\项目监控\里程碑\release_v1.1_2010-01-14_forus\utest\bin\debug\testproject1.dll" id="6737e800-54ed-3853-de7b-10226538d834">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="3ebd825b-b840-4c80-81c5-a1dc28477391" />
+      <TestMethod codeBase="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\bin\Debug\TestProject1.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.MasterPageDALTest, TestProject1" name="GetItemListTest" />
+    </UnitTest>
+    <UnitTest name="GetStorageTest" storage="c:\users\admin\desktop\svnnow\项目相关文档\sherry\项目监控\里程碑\release_v1.1_2010-01-14_forus\utest\bin\debug\testproject1.dll" id="b8228392-cf92-d670-ccf4-52b14638da40">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="c56efa1a-8155-422e-8f12-2f773a9408d9" />
+      <TestMethod codeBase="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\bin\Debug\TestProject1.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.ShopCartInfoDALTest, TestProject1" name="GetStorageTest" />
+    </UnitTest>
+    <UnitTest name="UpdateScoreTest" storage="c:\users\admin\desktop\svnnow\项目相关文档\sherry\项目监控\里程碑\release_v1.1_2010-01-14_forus\utest\bin\debug\testproject1.dll" id="ba65d8c9-80d4-7d5c-0eaf-51df4ff07ef1">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="599addc3-01f1-4ad0-912c-46db1a5ce36d" />
+      <TestMethod codeBase="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\bin\Debug\TestProject1.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.UserScoreDALTest, TestProject1" name="UpdateScoreTest" />
+    </UnitTest>
+    <UnitTest name="GetOrderListTest" storage="c:\users\admin\desktop\svnnow\项目相关文档\sherry\项目监控\里程碑\release_v1.1_2010-01-14_forus\utest\bin\debug\testproject1.dll" id="a8d79776-f4da-ecf0-53d4-ed559245200b">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="7b239966-c708-4d2d-ad07-8c803e3d84d2" />
+      <TestMethod codeBase="C:\Users\admin\Desktop\svnnow\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\bin\Debug\TestProject1.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.OrderCtrlDALTest, TestProject1" name="GetOrderListTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="列表中未列出的结果" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="所有已加载的结果" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="d75fa6b4-6767-a052-c66a-36071f75832a" executionId="cf0b20ba-51a4-4354-8102-eb94a90d8585" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0e45a9be-37d6-8091-59cb-bcce53f50665" executionId="33313c29-31cd-48ad-a356-c310ec0789b7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ebd524a3-95e3-f682-9612-0cb6a986ea22" executionId="1796c607-a490-41db-9974-a9454087719a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a02a8242-705f-9f49-7218-1c7015aad4a7" executionId="7ef1be3a-69f2-4051-87bd-12c45079014e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8a668c31-e043-5a40-a46a-f3f5f2c46055" executionId="68ca90d3-26dc-4e5b-9297-05d5c5779f4c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="43674914-84dc-97a7-4fcd-e2315f766c33" executionId="14b3a353-b858-43bd-9adb-71f5de19b0ec" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="38c6f2b2-9919-e5d9-9d54-c43bb1995ad0" executionId="e128f831-0303-4da6-bd96-c034f397809c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6d47dc54-481e-ff6d-e2bd-749b185b9a96" executionId="e816a29c-e427-4a99-8e75-c822e82afc8e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6737e800-54ed-3853-de7b-10226538d834" executionId="3ebd825b-b840-4c80-81c5-a1dc28477391" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="99878398-bd04-7894-519e-3099e67b30e2" executionId="4bf9d10f-234f-4124-946a-1bcc683aae4f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ef225c7a-d961-d4a0-807f-78df4b563ec9" executionId="d6674acd-6168-4214-a26f-99c1974268ad" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="acdad2db-f047-4c44-c16b-7da67828efae" executionId="e230f900-fb42-41e4-acb0-0c6c0faea17a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a8d79776-f4da-ecf0-53d4-ed559245200b" executionId="7b239966-c708-4d2d-ad07-8c803e3d84d2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9e54417c-b7d2-9cde-017b-045e1b3d6cab" executionId="7b620ef2-57dc-4437-b06c-d9118041a820" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5e41b3e3-abee-94cd-3757-9c6df0c27912" executionId="fb508f7f-7195-4075-9956-3f2e657e3ce3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="36ef077f-4286-c964-f3ba-27883916b33a" executionId="2e1deeec-3a2a-478b-ab63-d7367cf3ec3f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f68d414b-e218-9f98-4bad-6bfefbc9cb02" executionId="3ff56d58-9a1a-4aa5-ba34-01eee97531d9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f1d66087-2900-ef50-7c49-3b93f6c05d72" executionId="0723e50f-b1f1-4692-8daf-f06b2dd85f19" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="538705be-7fb2-3b92-c936-b8e28632cfc1" executionId="a7176943-e460-46d5-b070-22ba660b853c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9222b6a5-bfba-3afa-1c32-059a02242d2b" executionId="4efb6bc6-06f6-4bc9-9680-ad9bbcc2236c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b8228392-cf92-d670-ccf4-52b14638da40" executionId="c56efa1a-8155-422e-8f12-2f773a9408d9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ba65d8c9-80d4-7d5c-0eaf-51df4ff07ef1" executionId="599addc3-01f1-4ad0-912c-46db1a5ce36d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d55e4feb-b23e-65c0-2d56-e0409692cfae" executionId="c5759d45-ddfb-4ef2-9369-94a4cf90d5d1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="046c245d-e535-52af-0064-be7ac4d3f170" executionId="1c46a16b-c946-4c48-ab2b-e367baec99ec" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="cf0b20ba-51a4-4354-8102-eb94a90d8585" testId="d75fa6b4-6767-a052-c66a-36071f75832a" testName="UpdateToGoldenUserTest" computerName="LENOV10776291" duration="00:00:00.1488633" startTime="2010-01-15T15:15:40.6037228+08:00" endTime="2010-01-15T15:15:40.9157228+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="33313c29-31cd-48ad-a356-c310ec0789b7" testId="0e45a9be-37d6-8091-59cb-bcce53f50665" testName="SetUserInfoTest" computerName="LENOV10776291" duration="00:00:00.0175239" startTime="2010-01-15T15:15:40.9157228+08:00" endTime="2010-01-15T15:15:40.9313228+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="1796c607-a490-41db-9974-a9454087719a" testId="ebd524a3-95e3-f682-9612-0cb6a986ea22" testName="ChangeUserInfoTest" computerName="LENOV10776291" duration="00:00:00.0021720" startTime="2010-01-15T15:15:40.9313228+08:00" endTime="2010-01-15T15:15:40.9469228+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="7ef1be3a-69f2-4051-87bd-12c45079014e" testId="a02a8242-705f-9f49-7218-1c7015aad4a7" testName="InsertNewOrderTest" computerName="LENOV10776291" duration="00:00:00.0551365" startTime="2010-01-15T15:15:40.9469228+08:00" endTime="2010-01-15T15:15:41.0093228+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="68ca90d3-26dc-4e5b-9297-05d5c5779f4c" testId="8a668c31-e043-5a40-a46a-f3f5f2c46055" testName="ShowTopNTest" computerName="LENOV10776291" duration="00:00:00.0059873" startTime="2010-01-15T15:15:41.0093228+08:00" endTime="2010-01-15T15:15:41.0093228+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="14b3a353-b858-43bd-9adb-71f5de19b0ec" testId="43674914-84dc-97a7-4fcd-e2315f766c33" testName="DeleteMessageTest" computerName="LENOV10776291" duration="00:00:00.0057885" startTime="2010-01-15T15:15:41.0249228+08:00" endTime="2010-01-15T15:15:41.0249228+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e128f831-0303-4da6-bd96-c034f397809c" testId="38c6f2b2-9919-e5d9-9d54-c43bb1995ad0" testName="AddReplyTest" computerName="LENOV10776291" duration="00:00:00.0048527" startTime="2010-01-15T15:15:41.0405228+08:00" endTime="2010-01-15T15:15:41.0405228+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e816a29c-e427-4a99-8e75-c822e82afc8e" testId="6d47dc54-481e-ff6d-e2bd-749b185b9a96" testName="AddNewMessageTest" computerName="LENOV10776291" duration="00:00:00.0030545" startTime="2010-01-15T15:15:41.0561228+08:00" endTime="2010-01-15T15:15:41.0561228+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="3ebd825b-b840-4c80-81c5-a1dc28477391" testId="6737e800-54ed-3853-de7b-10226538d834" testName="GetItemListTest" computerName="LENOV10776291" duration="00:00:00.0030437" startTime="2010-01-15T15:15:41.0717228+08:00" endTime="2010-01-15T15:15:41.0717228+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="4bf9d10f-234f-4124-946a-1bcc683aae4f" testId="99878398-bd04-7894-519e-3099e67b30e2" testName="GetCategoryListTest" computerName="LENOV10776291" duration="00:00:00.0021467" startTime="2010-01-15T15:15:41.0873228+08:00" endTime="2010-01-15T15:15:41.0873228+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="d6674acd-6168-4214-a26f-99c1974268ad" testId="ef225c7a-d961-d4a0-807f-78df4b563ec9" testName="SrchOrderInfoByIDTest" computerName="LENOV10776291" duration="00:00:00.0042039" startTime="2010-01-15T15:15:41.1029228+08:00" endTime="2010-01-15T15:15:41.1029228+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e230f900-fb42-41e4-acb0-0c6c0faea17a" testId="acdad2db-f047-4c44-c16b-7da67828efae" testName="GetOrdersByTime_CurCustomerTest" computerName="LENOV10776291" duration="00:00:00.0228362" startTime="2010-01-15T15:15:41.1185228+08:00" endTime="2010-01-15T15:15:41.1341228+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="7b239966-c708-4d2d-ad07-8c803e3d84d2" testId="a8d79776-f4da-ecf0-53d4-ed559245200b" testName="GetOrderListTest" computerName="LENOV10776291" duration="00:00:00.0044000" startTime="2010-01-15T15:15:41.1497228+08:00" endTime="2010-01-15T15:15:41.1497228+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="7b620ef2-57dc-4437-b06c-d9118041a820" testId="9e54417c-b7d2-9cde-017b-045e1b3d6cab" testName="GetHistoryOrderListTest" computerName="LENOV10776291" duration="00:00:00.0019362" startTime="2010-01-15T15:15:41.1653228+08:00" endTime="2010-01-15T15:15:41.1653228+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="fb508f7f-7195-4075-9956-3f2e657e3ce3" testId="5e41b3e3-abee-94cd-3757-9c6df0c27912" testName="GetCurrentOrderListTest" computerName="LENOV10776291" duration="00:00:00.0026419" startTime="2010-01-15T15:15:41.1809228+08:00" endTime="2010-01-15T15:15:41.1809228+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="2e1deeec-3a2a-478b-ab63-d7367cf3ec3f" testId="36ef077f-4286-c964-f3ba-27883916b33a" testName="GetAllOrdersTest" computerName="LENOV10776291" duration="00:00:00.0086492" startTime="2010-01-15T15:15:41.1965228+08:00" endTime="2010-01-15T15:15:41.2121228+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="3ff56d58-9a1a-4aa5-ba34-01eee97531d9" testId="f68d414b-e218-9f98-4bad-6bfefbc9cb02" testName="DeleteOrderTest" computerName="LENOV10776291" duration="00:00:00.0127106" startTime="2010-01-15T15:15:41.2121228+08:00" endTime="2010-01-15T15:15:41.2277228+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="0723e50f-b1f1-4692-8daf-f06b2dd85f19" testId="f1d66087-2900-ef50-7c49-3b93f6c05d72" testName="ChangePayStateTest" computerName="LENOV10776291" duration="00:00:00.0073226" startTime="2010-01-15T15:15:41.2277228+08:00" endTime="2010-01-15T15:15:41.2277228+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="a7176943-e460-46d5-b070-22ba660b853c" testId="538705be-7fb2-3b92-c936-b8e28632cfc1" testName="ChangeOrderStateTest" computerName="LENOV10776291" duration="00:00:00.0049066" startTime="2010-01-15T15:15:41.2433228+08:00" endTime="2010-01-15T15:15:41.2433228+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="4efb6bc6-06f6-4bc9-9680-ad9bbcc2236c" testId="9222b6a5-bfba-3afa-1c32-059a02242d2b" testName="GetStoragePriceTest" computerName="LENOV10776291" duration="00:00:00.0029690" startTime="2010-01-15T15:15:41.2589228+08:00" endTime="2010-01-15T15:15:41.2589228+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c56efa1a-8155-422e-8f12-2f773a9408d9" testId="b8228392-cf92-d670-ccf4-52b14638da40" testName="GetStorageTest" computerName="LENOV10776291" duration="00:00:00.0017235" startTime="2010-01-15T15:15:41.2745228+08:00" endTime="2010-01-15T15:15:41.2745228+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="599addc3-01f1-4ad0-912c-46db1a5ce36d" testId="ba65d8c9-80d4-7d5c-0eaf-51df4ff07ef1" testName="UpdateScoreTest" computerName="LENOV10776291" duration="00:00:00.0078688" startTime="2010-01-15T15:15:41.2901228+08:00" endTime="2010-01-15T15:15:41.3057228+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c5759d45-ddfb-4ef2-9369-94a4cf90d5d1" testId="d55e4feb-b23e-65c0-2d56-e0409692cfae" testName="GetUserScoreTest" computerName="LENOV10776291" duration="00:00:00.0019239" startTime="2010-01-15T15:15:41.3057228+08:00" endTime="2010-01-15T15:15:41.3057228+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="1c46a16b-c946-4c48-ab2b-e367baec99ec" testId="046c245d-e535-52af-0064-be7ac4d3f170" testName="GetUserLvTest" computerName="LENOV10776291" duration="00:00:00.0019290" startTime="2010-01-15T15:15:41.3213228+08:00" endTime="2010-01-15T15:15:41.3213228+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>
