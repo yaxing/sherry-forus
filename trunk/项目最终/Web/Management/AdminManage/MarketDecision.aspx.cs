@@ -6,39 +6,61 @@ using BLL;
 
 public partial class Default2 : Page
 {
-    private int conditionVal = -1;
+    private int ConditionVal = -1;
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        eYearRangeVali.MaximumValue = sYearRangeVali.MaximumValue = "" + DateTime.Now.Year;
+        eYearRangeVali.MinimumValue = sYearRangeVali.MinimumValue = "" + 1753;
+        eYearRangeVali.ErrorMessage = sYearRangeVali.ErrorMessage = "起始年份范围应在1753到" + DateTime.Now.Year + "之间";
+        eMonthRangeVali.ErrorMessage = sMonthRangeVali.ErrorMessage = "月份的取值范围应在1到12之间";
+
+
+        //页面载入时执行一次
         if (!Page.IsPostBack)
         {
+
+            Button1.Enabled = false;
+            
             AgeGroupPan.Visible = TimeGapPan.Visible = false;
         }
     }
 
-
+    /// <summary>
+    /// 重点选择器，用编程方式控制Visible
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {
-        conditionVal = Condition.SelectedIndex;
+        ConditionVal = Condition.SelectedIndex;
 
-        switch (conditionVal)
+        switch (ConditionVal)
         {
+            //请选择
             case 0:
                 AgeGroupPan.Visible = TimeGapPan.Visible = false;
+                Button1.Enabled = false;
                 break;
-
+            //会员数
             case 1:
-
-                AgeGroupPan.Visible = true;
+                Button1.Enabled = true;
+                AgeGroupPan.Visible = true;                
                 TimeGapPan.Visible = false;
                 cleanupControls();
+                displayAgepanContents(1);
                 break;
+            //各年龄段用户群消费额
             case 2:
-                AgeGroupPan.Visible = true;
+                Button1.Enabled = true;
+                AgeGroupPan.Visible = true;                
                 TimeGapPan.Visible = true;
                 cleanupControls();
+                displayAgepanContents(1);
                 break;
+            //各类商品销售额
             case 3:
+                Button1.Enabled = true;
                 AgeGroupPan.Visible = false;
                 TimeGapPan.Visible = true;
                 cleanupControls();
@@ -46,20 +68,15 @@ public partial class Default2 : Page
         }
     }
 
-
+    /// <summary>
+    /// 年龄段数目选择器，编程方式控制visible
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
     {
         int val = drpAgeGapNum.SelectedIndex;
-
-        for (int i = 1; i <= val; i++)
-        {
-            Page.FindControl("line" + i).Visible = true;
-        }
-
-        for (int i = val + 1; i <= 4; i++)
-        {
-            Page.FindControl("line" + i).Visible = false;
-        }
+        displayAgepanContents(val+1);
 
         #region 用编程的方式向agePan添加textbox
 
@@ -142,7 +159,7 @@ public partial class Default2 : Page
     {
         Response.Write("hi");
 
-        int gapNum = drpAgeGapNum.SelectedIndex;
+        int gapNum = drpAgeGapNum.SelectedIndex+1;
         int condition = Condition.SelectedIndex;
         Condition.SelectedIndex = 0;
 
@@ -174,6 +191,25 @@ public partial class Default2 : Page
 
     #region 不太重要
 
+    private void displayAgepanContents(int val)
+    {
+        for (int i = 1; i <= val; i++)
+        {
+            Page.FindControl("line" + i).Visible = true;
+
+        }
+
+        for (int i = val + 1; i <= 4; i++)
+        {
+            Page.FindControl("line" + i).Visible = false;
+        }
+
+    } 
+
+
+    /// <summary>
+    /// 清空时间段输入框，年龄段输入框。   
+    /// </summary>
     private void cleanupControls()
     {
         //cleanup textboxes
@@ -197,6 +233,10 @@ public partial class Default2 : Page
         }
     }
 
+    /// <summary>
+    /// 取出需要的年龄段信息
+    /// </summary>
+    /// <param name="gapNum">年龄段组数</param>
     private void FindAgeGap(int gapNum)
     {
         Session.Remove("ageGapsList");
@@ -214,7 +254,9 @@ public partial class Default2 : Page
 
         Session.Add("ageGapsList", list);
     }
-
+    /// <summary>
+    /// 取出需要的时间段信息
+    /// </summary>
     private void FindTimeGap()
     {
         Session.Remove("timeList");

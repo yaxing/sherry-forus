@@ -11,12 +11,12 @@
   </DataSources>
   <InteractiveHeight>29.7cm</InteractiveHeight>
   <ReportParameters>
-    <ReportParameter Name="startingDate">
+    <ReportParameter Name="sDate">
       <DataType>String</DataType>
       <AllowBlank>true</AllowBlank>
       <Prompt>Report_Parameter_0</Prompt>
     </ReportParameter>
-    <ReportParameter Name="endingDate">
+    <ReportParameter Name="eDate">
       <DataType>String</DataType>
       <AllowBlank>true</AllowBlank>
       <Prompt>Report_Parameter_1</Prompt>
@@ -82,7 +82,8 @@
               <Default>Solid</Default>
             </BorderStyle>
           </Style>
-          <Position>RightCenter</Position>
+          <Position>BottomLeft</Position>
+          <Layout>Table</Layout>
         </Legend>
         <CategoryAxis>
           <Axis>
@@ -110,7 +111,7 @@
         <DataSetName>Report_MemberSalesReport</DataSetName>
         <PlotArea>
           <Style>
-            <BackgroundColor>LightGrey</BackgroundColor>
+            <BackgroundColor>White</BackgroundColor>
             <BorderStyle>
               <Default>Solid</Default>
             </BorderStyle>
@@ -120,22 +121,11 @@
           <Enabled>true</Enabled>
           <Rotation>30</Rotation>
           <Inclination>-90</Inclination>
-          <Shading>Real</Shading>
+          <Shading>Simple</Shading>
+          <WallThickness>42</WallThickness>
         </ThreeDProperties>
         <PointWidth>0</PointWidth>
-        <SeriesGroupings>
-          <SeriesGrouping>
-            <DynamicSeries>
-              <Grouping Name="chart2_SeriesGroup1">
-                <GroupExpressions>
-                  <GroupExpression>=Fields!AgeGap.Value</GroupExpression>
-                </GroupExpressions>
-              </Grouping>
-              <Label>=Fields!AgeGap.Value</Label>
-            </DynamicSeries>
-          </SeriesGrouping>
-        </SeriesGroupings>
-        <Top>14cm</Top>
+        <Top>14.5cm</Top>
         <Subtype>Plain</Subtype>
         <ValueAxis>
           <Axis>
@@ -163,27 +153,43 @@
           </Axis>
         </ValueAxis>
         <Type>Doughnut</Type>
-        <Width>10.5cm</Width>
+        <Width>11.25cm</Width>
         <CategoryGroupings>
           <CategoryGrouping>
             <DynamicCategories>
               <Grouping Name="chart2_CategoryGroup1">
                 <GroupExpressions>
-                  <GroupExpression>=Fields!OverallPercent.Value</GroupExpression>
+                  <GroupExpression>=Fields!AgeGap.Value</GroupExpression>
                 </GroupExpressions>
               </Grouping>
-              <Label>=Fields!OverallPercent.Value</Label>
+              <Label>=Fields!AgeGap.Value</Label>
             </DynamicCategories>
           </CategoryGrouping>
         </CategoryGroupings>
         <Palette>EarthTones</Palette>
+        <ChartData>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!OverallPercent.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel />
+                <Marker />
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+        </ChartData>
         <Style>
           <BackgroundColor>White</BackgroundColor>
           <FontFamily>宋体</FontFamily>
         </Style>
         <Title>
-          <Caption>各年龄段会员总销售额的百分比</Caption>
+          <Caption>各年龄段用户在总消费额中所占百分比</Caption>
         </Title>
+        <Height>9.25cm</Height>
         <Left>0.25cm</Left>
       </Chart>
       <Chart Name="chart1">
@@ -194,7 +200,8 @@
               <Default>Solid</Default>
             </BorderStyle>
           </Style>
-          <Position>RightCenter</Position>
+          <Position>BottomLeft</Position>
+          <Layout>Table</Layout>
         </Legend>
         <CategoryAxis>
           <Axis>
@@ -235,6 +242,18 @@
           <Shading>Real</Shading>
         </ThreeDProperties>
         <PointWidth>0</PointWidth>
+        <SeriesGroupings>
+          <SeriesGrouping>
+            <DynamicSeries>
+              <Grouping Name="chart1_SeriesGroup1">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!AgeGap.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Label>=Fields!AgeGap.Value</Label>
+            </DynamicSeries>
+          </SeriesGrouping>
+        </SeriesGroupings>
         <Top>5.75cm</Top>
         <Subtype>Plain</Subtype>
         <ValueAxis>
@@ -264,18 +283,6 @@
         </ValueAxis>
         <Type>Column</Type>
         <Width>11.25cm</Width>
-        <CategoryGroupings>
-          <CategoryGrouping>
-            <DynamicCategories>
-              <Grouping Name="chart1_CategoryGroup1">
-                <GroupExpressions>
-                  <GroupExpression>=Fields!AgeGap.Value</GroupExpression>
-                </GroupExpressions>
-              </Grouping>
-              <Label>=Fields!AgeGap.Value</Label>
-            </DynamicCategories>
-          </CategoryGrouping>
-        </CategoryGroupings>
         <Palette>EarthTones</Palette>
         <ChartData>
           <ChartSeries>
@@ -297,12 +304,13 @@
           <FontFamily>宋体</FontFamily>
         </Style>
         <Title>
-          <Caption>各年龄段用户的网上、电话、店面销售额</Caption>
+          <Caption>各年龄段用户的网上、电话、店面消费总额</Caption>
         </Title>
         <Height>7.61905cm</Height>
         <Left>0.25cm</Left>
       </Chart>
       <Textbox Name="textbox12">
+        <DataElementOutput>Output</DataElementOutput>
         <Top>0.5cm</Top>
         <Width>2cm</Width>
         <Style>
@@ -312,14 +320,16 @@
           <PaddingTop>2pt</PaddingTop>
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
+        <DataElementStyle>ElementNormal</DataElementStyle>
         <ZIndex>5</ZIndex>
         <CanGrow>true</CanGrow>
-        <Left>3.75cm</Left>
+        <Left>3.25cm</Left>
         <Height>0.75cm</Height>
-        <Value>=Parameters!endingDate.Value</Value>
+        <Value>=Parameters!eDate.Value</Value>
       </Textbox>
       <Textbox Name="textbox7">
         <rd:DefaultName>textbox7</rd:DefaultName>
+        <DataElementOutput>Output</DataElementOutput>
         <Top>0.5cm</Top>
         <Width>2cm</Width>
         <Style>
@@ -329,11 +339,12 @@
           <PaddingTop>2pt</PaddingTop>
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
+        <DataElementStyle>ElementNormal</DataElementStyle>
         <ZIndex>4</ZIndex>
         <CanGrow>true</CanGrow>
-        <Left>1.25cm</Left>
+        <Left>0.75cm</Left>
         <Height>0.75cm</Height>
-        <Value>=Parameters!startingDate.Value</Value>
+        <Value>=Parameters!sDate.Value</Value>
       </Textbox>
       <Textbox Name="textbox6">
         <Top>0.5cm</Top>
@@ -347,7 +358,7 @@
         </Style>
         <ZIndex>3</ZIndex>
         <CanGrow>true</CanGrow>
-        <Left>3.25cm</Left>
+        <Left>2.75cm</Left>
         <Height>0.75cm</Height>
         <Value>到</Value>
       </Textbox>
@@ -364,14 +375,15 @@
         </Style>
         <ZIndex>2</ZIndex>
         <CanGrow>true</CanGrow>
-        <Left>0.75cm</Left>
+        <Left>0.25cm</Left>
         <Height>0.75cm</Height>
         <Value>从</Value>
       </Textbox>
       <Table Name="table1">
         <ZIndex>1</ZIndex>
         <DataSetName>Report_MemberSalesReport</DataSetName>
-        <Top>2cm</Top>
+        <Top>1.5cm</Top>
+        <Width>17.30291cm</Width>
         <Details>
           <TableRows>
             <TableRow>
@@ -381,6 +393,11 @@
                     <Textbox Name="AgeGap_1">
                       <rd:DefaultName>AgeGap_1</rd:DefaultName>
                       <Style>
+                        <BackgroundColor>Gainsboro</BackgroundColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -397,7 +414,11 @@
                     <Textbox Name="OverallSalesAmount">
                       <rd:DefaultName>OverallSalesAmount</rd:DefaultName>
                       <Style>
-                        <TextAlign>Right</TextAlign>
+                        <BackgroundColor>Gainsboro</BackgroundColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -414,7 +435,11 @@
                     <Textbox Name="OverallPercent_1">
                       <rd:DefaultName>OverallPercent_1</rd:DefaultName>
                       <Style>
-                        <TextAlign>Right</TextAlign>
+                        <BackgroundColor>Gainsboro</BackgroundColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -431,7 +456,11 @@
                     <Textbox Name="OnlineSalesAmount">
                       <rd:DefaultName>OnlineSalesAmount</rd:DefaultName>
                       <Style>
-                        <TextAlign>Right</TextAlign>
+                        <BackgroundColor>Gainsboro</BackgroundColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -448,7 +477,11 @@
                     <Textbox Name="PhoneSalesAmount">
                       <rd:DefaultName>PhoneSalesAmount</rd:DefaultName>
                       <Style>
-                        <TextAlign>Right</TextAlign>
+                        <BackgroundColor>Gainsboro</BackgroundColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -465,7 +498,11 @@
                     <Textbox Name="ShopSalesAmount">
                       <rd:DefaultName>ShopSalesAmount</rd:DefaultName>
                       <Style>
-                        <TextAlign>Right</TextAlign>
+                        <BackgroundColor>Gainsboro</BackgroundColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -481,6 +518,13 @@
             </TableRow>
           </TableRows>
         </Details>
+        <Style>
+          <BackgroundColor>LightGrey</BackgroundColor>
+          <BorderStyle>
+            <Default>Solid</Default>
+          </BorderStyle>
+          <TextAlign>Center</TextAlign>
+        </Style>
         <Header>
           <TableRows>
             <TableRow>
@@ -490,13 +534,17 @@
                     <Textbox Name="textbox2">
                       <rd:DefaultName>textbox2</rd:DefaultName>
                       <Style>
+                        <BackgroundColor>Gainsboro</BackgroundColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
                         <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>17</ZIndex>
+                      <ZIndex>11</ZIndex>
                       <CanGrow>true</CanGrow>
                       <Value>年龄段</Value>
                     </Textbox>
@@ -507,15 +555,19 @@
                     <Textbox Name="textbox14">
                       <rd:DefaultName>textbox14</rd:DefaultName>
                       <Style>
+                        <BackgroundColor>Gainsboro</BackgroundColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
                         <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>16</ZIndex>
+                      <ZIndex>10</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>总销售额(元)</Value>
+                      <Value>总消费额(元)</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -524,15 +576,19 @@
                     <Textbox Name="textbox11">
                       <rd:DefaultName>textbox11</rd:DefaultName>
                       <Style>
+                        <BackgroundColor>Gainsboro</BackgroundColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
                         <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>15</ZIndex>
+                      <ZIndex>9</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>总销售额比例（%）</Value>
+                      <Value>总消费额比例（%）</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -541,15 +597,19 @@
                     <Textbox Name="textbox17">
                       <rd:DefaultName>textbox17</rd:DefaultName>
                       <Style>
+                        <BackgroundColor>Gainsboro</BackgroundColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
                         <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>14</ZIndex>
+                      <ZIndex>8</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>网上销售额（元）</Value>
+                      <Value>网上消费额（元）</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -558,15 +618,19 @@
                     <Textbox Name="textbox3">
                       <rd:DefaultName>textbox3</rd:DefaultName>
                       <Style>
+                        <BackgroundColor>Gainsboro</BackgroundColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
                         <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>13</ZIndex>
+                      <ZIndex>7</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>电话销售额（元）</Value>
+                      <Value>电话消费额（元）</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -575,15 +639,19 @@
                     <Textbox Name="textbox4">
                       <rd:DefaultName>textbox4</rd:DefaultName>
                       <Style>
+                        <BackgroundColor>Gainsboro</BackgroundColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
                         <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
-                      <ZIndex>12</ZIndex>
+                      <ZIndex>6</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>店面销售额（元）</Value>
+                      <Value>店面消费额（元）</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -612,138 +680,25 @@
             <Width>3.02646cm</Width>
           </TableColumn>
         </TableColumns>
-        <Height>1.90476cm</Height>
-        <Footer>
-          <TableRows>
-            <TableRow>
-              <TableCells>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox8">
-                      <rd:DefaultName>textbox8</rd:DefaultName>
-                      <Style>
-                        <TextAlign>Center</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                      <ZIndex>11</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value />
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox16">
-                      <rd:DefaultName>textbox16</rd:DefaultName>
-                      <Style>
-                        <TextAlign>Center</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                      <ZIndex>10</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value />
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox13">
-                      <rd:DefaultName>textbox13</rd:DefaultName>
-                      <Style>
-                        <TextAlign>Center</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                      <ZIndex>9</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value />
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox19">
-                      <rd:DefaultName>textbox19</rd:DefaultName>
-                      <Style>
-                        <TextAlign>Center</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                      <ZIndex>8</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value />
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox9">
-                      <rd:DefaultName>textbox9</rd:DefaultName>
-                      <Style>
-                        <TextAlign>Center</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                      <ZIndex>7</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value />
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox10">
-                      <rd:DefaultName>textbox10</rd:DefaultName>
-                      <Style>
-                        <TextAlign>Center</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                      <ZIndex>6</ZIndex>
-                      <CanGrow>true</CanGrow>
-                      <Value />
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-              </TableCells>
-              <Height>0.63492cm</Height>
-            </TableRow>
-          </TableRows>
-        </Footer>
-        <Left>0.25cm</Left>
+        <Height>1.26984cm</Height>
       </Table>
       <Textbox Name="textbox1">
         <rd:DefaultName>textbox1</rd:DefaultName>
         <Top>0.5cm</Top>
         <Width>5cm</Width>
         <Style>
-          <FontSize>14pt</FontSize>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
         <CanGrow>true</CanGrow>
-        <Left>5.75cm</Left>
+        <Left>5.25cm</Left>
         <Height>0.75cm</Height>
-        <Value>会员消费额统计结果</Value>
+        <Value>用户消费额统计结果</Value>
       </Textbox>
     </ReportItems>
-    <Height>21.61905cm</Height>
+    <Height>24.86905cm</Height>
     <Style>
       <BorderStyle>
         <Default>Solid</Default>

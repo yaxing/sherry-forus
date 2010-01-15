@@ -9,6 +9,11 @@ public partial class Management_GoodsSalesReport : Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+
+        //session param cheking
+        if(Session["timeList"]==null)
+            Response.Redirect("MarketDecision.aspx");
+
         //set report param
         List<int> timeList = (List<int>) Session["timeList"];
         string sDate = timeList[0] + "Äê" + timeList[1] + "ÔÂ";
