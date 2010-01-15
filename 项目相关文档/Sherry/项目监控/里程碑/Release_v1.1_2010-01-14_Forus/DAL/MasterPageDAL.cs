@@ -50,7 +50,7 @@ namespace DAL
             {
                 ie = new ItemEntity(Convert.ToInt32(dt.Rows[i][0].ToString()));
                 ie.Name = dt.Rows[i][2].ToString();
-                ie.ImgPath = dt.Rows[i][5].ToString();
+                ie.ImgPath = "/Web/"+dt.Rows[i][5].ToString();
                 itemList.Add(ie);
             }
             return true;
