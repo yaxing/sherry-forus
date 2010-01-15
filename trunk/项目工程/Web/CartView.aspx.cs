@@ -292,10 +292,10 @@ public partial class CartView : System.Web.UI.Page
 
     protected void ibReturn_Click(object sender, ImageClickEventArgs e)
     {
-        Response.Redirect("Goods.aspx");
+        Response.Redirect("/Web/Goods.aspx");
     }
     protected void ibPay_Click(object sender, ImageClickEventArgs e)
     {
-        Response.Redirect("CheckOut.aspx");
+        Response.Redirect("/Web/User/CheckOut.aspx");
     }
 }
