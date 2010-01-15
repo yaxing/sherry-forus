@@ -169,16 +169,16 @@ public partial class Default2 : Page
                 break;
             case 1:
                 FindAgeGap(gapNum);
-                Response.Redirect("MemberReport.aspx");
+                Response.Redirect("AdminManage/MemberReport.aspx");
                 break;
             case 2:
                 FindAgeGap(gapNum);
                 FindTimeGap();
-                Response.Redirect("MemberSalesReport.aspx");
+                Response.Redirect("AdminManage/MemberSalesReport.aspx");
                 break;
             case 3:
                 FindTimeGap();
-                Response.Redirect("GoodsSalesReport.aspx");
+                Response.Redirect("AdminManage/GoodsSalesReport.aspx");
                 break;
             default:
                 break;

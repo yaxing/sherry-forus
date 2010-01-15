@@ -8,9 +8,22 @@
     <title>市场决策</title>
 </head>
 <body>
-    <form id="form1" runat="server" >
-
+    <form id="form1" runat="server">
     <div>
+        <table cellspacing="1" cellpadding="3" width="790px" align="center" border="0">
+           <tr>
+             <td valign="top" width="100%">
+               <p><br /></p>
+             </td>
+           </tr>
+         </table>
+         <table class="tableBorder" cellspacing="1" cellpadding="2" width="790px" align="center" border="0">
+           <tr>
+           <th width="100%" class="tableHeaderText" style="height: 25px">市场决策</th>
+           </tr>
+         </table>
+         
+         <div align="center">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
         <table style="width: 198px">
             <tr>
@@ -157,6 +170,11 @@
             </tr>
         </table>
         &nbsp; &nbsp; &nbsp;&nbsp;
+<table class="tableBorder" cellspacing="1" cellpadding="2" width="790px" align="center" border="0">
+           <tr>
+             <th width="100%" class="tableHeaderText" style="height: 25px">&nbsp;</th>
+           </tr>
+         </table>
     </div>
     </form>
 </body>
