@@ -189,6 +189,11 @@ float:left;
 padding:0 5px 0 0;
 text-align:center;
 }
+.prod_comment{
+float:left;
+padding:0 8px 0 0;
+text-align:left;
+}
 .prod_det_box{
 width:295px;
 float:left;
@@ -200,15 +205,30 @@ width:295px;
 height:9px;
 background:url(images/box_top.gif) no-repeat center bottom;
 }
+.box_top_small{
+width:90px;
+height:9px;
+background:url(images/box_top_small.gif) no-repeat center bottom;
+}
 .box_center{
 width:295px;
 height:auto;
 background:url(images/box_center.gif) repeat-y center;
 }
+.box_center_small{
+width:90px;
+height:auto;
+background:url(images/box_center_small.gif) repeat-y center;
+}
 .box_bottom{
 width:295px;
 height:9px;
 background:url(images/box_bottom.gif) no-repeat center top;
+}
+.box_bottom_small{
+width:90px;
+height:9px;
+background:url(images/box_bottom_small.gif) no-repeat center top;
 }
 
 .new_prod_box{
