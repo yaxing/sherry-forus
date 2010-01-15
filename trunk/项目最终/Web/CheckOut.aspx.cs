@@ -23,11 +23,6 @@ public partial class CheckOut : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (HttpContext.Current.User.Identity.Name.Length == 0)
-        {
-            Response.Write("<script>history.go(-1);</script>");
-            return;
-        }
         String userName = HttpContext.Current.User.Identity.Name.ToString();
         MembershipUser user = null;
         String userID = null;
