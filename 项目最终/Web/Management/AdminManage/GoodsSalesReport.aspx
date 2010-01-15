@@ -7,16 +7,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <title>Untitled Page</title>
+    <title>商品消费额统计</title>
 </head>
 <body>
     <form id="form1" runat="server">
         &nbsp;<rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana"
-            Font-Size="8pt">
-            <LocalReport ReportPath="Management\GoodsSalesReport.rdlc">
-                <DataSources>
-                    <rsweb:ReportDataSource DataSourceId="ObjectDataSource1" Name="Report_GoodsSalesReport" />
-                </DataSources>
+            Font-Size="8pt" Height="600px" Width="600px">
+            <LocalReport ReportPath="Management\GoodsSalesReport.rdlc">                
             </LocalReport>
         </rsweb:ReportViewer>
     </form>

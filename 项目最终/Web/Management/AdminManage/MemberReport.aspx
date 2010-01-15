@@ -7,12 +7,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <title>Untitled Page</title>
+    <title>会员数量统计</title>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-        <rsweb:reportviewer id="ReportViewer1" runat="server" font-names="Verdana" font-size="8pt" Height="650px" Width="950px"
+        <rsweb:reportviewer id="ReportViewer1" runat="server" font-names="Verdana" font-size="8pt" Height="1000px" Width="600px"
             >
 <LocalReport ReportPath="Management\MemberReport.rdlc">
 </LocalReport>

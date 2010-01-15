@@ -7,24 +7,16 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <title>Untitled Page</title>
+    <title>用户消费额统计</title>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-        <rsweb:reportviewer id="ReportViewer1" runat="server" font-names="Verdana" font-size="8pt">
-<LocalReport ReportPath="Management\MemberSalesReport.rdlc"><DataSources>
-<rsweb:ReportDataSource Name="MemberSalesReportLine" DataSourceId="ObjectDataSource1"></rsweb:ReportDataSource>
-</DataSources>
+        <rsweb:reportviewer id="ReportViewer1" runat="server" font-names="Verdana" font-size="8pt" Height="1000px" Width="675px">
+<LocalReport ReportPath="Management\MemberSalesReport.rdlc">
 </LocalReport>
 </rsweb:reportviewer>
-        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetMemberSalesReportLines"
-            TypeName="BLL.MemberSalesReport">
-            <SelectParameters>
-                <asp:SessionParameter DefaultValue="" Name="ageGaps" SessionField="ageGapsList" Type="Object" />
-                <asp:SessionParameter DefaultValue="" Name="timeList" SessionField="timeList" Type="Object" />
-            </SelectParameters>
-        </asp:ObjectDataSource>
+        &nbsp;
     
     </div>
     </form>
