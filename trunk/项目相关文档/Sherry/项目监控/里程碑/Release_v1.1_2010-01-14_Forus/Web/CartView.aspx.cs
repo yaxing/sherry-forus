@@ -296,6 +296,6 @@ public partial class CartView : System.Web.UI.Page
     }
     protected void ibPay_Click(object sender, ImageClickEventArgs e)
     {
-        Response.Redirect("/Web/User/CheckOut.aspx");
+        Response.Redirect("/Web/CheckOut.aspx");
     }
 }
