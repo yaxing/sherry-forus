@@ -177,7 +177,7 @@ eval("submenu" + sid + ".style.display=\"none\";");
                     <div class="form_row">
                         <div class="terms">
                         <asp:CheckBox ID="CKAgree" runat="server" ValidationGroup="CreateUserWizard" />
-                        我同意 <a href="#">Sherry化妆品网上销售协议</a>
+                        我同意 <a href="laws.aspx" target="_blank">Sherry化妆品网站使用协议</a>
                         </div>
                     </div>   
                   </ContentTemplate>
