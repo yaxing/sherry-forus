@@ -12,13 +12,34 @@
 <body>
     <form id="form1" runat="server">
     <div>
+        <table cellspacing="1" cellpadding="3" width="790px" align="center" border="0">
+           <tr>
+             <td valign="top" width="100%">
+               <p><br /></p>
+             </td>
+           </tr>
+         </table>
+         <table class="tableBorder" cellspacing="1" cellpadding="2" width="790px" align="center" border="0">
+           <tr>
+           <th width="100%" class="tableHeaderText" style="height: 25px">市场决策</th>
+           </tr>
+         </table>
+         
+         <div align="center">
         <rsweb:reportviewer id="ReportViewer1" runat="server" font-names="Verdana" font-size="8pt" Height="1000px" Width="675px">
 <LocalReport ReportPath="Management\MemberSalesReport.rdlc">
 </LocalReport>
 </rsweb:reportviewer>
         &nbsp;
     
+         
+<table class="tableBorder" cellspacing="1" cellpadding="2" width="790px" align="center" border="0">
+           <tr>
+             <th width="100%" class="tableHeaderText" style="height: 25px">&nbsp;</th>
+           </tr>
+         </table>
     </div>
     </form>
 </body>
 </html>
+
