@@ -295,6 +295,41 @@ eval("submenu" + sid + ".style.display=\"none\";");
           </tr>
       </table>
       </asp:Panel>
+	
+	<asp:Panel ID="MarketDecisonPanel" runat="server">
+	  <table cellspacing="0" cellpadding="0" width="158px" align="center">
+        
+          <tr>
+            <td class="menu_title" id="Td6" onmouseover="this.className='menu_title2';" onclick="showsubmenu(30)" onmouseout="this.className='menu_title';" background="left.files/admin_left_2.gif" height="25">
+              <span>市场决策</span>
+            </td>
+          </tr>
+          <tr>
+            <td id="Td7">
+			 <div class="sec_menu" style="WIDTH: 156px">
+			   <table cellspacing="0" cellpadding="0" width="135" align="center">
+                   <tr>
+                     <td height="20">
+                       <a href="/Web/Management/AdminManage/MarketDecision.aspx" target="mainFrame">市场决策</a>
+                     </td>
+                   </tr>
+				
+                </table>
+			 </div>
+            <div style="WIDTH: 156px">
+            <table cellspacing="0" cellpadding="0" width="135" align="center">
+              <tr>
+                <td height="20">
+                </td>
+              </tr>
+            </table>
+            </div>
+			</td>
+          </tr>
+      </table>
+      </asp:Panel>
+      
+      
       
       
       <asp:Panel ID="PanelService" runat="server">
