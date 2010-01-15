@@ -210,7 +210,7 @@ namespace BLL
             //计算百分比
             for (int i = 0; i < ageList.Count; i++)
             {
-                int num = sum == 0 ? 0 : Convert.ToInt32(100 * i / sum);
+                int num = sum == 0 ? 0 : Convert.ToInt32(overallSalesList[i]*100 / sum);
                 overallPercentList.Add(num);
             }
 
