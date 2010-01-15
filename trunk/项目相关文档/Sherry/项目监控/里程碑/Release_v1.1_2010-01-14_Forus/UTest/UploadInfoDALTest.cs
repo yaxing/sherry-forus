@@ -1,4 +1,7 @@
-﻿using DAL;
+﻿////陈亚星
+////2010-01-15
+////单元测试代码
+using DAL;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Entity;
 using System;
