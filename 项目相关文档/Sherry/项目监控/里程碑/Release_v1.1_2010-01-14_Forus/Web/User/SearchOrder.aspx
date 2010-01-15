@@ -1,5 +1,5 @@
 <%@ Page Language="C#" MasterPageFile="~/IndexMaster.master" AutoEventWireup="true"
-    CodeFile="SearchOrder.aspx.cs" Inherits="SearchOrder" Title="Untitled Page" %>
+    CodeFile="SearchOrder.aspx.cs" Inherits="SearchOrder" Title="Untitled Page" EnableEventValidation="false"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="contentHolder" runat="Server">
     <img src="/Web/images/bullet1.gif" width="20" alt="" title="" /><font style="font-size: 19px;
