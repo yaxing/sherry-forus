@@ -20,7 +20,7 @@ public partial class OrderManage : System.Web.UI.Page
     {
         if (HttpContext.Current.User.Identity.Name.Length==0) 
         {
-            Response.Write("<script>history.go(-1);</script>");
+            Response.Write("<script>location.href('/Web/Index.aspx');</script>");
             return;
         }
         if (!IsPostBack)
