@@ -119,23 +119,8 @@ namespace TestProject1
             bool expected = true; // TODO: 初始化为适当的值
             bool actual;
             actual = target.GetOrderList(ref orders, userId);
+            actual = target.GetOrderList(ref orders, userId, 0);
             Assert.AreNotEqual(0, orders.Rows.Count);
-            Assert.AreEqual(expected, actual);
-        }
-
-        /// <summary>
-        ///GetItemList 的测试
-        ///</summary>
-        [TestMethod()]
-        public void GetItemListTest()
-        {
-            OrderCtrlDAL target = new OrderCtrlDAL(); // TODO: 初始化为适当的值
-            DataTable items = new DataTable(); // TODO: 初始化为适当的值
-            int orderId = 52; // TODO: 初始化为适当的值
-            bool expected = true; // TODO: 初始化为适当的值
-            bool actual;
-            actual = target.GetItemList(ref items, orderId);
-            Assert.AreNotEqual(0, items.Rows.Count);
             Assert.AreEqual(expected, actual);
         }
 
@@ -179,9 +164,11 @@ namespace TestProject1
         {
             OrderCtrlDAL target = new OrderCtrlDAL(); // TODO: 初始化为适当的值
             IList<OrderInfo> orders = new List<OrderInfo>(); // TODO: 初始化为适当的值
+            Guid userID = new Guid("fb370f30-5579-42aa-8107-a877f4a77829");
             bool expected = true; // TODO: 初始化为适当的值
             bool actual;
             actual = target.GetAllOrders(ref orders);
+            actual = target.GetAllOrders(ref orders,userID);
             Assert.AreNotEqual(0, orders.Count);
             Assert.AreEqual(expected, actual);
         }
