@@ -86,7 +86,7 @@ namespace TestProject1
         [TestMethod()]
         public void GoodsDetailTest()
         {
-            int goodsID = 1; // TODO: 初始化为适当的值
+            int goodsID = 5; // TODO: 初始化为适当的值
             GoodsInfo actual;
             actual = GoodsInfoDAL.GoodsDetail(goodsID);
             Assert.IsNotNull(actual);
