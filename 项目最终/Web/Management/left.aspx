@@ -350,7 +350,7 @@ eval("submenu" + sid + ".style.display=\"none\";");
                    </tr>
 				    <tr>
                      <td height="20">
-                       <a href="#" target="mainFrame">�༭ͶƱ</a>
+                       <a href="EditPoll.aspx" target="mainFrame">�༭ͶƱ</a>
                      </td>
                    </tr>
                    <tr>
