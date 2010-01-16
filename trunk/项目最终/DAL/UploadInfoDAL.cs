@@ -24,7 +24,7 @@ namespace DAL
 
         public int AddMainUpload(MainUpload mainUpload)
         {
-            sqlString = "Insert Into MainUpload (sellTime,totalValue,gender,age,shopID,province) Values (@sellTime,@totalValue,@gender,@age,@shopID,@province)";
+            sqlString = "Insert Into MainUpload (sellTime,totalValue,gender,age,shopID,province,soldType) Values (@sellTime,@totalValue,@gender,@age,@shopID,@province,@soldType)";
 
             SqlParameter[] pt = new SqlParameter[] { 
                                 new SqlParameter("@sellTime", SqlDbType.DateTime),
@@ -33,6 +33,7 @@ namespace DAL
                                 new SqlParameter("@age", SqlDbType.Int),
                                 new SqlParameter("@shopID", SqlDbType.Int),
                                 new SqlParameter("@province", SqlDbType.VarChar),
+                                new SqlParameter("@soldType", SqlDbType.Int),
                                 };
             pt[0].Value = mainUpload.SellTime;
             pt[1].Value = mainUpload.TotalValue;
@@ -40,6 +41,7 @@ namespace DAL
             pt[3].Value = mainUpload.Age;
             pt[4].Value = mainUpload.ShopID;
             pt[5].Value = mainUpload.Province;
+            pt[6].Value = 3;
 
             try
             {

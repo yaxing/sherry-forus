@@ -258,27 +258,17 @@ eval("submenu" + sid + ".style.display=\"none\";");
 			   <table cellspacing="0" cellpadding="0" width="135" align="center">
                    <tr>
                      <td height="20">
-                       <a href="AddOrder.aspx" target="mainFrame">添加订单</a>
+                       <a href="WorkerManage/AddOrder.aspx" target="mainFrame">添加订单</a>
                      </td>
                    </tr>
                    <tr>
                      <td height="20">
-                       <a href="#" target="mainFrame">订单状态</a>
+                       <a href="WorkerManage/ShowOrderForWorker.aspx" target="mainFrame">工作人员查看订单</a>
                      </td>
                    </tr>
 				    <tr>
                      <td height="20">
-                       <a href="#" target="mainFrame">人员分配</a>
-                     </td>
-                   </tr>
-                   <tr>
-                     <td height="20">
-                       <a href="#" target="mainFrame">添加店面</a>
-                     </td>
-                   </tr>
-                   <tr>
-                     <td height="20">
-                       <a href="#" target="mainFrame">显示店面</a>
+                       <a href="WorkerManage/ShowOrdersForManager.aspx" target="mainFrame">负责人查看订单</a>
                      </td>
                    </tr>
                 </table>
@@ -297,17 +287,22 @@ eval("submenu" + sid + ".style.display=\"none\";");
       </asp:Panel>
 	
 	<asp:Panel ID="MarketDecisonPanel" runat="server">
-	  <table cellspacing="0" cellpadding="0" width="158px" align="center">
+	  <table cellspacing="0" cellpadding="0" width="158" align="center">
         
           <tr>
-            <td class="menu_title" id="Td6" onmouseover="this.className='menu_title2';" onclick="showsubmenu(30)" onmouseout="this.className='menu_title';" background="left.files/admin_left_2.gif" height="25">
+            <td class="menu_title" id="Td6" onmouseover="this.className='menu_title2';" onclick="showsubmenu(78)" onmouseout="this.className='menu_title';" background="left.files/admin_left_2.gif" style="height: 24px">
               <span>市场决策</span>
             </td>
           </tr>
           <tr>
-            <td id="Td7">
+            <td id="submenu78">
 			 <div class="sec_menu" style="WIDTH: 156px">
 			   <table cellspacing="0" cellpadding="0" width="135" align="center">
+			        <tr>
+                     <td height="20">
+                       <a href="/Web/Management/AdminManage/Upload.aspx" target="mainFrame">店面销售信息导入</a>
+                     </td>
+                   </tr>
                    <tr>
                      <td height="20">
                        <a href="/Web/Management/AdminManage/MarketDecision.aspx" target="mainFrame">市场决策</a>
@@ -345,17 +340,17 @@ eval("submenu" + sid + ".style.display=\"none\";");
 			   <table cellspacing="0" cellpadding="0" width="135" align="center">
                    <tr>
                      <td height="20">
-                       <a href="AddPoll.aspx" target="mainFrame">添加投票</a>
+                       <a href="AdminManage/AddPoll.aspx" target="mainFrame">添加投票</a>
                      </td>
                    </tr>
 				    <tr>
                      <td height="20">
-                       <a href="EditPoll.aspx" target="mainFrame">编辑投票</a>
+                       <a href="AdminManage/EditPoll.aspx" target="mainFrame">编辑投票</a>
                      </td>
                    </tr>
                    <tr>
                      <td height="20">
-                       <a href="CSManage.aspx" target="mainFrame">回复留言</a>
+                       <a href="AdminManage/CSManage.aspx" target="mainFrame">回复留言</a>
                      </td>
                    </tr>
                 </table>

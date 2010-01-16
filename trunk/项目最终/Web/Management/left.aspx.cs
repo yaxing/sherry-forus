@@ -51,6 +51,7 @@ public partial class Management_left : System.Web.UI.Page
                     this.PanelService.Visible = false;
                     this.PanelCallCenter.Visible = false;
                     this.MarketDecisonPanel.Visible = false;
+                    this.PanelLogistic.Visible = false;
                 }
 
                 this.ltlModiSelf.Text = "<a href='AdminManage/ModiAdminSelf.aspx' target='mainFrame'>修改个人信息</a>";
