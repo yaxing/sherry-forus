@@ -23,7 +23,7 @@ public partial class Management_AddAdmin : System.Web.UI.Page
             return;
         }
 
-        if (admin.AdminLv < 3)
+        if (admin.AdminLv < 4)
         {
             Response.Write("<script language='javascript'>alert('您无权使用此页面。');location.href='../bgIndex.aspx'</script>");
         }
