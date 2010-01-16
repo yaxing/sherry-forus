@@ -27,10 +27,11 @@
          
          <div align="center">
         <rsweb:reportviewer id="ReportViewer1" runat="server" font-names="Verdana" font-size="8pt" Height="1000px" Width="675px">
-<LocalReport ReportPath="Management\MemberSalesReport.rdlc">
+<LocalReport ReportPath="Management\AdminManage\MemberSalesReport.rdlc">
+   
 </LocalReport>
 </rsweb:reportviewer>
-        &nbsp;
+             &nbsp; &nbsp;
     
          
 <table class="tableBorder" cellspacing="1" cellpadding="2" width="790px" align="center" border="0">

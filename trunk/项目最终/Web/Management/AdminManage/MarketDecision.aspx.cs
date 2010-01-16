@@ -1,3 +1,7 @@
+////编写者：金哲宇
+////日  期：2009-12-20
+////功  能: 配置报表数据源
+
 using System;
 using System.Collections.Generic;
 using System.Web.UI;
@@ -157,7 +161,7 @@ public partial class Default2 : Page
 
     protected void Button1_Click1(object sender, EventArgs e)
     {
-        Response.Write("hi");
+        
 
         int gapNum = drpAgeGapNum.SelectedIndex+1;
         int condition = Condition.SelectedIndex;
@@ -169,16 +173,16 @@ public partial class Default2 : Page
                 break;
             case 1:
                 FindAgeGap(gapNum);
-                Response.Redirect("AdminManage/MemberReport.aspx");
+                Response.Redirect("MemberReport.aspx");
                 break;
             case 2:
                 FindAgeGap(gapNum);
                 FindTimeGap();
-                Response.Redirect("AdminManage/MemberSalesReport.aspx");
+                Response.Redirect("MemberSalesReport.aspx");
                 break;
             case 3:
                 FindTimeGap();
-                Response.Redirect("AdminManage/GoodsSalesReport.aspx");
+                Response.Redirect("GoodsSalesReport.aspx");
                 break;
             default:
                 break;
