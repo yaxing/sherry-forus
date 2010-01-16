@@ -140,7 +140,7 @@
                                         <tr>
                                             <td align="center" style="width: 180px">
                                                 <asp:Image BorderStyle="Solid" BorderColor="black" BorderWidth="1px" ID="itemImg"
-                                                    runat="server" Width="70px" ImageUrl='<%#Eval("goodsImg") %>' />
+                                                    runat="server" Width="70px" ImageUrl='<%#"../../"+Eval("goodsImg") %>' />
                                             </td>
                                         </tr>
                                     </table>
@@ -154,7 +154,7 @@
                                     <table>
                                         <tr>
                                             <td align="center" style="width: 120px">
-                                                <a href='Details.aspx?ID=<%#Eval("goodsID") %>' target=_blank >
+                                                <a href='../../Details.aspx?ID=<%#Eval("goodsID") %>' target=_blank >
                                                     <%#Eval("goodsName") %>
                                                 </a>
                                             </td>
