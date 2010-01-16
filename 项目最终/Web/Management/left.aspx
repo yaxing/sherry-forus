@@ -96,17 +96,22 @@ eval("submenu" + sid + ".style.display=\"none\";");
             <table cellspacing="0" cellpadding="0" width="135" align="center">
               <tr>
                 <td height="20">
-                  <a href="AddAdmin.aspx" target="mainFrame">添加管理员</a>
+                  <a href="AdminManage/AddAdmin.aspx" target="mainFrame">添加管理员</a>
                 </td>
               </tr>
                <tr>
                 <td height="20">
-                  <a href="ListAdmin.aspx" target="mainFrame">管理员显示|调整|删除</a>
+                  <a href="AdminManage/ListAdmin.aspx" target="mainFrame">管理员显示|调整|删除</a>
+                </td>
+              </tr>
+              <tr>
+                <td height="20">
+                  <a href="AdminManage/ListUser.aspx" target="mainFrame">用户显示|调整|删除</a>
                 </td>
               </tr>
                <tr>
                  <td height="20">
-                   <a href="ModiAdminSelf.aspx" target="mainFrame">修改我的信息</a>
+                   <a href="AdminManage/ModiAdminSelf.aspx" target="mainFrame">修改我的信息</a>
                  </td>
                </tr>
             </table>
@@ -138,22 +143,17 @@ eval("submenu" + sid + ".style.display=\"none\";");
             <table cellspacing="0" cellpadding="0" width="135" align="center">
               <tr>
                 <td height="20">
-                  <a href="../WorkerManage/AddWorker.aspx"target="mainFrame">工作人员添加</a>
+                  <a href="WorkerManage/AddWorker.aspx"target="mainFrame">工作人员添加</a>
                 </td>
               </tr>
               <tr>
                 <td height="20">
-                  <a href="../WorkerManage/ListWorker.aspx" target="mainFrame">工作人员显示|调整|删除</a>
+                  <a href="WorkerManage/ListWorker.aspx" target="mainFrame">工作人员显示|调整|删除</a>
                 </td>
               </tr>
               <tr>
                 <td height="20">
-                  <a href="../WorkerManage/ModiWorker.aspx" target="mainFrame">修改我的信息</a>
-                </td>
-              </tr>
-              <tr>
-                <td height="20">
-                  <a href="#" target="mainFrame">工作人员搜索</a>
+                  <a href="WorkerManage/ModiWorker.aspx" target="mainFrame">修改我的信息</a>
                 </td>
               </tr>
               </table>

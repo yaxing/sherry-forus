@@ -36,6 +36,7 @@ public partial class Management_left : System.Web.UI.Page
                     this.PanelService.Visible = false;
                     this.PanelWorker.Visible = false;
                     this.PanelCallCenter.Visible = false;
+                    this.MarketDecisonPanel.Visible = false;
                 }
                 if (admin.AdminLv == 1)
                 {
@@ -49,9 +50,10 @@ public partial class Management_left : System.Web.UI.Page
                     this.PanelGoods.Visible = false;
                     this.PanelService.Visible = false;
                     this.PanelCallCenter.Visible = false;
+                    this.MarketDecisonPanel.Visible = false;
                 }
 
-                this.ltlModiSelf.Text = "<a href='ModiAdminSelf.aspx' target='mainFrame'>修改个人信息</a>";
+                this.ltlModiSelf.Text = "<a href='AdminManage/ModiAdminSelf.aspx' target='mainFrame'>修改个人信息</a>";
             }
             else if (User.IsInRole("工作人员"))
             {
@@ -59,6 +61,7 @@ public partial class Management_left : System.Web.UI.Page
                 this.PanelAdmin.Visible = false;
                 this.PanelGoods.Visible = false;
                 this.PanelService.Visible = false;
+                this.MarketDecisonPanel.Visible = false;
                 
                 WorkerInfo worker = new WorkerInfo();
                 worker.WorkerID = (Guid)Membership.GetUser(User.Identity.Name).ProviderUserKey;
@@ -73,8 +76,9 @@ public partial class Management_left : System.Web.UI.Page
                 {
                     //不对普通工作人员显示
                     this.PanelLogistic.Visible = false;
+                    this.PanelCallCenter.Visible = false;
                 }
-                this.ltlModiSelf.Text = "<a href='../WorkerManage/ModiWorker.aspx' target='mainFrame'>修改个人信息</a>";
+                this.ltlModiSelf.Text = "<a href='WorkerManage/ModiWorker.aspx' target='mainFrame'>修改个人信息</a>";
             }
             else
             {
