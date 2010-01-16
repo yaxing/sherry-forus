@@ -1,3 +1,7 @@
+////编写者：金哲宇
+////日  期：2009-12-20
+////功  能: 配置报表数据源
+
 using System;
 using System.Collections.Generic;
 using System.Data;
