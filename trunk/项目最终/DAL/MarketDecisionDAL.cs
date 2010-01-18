@@ -13,8 +13,8 @@ namespace DAL
 {
     static class SoldType
     {
-        static public readonly SqlInt32 PhoneSail=new SqlInt32(0);
-        static public readonly SqlInt32 ShopSail=new SqlInt32(1);
+        static public readonly SqlInt32 OnlineSail=new SqlInt32(0);
+        static public readonly SqlInt32 PhoneSail=new SqlInt32(1);
     }
 
     public class MarketDecisionDAL : IDisposable
@@ -96,19 +96,6 @@ namespace DAL
 
         #region 返回某年龄段在电话，网络，店面的消费额。
 
-        //TODO 由于没有确定信息在哪个数据表，所以没写SQL语句
-        /// <summary>
-        /// 返回某年龄段会员在一段时间内的电话销售额
-        /// </summary>
-        /// <param name="sAge">起始年龄</param>
-        /// <param name="eAge">截止年龄</param>
-        /// <param name="sDate">起始日期</param>
-        /// <param name="eDate">截止日期</param>
-        /// <returns>返回某年龄段会员在一段时间内的电话销售额</returns>
-        public int MemberPhoneSalesAmount(int sAge, int eAge, DateTime sDate, DateTime eDate)
-        {
-            return 0;
-        }
 
         /// <summary>
         /// 返回某年龄段会员在一段时间内的店面销售额
@@ -129,7 +116,9 @@ namespace DAL
                                         new SqlParameter("@sDate", SqlDbType.DateTime),
                                         new SqlParameter("@eDate", SqlDbType.DateTime),
                                         new SqlParameter("@sAge", SqlDbType.Int),
-                                        new SqlParameter("@eAge", SqlDbType.Int)
+                                        new SqlParameter("@eAge", SqlDbType.Int),
+                                        new SqlParameter("@eAge", SqlDbType.Int),
+
                                     };
 
             //SqlDateTime sdt=new SqlDateTime(struct DateTime）;
@@ -139,7 +128,10 @@ namespace DAL
             pt[2].Value = sAge;
             pt[3].Value = eAge;
 
+
             return doQuery(sqlString, pt);
+
+            
         }
 
         /// <summary>
@@ -153,7 +145,7 @@ namespace DAL
         public int MemberOnlineSalesAmount(int sAge, int eAge, DateTime sDate, DateTime eDate)
         {
             string sqlString = "select sum(orderPrice)  as 'total' from mainOrderInfo"
-                               + " where orderTime >= @sDate and ordertime <= @eDate and userID"
+                               + " where sellway= @type and orderTime >= @sDate and ordertime <= @eDate and userID"
                                + " in (select userID from userInfo where userAge >= @sAge and userAge <= @eAge )";
 
             if (sAge > eAge)
@@ -169,15 +161,56 @@ namespace DAL
                                         new SqlParameter("@eAge", SqlDbType.Int),
                                         new SqlParameter("@sDate", SqlDbType.DateTime),
                                         new SqlParameter("@eDate", SqlDbType.DateTime),
+                                        new SqlParameter("@type", SqlDbType.Int),
                                     };
 
             pt[0].Value = sAge;
             pt[1].Value = eAge;
             pt[2].Value = new SqlDateTime(sDate);
             pt[3].Value = new SqlDateTime(eDate);
+            pt[4].Value = SoldType.OnlineSail;
+            return doQuery(sqlString, pt);
+        }
+
+        /// <summary>
+        /// 返回某年龄段会员在一段时间内的电话销售额
+        /// </summary>
+        /// <param name="sAge">起始年龄</param>
+        /// <param name="eAge">截止年龄</param>
+        /// <param name="sDate">起始日期</param>
+        /// <param name="eDate">截止日期</param>
+        /// <returns>返回某年龄段会员在一段时间内的电话销售额</returns>
+        public int MemberPhoneSalesAmount(int sAge, int eAge, DateTime sDate, DateTime eDate)
+        {
+            string sqlString = "select sum(orderPrice)  as 'total' from mainOrderInfo"
+                   + " where sellway= @type and orderTime >= @sDate and ordertime <= @eDate and userID"
+                   + " in (select userID from userInfo where userAge >= @sAge and userAge <= @eAge )";
+
+            if (sAge > eAge)
+            {
+                int tmp = eAge;
+                eAge = sAge;
+                sAge = tmp;
+            }
+
+            SqlParameter[] pt = new SqlParameter[]
+                                    {
+                                        new SqlParameter("@sAge", SqlDbType.Int),
+                                        new SqlParameter("@eAge", SqlDbType.Int),
+                                        new SqlParameter("@sDate", SqlDbType.DateTime),
+                                        new SqlParameter("@eDate", SqlDbType.DateTime),
+                                        new SqlParameter("@type", SqlDbType.Int),
+                                    };
+
+            pt[0].Value = sAge;
+            pt[1].Value = eAge;
+            pt[2].Value = new SqlDateTime(sDate);
+            pt[3].Value = new SqlDateTime(eDate);
+            pt[4].Value = SoldType.PhoneSail;
 
             return doQuery(sqlString, pt);
         }
+
 
         #endregion
 
@@ -193,7 +226,28 @@ namespace DAL
         /// <returns>返回某类化妆品在某段时间内的电话销售额</returns>
         public int GoodsPhoneSalesAmount(DateTime sDate, DateTime eDate, string categoryName)
         {
-            return 0;
+            string sqlString =
+                "select sum(mainorderInfo.orderPrice) as 'total' from mainOrderInfo " +
+                " where sellway = @type and orderTime>= @sDate and ordertime<= @eDate and mainOrderID " +
+                " in (Select mainOrderID from mainOrderInfo where mainOrderID " +
+                " in (select mainOrderID from subOrderInfo where goodsID " +
+                " in (Select goodsID from goodsInfo where goodsCategory " +
+                " in (select ID from category where name=@categoryName))))";
+
+            //装配SQL变量
+            SqlParameter[] pt = new SqlParameter[]
+                                    {
+                                        new SqlParameter("@sDate", SqlDbType.DateTime),
+                                        new SqlParameter("@eDate", SqlDbType.DateTime),
+                                        new SqlParameter("@type",SqlDbType.Int), 
+                                        new SqlParameter("@categoryName", SqlDbType.VarChar)
+                                    };
+            pt[0].Value = new SqlDateTime(sDate);
+            pt[1].Value = new SqlDateTime(eDate);
+            pt[2].Value = SoldType.PhoneSail;
+            pt[3].Value = new SqlString(categoryName);
+
+            return doQuery(sqlString, pt);
         }
 
         /// <summary>
@@ -207,7 +261,7 @@ namespace DAL
         {
             string sqlString =
                 "select sum(mainorderInfo.orderPrice) as 'total' from mainOrderInfo " +
-                " where orderTime>= @sDate and ordertime<= @eDate and mainOrderID " +
+                " where sellway = @type and orderTime>= @sDate and ordertime<= @eDate and mainOrderID " +
                 " in (Select mainOrderID from mainOrderInfo where mainOrderID " +
                 " in (select mainOrderID from subOrderInfo where goodsID " +
                 " in (Select goodsID from goodsInfo where goodsCategory " +
@@ -218,12 +272,12 @@ namespace DAL
                                     {
                                         new SqlParameter("@sDate", SqlDbType.DateTime),
                                         new SqlParameter("@eDate", SqlDbType.DateTime),
-                                        new SqlParameter("@soldType",SqlDbType.Int), 
+                                        new SqlParameter("@type",SqlDbType.Int), 
                                         new SqlParameter("@categoryName", SqlDbType.VarChar)
                                     };
             pt[0].Value = new SqlDateTime(sDate);
             pt[1].Value = new SqlDateTime(eDate);
-            pt[2].Value = SoldType.PhoneSail;
+            pt[2].Value = SoldType.OnlineSail;
             pt[3].Value = new SqlString(categoryName);
 
             return doQuery(sqlString, pt);
@@ -240,7 +294,7 @@ namespace DAL
         {
             string sqlString =
                 "select sum(totalValue) as 'total' from MainUpload " +
-                " where soldType=@soldType and sellTime >= @sDate and sellTime<=@eDate and mainUploadID " +
+                " where sellTime >= @sDate and sellTime<=@eDate and mainUploadID " +
                 " in (select mainUploadID from subUpload where goodsID " +
                 " in (Select goodsID from goodsInfo where goodsCategory " +
                 " in (select ID from category where name=@categoryName)))";
@@ -250,13 +304,11 @@ namespace DAL
                                     {
                                         new SqlParameter("@sDate", SqlDbType.DateTime),
                                         new SqlParameter("@eDate", SqlDbType.DateTime),
-                                        new SqlParameter("@soldType",SqlDbType.Int), 
                                         new SqlParameter("@categoryName", SqlDbType.VarChar)
                                     };
             pt[0].Value = new SqlDateTime(sDate);
             pt[1].Value = new SqlDateTime(eDate);
-            pt[2].Value = SoldType.ShopSail;
-            pt[3].Value = new SqlString(categoryName);
+            pt[2].Value = new SqlString(categoryName);
             return doQuery(sqlString, pt);
         }
 

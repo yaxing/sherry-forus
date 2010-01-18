@@ -6,6 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head id="Head1" runat="server">
     <title>市场决策</title>
+		<link rel="stylesheet" type="text/css" href="../bgStyle.css" />
 </head>
 <body>
     <form id="form1" runat="server">
