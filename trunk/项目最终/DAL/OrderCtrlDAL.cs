@@ -287,7 +287,7 @@ namespace DAL
         public bool GetHistoryOrderList(ref DataTable orders, Guid userID)
         {
             DataTable dt = null;
-            sqlString = "select * from mainOrderInfo where userID=@userID and (orderState=3 or orderState=4) order by orderTime desc";
+            sqlString = "select * from mainOrderInfo where userID=@userID and (orderState=3 or orderState=4 or orderState=6) order by orderTime desc";
             sq = new SqlParameter[] { 
                                 new SqlParameter("@userID",SqlDbType.UniqueIdentifier)
                                 };
