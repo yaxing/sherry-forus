@@ -7,8 +7,20 @@
     <div style="position: relative; bottom: 20px; left: 330px; color: DarkRed">
         <a href="SearchOrder.aspx">订单搜索</a>&nbsp;|&nbsp;<a href="OrderManage.aspx">我的订单</a>
     </div>
+    <asp:Panel runat="server" ID="pError_OrderDetail">
+                <div style="position: relative; left: 80px;">
+                    <asp:Label ID="lError_OrderDetail" runat="server" ForeColor="red" Font-Bold="true" Font-Size="12px"
+                        Text=""></asp:Label>
+                </div>
+            </asp:Panel>
     <asp:Panel ID="pOrderList" runat="server">
         <div id="demo" class="demolayout" style="margin-top: 10px; margin-top: 20px">
+            <asp:Panel runat="server" ID="pError_CurOrder">
+                <div style="position: relative; left: 80px;">
+                    <asp:Label ID="lError_CurOrder" runat="server" ForeColor="red" Font-Bold="true" Font-Size="12px"
+                        Text=""></asp:Label>
+                </div>
+            </asp:Panel>
             <asp:Literal ID="ltTabs" runat="server"></asp:Literal>
             <div class="tabs-container">
                 <div style="display: block; height: 416px; width: 436px" class="tab" id="tab1">
@@ -54,6 +66,12 @@
                     </asp:GridView>
                 </div>
                 <div style="display: none; height: 416px; width: 436px" class="tab" id="tab2">
+                    <asp:Panel runat="server" ID="pError_HistoryOrder">
+                        <div style="position: relative; left: 80px;">
+                            <asp:Label ID="lError_HistoryOrder" runat="server" ForeColor="red" Font-Bold="true"
+                                Font-Size="12px" Text=""></asp:Label>
+                        </div>
+                    </asp:Panel>
                     <asp:GridView ID="gvOrderListHistory" runat="server" AutoGenerateColumns="False"
                         GridLines="None" AllowPaging="true" OnPageIndexChanging="gvOrderList_PageIndexChanging"
                         OnRowCreated="gvOrderList_RowCreated">
@@ -238,12 +256,6 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
-        </div>
-    </asp:Panel>
-    <asp:Panel runat="server" ID="pError">
-        <div style="position: relative; left: 80px; top: 60px">
-            <asp:Label ID="lError" runat="server" ForeColor="red" Font-Bold="true" Font-Size="12px"
-                Text=""></asp:Label>
         </div>
     </asp:Panel>
 </asp:Content>

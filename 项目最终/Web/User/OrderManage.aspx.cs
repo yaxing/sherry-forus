@@ -284,7 +284,9 @@ public partial class OrderManage : System.Web.UI.Page
         DataTable curOrders = new DataTable();
         DataTable historyOrders = new DataTable();
         orderCtrl = new OrderCtrlBLL();
-        pError.Visible = false;
+        pError_CurOrder.Visible = false;
+        pError_HistoryOrder.Visible = false;
+        pError_OrderDetail.Visible = false;
         if (!orderCtrl.GetHistoryOrderList(ref historyOrders))
         {
            return false;
@@ -293,27 +295,17 @@ public partial class OrderManage : System.Web.UI.Page
         {
            return false;
         }
+        pOrderDetail.Visible = false;
+        pOrderList.Visible = true;
         if (curOrders.Rows.Count <= 0)
         {
-            pOrderDetail.Visible = false;
-            pOrderList.Visible = false;
-            pError.Visible = true;
-            lError.Text = "当前没有等待处理的订单";
-            return true;
+            pError_CurOrder.Visible = true;
+            lError_CurOrder.Text = "当前没有等待处理的订单";
         }
         if (historyOrders.Rows.Count <= 0) 
         {
-            pOrderDetail.Visible = false;
-            pOrderList.Visible = false;
-            pError.Visible = true;
-            lError.Text = "没有交易已完成的订单";
-            return true;
-        }
-        else
-        {
-            pOrderDetail.Visible = false;
-            pOrderList.Visible = true;
-            pError.Visible = false;
+            pError_HistoryOrder.Visible = true;
+            lError_HistoryOrder.Text = "没有交易已完成的订单";
         }
         gvOrderList.DataSource = curOrders;
         gvOrderList.DataBind();
@@ -329,7 +321,9 @@ public partial class OrderManage : System.Web.UI.Page
         String state = String.Empty;
         DataTable items = new DataTable();
         orderCtrl = new OrderCtrlBLL();
-        pError.Visible = false;
+        pError_CurOrder.Visible = false;
+        pError_HistoryOrder.Visible = false;
+        pError_OrderDetail.Visible = false;
         if (!orderCtrl.GetItemList(ref items, orderId))
         {
             return false;
@@ -338,14 +332,14 @@ public partial class OrderManage : System.Web.UI.Page
         {
             pOrderDetail.Visible = true;
             pOrderList.Visible = false;
-            pError.Visible = false;
+            pError_CurOrder.Visible = false;
         }
         else 
         {
             pOrderDetail.Visible = false;
             pOrderList.Visible = false;
-            pError.Visible = true;
-            lError.Text = "当前订单不存在或已被撤销";
+            pError_OrderDetail.Visible = true;
+            lError_OrderDetail.Text = "当前订单不存在或已被撤销";
             return true;
         }
 
