@@ -411,6 +411,7 @@ public partial class OrderManage : System.Web.UI.Page
 
     protected void imgbPay_Click(object sender, EventArgs e)
     {
+        orderId = Convert.ToInt32(lOrderID.Text);
         Response.Redirect("/Web/User/Pay.aspx?ID=" + orderId);
     }
     
