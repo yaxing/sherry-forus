@@ -4,20 +4,37 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <title>Untitled Page</title>
+    <title>工作人员定单显示</title>
+    <link rel="stylesheet" type="text/css" href="/Web/Management/bgStyle.css" />
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
+    <table cellspacing="1" cellpadding="3" width="790px" align="center" border="0">
+                <tr>
+                    <td valign="top" width="100%">
+                        <p>
+                            <br />
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <table class="tableBorder" cellspacing="1" cellpadding="2" width="790px" align="center"
+                border="0">
+                <tr>
+                    <th width="100%" height="25px" class="tableHeaderText">
+                        工作人员订单显示</th>
+                </tr>
+            </table>
+            <div align="center">
             <asp:Panel ID="pOrderList" runat="server">
-                <div style="position: relative; left: 30px; top: 30px">
                     <asp:GridView ID="gvOrderList" runat="server" AutoGenerateColumns="False" GridLines="None"
-                        AllowPaging="true" OnPageIndexChanging="gvOrderList_PageIndexChanging" OnRowCreated="gvOrderList_RowCreated">
+                        AllowPaging="true" OnPageIndexChanging="gvOrderList_PageIndexChanging" OnRowCreated="gvOrderList_RowCreated" Width="490px">
                         <Columns>
                             <asp:TemplateField>
-                                <HeaderStyle Width="50px" ForeColor="Black" Font-Size="15px" BackColor="LightGray" />
+                                <HeaderStyle Width="50px" ForeColor="Black" Font-Size="15px"/>
                                 <HeaderTemplate>
-                                    <font style="font-family: 微软雅黑; font-weight: bold">订单号</font>
+                                    <font style="font-weight: bold;" color="white">订单号</font>
                                 </HeaderTemplate>
                                 <ItemTemplate>
                                     <table>
@@ -32,12 +49,12 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField>
-                                <HeaderStyle Width="200px" BackColor="lightgray" />
+                                <HeaderStyle Width="200px"/>
                             </asp:TemplateField>
                             <asp:TemplateField>
-                                <HeaderStyle Width="180px" ForeColor="Black" Font-Size="15px" BackColor="LightGray" />
+                                <HeaderStyle Width="180px" ForeColor="Black" Font-Size="15px"/>
                                 <HeaderTemplate>
-                                    <font style="font-family: 微软雅黑; font-weight: bold">下单时间</font>
+                                    <font style="font-weight: bold;" color="white">下单时间</font>
                                 </HeaderTemplate>
                                 <ItemTemplate>
                                     <table>
@@ -51,89 +68,91 @@
                             </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
-                </div>
             </asp:Panel>
-            <asp:Panel ID="pOrderDetail" runat="server">
-                <div style="position: relative; left: 20px; top: 30px">
-                    <table>
+            <asp:Panel ID="pOrderDetail" runat="server" Width="790px">
+            <table width="790px">
+            <tr>
+            <td width="375px">
+                    <table width="375px" align="left">
                         <tr>
-                            <td style="font-size: 12px; font-weight: bold">
+                            <td style="font-size: 12px; font-weight: bold" width="30%" align="left">
                                 收货人
                             </td>
-                            <td>
+                            <td align="left">
                                 <asp:Label ID="lOrderID" runat="server" Text=""></asp:Label>
                                 <asp:Label ID="lUserRealName" runat="server" Text=""></asp:Label>
                             </td>
-                            <td>
-                            </td>
                         </tr>
                         <tr>
-                            <td style="font-size: 12px; font-weight: bold">
+                            <td style="font-size: 12px; font-weight: bold" align="left">
                                 收货地址
                             </td>
-                            <td>
+                            <td align="left">
                                 <asp:Label ID="lUserProvince" runat="server" Text=""></asp:Label>
                                 <asp:Label ID="lUserAdd" runat="server" Text=""></asp:Label>
                             </td>
-                            <td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 12px; font-weight: bold" align="left">
+                                邮政编码
+                            </td>
+                            <td align="left">
                                 <asp:Label ID="lUserZip" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td style="font-size: 12px; font-weight: bold">
+                            <td style="font-size: 12px; font-weight: bold" align="left">
                                 收货人电话
                             </td>
-                            <td>
+                            <td align="left">
                                 <asp:Label ID="lUserTel" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td style="font-size: 12px; font-weight: bold">
+                            <td style="font-size: 12px; font-weight: bold" align="left">
                                 订单总计
                             </td>
-                            <td>
+                            <td align="left">
                                 <asp:Label ID="lTotalPrice" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td style="font-size: 12px; font-weight: bold">
+                            <td style="font-size: 12px; font-weight: bold" align="left">
                                 下单时间
                             </td>
-                            <td>
+                            <td align="left">
                                 <asp:Label ID="lOrderTime" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td style="font-size: 12px; font-weight: bold">
+                            <td style="font-size: 12px; font-weight: bold" align="left">
                                 订单状态
                             </td>
-                            <td>
+                            <td align="left">
                                 <asp:Label ID="lState" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                     </table>
-                    <table>
+                    <table width="375px">
                         <tr>
-                            <td style="width: 200px">
+                            <td align="right" style="font-size: 12px; font-weight: bold" width="200px">
+                                <asp:Button ID="cPicking" runat="server" Text="确认发货" onclick="cPicking_Click" CssClass="submit"/>
+                                <asp:Button ID="cReturn" runat="server" Text="确认退货" onclick="cReturn_Click" CssClass="submit"/>
                             </td>
-                            <td align="left" style="font-size: 12px; font-weight: bold">
-                                <asp:Button ID="cPicking" runat="server" Text="确认发货" onclick="cPicking_Click" />
-                                <asp:Button ID="cReturn" runat="server" Text="确认退货" onclick="cReturn_Click" />
-                            </td>
-                            <td>
-                                <asp:Button ID="rReturn" runat="server" Text="退货驳回" onclick="rReturn_Click" />
+                            <td width="195px" align="right">
+                                <asp:Button ID="rReturn" runat="server" Text="退货驳回" onclick="rReturn_Click" CssClass="submit"/>
                             </td>
                         </tr>
                     </table>
-                </div>
-                <div style="position: relative; left: 20px; top: 60px">
+                    </td>
+                    <td width="395px">
                     <asp:GridView ID="gvItemList" runat="server" AutoGenerateColumns="False" GridLines="None"
-                        AllowPaging="true" OnPageIndexChanging="gvItemList_PageIndexChanging" OnRowCreated="gvItemList_RowCreated">
+                        AllowPaging="true" OnPageIndexChanging="gvItemList_PageIndexChanging" OnRowCreated="gvItemList_RowCreated" Width="395px">
                         <Columns>
                             <asp:TemplateField>
-                                <HeaderStyle Width="180px" ForeColor="Black" Font-Size="15px" BackColor="LightGray" />
+                                <HeaderStyle Width="180px" ForeColor="Black" Font-Size="15px"/>
                                 <HeaderTemplate>
-                                    <font style="font-family: 微软雅黑; font-weight: bold">商品</font>
+                                    <font style="font-weight: bold;" color="white">商品</font>
                                 </HeaderTemplate>
                                 <ItemTemplate>
                                     <table>
@@ -147,7 +166,7 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField>
-                                <HeaderStyle ForeColor="Black" Font-Size="15px" BackColor="LightGray" />
+                                <HeaderStyle ForeColor="Black" Font-Size="15px" />
                                 <HeaderTemplate>
                                 </HeaderTemplate>
                                 <ItemTemplate>
@@ -163,9 +182,9 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField>
-                                <HeaderStyle ForeColor="Black" Font-Size="15px" BackColor="LightGray" />
+                                <HeaderStyle ForeColor="Black" Font-Size="15px"/>
                                 <HeaderTemplate>
-                                    <font style="font-family: 微软雅黑; font-weight: bold">小计</font>
+                                    <font style="font-weight: bold;" color="white">小计</font>
                                 </HeaderTemplate>
                                 <ItemTemplate>
                                     <table>
@@ -180,15 +199,21 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
-                    </asp:GridView>
-                </div>
+                    </asp:GridView>    
+                </td>
+                </tr>
+                </table>
             </asp:Panel>
             <asp:Panel runat="server" ID="pError">
-                <div style="position: relative; left: 80px; top: 60px">
                     <asp:Label ID="lError" runat="server" ForeColor="red" Font-Bold="true" Font-Size="12px"
                         Text=""></asp:Label>
-                </div>
             </asp:Panel>
+            <table class="tableBorder" cellspacing="1" cellpadding="2" width="790px" align="center" border="0">
+           <tr>
+             <th width="100%" class="tableHeaderText" style="height: 25px" />
+           </tr>
+         </table>
+            </div>
         </div>
     </form>
 </body>

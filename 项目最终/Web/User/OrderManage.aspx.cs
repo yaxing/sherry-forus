@@ -451,7 +451,19 @@ public partial class OrderManage : System.Web.UI.Page
         OrderInfo curOrder = new OrderInfo();
         curOrder.OrderID = Convert.ToInt32(lOrderID.Text.ToString());
         IShipping goodsReturn = new LogisticsInfoBLL();
-        goodsReturn.ApplyReturning(curOrder);
+        if (!goodsReturn.ApplyReturning(curOrder))
+        {
+            Response.Write("<script>alert('申请退货失败，请重新操作！');history.go(-1);</script>");
+        }
+        else 
+        {
+            Response.Write("<script>alert('申请退货成功！');location.href('OrderManage.aspx?ID="+Convert.ToInt32(lOrderID.Text.ToString())+"');</script>");
+        }
+        //if (!subOrderDatabind()) 
+        //{
+        //    Response.Write("<script>alert('数据绑定失败！');history.go(-1);</script>");
+        //}
+        //Response.Redirect("OrderManage.aspx?ID="+Convert.ToInt32(lOrderID.Text.ToString()));
     }
     protected void bBackToList_Click(object sender, EventArgs e)
     {
