@@ -440,19 +440,20 @@ namespace BLL
             
             if (curCart.curUser!=null&&curCart.curUser.Length>0&&!isCallCenter) 
             {
-                XmlDocument xmlD = new XmlDocument();
-                XmlElement e = GetUserNode(xmlD,curCart.curUser);
-                if (e == null) 
-                {
-                    return true;
-                }
-                e.ParentNode.RemoveChild((XmlNode)e);
                 try
                 {
-                    String FilePath = HttpContext.Current.Server.MapPath("UserCart.xml");
-                    XmlTextWriter xmlTW = new XmlTextWriter(FilePath, Encoding.UTF8);
-                    xmlD.WriteTo(xmlTW);
-                    xmlTW.Close();
+                    String FilePath = HttpContext.Current.Server.MapPath("/Web/User/UserCart.xml");
+                    XmlDocument xmlD = new XmlDocument();
+                    xmlD.Load(FilePath);
+                    XmlNode e = xmlD.SelectSingleNode("Users/User[@id='" + curCart.curUser + "']");
+                    if (e == null)
+                    {
+                        return true;
+                    }
+                    
+                    e.ParentNode.RemoveChild(e);
+                    //xmlD.ChildNodes.Item(0).RemoveChild(e);
+                    xmlD.Save(FilePath);
                 }
                 catch (System.Exception ex)
                 {
