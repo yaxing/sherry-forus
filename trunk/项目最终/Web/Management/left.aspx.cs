@@ -76,8 +76,8 @@ public partial class Management_left : System.Web.UI.Page
                 if (worker.WorkerLv == 0)
                 {
                     //不对普通工作人员显示
-                    this.PanelLogistic.Visible = false;
                     this.PanelCallCenter.Visible = false;
+                    this.PanelManagerOrder.Visible = false;
                 }
                 this.ltlModiSelf.Text = "<a href='WorkerManage/ModiWorker.aspx' target='mainFrame'>修改个人信息</a>";
             }

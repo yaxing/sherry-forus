@@ -258,19 +258,16 @@ eval("submenu" + sid + ".style.display=\"none\";");
 			   <table cellspacing="0" cellpadding="0" width="135" align="center">
                    <tr>
                      <td height="20">
-                       <a href="WorkerManage/AddOrder.aspx" target="mainFrame">添加订单</a>
-                     </td>
-                   </tr>
-                   <tr>
-                     <td height="20">
                        <a href="WorkerManage/ShowOrderForWorker.aspx" target="mainFrame">工作人员查看订单</a>
                      </td>
                    </tr>
+                   <asp:Panel ID="PanelManagerOrder" runat="server">
 				    <tr>
                      <td height="20">
                        <a href="WorkerManage/ShowOrdersForManager.aspx" target="mainFrame">负责人查看订单</a>
                      </td>
                    </tr>
+                   </asp:Panel>
                 </table>
 			 </div>
             <div style="WIDTH: 156px">
