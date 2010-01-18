@@ -78,7 +78,7 @@ var	footerhtml3='<input type="image" alt="Cancel" src="/Web/images/cancel.png" c
                             <asp:Label ID="lCountOp" runat="server">我的帐户：</asp:Label>
                         </span>
                         <asp:Label ID="lShowOrder" runat="server"><a href="/Web/User/OrderManage.aspx">我的订单</a></asp:Label>
-                        <asp:LoginStatus ID="lsLogOut" runat="server" LoginText="" LogoutText="注销登录" LogoutPageUrl="javascript:history.go(-1);" />
+                        <asp:LoginStatus ID="lsLogOut" runat="server" LoginText="" LogoutText="注销登录" LogoutPageUrl="/Web/Index.aspx" />
                         <a href="#" onclick='Box("msg3",500,327,html3,footerhtml3);'>用户调查</a>
                         <p></p>
                     </div>
