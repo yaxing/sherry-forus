@@ -113,6 +113,14 @@ namespace BLL
             DateTime sDate = new DateTime(timeList[0], timeList[1], 1);
             DateTime eDate = new DateTime(timeList[2], timeList[3], 1);
 
+            if(sDate>eDate)
+            {
+                DateTime tmp ;
+                tmp = sDate;
+                sDate = eDate;
+                eDate = tmp;
+            }
+
             //载入每一列的数据
             int shop, phone, online;
             double sum = 0.0;
@@ -177,8 +185,16 @@ namespace BLL
             Report.MemberSalesReportDataTable dt = new Report.MemberSalesReportDataTable();
 
 
-            DateTime startingDate = new DateTime(timeList[0], timeList[1], 1);
-            DateTime endingDate = new DateTime(timeList[2], timeList[3], 1);
+            DateTime sDate = new DateTime(timeList[0], timeList[1], 1);
+            DateTime eDate = new DateTime(timeList[2], timeList[3], 1);
+
+            if (sDate > eDate)
+            {
+                DateTime tmp ;
+                tmp = sDate;
+                sDate = eDate;
+                eDate = tmp;
+            }
 
             //数据缓存在这些list中
             List<int> phoneSalesList = new List<int>();
@@ -193,9 +209,9 @@ namespace BLL
             {
                 foreach (AgeGap gap in ageList)
                 {
-                    phoneSalesList.Add(mdd.MemberPhoneSalesAmount(gap.SAge, gap.EAge, startingDate, endingDate));
-                    onlineSalesList.Add(mdd.MemberOnlineSalesAmount(gap.SAge, gap.EAge, startingDate, endingDate));
-                    shopSalesList.Add(mdd.MemberShopSalesAmount(gap.SAge, gap.EAge, startingDate, endingDate));
+                    phoneSalesList.Add(mdd.MemberPhoneSalesAmount(gap.SAge, gap.EAge, sDate, eDate));
+                    onlineSalesList.Add(mdd.MemberOnlineSalesAmount(gap.SAge, gap.EAge, sDate, eDate));
+                    shopSalesList.Add(mdd.MemberShopSalesAmount(gap.SAge, gap.EAge, sDate, eDate));
                 }
             }
 
