@@ -93,6 +93,7 @@ public partial class IndexMaster : System.Web.UI.MasterPage
                         + "<li><a href='/Web/MyAccount.aspx'>我的帐户</a></li>"
                         + "<li><a href='/Web/Register.aspx'>注册</a></li>"
                         + "<li><a href='/Web/Contact.aspx'>联系我们</a>"
+                        + "<li><a href='/Web/ClientService.aspx'>FAQ</a>"
                         + "</li>"
                     + "</ul>"
                 + "</div>";
@@ -108,6 +109,7 @@ public partial class IndexMaster : System.Web.UI.MasterPage
                         + "<li class='selected'><a href='/Web/MyAccount.aspx'>我的帐户</a></li>"
                         + "<li><a href='/Web/Register.aspx'>注册</a></li>"
                         + "<li><a href='/Web/Contact.aspx'>联系我们</a>"
+                        + "<li><a href='/Web/ClientService.aspx'>FAQ</a>"
                         + "</li>"
                     + "</ul>"
                 + "</div>";
@@ -123,6 +125,7 @@ public partial class IndexMaster : System.Web.UI.MasterPage
                         + "<li><a href='/Web/MyAccount.aspx'>我的帐户</a></li>"
                         + "<li><a href='/Web/Register.aspx'>注册</a></li>"
                         + "<li><a href='/Web/Contact.aspx'>联系我们</a>"
+                        + "<li><a href='/Web/ClientService.aspx'>FAQ</a>"
                         + "</li>"
                     + "</ul>"
                 + "</div>";
@@ -138,6 +141,7 @@ public partial class IndexMaster : System.Web.UI.MasterPage
                         + "<li><a href='/Web/MyAccount.aspx'>我的帐户</a></li>"
                         + "<li><a href='/Web/Register.aspx'>注册</a></li>"
                         + "<li><a href='/Web/Contact.aspx'>联系我们</a>"
+                        + "<li><a href='/Web/ClientService.aspx'>FAQ</a>"
                         + "</li>"
                     + "</ul>"
                 + "</div>";
@@ -153,6 +157,7 @@ public partial class IndexMaster : System.Web.UI.MasterPage
                         + "<li><a href='/Web/MyAccount.aspx'>我的帐户</a></li>"
                         + "<li><a href='/Web/Register.aspx'>注册</a></li>"
                         + "<li><a href='/Web/Contact.aspx'>联系我们</a>"
+                        + "<li><a href='/Web/ClientService.aspx'>FAQ</a>"
                         + "</li>"
                     + "</ul>"
                 + "</div>";
@@ -168,6 +173,7 @@ public partial class IndexMaster : System.Web.UI.MasterPage
                         + "<li><a href='/Web/MyAccount.aspx'>我的帐户</a></li>"
                         + "<li class='selected'><a href='/Web/Register.aspx'>注册</a></li>"
                         + "<li><a href='/Web/Contact.aspx'>联系我们</a>"
+                        + "<li><a href='/Web/ClientService.aspx'>FAQ</a>"
                         + "</li>"
                     + "</ul>"
                 + "</div>";
@@ -183,6 +189,23 @@ public partial class IndexMaster : System.Web.UI.MasterPage
                         + "<li><a href='/Web/MyAccount.aspx'>我的帐户</a></li>"
                         + "<li><a href='/Web/Register.aspx'>注册</a></li>"
                         + "<li class='selected'><a href='/Web/Contact.aspx'>联系我们</a>"
+                        + "<li><a href='/Web/ClientService.aspx'>FAQ</a>"
+                        + "</li>"
+                    + "</ul>"
+                + "</div>";
+        }
+        else if (curUrl.Equals("ClientService.aspx"))
+        {
+            ltMenu.Text = "<div id='menu'>"
+                    + "<ul>"
+                        + "<li><a href='/Web/Index.aspx'>主页</a></li>"
+                        + "<li><a href='/Web/About.aspx'>关于我们</a></li>"
+                        + "<li><a href='/Web/Goods.aspx'>产品</a></li>"
+                        + "<li><a href='/Web/Special.aspx'>特价活动</a></li>"
+                        + "<li><a href='/Web/MyAccount.aspx'>我的帐户</a></li>"
+                        + "<li><a href='/Web/Register.aspx'>注册</a></li>"
+                        + "<li><a href='/Web/Contact.aspx'>联系我们</a>"
+                        + "<li class='selected'><a href='/Web/ClientService.aspx'>FAQ</a>"
                         + "</li>"
                     + "</ul>"
                 + "</div>";
@@ -198,6 +221,7 @@ public partial class IndexMaster : System.Web.UI.MasterPage
                         + "<li><a href='/Web/MyAccount.aspx'>我的帐户</a></li>"
                         + "<li><a href='/Web/Register.aspx'>注册</a></li>"
                         + "<li><a href='Contact.aspx'>联系我们</a>"
+                        + "<li><a href='/Web/ClientService.aspx'>FAQ</a>"
                         + "</li>"
                     + "</ul>"
                 + "</div>";
