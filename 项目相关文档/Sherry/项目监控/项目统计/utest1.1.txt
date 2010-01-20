@@ -1,0 +1,86 @@
+
+---------------------------------------------------------
+保存时间：   2010-01-20 08:47:40
+---------------------------------------------------------
+文件名：     G:\sherrySVN\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\AdminInfoDALTest.cs
+总行数：     169
+代码行数：   99 (58.58%)
+注释行数：   70 (41.42%)
+空白行数：   17 (10.06%)
+
+文件名：     G:\sherrySVN\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\CheckoutInfoDALTest.cs
+总行数：     181
+代码行数：   118 (65.19%)
+注释行数：   65 (35.91%)
+空白行数：   14 (7.73%)
+
+文件名：     G:\sherrySVN\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\GoodsInfoDALTest.cs
+总行数：     176
+代码行数：   102 (57.95%)
+注释行数：   73 (41.48%)
+空白行数：   18 (10.23%)
+
+文件名：     G:\sherrySVN\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\GoodsSalesReportBLLTest.cs
+总行数：     87
+代码行数：   37 (42.53%)
+注释行数：   40 (45.98%)
+空白行数：   12 (13.79%)
+
+文件名：     G:\sherrySVN\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\MarketDecisionDALTest.cs
+总行数：     182
+代码行数：   103 (56.59%)
+注释行数：   86 (47.25%)
+空白行数：   23 (12.64%)
+
+文件名：     G:\sherrySVN\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\MasterPageDALTest.cs
+总行数：     99
+代码行数：   47 (47.47%)
+注释行数：   48 (48.48%)
+空白行数：   10 (10.10%)
+
+文件名：     G:\sherrySVN\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\MemberReportBLLTest.cs
+总行数：     86
+代码行数：   37 (43.02%)
+注释行数：   40 (46.51%)
+空白行数：   11 (12.79%)
+
+文件名：     G:\sherrySVN\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\MemberSalesReportBLLTest.cs
+总行数：     93
+代码行数：   42 (45.16%)
+注释行数：   41 (44.09%)
+空白行数：   13 (13.98%)
+
+文件名：     G:\sherrySVN\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\OrderCtrlDALTest.cs
+总行数：     309
+代码行数：   216 (69.90%)
+注释行数：   107 (34.63%)
+空白行数：   26 (8.41%)
+
+文件名：     G:\sherrySVN\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\PollInfoDALTest.cs
+总行数：     234
+代码行数：   136 (58.12%)
+注释行数：   88 (37.61%)
+空白行数：   36 (15.38%)
+
+文件名：     G:\sherrySVN\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\Properties\AssemblyInfo.cs
+总行数：     35
+代码行数：   15 (42.86%)
+注释行数：   16 (45.71%)
+空白行数：   4 (11.43%)
+
+文件名：     G:\sherrySVN\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\ShopCartInfoDALTest.cs
+总行数：     102
+代码行数：   51 (50.00%)
+注释行数：   51 (50.00%)
+空白行数：   10 (9.80%)
+
+文件名：     G:\sherrySVN\项目相关文档\Sherry\项目监控\里程碑\Release_v1.1_2010-01-14_Forus\UTest\UserScoreDALTest.cs
+总行数：     140
+代码行数：   84 (60.00%)
+注释行数：   59 (42.14%)
+空白行数：   12 (8.57%)
+
+程序行总数： 1893 (共13个文件)
+代码行总数： 1087 (52.34%)
+注释行总数： 784 (37.75%)
+空白行总数： 206 (9.92%)
