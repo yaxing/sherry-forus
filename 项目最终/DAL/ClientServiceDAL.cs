@@ -113,7 +113,7 @@ namespace DAL
 
         public bool AddReply(int messageID, string reply)   //添加管理员回复
         {
-            sqlString = "update Messages set reply = " + reply + "where messageID = " + messageID;
+            sqlString = "update Messages set reply = '" + reply + "' where messageID = " + messageID;
 
             try
             {
