@@ -173,8 +173,7 @@ var	footerhtml3='<input type="image" alt="Cancel" src="/Web/images/cancel.png" c
                     <img src="/Web/images/footer_logo.gif" alt="" title="" /><br />
                     <a href="#" title="free templates">Forus</a></div>
                 <div class="right_footer">
-                    <a href="#">home</a> <a href="#">about us</a> <a href="#">services</a> <a href="#">privacy
-                        policy</a> <a href="#">contact us</a>
+                    <a href="Index.aspx">首页</a> <a href="About.aspx">关于我们</a> <a href="Contact.aspx">联系我们</a>
                 </div>
             </div>
         </div>
