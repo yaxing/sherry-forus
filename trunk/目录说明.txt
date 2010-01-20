@@ -1,0 +1,335 @@
+1、项目需提交的答辩ppt因超级链接关系，不能单独提交，其所在位置为：项目相关文档\Sherry\项目监控\项目进展报告
+2、根目录（项目管理重点目录说明）
+├─项目相关文档│
+│  ├─标准过程库 （此目录为整理出的最终项目模板）  
+│  └─Sherry     （此目录为sherry化妆品销售系统具体文档）
+│      ├─培训
+│      ├─质量保证
+│      │  ├─软件问题报告单
+│      │  ├─评审总结报告
+│      │  └─评审问题记录
+│      ├─项目监控
+│      │  ├─里程碑
+│      │  │  ├─Release_v1.1_2010-01-14_Forus
+│      │  │  │  ├─InterFace
+│      │  │  │  │  ├─bin
+│      │  │  │  │  │  └─Debug
+│      │  │  │  │  ├─obj
+│      │  │  │  │  │  └─Debug
+│      │  │  │  │  │      └─TempPE
+│      │  │  │  │  └─Properties
+│      │  │  │  ├─DAL
+│      │  │  │  │  ├─Properties
+│      │  │  │  │  ├─bin
+│      │  │  │  │  │  └─Debug
+│      │  │  │  │  └─obj
+│      │  │  │  │      └─Debug
+│      │  │  │  │          └─TempPE
+│      │  │  │  ├─TestResults
+│      │  │  │  │  ├─admin_LENOV10776291 2010-01-15 15_15_35
+│      │  │  │  │  │  ├─In
+│      │  │  │  │  │  │  └─LENOV10776291
+│      │  │  │  │  │  └─Out
+│      │  │  │  │  │      └─Web
+│      │  │  │  │  │          └─Bin
+│      │  │  │  │  └─admin_LENOV10776291 2010-01-14 23_05_39
+│      │  │  │  │      ├─In
+│      │  │  │  │      │  └─LENOV10776291
+│      │  │  │  │      └─Out
+│      │  │  │  │          └─Web
+│      │  │  │  │              └─Bin
+│      │  │  │  ├─UTest
+│      │  │  │  │  ├─Properties
+│      │  │  │  │  ├─bin
+│      │  │  │  │  │  └─Debug
+│      │  │  │  │  └─obj
+│      │  │  │  │      └─Debug
+│      │  │  │  │          └─TempPE
+│      │  │  │  ├─App_Data
+│      │  │  │  ├─BLL
+│      │  │  │  │  ├─Properties
+│      │  │  │  │  ├─bin
+│      │  │  │  │  │  └─Debug
+│      │  │  │  │  └─obj
+│      │  │  │  │      └─Debug
+│      │  │  │  │          └─TempPE
+│      │  │  │  ├─DbCtrl
+│      │  │  │  │  ├─bin
+│      │  │  │  │  │  └─Debug
+│      │  │  │  │  ├─obj
+│      │  │  │  │  │  └─Debug
+│      │  │  │  │  │      └─TempPE
+│      │  │  │  │  └─Properties
+│      │  │  │  ├─测试结果截图
+│      │  │  │  ├─Entity
+│      │  │  │  │  ├─Properties
+│      │  │  │  │  ├─bin
+│      │  │  │  │  │  └─Debug
+│      │  │  │  │  └─obj
+│      │  │  │  │      └─Debug
+│      │  │  │  │          └─TempPE
+│      │  │  │  ├─Web
+│      │  │  │  │  ├─images
+│      │  │  │  │  │  └─statistic
+│      │  │  │  │  ├─Management
+│      │  │  │  │  │  ├─AdminManage
+│      │  │  │  │  │  ├─WorkerManage
+│      │  │  │  │  │  ├─images
+│      │  │  │  │  │  ├─inc
+│      │  │  │  │  │  └─left.files
+│      │  │  │  │  │      └─images
+│      │  │  │  │  ├─js
+│      │  │  │  │  ├─User
+│      │  │  │  │  └─Bin
+│      │  │  │  └─LoadTest
+│      │  │  │      └─Properties
+│      │  │  └─Release_v1.0_2009-12-13_Forus
+│      │  │      ├─基线库
+│      │  │      │  └─Release_v1.0_2009-12-13_Forus
+│      │  │      │      └─Sherry化妆品
+│      │  │      │          ├─DAL
+│      │  │      │          │  ├─bin
+│      │  │      │          │  │  ├─Release
+│      │  │      │          │  │  └─Debug
+│      │  │      │          │  ├─obj
+│      │  │      │          │  │  ├─Release
+│      │  │      │          │  │  │  └─TempPE
+│      │  │      │          │  │  └─Debug
+│      │  │      │          │  │      └─TempPE
+│      │  │      │          │  └─Properties
+│      │  │      │          ├─InterFace
+│      │  │      │          │  ├─bin
+│      │  │      │          │  │  ├─Release
+│      │  │      │          │  │  └─Debug
+│      │  │      │          │  ├─obj
+│      │  │      │          │  │  ├─Release
+│      │  │      │          │  │  │  └─TempPE
+│      │  │      │          │  │  └─Debug
+│      │  │      │          │  │      └─TempPE
+│      │  │      │          │  └─Properties
+│      │  │      │          ├─Database
+│      │  │      │          ├─App_Data
+│      │  │      │          ├─BLL
+│      │  │      │          │  ├─bin
+│      │  │      │          │  │  ├─Release
+│      │  │      │          │  │  └─Debug
+│      │  │      │          │  ├─obj
+│      │  │      │          │  │  ├─Release
+│      │  │      │          │  │  │  └─TempPE
+│      │  │      │          │  │  └─Debug
+│      │  │      │          │  │      └─TempPE
+│      │  │      │          │  └─Properties
+│      │  │      │          ├─DbCtrl
+│      │  │      │          │  ├─bin
+│      │  │      │          │  │  ├─Release
+│      │  │      │          │  │  └─Debug
+│      │  │      │          │  ├─obj
+│      │  │      │          │  │  ├─Release
+│      │  │      │          │  │  │  └─TempPE
+│      │  │      │          │  │  └─Debug
+│      │  │      │          │  │      ├─Refactor
+│      │  │      │          │  │      └─TempPE
+│      │  │      │          │  └─Properties
+│      │  │      │          ├─Entity
+│      │  │      │          │  ├─Properties
+│      │  │      │          │  ├─bin
+│      │  │      │          │  │  ├─Release
+│      │  │      │          │  │  └─Debug
+│      │  │      │          │  └─obj
+│      │  │      │          │      ├─Release
+│      │  │      │          │      │  └─TempPE
+│      │  │      │          │      └─Debug
+│      │  │      │          │          ├─Refactor
+│      │  │      │          │          └─TempPE
+│      │  │      │          └─Web
+│      │  │      │              ├─images
+│      │  │      │              ├─Bin
+│      │  │      │              ├─App_Data
+│      │  │      │              └─Management
+│      │  │      │                  └─images
+│      │  │      └─UTest-release1.0
+│      │  │          ├─TestResults
+│      │  │          │  └─admin_LENOV10776291 2010-01-14 20_34_39
+│      │  │          │      ├─In
+│      │  │          │      │  └─LENOV10776291
+│      │  │          │      └─Out
+│      │  │          └─UTest
+│      │  │              ├─bin
+│      │  │              │  └─Debug
+│      │  │              ├─obj
+│      │  │              │  └─Debug
+│      │  │              │      └─TempPE
+│      │  │              └─Properties
+│      │  ├─周报
+│      │  │  ├─林思然
+│      │  │  ├─陈亚星
+│      │  │  ├─李开林
+│      │  │  ├─金哲宇
+│      │  │  ├─李玺
+│      │  │  └─张翼鹏
+│      │  ├─PSP表格
+│      │  │  ├─张翼鹏
+│      │  │  ├─金哲宇
+│      │  │  ├─李开林
+│      │  │  ├─林思然
+│      │  │  ├─陈亚星
+│      │  │  └─李玺
+│      │  ├─TSP表格
+│      │  │  ├─李玺
+│      │  │  ├─张翼鹏
+│      │  │  ├─金哲宇
+│      │  │  ├─李开林
+│      │  │  ├─林思然
+│      │  │  ├─陈亚星
+│      │  │  └─Forus
+│      │  ├─项目进展报告
+│      │  ├─风险管理
+│      │  ├─工时统计
+│      │  ├─个人总结
+│      │  ├─小组总结
+│      │  └─项目统计
+│      ├─测试
+│      │  ├─测试方案
+│      │  ├─测试报告
+│      │  └─基线库
+│      │      └─Release_v0.1_2009-12-13_Forus
+│      │          ├─测试
+│      │          │  ├─数据与数据库完整性测试
+│      │          │  ├─接口测试
+│      │          │  ├─性能评测
+│      │          │  ├─功能测试
+│      │          │  ├─用户界面测试
+│      │          │  └─集成测试
+│      │          ├─Release_v1.0
+│      │          │  ├─TestProject_curStorage
+│      │          │  │  ├─bin
+│      │          │  │  │  └─Debug
+│      │          │  │  ├─obj
+│      │          │  │  │  └─Debug
+│      │          │  │  │      └─TempPE
+│      │          │  │  └─Properties
+│      │          │  └─Testing
+│      │          │      ├─bin
+│      │          │      │  └─Debug
+│      │          │      ├─obj
+│      │          │      │  └─Debug
+│      │          │      │      └─TempPE
+│      │          │      └─Properties
+│      │          └─Sherry化妆品
+│      │              ├─DAL
+│      │              │  ├─bin
+│      │              │  │  ├─Release
+│      │              │  │  └─Debug
+│      │              │  ├─obj
+│      │              │  │  ├─Release
+│      │              │  │  │  └─TempPE
+│      │              │  │  └─Debug
+│      │              │  │      └─TempPE
+│      │              │  └─Properties
+│      │              ├─InterFace
+│      │              │  ├─bin
+│      │              │  │  ├─Release
+│      │              │  │  └─Debug
+│      │              │  ├─obj
+│      │              │  │  ├─Release
+│      │              │  │  │  └─TempPE
+│      │              │  │  └─Debug
+│      │              │  │      └─TempPE
+│      │              │  └─Properties
+│      │              ├─Database
+│      │              ├─App_Data
+│      │              ├─BLL
+│      │              │  ├─bin
+│      │              │  │  ├─Release
+│      │              │  │  └─Debug
+│      │              │  ├─obj
+│      │              │  │  ├─Release
+│      │              │  │  │  └─TempPE
+│      │              │  │  └─Debug
+│      │              │  │      └─TempPE
+│      │              │  └─Properties
+│      │              ├─DbCtrl
+│      │              │  ├─bin
+│      │              │  │  ├─Release
+│      │              │  │  └─Debug
+│      │              │  ├─obj
+│      │              │  │  ├─Release
+│      │              │  │  │  └─TempPE
+│      │              │  │  └─Debug
+│      │              │  │      ├─Refactor
+│      │              │  │      └─TempPE
+│      │              │  └─Properties
+│      │              ├─Entity
+│      │              │  ├─Properties
+│      │              │  ├─bin
+│      │              │  │  ├─Release
+│      │              │  │  └─Debug
+│      │              │  └─obj
+│      │              │      ├─Release
+│      │              │      │  └─TempPE
+│      │              │      └─Debug
+│      │              │          ├─Refactor
+│      │              │          └─TempPE
+│      │              └─Web
+│      │                  ├─images
+│      │                  ├─Bin
+│      │                  ├─App_Data
+│      │                  └─Management
+│      │                      └─images
+│      ├─3设计
+│      │  ├─详细设计
+│      │  └─概要设计
+│      ├─2需求
+│      │  ├─需求变更
+│      │  ├─软件需求评审
+│      │  └─用户需求评审
+│      │      └─备份
+│      ├─1计划
+│      ├─0立项
+│      │  └─小组成员信息
+│      │      └─03版本备份
+│      ├─会议记录
+│      └─配置管理
+├─项目工程   （此目录为项目过程源代码）
+│  ├─DbCtrl
+│  │  └─Properties
+│  ├─DAL
+│  │  └─Properties
+│  ├─BLL
+│  │  └─Properties
+│  ├─Entity
+│  │  └─Properties
+│  ├─InterFace
+│  │  └─Properties
+│  ├─SQL脚本
+│  ├─Web
+│  │  ├─WorkerManage
+│  │  ├─images
+│  │  │  └─statistic
+│  │  ├─App_Data
+│  │  ├─Management
+│  │  │  ├─left.files
+│  │  │  │  └─images
+│  │  │  ├─images
+│  │  │  └─inc
+│  │  └─js
+│  └─Demo
+├─项目最终  （此目录为最终项目源代码）
+│  ├─Entity
+│  ├─InterFace
+│  ├─BLL
+│  ├─DAL
+│  ├─DbCtrl
+│  └─Web
+│      ├─js
+│      ├─images
+│      │  └─statistic
+│      ├─Management
+│      │  ├─inc
+│      │  ├─images
+│      │  ├─left.files
+│      │  │  └─images
+│      │  ├─AdminManage
+│      │  └─WorkerManage
+│      └─User
+└─网站常用  （此目录为项目积累素材）
