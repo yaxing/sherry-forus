@@ -51,10 +51,10 @@ namespace DAL
             }
             catch (Exception e)
             {
-                StreamWriter sw = new StreamWriter("g:\\err.txt");
-                string err = e.ToString();
-                sw.Write(err);
-                sw.Close();
+                //StreamWriter sw = new StreamWriter("g:\\err.txt");
+                //string err = e.ToString();
+                //sw.Write(err);
+                //sw.Close();
                 num = -1;
             }
             return num;
@@ -116,8 +116,8 @@ namespace DAL
                                         new SqlParameter("@sDate", SqlDbType.DateTime),
                                         new SqlParameter("@eDate", SqlDbType.DateTime),
                                         new SqlParameter("@sAge", SqlDbType.Int),
-                                        new SqlParameter("@eAge", SqlDbType.Int),
-                                        new SqlParameter("@eAge", SqlDbType.Int),
+                                        new SqlParameter("@eAge", SqlDbType.Int)
+                                        
 
                                     };
 
